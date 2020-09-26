@@ -74,7 +74,7 @@ $loggedin = $_COOKIE["loggedin"];
             $UBICACION = $_REQUEST["ubicacion"];
             $ISBN = $_REQUEST["isbn"];
 
-            $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "',where id='" . $id . "'";
+            $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "' where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
             $status = "Record Updated Successfully. </br></br>
 <a href='view.php'>View Updated Record</a>";
