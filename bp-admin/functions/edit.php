@@ -1,7 +1,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $id = $_REQUEST['id'];
-$query = "SELECT * FROM `tabla` WHERE `ID` = '" . $id . "'";
+$query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
 $loggedin = $_COOKIE["loggedin"];
