@@ -164,9 +164,7 @@ $loggedin = $_COOKIE["loggedin"];
                     <td>' . $row["UBICACION"] . '</td>
                     <td><a href="functions/edit.php?id=' . $row["ID"] . '">Editar</a><br><a href="functions/delete.php?id=' . $row["ID"] . '">Eliminar</a></td>
                 </tr>';}
-                    } else {
-                    echo "0 resultados";
-                    }
+                    };
                 ?>
                 </tbody>
              </table>
