@@ -1,6 +1,9 @@
 <?php
+
+//Carga el archivo de configuración
 require('bp-settings.php');
-//Configuración (pasar en un futuro a BBDD)
+
+//Formato de fecha predefinido
 $formatofecha = "Y";
 
 //Queries de SQL predefinido

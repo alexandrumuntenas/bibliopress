@@ -104,12 +104,12 @@ $var_session = "";
 }
 
 if($var_session=='ok') {
-    echo "<form enctype='multipart/form-data' action='upload.php' method='post'>";
+    echo "<form enctype='multipart/form-data' action='abies.php' method='post'>";
     echo "Nombre de archivo *.TXT a subir:<br /><br />\n";
     echo "<input size='50' type='file' name='filename'><br /><br />\n";
     echo "<input type='submit' name='submit' value='Subir'></form>";
    } else {
-		echo"<form name='loginform' id='loginform' method='post' action='upload.php'>";
+		echo"<form name='loginform' id='loginform' method='post' action='abies.php'>";
 	  echo "<p><label>Usuario<br />";
 	  echo "<input type='text' name='log' id='user_login' class='input' value='' size='20' /></label></p>";
 	  echo "<p><label>Contrase&ntilde;a<br />";
