@@ -33,7 +33,7 @@ $loggedin = $_COOKIE["loggedin"];
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-star"></i> Inicio</span></a>
                     </li>
                     <li class="nav-item">
@@ -51,7 +51,7 @@ $loggedin = $_COOKIE["loggedin"];
                     </li>';}; ?>
                     <?php if($loggedin == 1){
                         //Preparado para futuro sistema de Login
-                        echo '<li class="nav-item">
+                        echo '<li class="nav-item active">
                         <a class="nav-link" href="/bp-admin/panel.php"><i class="fas fa-edit"></i> Panel</a>
                     </li>';}; ?>
                     </ul>
