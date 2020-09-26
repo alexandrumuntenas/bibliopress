@@ -17,7 +17,7 @@ $tableMySQL = 'tabla';  //Nombre de la tabla en la base de datos
     $pwdUpload = 'bibliopress'; //Contraseña del usuario de carga
 
 // Otros parametros
-    $sname = 'I.E.S Montevives'; //Nombre de la biblioteca/institución
+    $sname = 'Colegio Colegio Colegio'; //Nombre de la biblioteca/institución
 
     $databaseconnection = mysqli_connect($serverMySQL,$userMySQL,$pwdMySQL,$dbMySQL);
     
