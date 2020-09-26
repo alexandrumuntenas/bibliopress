@@ -49,6 +49,11 @@ $loggedin = $_COOKIE["loggedin"];
                         echo '<li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-user"></i> Log Out</a>
                     </li>';}; ?>
+                    <?php if($loggedin == 1){
+                        //Preparado para futuro sistema de Login
+                        echo '<li class="nav-item">
+                        <a class="nav-link" href="/bp-admin/panel.php"><i class="fas fa-edit"></i> Panel</a>
+                    </li>';}; ?>
                     </ul>
                 </div>
             </nav>
