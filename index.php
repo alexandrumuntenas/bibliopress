@@ -88,13 +88,13 @@ $loggedin = $_COOKIE["loggedin"];
                                 </tr>
                                 <tr>
                                     <td><p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p></td>
-                                    <td><p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</td>
-                                    <td><p><strong>Disponibilidad</strong>'. $stock .' <em></td>
+                                    <td><p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</em></td>
+                                    <td><p><strong>Ejemplar</strong><em>' . $row["EJEMPLAR"] . ' </em></td>
                                 </tr>
                                 <tr>
                                     <td><p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></td>
                                     <td><p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</td>
-                                    <td><p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . '</td>
+                                    <td><p><strong></strong></td>
                                 </tr>
                             </tbody>
                         </table> </div>';
