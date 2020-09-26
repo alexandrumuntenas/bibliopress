@@ -63,14 +63,12 @@ $loggedin = $_COOKIE["loggedin"];
         </header>
         <section class="section">
             <div>
-                <h2 class="stitle">Últimas novedades!</h2>
+                <h2 class="stitle">Catálogo</h2>
             </div>
             <?php 
                 if ($resultado->num_rows > 0) {
                     //datos de cada columna
                     while($row = $resultado->fetch_assoc()) {
-                        
-                        if($row["DISPONIBILIDAD"] == 1){$stock = "    ✓✗";};
                         echo '<div class="cardse card-body">
                         <table>
                             <thead>
