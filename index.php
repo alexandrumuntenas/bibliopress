@@ -34,10 +34,10 @@ $loggedin = $_COOKIE["loggedin"];
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="fas fa-star"></i> Home</span></a>
+                        <a class="nav-link" href="#"><i class="fas fa-star"></i> Inicio</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-search"></i> Search</a>
+                        <a class="nav-link" href="#"><i class="fas fa-search"></i> Búsqueda</a>
                     </li>
                     <?php if($loggedin == 0){
                         //Preparado para futuro sistema de Login
@@ -95,7 +95,7 @@ $loggedin = $_COOKIE["loggedin"];
                         </table> </div>';
                     }
                 } else {
-                    echo "0 results";
+                    echo "0 resultados";
                 }
                 ?>  
         </section>
