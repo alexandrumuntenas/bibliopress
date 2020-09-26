@@ -34,7 +34,7 @@ $loggedin = $_COOKIE["loggedin"];
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-star"></i> Inicio</span></a>
+                        <a class="nav-link" href="/"><i class="fas fa-star"></i> Inicio</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-search"></i> Búsqueda</a>
@@ -42,7 +42,7 @@ $loggedin = $_COOKIE["loggedin"];
                     <?php if($loggedin == 0){
                         //Preparado para futuro sistema de Login
                         echo '<li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Access</a>
+                        <a class="nav-link" href="bp-login.php"><i class="fas fa-user"></i> Access</a>
                     </li>';}; ?>
                     <?php if($loggedin == 1){
                         //Preparado para futuro sistema de Login
