@@ -7,7 +7,7 @@ require('bp-settings.php');
 $formatofecha = "Y";
 
 //Queries de SQL predefinido
-$sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR FROM tabla";
+$sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, ID FROM tabla";
 $resultado = $databaseconnection->query($sql);
 
 //Cookies para futuro sistema de login
