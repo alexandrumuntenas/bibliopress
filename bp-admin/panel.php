@@ -156,7 +156,7 @@ $loggedin = $_COOKIE["loggedin"];
                     <td>' . $row["ANOPUB"] . '</td>
                     <td>' . $row["EJEMPLAR"] . '</td>
                     <td>' . $row["UBICACION"] . '</td>
-                    <td> Editar    Eliminar </td>
+                    <td><a href="functions/edit.php?id=' . $row["ID"] . '">Editar</a><br> Eliminar </td>
                 </tr>';}
                     } else {
                     echo "0 resultados";

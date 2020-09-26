@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 	  //$query = "SET CHARACTER SET utf8";
 		//$rs = mysql_query($query);
     $handle = fopen($_FILES['filename']['tmp_name'], "r");
-    $fila = -6;
+    $fila = -5;
     while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
         $fila++;
         if ($fila > 0) {
