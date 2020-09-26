@@ -68,6 +68,7 @@ $loggedin = $_COOKIE["loggedin"];
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
             Añadir nuevo registro
             </button>
+            <a href="/bp-content/integrado/abies/uploader.php" class="btn btn-secondary">Subir desde Abies</a>
             <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
