@@ -64,13 +64,17 @@ $loggedin = $_COOKIE["loggedin"];
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
             $id = $_REQUEST['id'];
-            $trn_date = date("Y-m-d H:i:s");
-            $name = $_REQUEST['name'];
-            $age = $_REQUEST['age'];
-            $submittedby = $_SESSION["username"];
-            $update = "update new_record set trn_date='" . $trn_date . "',
-name='" . $name . "', age='" . $age . "',
-submittedby='" . $submittedby . "' where id='" . $id . "'";
+            $fecha = date("Y-m-d H:i:s"); //Fecha FECHA
+            //Datos
+            $ANOPUB = $_REQUEST["anopub"];
+            $AUTOR = $_REQUEST["autor"];
+            $EJEMPLAR = $_REQUEST["ejemplar"];
+            $EDITORIAL = $_REQUEST["editorial"];
+            $TITULO = $_REQUEST["titulo"];
+            $UBICACION = $_REQUEST["ubicacion"];
+            $ISBN = $_REQUEST["isbn"];
+
+            $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "',where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
             $status = "Record Updated Successfully. </br></br>
 <a href='view.php'>View Updated Record</a>";
@@ -84,25 +88,25 @@ submittedby='" . $submittedby . "' where id='" . $id . "'";
                         <table style="overflow-x: scroll;">
                             <thead>
                                 <tr>
-                                    <th><h5>Título <input type="text" name="name" placeholder="Escribe el título" required value="'. $row['TITULO'] . '" /></h5></th>
+                                    <th><h5>Título <input type="text" name="titulo" placeholder="Escribe el título" required value="'. $row['TITULO'] . '" /></h5></th>
                                     <th><input type="hidden" name="new" value="1" /></th>
                                     <th><input name="id" type="hidden" value="' . $row['ID'] . '" /></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p>Autor <em><input type="text" name="age" placeholder="Escribe el Autor" required value="' . $row["AUTOR"] . '" /></em></p></td>
+                                    <td><p>Autor <em><input type="text" name="autor" placeholder="Escribe el Autor" required value="' . $row["AUTOR"] . '" /></em></p></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><p><strong>ISBN</strong> <em><input type="text" name="age" placeholder="Escribe el ISBN" required value="' . $row["ISBN"] . '" /></em></p></td>
-                                    <td><p><strong>Ubicación</strong> <em><input type="text" name="age" placeholder="Escribe dónde se sitúa este libro" required value="' . $row["UBICACION"] . '" /></em></td>
-                                    <td><p><strong>Ejemplar</strong> <em><input type="text" name="age" placeholder="Escribe el identificador de Ejemplar" required value="' . $row["EJEMPLAR"] . '" /> </em></td>
+                                    <td><p><strong>ISBN</strong> <em><input type="text" name="isbn" placeholder="Escribe el ISBN" required value="' . $row["ISBN"] . '" /></em></p></td>
+                                    <td><p><strong>Ubicación</strong> <em><input type="text" name="ubicacion" placeholder="Escribe dónde se sitúa este libro" required value="' . $row["UBICACION"] . '" /></em></td>
+                                    <td><p><strong>Ejemplar</strong> <em><input type="text" name="ejemplar" placeholder="Escribe el identificador de Ejemplar" required value="' . $row["EJEMPLAR"] . '" /> </em></td>
                                 </tr>
                                 <tr>
-                                    <td><p><strong>Editorial</strong> <em><input type="text" name="age" placeholder="Escribe la Editorial" required value="' . $row["EDITORIAL"] . '" /></em></p></td>
-                                    <td><p><strong>Año de Publicación</strong> <em><input type="text" name="age" placeholder="Escribe el Año de Publicación" required value="' . $row["ANOPUB"] . '" /></td>
+                                    <td><p><strong>Editorial</strong> <em><input type="text" name="editorial" placeholder="Escribe la Editorial" required value="' . $row["EDITORIAL"] . '" /></em></p></td>
+                                    <td><p><strong>Año de Publicación</strong> <em><input type="text" name="anopub" placeholder="Escribe el Año de Publicación" required value="' . $row["ANOPUB"] . '" /></td>
                                     <td><p><strong></strong></td>
                                 </tr>
                             </tbody>
