@@ -64,15 +64,10 @@ $loggedin = $_COOKIE["loggedin"];
             </div>
             <form class="form-signin">
             
-            <label for="inputEmail" class="sr-only">Email address</label>
+            <label for="inputEmail" class="sr-only">Usuario</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
+            <label for="inputPassword" class="sr-only">Contraseña</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div class="checkbox mb-3">
-                <label>
-                <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
         </section>
@@ -80,7 +75,7 @@ $loggedin = $_COOKIE["loggedin"];
             <?php
             
             ?>
-        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bookpress</a>
+        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
         </div>
         </footer>
     </body>

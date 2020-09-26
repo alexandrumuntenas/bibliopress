@@ -106,7 +106,7 @@ $loggedin = $_COOKIE["loggedin"];
             <?php
             
             ?>
-        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bookpress</a>
+        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
         </div>
         </footer>
     </body>
