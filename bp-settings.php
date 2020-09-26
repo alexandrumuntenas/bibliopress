@@ -5,7 +5,7 @@ $serverMySQL = 'localhost'; //Host de la base de datos
 $dbMySQL = 'bookpress'; //Nombre de la base de datos
 $userMySQL = 'bookpress'; //Usuario de la base de datos
 $pwdMySQL = 'gkS4hB8kTZ8acKce'; //Contraseña del usuario de la base de datos
-$tableMySQL = 'tabla';  //Nombre de la tabla en la base de datos
+$tableMySQL = 'bp_catalogo';  //Nombre de la tabla en la base de datos
 
 
 // Credenciales subida de archivos
