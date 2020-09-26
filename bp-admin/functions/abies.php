@@ -47,24 +47,6 @@ if(isset($_POST['pwd_submit'])) {
 if (isset($_POST['submit'])) {
     if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
     }
-    // Eliminar tabla
-    $sql = "DROP TABLE " . $tableMySQL; 
-    $rs = mysqli_query($databaseconnection,$sql);
-
-	  // Crear tabla
-	  $sql = 'CREATE TABLE ' . $tableMySQL . '( '.
-       'ANOPUB VARCHAR(8), '.
-       'AUTOR VARCHAR(30), '.
-       'EJEMPLAR VARCHAR(8), '.
-       'EDITORIAL VARCHAR(50), '.
-       'SIGNATURA VARCHAR(18), '.
-       'TIPOEJEMPLAR VARCHAR(12), '.
-       'TITULO VARCHAR(80), '.
-       'UBICACION VARCHAR(12), '.
-       'ISBN VARCHAR(18), '.
-       'CIUDAD VARCHAR(18), '.
-       'PRIMARY KEY ( EJEMPLAR ))';
-	   $rs = mysqli_query($databaseconnection,$sql);
 	   //Import uploaded file to Database
 	  ini_set("auto_detect_line_endings", true);
 	  //$query = "SET CHARACTER SET utf8";
