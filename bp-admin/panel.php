@@ -130,6 +130,12 @@ $loggedin = $_COOKIE["loggedin"];
             </div>
             </div>
             </div>
+            <?php
+            $result = mysqli_query($databaseconnection, "SELECT * FROM $tableMySQL");
+            $qty = mysqli_num_rows($result);
+            echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>'
+            ?>
+            
             <table>
                 <thead>
                 <tr>
