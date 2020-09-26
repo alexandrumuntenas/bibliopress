@@ -74,7 +74,7 @@ $loggedin = $_COOKIE["loggedin"];
                     </button>
                 </div>
                 <div class="modal-body">
-                <form id="form_1388" class="appnitro"  method="post" action="">				
+                <form id="form_1388" class="appnitro"  method="post" action="functions/add.php">				
                 <ul>
                     
                 <li id="li_1">
@@ -112,8 +112,9 @@ $loggedin = $_COOKIE["loggedin"];
                 <div>
                     <input id="element_7" name="element_7" class="element text large" type="text" maxlength="255" value=""/> 
                 </div> 
-                </li>		<li id="li_8" >
-                <label class="description" for="element_8">Disponibilidad </label>
+                </li>	
+                <li id="li_8" >
+                <label class="description" for="element_8">Disponibilidad (En desarrollo)</label>
                 <span>
                     <input id="element_8_1" name="element_8_1" class="element checkbox" type="checkbox" value="1" />
         <label class="choice" for="element_8_1">Sí</label>
