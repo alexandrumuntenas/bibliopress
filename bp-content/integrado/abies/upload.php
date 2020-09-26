@@ -125,25 +125,6 @@ if($var_session=='ok') {
     
   </tr></table>
 </td></tr></table>
-<!--Fin Modulo de codigo-->
-
-
-<table cellSpacing=0 cellPadding=0 border=0 width="100%">
-<tr>
-<TD colSpan=3 ><IMG height=1  src="images/spacer.gif" width=1></TD>
-</tr>
-<tr>
-<td background=images/tile1.gif bgColor=#efebf7 width="13"><IMG  src="images/bottom_left.gif" width="13"></td>
-<td bgColor=#ffffff background=images/bottom_center.gif align=right>&nbsp;</td>
-<td background=images/tile1.gif bgColor=#efebf7 width="15"><IMG src="images/bottom_right.gif" width="15"></td>	
-</tr></table>
-           
-      <table  border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
-      <br>       	  
-
-        </td></tr></table>
-
-</td></tr></table>
 
 </body>
 </html>
