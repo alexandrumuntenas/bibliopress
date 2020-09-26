@@ -22,7 +22,7 @@ $anopub = "1919";
 $ejemplar = "1191";
 $ubicacion = "13";*/
 
-$insert = "INSERT INTO $tableMySQL(`ANOPUB`, `AUTOR`, `EJEMPLAR`, `EDITORIAL`,`TITULO`, `UBICACION`, `ISBN`) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN')";
+$insert = "INSERT INTO `bp_estudiantes` (`ANOPUB`, `AUTOR`, `EJEMPLAR`, `EDITORIAL`,`TITULO`, `UBICACION`, `ISBN`) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN')";
 $databaseconnection->query($insert);
 
 //Futura interfaz de información
