@@ -29,6 +29,12 @@
     margin: 30px;
 }
 
+.cardsa {
+    border: solid 1px #111;
+    height: auto;
+    max-width: 50%;
+}
+
 .stitle{
     text-align: center;
     margin: 50px;
@@ -42,6 +48,7 @@
 table {
     border-collapse: separate;
     border-spacing: 20px 0;
+    overflow-x: auto;
   }
 
   th,

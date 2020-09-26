@@ -1,0 +1,32 @@
+<div class="cardsa card-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><h5><strong>' . $row["TITULO"] . '</strong></h5></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><p><em>' . $row["AUTOR"] . '</em></p></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p></td>
+                                    <td><p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</td>
+                                    <td><p><strong>Disponibilidad</strong>'. $stock .' <em></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></td>
+                                    <td><p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</td>
+                                    <td><p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . '</td>
+                                </tr>
+                            </tbody>
+                        </table> </div>
+
+
+<?php 
+
+?> 
