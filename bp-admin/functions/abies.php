@@ -1,30 +1,33 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
-<title>Subir archivo</title>
-</head>
-<body>
-<!-- ******************* -->
-<table border=0 cellspacing=0 cellpadding=0 width='450' align='left'>
-  <tr><td>
-<br>
-<table border=0 cellspacing=0 cellpadding=0 width='100%'>
-  <tr>
-    <td>&nbsp;</td>
-  <td width="41%" align=right>
-<a href="javascript:self.parent.tb_remove();void(0)"><img src="images/logout.gif" align=absmiddle border=0><b> Cerrar</b></a>
-</td></tr></table>
-<!--Fin Tabla cabecera donde se encuentra el titulo de la pagina en cuestion -->
+require $_SERVER['DOCUMENT_ROOT']. '/bp-config.php';
 
-<tr ><td class='Font8v' >
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8"/>
+        <title>
+        <?php echo "Biblioteca del " . $sname;?>
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/bp-content/themes/vexia/style.css">
+        <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg="nest"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </head>
+<body class="headerlogin">
 <!--Modulo de codigo-->
       
 <?php
-    require $_SERVER['DOCUMENT_ROOT']. '/bp-config.php';
+	
 	$_SESSION['ID'] = '';
 // Check user and password
 if(isset($_POST['pwd_submit'])) {
@@ -43,7 +46,6 @@ if(isset($_POST['pwd_submit'])) {
 //Upload File
 if (isset($_POST['submit'])) {
     if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
-        echo "<b>". $_FILES['filename']['name'] ."</b> subido con &eacute;xito." . "<br />\n";
     }
     // Eliminar tabla
     $sql = "DROP TABLE " . $tableMySQL; 
@@ -90,8 +92,7 @@ if (isset($_POST['submit'])) {
     fclose($handle);
     $databaseconnection->close();
 		$_SESSION['ID'] = '';
-    echo "Se han procesado <b>$fila ejemplares</b><br />\n";
-    echo "Importaci&oacute;n terminada";
+    echo "<div class='loginsection'><p>Se han procesado <b>$fila ejemplares</b><br /></p>\n<p class='btn btn-success'>Importaci&oacute;n terminada</p><br><br><a class='btn btn-link' href='/bp-admin/panel.php'>Volver al panel</a>";
 
   
    
@@ -104,17 +105,12 @@ $var_session = "";
 }
 
 if($var_session=='ok') {
-    echo "<form enctype='multipart/form-data' action='abies.php' method='post'>";
-    echo "Nombre de archivo *.TXT a subir:<br /><br />\n";
-    echo "<input size='50' type='file' name='filename'><br /><br />\n";
-    echo "<input type='submit' name='submit' value='Subir'></form>";
+    echo "<div class='loginsection'><form enctype='multipart/form-data' action='abies.php' method='post'>Nombre de archivo *.TXT a subir:<br /><br />\n<input size='50' type='file' name='filename'><br /><br />\n<input type='submit' name='submit' value='Subir'></form></div>";
    } else {
-		echo"<form name='loginform' id='loginform' method='post' action='abies.php'>";
-	  echo "<p><label>Usuario<br />";
-	  echo "<input type='text' name='log' id='user_login' class='input' value='' size='20' /></label></p>";
-	  echo "<p><label>Contrase&ntilde;a<br />";
-	  echo "<input type='password' name='pwd' id='user_pass' class='input' value='' size='20'  /></label></p>";
-	  echo "<p class='submit'><input type='submit' name='pwd_submit' id='pwd_submit' value='Iniciar sesi&oacute;n' /></p></form>";
+		echo"<div class='loginsection'><form name='loginform' id='loginform' method='post' action='abies.php'>
+<p><label>Usuario<br /><input type='text' name='log' id='user_login' class='input' value='' size='20' /></label></p>
+<p><label>Contrase&ntilde;a<br /><input type='password' name='pwd' id='user_pass' class='input' value='' size='20'  /></label></p>
+<p class='submit'><input class='btn btn-primary' type='submit' name='pwd_submit' id='pwd_submit' value='Iniciar sesi&oacute;n' /></p></form></div>";
 	  if ($var_session == "failed") {
 	  	echo "<p style=' color: red;'>Error en usuario o clave</p>";
 	  }
