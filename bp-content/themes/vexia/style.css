@@ -21,7 +21,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #FFF;
-    text-shadow: 2px 2px 10px #111;
+	text-shadow: 2px 2px 10px #111;
+	font-size: 48px;
   }
 
 .section {
@@ -35,7 +36,7 @@
     border: solid 0px #111;
     box-shadow: 0px 0px 10px #AAA;
     height: auto;
-    margin: 30px;
+	margin: 15px;
 }
 
 .loginsection {
@@ -45,7 +46,6 @@
     height: auto;
 	margin: 10%;
 	padding: 50px;
-	max-width: 500px;
 }
 
 .stitle{
@@ -58,6 +58,9 @@
     color: #FFF;
 }
 
+input {
+	max-width: auto;
+}
 table {
     border-collapse: separate;
     border-spacing: 20px 0;
