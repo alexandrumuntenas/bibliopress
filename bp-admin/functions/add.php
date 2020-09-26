@@ -122,6 +122,11 @@ $loggedin = $_COOKIE["loggedin"];
                                 </tr>
                             </tbody>
                         </table> </div>"; ?>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-primary" href="/bp-admin/panel.php">Volver</a>
+                            <input type = "button" class="btn btn-success" value = "Imprimir página" onclick = "window.print()" />
+                        </div>
+            
         </section>
         <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bookpress</a>
