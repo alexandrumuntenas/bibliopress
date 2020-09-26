@@ -23,7 +23,7 @@ $loggedin = $_COOKIE["loggedin"];
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body class="headerlogin">
         <header>
             <div class="wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -34,7 +34,7 @@ $loggedin = $_COOKIE["loggedin"];
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-star"></i> Inicio</span></a>
+                        <a class="nav-link" href="/"><i class="fas fa-star"></i> Inicio</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-search"></i> Búsqueda</a>
@@ -42,7 +42,7 @@ $loggedin = $_COOKIE["loggedin"];
                     <?php if($loggedin == 0){
                         //Preparado para futuro sistema de Login
                         echo '<li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Acceso</a>
+                        <a class="nav-link" href="bp-login.php"><i class="fas fa-user"></i> Acceso</a>
                     </li>';}; ?>
                     <?php if($loggedin == 1){
                         //Preparado para futuro sistema de Login
@@ -57,15 +57,24 @@ $loggedin = $_COOKIE["loggedin"];
                     </ul>
                 </div>
             </nav>
-            <div class="header">
-                <h1 class="centered">Inicio</h1>
-            </div>
         </header>
-        <section class="section">
+        <section class="loginsection">
             <div>
                 <h2 class="stitle">Acceso</h2>
             </div>
+            <form class="form-signin">
             
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox mb-3">
+                <label>
+                <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
         </section>
         <footer class="page-footer bg-primary">
             <?php
