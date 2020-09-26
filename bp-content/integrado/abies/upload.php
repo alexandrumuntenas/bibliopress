@@ -6,7 +6,6 @@ session_start();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
 <title>Subir archivo</title>
-<link rel="stylesheet" href="include/styles.css" type="text/css">
 </head>
 <body>
 <!-- ******************* -->
@@ -20,24 +19,12 @@ session_start();
 <a href="javascript:self.parent.tb_remove();void(0)"><img src="images/logout.gif" align=absmiddle border=0><b> Cerrar</b></a>
 </td></tr></table>
 <!--Fin Tabla cabecera donde se encuentra el titulo de la pagina en cuestion -->
-<!--******Tabla de Pestaña-->
-<table cellSpacing=0 cellPadding=0 border=0 width="200">
-<tr>
-<td background="images/tile1.gif" bgColor="#efebf7" width="13"><img height="20" src="images/top_left.gif" width="13"></td>
-<td background="images/tile1.gif"  bgColor="#efebf7">&nbsp;<b>Subir cat&aacute;logo</b></td>
-<td background="images/tile1.gif" bgColor="#efebf7" width="15"><img height="20" src="images/top_right.gif" width="15"></td>
-</tr>
-<tr><td colspan="3"><img height="1"  src="images/spacer.gif" width="1"></td></tr>
-</table>                          
-<!--****Fin tabla de pestaña-->
 
-<table border=0 cellspacing=1 cellpadding=0  bgcolor="#336699" align="center" width="100%"><tr><td>
-<table border=0 cellspacing=0 cellpadding=10 width='100%' nowrap bgcolor=white>
 <tr ><td class='Font8v' >
 <!--Modulo de codigo-->
       
 <?php
-	include("include/conn.php");
+    require $_SERVER['DOCUMENT_ROOT']. '/bp-config.php';
 	$_SESSION['ID'] = '';
 // Check user and password
 if(isset($_POST['pwd_submit'])) {
@@ -60,7 +47,7 @@ if (isset($_POST['submit'])) {
     }
     // Eliminar tabla
     $sql = "DROP TABLE " . $tableMySQL; 
-    $rs = mysqli_query($link,$sql);
+    $rs = mysqli_query($databaseconnection,$sql);
 
 	  // Crear tabla
 	  $sql = 'CREATE TABLE ' . $tableMySQL . '( '.
@@ -75,7 +62,7 @@ if (isset($_POST['submit'])) {
        'ISBN VARCHAR(18), '.
        'CIUDAD VARCHAR(18), '.
        'PRIMARY KEY ( EJEMPLAR ))';
-	   $rs = mysqli_query($link,$sql);
+	   $rs = mysqli_query($databaseconnection,$sql);
 	   //Import uploaded file to Database
 	  ini_set("auto_detect_line_endings", true);
 	  //$query = "SET CHARACTER SET utf8";
@@ -86,22 +73,22 @@ if (isset($_POST['submit'])) {
         $fila++;
         if ($fila > 0) {
         	// Eliminar caracteres especiales que hacen fallar la consulta INSERT en MySQL        	
-        	$data[0] = $link->real_escape_string($data[0]);
-        	$data[1] = $link->real_escape_string($data[1]); 
-        	$data[3] = $link->real_escape_string($data[3]);
-        	$data[9] = $link->real_escape_string($data[9]);
-        	$data[18] = $link->real_escape_string($data[18]);
-        	$data[32] = $link->real_escape_string($data[32]); 
-        	$data[43] = $link->real_escape_string($data[43]); 
-        	$data[45] = $link->real_escape_string($data[45]); 
-        	$data[47] = $link->real_escape_string($data[47]);
-        	$data[49] = $link->real_escape_string($data[49]);
+        	$data[0] = $databaseconnection->real_escape_string($data[0]);
+        	$data[1] = $databaseconnection->real_escape_string($data[1]); 
+        	$data[3] = $databaseconnection->real_escape_string($data[3]);
+        	$data[9] = $databaseconnection->real_escape_string($data[9]);
+        	$data[18] = $databaseconnection->real_escape_string($data[18]);
+        	$data[32] = $databaseconnection->real_escape_string($data[32]); 
+        	$data[43] = $databaseconnection->real_escape_string($data[43]); 
+        	$data[45] = $databaseconnection->real_escape_string($data[45]); 
+        	$data[47] = $databaseconnection->real_escape_string($data[47]);
+        	$data[49] = $databaseconnection->real_escape_string($data[49]);
         	$import="INSERT INTO " .  $tableMySQL . " (ANOPUB,AUTOR,EJEMPLAR,EDITORIAL,CIUDAD, SIGNATURA,TIPOEJEMPLAR,TITULO,UBICACION,ISBN) values('$data[0]','$data[1]','$data[3]','$data[9]','$data[32]','$data[43]','$data[45]','$data[47]','$data[49]','$data[18]')";
-      	  $rs = mysqli_query($link,$import);
+      	  $rs = mysqli_query($databaseconnection,$import);
       	}
     }
     fclose($handle);
-    $link->close();
+    $databaseconnection->close();
 		$_SESSION['ID'] = '';
     echo "Se han procesado <b>$fila ejemplares</b><br />\n";
     echo "Importaci&oacute;n terminada";

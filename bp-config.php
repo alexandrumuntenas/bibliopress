@@ -1,18 +1,28 @@
 <?php
 //Configuración (pasar en un futuro a BBDD)
-$sname = "Colegio Colegio Colegio";
 $formatofecha = "Y";
 
+// Valores MYSQL
+    
+$serverMySQL = 'localhost'; //Host de la base de datos
+$dbMySQL = 'bookpress'; //Nombre de la base de datos
+$userMySQL = 'bookpress'; //Usuario de la base de datos
+$pwdMySQL = 'gkS4hB8kTZ8acKce'; //Contraseña del usuario de la base de datos
+$tableMySQL = 'tabla';  //Nombre de la tabla en la base de datos
 
-//MySQL config
-$host = "localhost"; //Host de la base de datos
-$usuario = "bookpress"; //Usuario de la base de datos
-$pwdusuario = "gkS4hB8kTZ8acKce"; //Contraseña del usuario de la base de datos
-$bada = "bookpress"; //Nombre de la base de datos
-$databaseconnection = mysqli_connect($host,$usuario,$pwdusuario,$bada);
 
+// Credenciales subida de archivos
+
+    $userUpload = 'bibliopress'; //Usuario de carga
+    $pwdUpload = 'bibliopress'; //Contraseña del usuario de carga
+
+// Otros parametros
+    $sname = 'I.E.S Montevives'; //Nombre de la biblioteca/institución
+
+    $databaseconnection = mysqli_connect($serverMySQL,$userMySQL,$pwdMySQL,$dbMySQL);
+    
 //Queries de SQL predefinido
-$sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, DISPONIBILIDAD FROM tabla";
+$sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR FROM tabla";
 $resultado = $databaseconnection->query($sql);
 
 //Cookies para futuro sistema de login
