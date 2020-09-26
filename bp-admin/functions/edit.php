@@ -76,8 +76,7 @@ $loggedin = $_COOKIE["loggedin"];
 
             $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "' where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
-            $status = "Record Updated Successfully. </br></br>
-<a href='view.php'>View Updated Record</a>";
+            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro</p><br><br><a class='btn btn-link' href='/bp-admin/panel.php'>Volver al panel</a>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
         } else {
             echo '
