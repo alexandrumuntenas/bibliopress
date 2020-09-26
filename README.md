@@ -6,7 +6,7 @@ Es una herramienta web para los centros educativos españoles. Una alternativa g
 #### ¿Cuál es la finalidad de esta web app?
 La finalidad es construir una herramienta fácil e intuitiva y open source.
 #### ¿Qué funciones incluye Bibliopress?
-La web app está en desarrollo, por lo que de momento no hay una versión ya disponible. Pero, estas son las siguientes funciones que queremos añadir.
+Estas son las funciones que incluye e incluirá Bibliopress
 - [x] Gestión de libros
 - [ ] Gestión de lectores
 - [ ] Herramientas para la creación de etiquetas para los libros
