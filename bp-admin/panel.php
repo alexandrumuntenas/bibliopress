@@ -119,16 +119,6 @@ $loggedin = $_COOKIE["loggedin"];
                     <input id="element_7" name="element_7" class="element text large" type="text" maxlength="255" value=""/> 
                 </div> 
                 </li>	
-                <li id="li_8" >
-                <label class="description" for="element_8">Disponibilidad (En desarrollo)</label>
-                <span>
-                    <input id="element_8_1" name="element_8_1" class="element checkbox" type="checkbox" value="1" />
-        <label class="choice" for="element_8_1">Sí</label>
-        <input id="element_8_2" name="element_8_2" class="element checkbox" type="checkbox" value="1" />
-        <label class="choice" for="element_8_2">No</label>
-
-                </span> 
-                </li>
                 </ul>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -150,7 +140,6 @@ $loggedin = $_COOKIE["loggedin"];
                     <th>Año de Publicación</th>
                     <th>Ejemplar</th>
                     <th>Ubicación</th>
-                    <th>Disponibilidad</th>
                     <th>Acciones disponibles</th>
                 </tr>
                 </thead>
@@ -159,7 +148,6 @@ $loggedin = $_COOKIE["loggedin"];
                     if ($resultado->num_rows > 0) {
                     //datos de cada columna
                     while($row = $resultado->fetch_assoc()) {
-                    if($row["DISPONIBILIDAD"] == 1){$stock = "    ✓✗";};
                     echo '<tr>
                     <td>' . $row["TITULO"] . '</td>
                     <td>' . $row["AUTOR"] . '</td>
@@ -168,7 +156,6 @@ $loggedin = $_COOKIE["loggedin"];
                     <td>' . $row["ANOPUB"] . '</td>
                     <td>' . $row["EJEMPLAR"] . '</td>
                     <td>' . $row["UBICACION"] . '</td>
-                    <td>' . $stock . '</td>
                     <td> Editar    Eliminar </td>
                 </tr>';}
                     } else {
