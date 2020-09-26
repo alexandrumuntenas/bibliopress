@@ -58,49 +58,30 @@ $loggedin = $_COOKIE["loggedin"];
                 </div>
             </nav>
             <div class="header">
-                <h1 class="centered">Inicio</h1>
+                <h2 class="centered">Catálogo</h2>
             </div>
         </header>
         <section class="section">
-            <div>
-                <h2 class="stitle">Catálogo</h2>
-            </div>
+            <div class="row">
             <?php 
                 if ($resultado->num_rows > 0) {
                     //datos de cada columna
                     while($row = $resultado->fetch_assoc()) {
                         echo '<div class="cardse card-body">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th><h5><strong>' . $row["TITULO"] . '</strong></h5></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><p><em>' . $row["AUTOR"] . '</em></p></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p></td>
-                                    <td><p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</em></td>
-                                    <td><p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></td>
-                                </tr>
-                                <tr>
-                                    <td><p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></td>
-                                    <td><p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</td>
-                                    <td><p><strong></strong></td>
-                                </tr>
-                            </tbody>
-                        </table> </div>';
+                        <h5><strong>' . $row["TITULO"] . '</strong></h5>
+                        <p><em>' . $row["AUTOR"] . '</em></p>
+                        <p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p>
+                        <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
+                        <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
+                        <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
+                        <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>
+                        </div>';
                     }
                 } else {
                     echo "No existe ningún registro";
                 }
                 ?>  
+            </div>
         </section>
         <footer class="page-footer bg-primary">
             <?php
