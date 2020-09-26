@@ -58,7 +58,7 @@ $loggedin = $_COOKIE["loggedin"];
                 </div>
             </nav>
             <div class="header">
-                <h1 class="centered">Inicio</h1>
+                <h2 class="centered">Dashboard</h2>
             </div>
         </header>
         <section class="section">

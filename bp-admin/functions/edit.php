@@ -4,6 +4,7 @@ $id = $_REQUEST['id'];
 $query = "SELECT * FROM `tabla` WHERE `ID` = '" . $id . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
+$loggedin = $_COOKIE["loggedin"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,9 +26,39 @@ $row = mysqli_fetch_assoc($result);
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="headerlogin">
     <div class="form">
-        <h1>Update Record</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <a class="navbar-brand" href="/"><?php echo "Biblioteca del " . $sname;?></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="fas fa-star"></i> Inicio</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-search"></i> Búsqueda</a>
+                    </li>
+                    <?php if($loggedin == 0){
+                        //Preparado para futuro sistema de Login
+                        echo '<li class="nav-item">
+                        <a class="nav-link" href="bp-login.php"><i class="fas fa-user"></i> Access</a>
+                    </li>';}; ?>
+                    <?php if($loggedin == 1){
+                        //Preparado para futuro sistema de Login
+                        echo '<li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Log Out</a>
+                    </li>';}; ?>
+                    <?php if($loggedin == 1){
+                        //Preparado para futuro sistema de Login
+                        echo '<li class="nav-item">
+                        <a class="nav-link" href="/bp-admin/panel.php"><i class="fas fa-edit"></i> Panel</a>
+                    </li>';}; ?>
+                    </ul>
+                </div>
+            </nav>
         <?php echo ''; ?>
         <?php
         $status = "";
@@ -46,11 +77,11 @@ submittedby='" . $submittedby . "' where id='" . $id . "'";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
         } else {
             echo '
-            <div class="cardse card-body">
+            <div class="loginsection card-body">
                 <form name="form" method="post" action="">
                     <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Update" />
         
-                        <table style="overflow-x: auto;">
+                        <table style="overflow-x: scroll;">
                             <thead>
                                 <tr>
                                     <th><h5>Título <input type="text" name="name" placeholder="Escribe el título" required value="'. $row['TITULO'] . '" /></h5></th>
@@ -83,6 +114,10 @@ submittedby='" . $submittedby . "' where id='" . $id . "'";
         <div>
         </div>
     </div>
+    <footer class="page-footer bg-primary">
+        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
+        </div>
+        </footer>
 </body>
 
 </html>
