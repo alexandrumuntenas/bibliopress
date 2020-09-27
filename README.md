@@ -24,9 +24,8 @@ Y muuchas más funciones de camino!
 - [x] Eliminar registros directamente desde el panel
 
 ##### Gestión de lectores
-- [x] Añadir registros
-- [x] Añadir registros desde un informe de Abies
-- [x] Editar registros directamente desde el panel
+- [x] Añadir registros directamente desde el panel
+- [ ] Editar registros directamente desde el panel
 - [x] Eliminar registros directamente desde el panel
 
 ##### Herramientas para la creación de...
