@@ -1,0 +1,8 @@
+Encabezado
+<?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.html';?>
+
+Menu
+<?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.html';?>
+
+Footer
+<?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/footer.html';?>
