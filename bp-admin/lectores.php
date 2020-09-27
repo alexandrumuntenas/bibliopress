@@ -27,51 +27,26 @@ require '../bp-config.php';
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header ">
-                    <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo registro</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo lector</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                <form id="form_1388" class="appnitro"  method="post" action="functions/add.php">				
+                <form id="form_1388" class="appnitro"  method="post" action="functions/addlectores.php">				
                 <ul>
                     
                 <li id="li_1">
-                <label class="description" for="element_1">Título del libro </label>
+                <label class="description" for="element_1">Nombre </label>
                 <div>
                     <input id="element_1" name="element_1" class="element text large" type="text" maxlength="255" value=""/> 
                 </div> 
                 </li>		<li id="li_2">
-                <label class="description" for="element_2">Autor </label>
+                <label class="description" for="element_2">Apellido </label>
                 <div>
                     <input id="element_2" name="element_2" class="element text large" type="text" maxlength="255" value=""/> 
                 </div> 
-                </li>		<li id="li_3">
-                <label class="description" for="element_3">ISBN </label>
-                <div>
-                    <input id="element_3" name="element_3" class="element text large" type="text" maxlength="255" value=""/> 
-                </div> 
-                </li>		<li id="li_4">
-                <label class="description" for="element_4">Editorial </label>
-                <div>
-                    <input id="element_4" name="element_4" class="element text large" type="text" maxlength="255" value=""/> 
-                </div> 
-                </li>		<li id="li_5">
-                <label class="description" for="element_5">Año de Publicación </label>
-                <div>
-                    <input id="element_5" name="element_5" class="element text large" type="text" maxlength="255" value=""/> 
-                </div> 
-                </li>		<li id="li_6">
-                <label class="description" for="element_6">Ejemplar </label>
-                <div>
-                    <input id="element_6" name="element_6" class="element text large" type="text" maxlength="255" value=""/> 
-                </div> 
-                </li>		<li id="li_7">
-                <label class="description" for="element_7">Ubicación </label>
-                <div>
-                    <input id="element_7" name="element_7" class="element text large" type="text" maxlength="255" value=""/> 
-                </div> 
-                </li>	
+                </li>
                 </ul>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -84,8 +59,8 @@ require '../bp-config.php';
             </div>
             </div>
             <?php
-            $result = mysqli_query($databaseconnection, "SELECT * FROM bp_estudiantes");
-            $qty = mysqli_num_rows($result);
+            $resulta = mysqli_query($databaseconnection, "SELECT * FROM bp_estudiantes");
+            $qty = mysqli_num_rows($resulta);
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>'
             ?>
             
@@ -99,15 +74,14 @@ require '../bp-config.php';
                 </thead>
                 <tbody>
                 <?php
-                    if ($resultado->num_rows > 0) {
+                    if ($lectorresultado->num_rows > 0) {
                     //datos de cada columna
-                    while($row = $resultado->fetch_assoc()) {
+                    while($row = $lectorresultado->fetch_assoc()) {
                     echo '<tr>
                     <td>' . $row["NOMBRE"] . '</td>
                     <td>' . $row["APELLIDOS"] . '</td>
-                    <td>' . $row["FECHA ALTA"] . '</td>
-                    <td>' . $row["EDITORIAL"] . '</td>
-                    <td><a href="functions/edit.php?sdid=' . $row["SDID"] . '">Editar</a><br><a href="functions/delete.php?sdid=' . $row["SDID"] . '">Eliminar</a></td>
+                    <td>' . $row["FECHA_ALTA"] . '</td>
+                    <td><a href="functions/editlectores.php?sdid=' . $row["SDID"] . '">Editar</a><br><a href="functions/dellectores.php?sdid=' . $row["SDID"] . '">Eliminar</a></td>
                 </tr>';}
                     };
                 ?>
