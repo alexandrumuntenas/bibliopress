@@ -4,6 +4,9 @@ require 'bp-config.php';
 
 ?>
 <html>
+    <title>
+    <?php echo 'Biblioteca del ' . $sname;?>
+    </title>
     <?php require 'bp-include/head.html';?>
     <body>
         <header>
@@ -37,9 +40,6 @@ require 'bp-config.php';
             </div>
         </section>
         <footer class="page-footer bg-primary">
-            <?php
-            
-            ?>
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
         </div>
         </footer>
