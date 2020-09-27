@@ -27,7 +27,7 @@ $loggedin = $_COOKIE["loggedin"];
             $EJEMPLAR = $_REQUEST["ejemplar"];
             $EDITORIAL = $_REQUEST["editorial"];
             $TITULO = $_REQUEST["titulo"];
-            $UBICACION = $_REQUEST["ubicacion"];
+            $UBICACIONs = $_REQUEST["ubicacion"];
             $ISBN = $_REQUEST["isbn"];
 
             $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "' where id='" . $id . "'";
@@ -73,7 +73,10 @@ $loggedin = $_COOKIE["loggedin"];
         <div>
         </div>
     </div>
-    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/footer.html';?>
+    <footer class="page-footer bg-primary">
+        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
+        </div>
+        </footer>
 </body>
 
 </html>
