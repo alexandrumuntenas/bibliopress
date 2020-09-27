@@ -6,9 +6,10 @@ $loggedin = $_COOKIE["loggedin"];
 //Tomar datos de formulario añadir registro desde panel.php
 $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
+$curso = $_REQUEST["element_3"];
 $fechaalta = date('d-j-Y');
 
-$insert = "INSERT INTO bp_estudiantes (`NOMBRE`,`APELLIDOS`,`FECHA_ALTA`) VALUES ('$nombre','$apellido','$fechaalta')";
+$insert = "INSERT INTO bp_estudiantes (`NOMBRE`,`APELLIDOS`,`FECHA_ALTA`,`CLASE`) VALUES ('$nombre','$apellido','$fechaalta','$curso')";
 $databaseconnection->query($insert);
 
 //Futura interfaz de información
@@ -38,7 +39,7 @@ $databaseconnection->query($insert);
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p>Fecha de Alta > <em>" . $fechaalta . "</em></p></td>
+                                    <td><p>Fecha de Alta > <em>" . $fechaalta . "</em></p><p>Curso > " . $curso . "</p></td>
                                 </tr>
                             </tbody>
                         </table> </div>"; ?>

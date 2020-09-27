@@ -47,6 +47,12 @@ require '../bp-config.php';
                     <input id="element_2" name="element_2" class="element text large" type="text" maxlength="255" value=""/> 
                 </div> 
                 </li>
+                <li id="li_3">
+                <label class="description" for="element_3">Curso </label>
+                <div>
+                    <input id="element_3" name="element_3" class="element text large" type="text" maxlength="255" value=""/> 
+                </div> 
+                </li>	
                 </ul>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -70,6 +76,7 @@ require '../bp-config.php';
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Fecha de Alta</th>
+                    <th>Clase</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -81,6 +88,7 @@ require '../bp-config.php';
                     <td>' . $row["NOMBRE"] . '</td>
                     <td>' . $row["APELLIDOS"] . '</td>
                     <td>' . $row["FECHA_ALTA"] . '</td>
+                    <td>' . $row["CLASE"] . '</td>
                     <td><a href="functions/editlectores.php?sdid=' . $row["SDID"] . '">Editar</a><br><a href="functions/dellectores.php?sdid=' . $row["SDID"] . '">Eliminar</a></td>
                 </tr>';}
                     };
