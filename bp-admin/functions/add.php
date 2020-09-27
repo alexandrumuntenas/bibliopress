@@ -47,26 +47,26 @@ $databaseconnection->query($insert);
                        <?php echo "<table>
                             <thead>
                                 <tr>
-                                    <th><h5><strong>' . $titulo . '</strong></h5></th>
+                                    <th><h5><strong>" . $titulo . "</strong></h5></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p><em>' . $autor . '</em></p></td>
+                                    <td><p><em>" . $autor . "</em></p></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><p><strong>ISBN</strong> <em>' . $ISBN . '</em></p></td>
-                                    <td><p><strong>Ubicación</strong> <em>' . $ubicacion . '</td>
-                                    <td><p><strong>Disponibilidad</strong>'. $disponibilidad .' <em></td>
+                                    <td><p><strong>ISBN</strong> <em>" . $ISBN . "</em></p></td>
+                                    <td><p><strong>Ubicación</strong> <em>" . $ubicacion . "</td>
+                                    <td><p><strong>Disponibilidad</strong>". $disponibilidad ." <em></td>
                                 </tr>
                                 <tr>
-                                    <td><p><strong>Editorial</strong> <em>' . $editorial . '</em></p></td>
-                                    <td><p><strong>Año de Publicación</strong> <em>' . $anopub . '</td>
-                                    <td><p><strong>Ejemplar</strong> <em>' . $ejemplar . '</td>
+                                    <td><p><strong>Editorial</strong> <em>" . $editorial . "</em></p></td>
+                                    <td><p><strong>Año de Publicación</strong> <em>" . $anopub . "</td>
+                                    <td><p><strong>Ejemplar</strong> <em>" . $ejemplar . "</td>
                                 </tr>
                             </tbody>
                         </table> </div>"; ?>

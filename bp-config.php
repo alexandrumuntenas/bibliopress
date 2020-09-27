@@ -10,6 +10,9 @@ $formatofecha = "Y";
 $sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, ID FROM $tableMySQL";
 $resultado = $databaseconnection->query($sql);
 
+$lectorsql = "SELECT * FROM `bp_estudiantes`";
+$lectorresultado = $databaseconnection->query($lectorsql);
+
 //Cookies para futuro sistema de login
 $cnombre = "loggedin";
 $cvalor = "0";
