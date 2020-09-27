@@ -11,9 +11,33 @@ Estas son las funciones que incluye e incluirá Bibliopress
 - [ ] Gestión de lectores
 - [ ] Herramientas para la creación de etiquetas para los libros
 - [ ] Herramientas para la creación de carnés de estudiante
-- [x] Integración de herramienta de subida Abies con Bibliopress
+- [x] Integración de Abies con Bibliopress
 - [ ] Interfaz del estudiante (Este podrá suscribirse a libros para saber cuando está disponible o no, gestionar listas de lecturas...)
 - [ ] Creación de Minifeed para hacer avisos sobre nuevos libros
 
 Y muuchas más funciones de camino!
+
+##### Gestión de libros
+- [x] Añadir registros
+- [x] Añadir registros desde un informe de Abies
+- [x] Editar registros directamente desde el panel
+- [x] Eliminar registros directamente desde el panel
+
+##### Gestión de lectores
+- [x] Añadir registros
+- [x] Añadir registros desde un informe de Abies
+- [x] Editar registros directamente desde el panel
+- [x] Eliminar registros directamente desde el panel
+
+##### Herramientas para la creación de...
+- [ ] Creación de etiquetas para los libros
+- [ ] Creación de etiquetas de carnés de estudiante
+
+##### Interfaces
+- [ ] Interfaz del Estudiante
+
+##### Tools
+- [ ] Creación de blog para catálogo para informar novedades
+
+Proyecto realizado por duoestudios
 
