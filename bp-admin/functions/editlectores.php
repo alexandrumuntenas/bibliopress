@@ -22,13 +22,13 @@ $loggedin = $_COOKIE["loggedin"];
             $sdid = $_REQUEST['sdid'];
             $fecha = date("Y-m-d H:i:s"); //Fecha FECHA
             //Datos
-            $nombre = $_REQUEST["NOMBRE"];
+            $nombre = $_REQUEST["nombre"];
             $apellidos = $_REQUEST["APELLIDOS"];
             $curso = $_REQUEST["CLASE"];
 
-            $update = "UPDATE `bp_estudiantes` SET `NOMBRE` = " . $nombre . ", `APELLIDOS` = " . $apellidos . ", `CLASE` = " . $curso . " WHERE `bp_estudiantes`.`SDID` = " . $sdid . "";
+            $update = "UPDATE bp_estudiantes set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $curso . "' where sdid='" . $sdid . "'";
             mysqli_query($databaseconnection, $update);
-            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/bp-admin/lectores.php'>Volver al panel</a></div>";
+            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $sdid</p><br><br><a class='btn btn-link' href='/bp-admin/lectores.php'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
         } else {
             echo '
