@@ -71,6 +71,12 @@ require '../bp-config.php';
                 <div>
                     <input id="element_7" name="element_7" class="element text large" type="text" maxlength="255" value=""/> 
                 </div> 
+                </li>
+                <li id="li_7">
+                <label class="description" for="element_8">Descripción </label>
+                <div>
+                    <textarea id="element_8" name="element_8" class="element text large" value=""></textarea>
+                </div> 
                 </li>	
                 </ul>
                 <div class="modal-footer">
@@ -88,39 +94,25 @@ require '../bp-config.php';
             $qty = mysqli_num_rows($result);
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>'
             ?>
-            
-            <table>
-                <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>ISBN</th>
-                    <th>Editorial</th>
-                    <th>Año de Publicación</th>
-                    <th>Ejemplar</th>
-                    <th>Ubicación</th>
-                    <th>Acciones disponibles</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="row">
                 <?php
                     if ($resultado->num_rows > 0) {
                     //datos de cada columna
                     while($row = $resultado->fetch_assoc()) {
-                    echo '<tr>
-                    <td>' . $row["TITULO"] . '</td>
-                    <td>' . $row["AUTOR"] . '</td>
-                    <td>' . $row["ISBN"] . '</td>
-                    <td>' . $row["EDITORIAL"] . '</td>
-                    <td>' . $row["ANOPUB"] . '</td>
-                    <td>' . $row["EJEMPLAR"] . '</td>
-                    <td>' . $row["UBICACION"] . '</td>
-                    <td><a href="functions/edit.php?id=' . $row["ID"] . '">Editar</a><br><a href="functions/delete.php?id=' . $row["ID"] . '">Eliminar</a></td>
-                </tr>';}
+                    echo '<div class="cardp card-body">
+                    <h5><strong>' . $row["TITULO"] . '</strong></h5>
+                    <p><em>' . $row["AUTOR"] . '</em></p>
+                    <p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p>
+                    <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
+                    <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
+                    <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
+                    <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>
+                    <td><a  href="functions/edit.php?id=' . $row["ID"] . '">Editar</a>       <a style="color:red;" href="functions/delete.php?id=' . $row["ID"] . '">Eliminar</a></td>
+                </div>';}
                     };
                 ?>
-                </tbody>
-             </table>
+
+            </div>
         </section>
         <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
