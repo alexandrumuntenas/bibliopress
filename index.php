@@ -22,8 +22,16 @@ require 'bp-config.php';
             <?php 
                 if ($resultado->num_rows > 0) {
                     //datos de cada columna
+                    
                     while($row = $resultado->fetch_assoc()) {
-                        echo '';
+                        $long = 250;
+                        $desc = substr($row['DESCRIPCION'], 0, $long);
+                        echo '<div class="cardse card-body">
+                        <h5><strong>' . $row["TITULO"] . '</strong></h5>
+                        <p><em>' . $row["AUTOR"] . '</em></p>
+                        <p>' . $desc . '</p>
+                        <a class="btn btn-light" href="view.php?id=' . $row["ID"] . '">Ver más</a>
+                        </div>';
                     }
                 } else {
                     echo "No existe ningún registro";
