@@ -4,14 +4,14 @@ require $_SERVER['DOCUMENT_ROOT']. '/bp-config.php';
 $loggedin = $_COOKIE["loggedin"];
 
 //Tomar datos de formulario añadir registro desde panel.php
-$titulo = $_REQUEST["element_1"];
-$autor = $_REQUEST["element_2"];
-$ISBN = $_REQUEST["element_3"];
-$editorial = $_REQUEST["element_4"];
-$anopub = $_REQUEST["element_5"];
-$ejemplar = $_REQUEST["element_6"];
-$ubicacion = $_REQUEST["element_7"];
-$descripcion = $_REQUEST["element_8"];
+$titulo = mysqli_real_escape_string($databaseconnection, $_POST["element_1"]);
+$autor = mysqli_real_escape_string($databaseconnection, $_POST["element_2"]);
+$ISBN = mysqli_real_escape_string($databaseconnection, $_POST["element_3"]);
+$editorial = mysqli_real_escape_string($databaseconnection, $_POST["element_4"]);
+$anopub = mysqli_real_escape_string($databaseconnection, $_POST["element_5"]);
+$ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["element_6"]);
+$ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["element_7"]);
+$descripcion = mysqli_real_escape_string($databaseconnection, $_POST["element_8"]);
 
 //Utilizado durante las pruebas
 /*$titulo = "Hola";
@@ -22,7 +22,7 @@ $anopub = "1919";
 $ejemplar = "1191";
 $ubicacion = "13";*/
 
-$insert = "INSERT INTO $tableMySQL(`ANOPUB`, `AUTOR`, `EJEMPLAR`, `EDITORIAL`,`TITULO`, `UBICACION`, `ISBN`, `DESCRIPCION`) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
+$insert = "INSERT INTO $tableMySQL(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
 $databaseconnection->query($insert);
 
 //Futura interfaz de información
@@ -43,8 +43,9 @@ $databaseconnection->query($insert);
             <div>
                 <h2 class="stitle"></h2>
             </div>
-            <div class="cardse card-body">
-                       <?php echo "<table>
+            <div class="loginsection">
+                       <?php 
+                       echo "<table>
                             <thead>
                                 <tr>
                                     <th><h5><strong>" . $titulo . "</strong></h5></th>
@@ -59,9 +60,11 @@ $databaseconnection->query($insert);
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td><p><strong>Sipnósis <br></strong> <em>" . $descripcion . "</em></p></td>
+                                </tr>
+                                <tr>
                                     <td><p><strong>ISBN</strong> <em>" . $ISBN . "</em></p></td>
                                     <td><p><strong>Ubicación</strong> <em>" . $ubicacion . "</td>
-                                    <td><p><strong>Disponibilidad</strong>". $disponibilidad ." <em></td>
                                 </tr>
                                 <tr>
                                     <td><p><strong>Editorial</strong> <em>" . $editorial . "</em></p></td>
