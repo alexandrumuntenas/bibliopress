@@ -89,7 +89,7 @@ require '../bp-config.php';
                     <td>' . $row["APELLIDOS"] . '</td>
                     <td>' . $row["FECHA_ALTA"] . '</td>
                     <td>' . $row["CLASE"] . '</td>
-                    <td><a href="functions/editlectores.php?sdid=' . $row["SDID"] . '">Editar</a><br><a href="functions/dellectores.php?sdid=' . $row["SDID"] . '">Eliminar</a></td>
+                    <td><a href="functions/editlectores.php?sdid=' . $row["SDID"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?sdid=' . $row["SDID"] . '">Eliminar</a></td>
                 </tr>';}
                     };
                 ?>
