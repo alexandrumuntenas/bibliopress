@@ -27,10 +27,11 @@ $loggedin = $_COOKIE["loggedin"];
             $EJEMPLAR = $_REQUEST["ejemplar"];
             $EDITORIAL = $_REQUEST["editorial"];
             $TITULO = $_REQUEST["titulo"];
-            $UBICACIONs = $_REQUEST["ubicacion"];
+            $UBICACION = $_REQUEST["ubicacion"];
             $ISBN = $_REQUEST["isbn"];
+            $DESCRIPCION = $_REQUEST["descripcion"];
 
-            $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "' where id='" . $id . "'";
+            $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "', DESCRIPCION='" . $DESCRIPCION . "' where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
             $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/bp-admin/panel.php'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
@@ -66,6 +67,8 @@ $loggedin = $_COOKIE["loggedin"];
                                 </tr>
                             </tbody>
                         </table>
+                        <strong>Descripción</strong>
+                        <input type="text" name="descripcion" placeholder="Escribe un resumen del libro" required value="' . $row["DESCRIPCION"] . '" />
                     </form>
                 </div>';
         }; ?>

@@ -11,7 +11,7 @@ $editorial = $_REQUEST["element_4"];
 $anopub = $_REQUEST["element_5"];
 $ejemplar = $_REQUEST["element_6"];
 $ubicacion = $_REQUEST["element_7"];
-$disponibilidad = "En desarrollo!";
+$descripcion = $_REQUEST["element_8"];
 
 //Utilizado durante las pruebas
 /*$titulo = "Hola";
@@ -22,7 +22,7 @@ $anopub = "1919";
 $ejemplar = "1191";
 $ubicacion = "13";*/
 
-$insert = "INSERT INTO $tableMySQL(`ANOPUB`, `AUTOR`, `EJEMPLAR`, `EDITORIAL`,`TITULO`, `UBICACION`, `ISBN`) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN')";
+$insert = "INSERT INTO $tableMySQL(`ANOPUB`, `AUTOR`, `EJEMPLAR`, `EDITORIAL`,`TITULO`, `UBICACION`, `ISBN`, `DESCRIPCION`) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
 $databaseconnection->query($insert);
 
 //Futura interfaz de información
