@@ -22,14 +22,14 @@ $loggedin = $_COOKIE["loggedin"];
             $id = $_REQUEST['id'];
             $fecha = date("Y-m-d H:i:s"); //Fecha FECHA
             //Datos
-            $ANOPUB = $_REQUEST["anopub"];
-            $AUTOR = $_REQUEST["autor"];
-            $EJEMPLAR = $_REQUEST["ejemplar"];
-            $EDITORIAL = $_REQUEST["editorial"];
-            $TITULO = $_REQUEST["titulo"];
-            $UBICACION = $_REQUEST["ubicacion"];
-            $ISBN = $_REQUEST["isbn"];
-            $DESCRIPCION = $_REQUEST["descripcion"];
+            $ANOPUB = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
+            $AUTOR = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
+            $EJEMPLAR = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
+            $EDITORIAL = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
+            $TITULO = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
+            $UBICACION = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
+            $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["isbn"]);
+            $DESCRIPCION = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
 
             $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "', DESCRIPCION='" . $DESCRIPCION . "' where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);

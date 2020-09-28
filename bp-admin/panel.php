@@ -75,7 +75,7 @@ require '../bp-config.php';
                 <li id="li_7">
                 <label class="description" for="element_8">Descripción </label>
                 <div>
-                    <textarea id="element_8" name="element_8" class="element text large" value=""></textarea>
+                    <input type="text" id="element_8" name="element_8" class="element text large" maxlength="512" value=""/>
                 </div> 
                 </li>	
                 </ul>

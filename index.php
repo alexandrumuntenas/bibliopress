@@ -18,7 +18,17 @@ require 'bp-config.php';
             </div>
         </header>
         <section class="section">
+            <br>
+            <br>
+            <?php
+            $result = mysqli_query($databaseconnection, "SELECT * FROM $tableMySQL");
+            $qty = mysqli_num_rows($result);
+            $qtyp = $qty/9;
+            echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>                 ';
+            echo '<p class="badge badge-danger badge-pill">'. $qtyp . ' Páginas totales</p>';
+            ?>
             <div class="row">
+                
             <?php 
                 if ($resultado->num_rows > 0) {
                     //datos de cada columna
