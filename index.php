@@ -23,7 +23,8 @@ require 'bp-config.php';
             <?php
             $result = mysqli_query($databaseconnection, "SELECT * FROM $tableMySQL");
             $qty = mysqli_num_rows($result);
-            $qtyp = $qty/9;
+            $qtya = $qty/9;
+            $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>                 ';
             echo '<p class="badge badge-danger badge-pill">'. $qtyp . ' Páginas totales</p>';
             ?>
