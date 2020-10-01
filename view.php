@@ -32,11 +32,9 @@ $loggedin = $_COOKIE["loggedin"];
             <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
             <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
             <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
-            <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></div>
-            </div></div>';?>
-
-        <div>
-        </div>
+            <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>';?>
+        <a class="btn btn-info" href="<?=$_SERVER["HTTP_REFERER"]?>">< Volver</a>
+        </div></div></div>
     </div>
     <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
