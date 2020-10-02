@@ -120,18 +120,7 @@ require 'bp-config.php';
                 echo "<li class=\"btnp\"><a href=\"?pag=".$IncrimentNum."\">></a></li></ul>";
             
             }
-            ?>
-            <?php 
-                if ($resultado->num_rows > 0) {
-                    //datos de cada columna
-                    
-                    while($row = $resultado->fetch_assoc()) {
-                        
-                    }
-                } else {
-                    echo "No existe ningún registro";
-                }
-                ?>  
+            ?> 
             </div>
         </section>
         <footer class="page-footer bg-primary">
