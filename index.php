@@ -19,36 +19,6 @@ require 'bp-config.php';
             </div>
         </header>
         <section class="section">
-            <style type="text/css">
-            .active > a{
-            background: rgb(255,116,0); 
-            }
-            .ulp{
-                margin-left: 0px;
-                padding: 0px;
-            } 
-            .ulp > li{
-                list-style: none;
-                display: inline-block;
-                margin-right:7px;
-            }
-            .ulp > li > a {
-                color: #FFFFFF;
-                text-decoration: none;
-                padding: 5px 10px 5px 10px;
-                display: block;
-                background: #1e5799; /* Old browsers */
-                border-radius: 20px;
-            }
-            .btnp > a{
-                padding: 2px;
-                background: #1e5799; /* Old browsers */
-                border-radius: 2px;
-                text-align: center;
-                width:30px;
-            }
-            
-        </style>
             <br>
             <br>
             <?php
@@ -56,7 +26,6 @@ require 'bp-config.php';
             $qty = mysqli_num_rows($result);
             $qtya = $qty/9;
             $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
-            echo '<input type="text" id="search" class="buscadorajax" placeholder="Search" />';
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>                 ';
             echo '<p class="badge badge-danger badge-pill">'. $qtyp . ' Páginas totales</p>';
 
