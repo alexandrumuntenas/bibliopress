@@ -22,7 +22,7 @@ require 'bp-config.php';
             <br>
             <br>
             <?php
-            echo '<div class="row"><input class="buscador-ajax" type="text" id="search" placeholder="Introduce el título del libro" /></div>';
+            echo '<div class="row"><input class="buscador-ajax" type="text" id="search" placeholder="Introduce el título del libro o el nombre del autor" /></div>';
             echo '<div id="display"></div>';
             ?>
         </section>
