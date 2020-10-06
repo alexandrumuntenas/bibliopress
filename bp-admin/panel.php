@@ -18,10 +18,23 @@ require '../bp-config.php';
             <div>
                 <h2 class="stitle">Registros</h2>
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-            Añadir nuevo registro
-            </button>
-            <a href="functions/abies.php" class="btn btn-secondary">Subir desde Abies</a>
+            <center>
+            <div class="btn-group" role="group">
+            <a href="index.php" type="button" class="btn btn-secondary">Inicio</a>
+            <div class="btn-group" role="group">
+                <a href="panel.php" id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Catálogo</a>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#staticBackdrop">
+                    Añadir nuevo registro
+                    </button>
+                    <a href="functions/abies.php" class="dropdown-item">Subir desde Abies</a>
+                </div>
+            </div>
+            <a href="lectores.php" type="button" class="btn btn-secondary">Lectores</a>
+            </div>
+            </center>
+            
             <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
