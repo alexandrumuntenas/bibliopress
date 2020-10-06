@@ -17,5 +17,7 @@ $tableMySQL = 'bp_catalogo';  //Nombre de la tabla en la base de datos
     $sname = 'Colegio Colegio Colegio'; //Nombre de la biblioteca/institución
 
     $databaseconnection = mysqli_connect($serverMySQL,$userMySQL,$pwdMySQL,$dbMySQL);
-    
+
+//Parámetro Lista
+$CantidadMostrar=9;
 ?>
