@@ -3,7 +3,7 @@
 require $_SERVER['DOCUMENT_ROOT']. '/bp-config.php';
 $loggedin = $_COOKIE["loggedin"];
 
-//Tomar datos de formulario añadir registro desde panel.php
+//Tomar datos de formulario añadir registro desde catalogo.php
 $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
 $curso = $_REQUEST["element_3"];

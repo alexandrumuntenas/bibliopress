@@ -22,7 +22,7 @@ require '../bp-config.php';
             <div class="btn-group" role="group">
             <a href="index.php" type="button" class="btn btn-secondary">Inicio</a>
             <div class="btn-group" role="group">
-                <a href="panel.php" id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="catalogo.php" id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Catálogo</a>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#staticBackdrop">
@@ -131,7 +131,7 @@ require '../bp-config.php';
                     <h5><strong>' . $row[6] . '</strong></h5>
                     <p><em>' . $row[1] . '</em></p>
                     <p>' . $desc . '</p>
-                    <a style="color: blue; margin-right:5px;" href="edit.php?id=' . $row[10] . '">Editar</a>                          <a style="color: red;" href="delete.php?id=' . $row[10] . '">Eliminar</a>
+                    <a style="color: blue; margin-right:5px;" href="functions/edit.php?id=' . $row[10] . '">Editar</a>                          <a style="color: red;" href="functions/delete.php?id=' . $row[10] . '">Eliminar</a>
                     </div>';
                 };
                 ?>

@@ -3,7 +3,7 @@
 require $_SERVER['DOCUMENT_ROOT']. '/bp-config.php';
 $loggedin = $_COOKIE["loggedin"];
 
-//Tomar datos de formulario añadir registro desde panel.php
+//Tomar datos de formulario añadir registro desde catalogo.php
 $titulo = mysqli_real_escape_string($databaseconnection, $_POST["element_1"]);
 $autor = mysqli_real_escape_string($databaseconnection, $_POST["element_2"]);
 $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["element_3"]);
@@ -74,7 +74,7 @@ $databaseconnection->query($insert);
                             </tbody>
                         </table> </div>"; ?>
                         <div class="btn-group" role="group">
-                            <a class="btn btn-primary" href="/bp-admin/panel.php">Volver</a>
+                            <a class="btn btn-primary" href="/bp-admin/catalogo.php">Volver</a>
                             <input type = "button" class="btn btn-success" value = "Imprimir página" onclick = "window.print()" />
                         </div>
             
