@@ -108,7 +108,6 @@ require '../bp-config.php';
             ?>
             <div class="row">
             <?php
-            $CantidadMostrar=9;
             if ($databaseconnection->connect_errno) {
                 echo "Fallo al conectar a MySQL: (" . $databaseconnection->connect_errno . ") " . $databaseconnection->connect_error;
             }else{
@@ -132,7 +131,7 @@ require '../bp-config.php';
                     <h5><strong>' . $row[6] . '</strong></h5>
                     <p><em>' . $row[1] . '</em></p>
                     <p>' . $desc . '</p>
-                    <a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>
+                    <a style="color: blue; margin-right:5px;" href="edit.php?id=' . $row[10] . '">Editar</a>                          <a style="color: red;" href="delete.php?id=' . $row[10] . '">Eliminar</a>
                     </div>';
                 };
                 ?>

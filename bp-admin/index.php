@@ -22,7 +22,7 @@ require '../bp-config.php';
             <div class="btn-group" role="group">
             <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
             <div class="btn-group" role="group">
-                <a href="panel.php" class="btn btn-secondary">
+                <a href="catalogo.php" class="btn btn-secondary">
                 Catálogo</a>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <button href="catalogo.php" class="dropdown-item">
