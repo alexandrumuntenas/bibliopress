@@ -1,0 +1,9 @@
+.lives:hover {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+ }
+
+.buscadorajax {
+    margin-right: 20px;
+}
