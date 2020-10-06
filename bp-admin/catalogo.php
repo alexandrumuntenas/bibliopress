@@ -135,14 +135,17 @@ require '../bp-config.php';
                     <a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>
                     </div>';
                 };
-                
+                ?>
+            </div>
+            <footer class="page-footer" style="margin-top: 50px;">
+        <?php
                 /*Sector de Paginacion */
                 
                 //Operacion matematica para botón siguiente y atrás 
                 $IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
                 $DecrementNum =(($compag -1))<1?1:($compag -1);
             
-                echo "<ul class='ulp'><li class=\"btnp\"><a href=\"?pag=".$DecrementNum."\"><</a></li>";
+                echo "<ul class='pagination'><li class=\"page-item\"><a class='page-link' href=\"?pag=".$DecrementNum."\">&laquo;</a></li>";
                 //Se resta y suma con el numero de pag actual con el cantidad de 
                 //números  a mostrar
                 $Desde=$compag-(ceil($CantidadMostrar/2)-1);
@@ -158,18 +161,17 @@ require '../bp-config.php';
                     if($i<=$TotalRegistro){
                         //Validamos la pag activo
                     if($i==$compag){
-                    echo "<li class=\"active\"><a href=\"?pag=".$i."\">".$i."</a></li>";
+                    echo "<li class=\"page-item active\"><a class='page-link' href=\"?pag=".$i."\">".$i."</a></li>";
                     }else {
-                        echo "<li><a href=\"?pag=".$i."\">".$i."</a></li>";
+                        echo "<li><a class='page-link' href=\"?pag=".$i."\">".$i."</a></li>";
                     }     		
                     }
                 }
-                echo "<li class=\"btnp\"><a href=\"?pag=".$IncrimentNum."\">></a></li></ul>";
+                echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=".$IncrimentNum."\">&raquo;</a></li></ul>";
             
             }
-            ?> 
-
-            </div>
+            ?>
+        </footer>
         </section>
         <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
