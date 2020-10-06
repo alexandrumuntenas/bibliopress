@@ -34,7 +34,6 @@ require '../bp-config.php';
             <a href="lectores.php" type="button" class="btn btn-secondary">Lectores</a>
             </div>
             </center>
-            
             <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -108,22 +107,67 @@ require '../bp-config.php';
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>'
             ?>
             <div class="row">
-                <?php
-                    if ($resultado->num_rows > 0) {
-                    //datos de cada columna
-                    while($row = $resultado->fetch_assoc()) {
-                    echo '<div class="cardp card-body">
-                    <h5><strong>' . $row["TITULO"] . '</strong></h5>
-                    <p><em>' . $row["AUTOR"] . '</em></p>
-                    <p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p>
-                    <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
-                    <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
-                    <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
-                    <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>
-                    <td><a  href="functions/edit.php?id=' . $row["ID"] . '">Editar</a>       <a style="color:red;" href="functions/delete.php?id=' . $row["ID"] . '">Eliminar</a></td>
-                </div>';}
-                    };
-                ?>
+            <?php
+            $CantidadMostrar=9;
+            if ($databaseconnection->connect_errno) {
+                echo "Fallo al conectar a MySQL: (" . $databaseconnection->connect_errno . ") " . $databaseconnection->connect_error;
+            }else{
+                                // Validado de la variable GET
+                    $compag         =(int)(!isset($_GET['pag'])) ? 1 : $_GET['pag']; 
+                $TotalReg       =$databaseconnection->query("SELECT * FROM `bp_catalogo`");
+                //Se divide la cantidad de registro de la BD con la cantidad a mostrar 
+                $TotalRegistro  =ceil($TotalReg->num_rows/$CantidadMostrar);
+                //Consulta SQL
+                $consultavistas ="SELECT * FROM `bp_catalogo`
+                                    ORDER BY
+                                    id ASC
+                                    LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
+                $consulta=$databaseconnection->query($consultavistas);
+    
+                    echo '';
+                while ($row=$consulta->fetch_row()) {
+                    $long = 250;
+                    $desc = substr($row[12], 0, $long);
+                    echo '<div class="cardse card-body">
+                    <h5><strong>' . $row[6] . '</strong></h5>
+                    <p><em>' . $row[1] . '</em></p>
+                    <p>' . $desc . '</p>
+                    <a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>
+                    </div>';
+                };
+                
+                /*Sector de Paginacion */
+                
+                //Operacion matematica para botón siguiente y atrás 
+                $IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
+                $DecrementNum =(($compag -1))<1?1:($compag -1);
+            
+                echo "<ul class='ulp'><li class=\"btnp\"><a href=\"?pag=".$DecrementNum."\"><</a></li>";
+                //Se resta y suma con el numero de pag actual con el cantidad de 
+                //números  a mostrar
+                $Desde=$compag-(ceil($CantidadMostrar/2)-1);
+                $Hasta=$compag+(ceil($CantidadMostrar/2)-1);
+                
+                //Se valida
+                $Desde=($Desde<1)?1: $Desde;
+                $Hasta=($Hasta<$CantidadMostrar)?$CantidadMostrar:$Hasta;
+                //Se muestra los números de paginas
+                for($i=$Desde; $i<=$Hasta;$i++){
+                    //Se valida la paginacion total
+                    //de registros
+                    if($i<=$TotalRegistro){
+                        //Validamos la pag activo
+                    if($i==$compag){
+                    echo "<li class=\"active\"><a href=\"?pag=".$i."\">".$i."</a></li>";
+                    }else {
+                        echo "<li><a href=\"?pag=".$i."\">".$i."</a></li>";
+                    }     		
+                    }
+                }
+                echo "<li class=\"btnp\"><a href=\"?pag=".$IncrimentNum."\">></a></li></ul>";
+            
+            }
+            ?> 
 
             </div>
         </section>
