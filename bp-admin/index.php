@@ -25,7 +25,7 @@ require '../bp-config.php';
                 <a href="panel.php" class="btn btn-secondary">
                 Catálogo</a>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <button href="panel.php" class="dropdown-item">
+                    <button href="catalogo.php" class="dropdown-item">
                     Añadir nuevo registro</button>
                     <a href="functions/abies.php" class="dropdown-item">Subir desde Abies</a>
                 </div>
