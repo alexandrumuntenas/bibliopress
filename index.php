@@ -33,7 +33,6 @@ require 'bp-config.php';
             ?>
             <div class="row">
             <?php
-            $CantidadMostrar=9;
             if ($databaseconnection->connect_errno) {
                 echo "Fallo al conectar a MySQL: (" . $databaseconnection->connect_errno . ") " . $databaseconnection->connect_error;
             }else{
