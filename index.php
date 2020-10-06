@@ -56,8 +56,11 @@ require 'bp-config.php';
             $qty = mysqli_num_rows($result);
             $qtya = $qty/9;
             $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
+            echo '<input type="text" id="search" class="buscadorajax" placeholder="Search" />';
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>                 ';
             echo '<p class="badge badge-danger badge-pill">'. $qtyp . ' Páginas totales</p>';
+
+            echo '<div id="display"></div>';
             ?>
             <div class="row">
             <?php
