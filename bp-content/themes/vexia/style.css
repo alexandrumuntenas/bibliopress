@@ -1,5 +1,5 @@
 body{
-	background-color: #F8F9FA;
+	background-image: url(bg.png);
 }
 .header {
     width: 100%;
@@ -44,6 +44,7 @@ body{
     height: auto;
 	margin: 15px;
 	width: 250px;
+	background-color: #FFF;
 }
 
 .cardp {
