@@ -2,17 +2,19 @@
 require '../bp-config.php';
 if (isset($_POST['search'])) {
    $busqueda = $_POST['search'];
-   $Queray = "SELECT TITULO FROM bp_catalogo WHERE TITULO LIKE '%$busqueda%' LIMIT 5";
+   $Queray = "SELECT TITULO, ID FROM bp_catalogo WHERE TITULO LIKE '%$busqueda%' LIMIT 5";
    $ExecQuery = MySQLi_query($databaseconnection, $Queray);
    echo '
 <ul class="list-group">
    ';
    while ($Result = MySQLi_fetch_array($ExecQuery)) {
 ?>
+<a href="view.php?id=<?php echo $Result['ID']; ?>">
    <li class="list-group-item lives" onclick='fill("<?php echo $Result['TITULO']; ?>")'>
-   <a>
+   
        <?php echo $Result['TITULO']; ?>
-   </li></a>
+   </li>
+</a>
    <?php
 }}
 ?>
