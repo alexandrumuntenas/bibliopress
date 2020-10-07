@@ -30,7 +30,14 @@ require '../bp-config.php';
                     <a href="functions/abies.php" class="dropdown-item">Subir desde Abies</a>
                 </div>
             </div>
-            <a href="lectores.php" type="button" class="btn btn-primary">Lectores</a>
+            <div class="btn-group" role="group">
+                <a href="lectores.php" id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Lectores</a>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#staticBackdrop">
+                    Añadir nuevo registro
+                    </button></div>
+            </div>
             </div>
             </center>
             <div class="modal-dialog modal-dialog-scrollable">
@@ -63,7 +70,7 @@ require '../bp-config.php';
                 <div>
                     <input id="element_3" name="element_3" class="element text large" type="text" maxlength="255" value=""/> 
                 </div> 
-                </li>	
+                </li>
                 </ul>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -100,7 +107,7 @@ require '../bp-config.php';
                     <td>' . $row["APELLIDOS"] . '</td>
                     <td>' . $row["FECHA_ALTA"] . '</td>
                     <td>' . $row["CLASE"] . '</td>
-                    <td><a href="functions/editlectores.php?sdid=' . $row["SDID"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?sdid=' . $row["SDID"] . '">Eliminar</a></td>
+                    <td><a href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                 </tr>';}
                     };
                 ?>
