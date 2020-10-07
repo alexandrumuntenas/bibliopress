@@ -1,4 +1,3 @@
-![Image of Bibliopress](https://sites.duoestudios.es/cd-for-gh/bibliopress/images/Biblioteca-del-Colegio-Colegio-Colegio-prw.png)
 # Bibliopress
 ## Aplicación web para la gestión de bibliotecas escolares
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
