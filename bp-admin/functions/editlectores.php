@@ -1,7 +1,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
-$sdid = $_REQUEST['sdid'];
-$query = "SELECT * FROM `bp_estudiantes` WHERE `SDID` = '" . $sdid . "'";
+$USUARIO = $_REQUEST['USUARIO'];
+$query = "SELECT * FROM `bp_estudiantes` WHERE `USUARIO` = '" . $USUARIO . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
 $loggedin = $_COOKIE["loggedin"];
@@ -19,16 +19,16 @@ $loggedin = $_COOKIE["loggedin"];
         <?php
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
-            $sdid = $_REQUEST['sdid'];
+            $USUARIO = $_REQUEST['USUARIO'];
             $fecha = date("Y-m-d H:i:s"); //Fecha FECHA
             //Datos
             $nombre = $_REQUEST["nombre"];
             $apellidos = $_REQUEST["APELLIDOS"];
             $curso = $_REQUEST["CLASE"];
 
-            $update = "UPDATE bp_estudiantes set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $curso . "' where sdid='" . $sdid . "'";
+            $update = "UPDATE bp_estudiantes set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $curso . "' where USUARIO='" . $USUARIO . "'";
             mysqli_query($databaseconnection, $update);
-            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $sdid</p><br><br><a class='btn btn-link' href='/bp-admin/lectores.php'>Volver al panel</a></div>";
+            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $USUARIO</p><br><br><a class='btn btn-link' href='/bp-admin/lectores.php'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
         } else {
             echo '
@@ -39,7 +39,7 @@ $loggedin = $_COOKIE["loggedin"];
                         <table style="overflow-x: scroll;">
                             <thead>
                                 <tr>
-                                    <th><input type="hidden" name="new" value="1" /><input name="sdid" type="hidden" value="' . $row['SDID'] . '" /><h5>Nombre <input type="text" name="nombre" placeholder="Escribe el nombre del lector" required value="'. $row['NOMBRE'] . '" /></h5><h5>Apellidos <input type="text" name="APELLIDOS" placeholder="Escribe los apellidos del lector" required value="'. $row['APELLIDOS'] . '" /></h5></th>
+                                    <th><input type="hidden" name="new" value="1" /><input name="USUARIO" type="hidden" value="' . $row['USUARIO'] . '" /><h5>Nombre <input type="text" name="nombre" placeholder="Escribe el nombre del lector" required value="'. $row['NOMBRE'] . '" /></h5><h5>Apellidos <input type="text" name="APELLIDOS" placeholder="Escribe los apellidos del lector" required value="'. $row['APELLIDOS'] . '" /></h5></th>
                                     <th></th>
                                     <th></th>
                                 </tr>

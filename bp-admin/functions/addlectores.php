@@ -8,8 +8,10 @@ $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
 $curso = $_REQUEST["element_3"];
 $fechaalta = date('d-j-Y');
-
-$insert = "INSERT INTO bp_estudiantes (`NOMBRE`,`APELLIDOS`,`FECHA_ALTA`,`CLASE`) VALUES ('$nombre','$apellido','$fechaalta','$curso')";
+$usuario = "$nombre$apellido";
+$usuariob = str_replace(' ', '', $usuario);
+$usuarioc = strtolower($usuariob);
+$insert = "INSERT INTO bp_estudiantes (`USUARIO`,`NOMBRE`,`APELLIDOS`,`FECHA_ALTA`,`CLASE`) VALUES ('$usuarioc','$nombre','$apellido','$fechaalta','$curso')";
 $databaseconnection->query($insert);
 
 //Futura interfaz de información
