@@ -68,7 +68,7 @@ $loggedin = $_COOKIE["loggedin"];
                             </tbody>
                         </table>
                         <strong>Descripción</strong>
-                        <textarea name="descripcion" placeholder="Escribe un resumen del libro" value="' . $row["DESCRIPCION"] . '"></textarea>
+                        <textarea style="width:100%; height:30%;"name="descripcion" placeholder="Escribe un resumen del libro">' . $row["DESCRIPCION"] . '</textarea>
                     </form>
                 </div>';
         }; ?>
