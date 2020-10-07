@@ -4,7 +4,7 @@
 #### ¿Qué es Bibliopress?
 Es una herramienta web para los centros educativos españoles. Una alternativa gratuita y fácil de usar al sistema realizado por el gobierno español.
 #### ¿Cuál es la finalidad de esta web app?
-La finalidad es construir una herramienta fácil e intuitiva y open source para la gestión de bibliotecas escolares
+La finalidad es construir una herramienta fácil e intuitiva y open source para la gestión de bibliotecas. Una herramienta que sea rápida y sencilla de usar. Pensada para no necesitar ninguna formación previa para usarla.
 #### ¿Qué funciones incluye Bibliopress?
 Estas son las funciones que incluye e incluirá Bibliopress
 - [x] Gestión de libros
@@ -24,7 +24,7 @@ Y muuchas más funciones de camino!
 - [x] Eliminar registros directamente desde el panel
 
 ##### Gestión de lectores
-- [x] Añadir registros directamente desde el panel
+- [ ] Añadir registros directamente desde el panel
 - [ ] Editar registros directamente desde el panel
 - [x] Eliminar registros directamente desde el panel
 
