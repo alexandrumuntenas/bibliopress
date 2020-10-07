@@ -15,12 +15,15 @@ $loggedin = $_COOKIE["loggedin"];
     <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.html';?>
 
 <body class="headerlogin">
-    <div class="form">
+            <div class="header">
+                <h2 class="centered"><?php echo $row["TITULO"]; ?></h2>
+            </div>
+    <div class="">
         
     <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.html';?>
         <?php
             echo '
-            <div class="loginsection card-body">
+            <div class="viewer">
             <div class="col-sm">
             <h5><strong>' . $row["TITULO"] . '</strong></h5>
             <p><em>' . $row["AUTOR"] . '</em></p>
@@ -35,7 +38,6 @@ $loggedin = $_COOKIE["loggedin"];
             <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>';?>
         <a class="btn btn-info" href="<?=$_SERVER["HTTP_REFERER"]?>">< Volver</a>
         </div></div></div>
-    </div>
     <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
         </div>
