@@ -1,7 +1,7 @@
+![Image of Bibliopress](https://sites.duoestudios.es/cd-for-gh/bibliopress/images/Biblioteca-del-Colegio-Colegio-Colegio-prw.png)
 # Bibliopress
 ## Aplicación web para la gestión de bibliotecas escolares
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
-[![Image of Bibliopress](https://sites.duoestudios.es/cd-for-gh/bibliopress/images/Biblioteca-del-Colegio-Colegio-Colegio-prw.png)]
 #### ¿Qué es Bibliopress?
 Es una herramienta web para los centros educativos españoles. Una alternativa gratuita y fácil de usar al sistema realizado por el gobierno español.
 #### ¿Cuál es la finalidad de esta web app?
