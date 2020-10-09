@@ -4,7 +4,6 @@ require '../bp-config.php';
 
 $sessionlogged = $_COOKIE['loggedin'];
 $sessionclass = $_COOKIE['perm'];
-
 ?>
 <html>
     <?php require '../bp-include/head.html';?>
@@ -14,7 +13,7 @@ $sessionclass = $_COOKIE['perm'];
         <?php echo 'Biblioteca del ' . $sname;?>
         </title>
             <div class="wrapper">
-            <?php require '../bp-include/menu.html';?>
+            <?php require '../bp-include/menu.php';?>
             <?php if($sessionlogged == 1){ echo '
             <div class="header">
                 <h2 class="centered">Dashboard</h2>
