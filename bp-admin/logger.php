@@ -2,6 +2,8 @@
 require '../bp-config.php';
 $usuario = mysqli_real_escape_string($databaseconnection, $_POST["usuario"]);
 $contrasena = mysqli_real_escape_string($databaseconnection, $_POST["contrasena"]);
+setcookie('usuario', $usuario);
+
 if($usuario != null){
   $logintest = "SELECT * FROM `$bbddusuarios` WHERE `usuario` LIKE $usuario";
   $resultado = $databaseconnection->query($logintest);
