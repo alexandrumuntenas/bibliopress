@@ -1,7 +1,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $USUARIO = $_REQUEST['USUARIO'];
-$query = "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` = '" . $USUARIO . "'";
+$query = "SELECT * FROM `bp_estudiantes` WHERE `USUARIO` = '" . $USUARIO . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
 $loggedin = $_COOKIE["loggedin"];
@@ -26,7 +26,7 @@ $loggedin = $_COOKIE["loggedin"];
             $apellidos = $_REQUEST["APELLIDOS"];
             $curso = $_REQUEST["CLASE"];
 
-            $update = "UPDATE $bbddusuarios set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $curso . "' where USUARIO='" . $USUARIO . "'";
+            $update = "UPDATE bp_estudiantes set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $curso . "' where USUARIO='" . $USUARIO . "'";
             mysqli_query($databaseconnection, $update);
             $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $USUARIO</p><br><br><a class='btn btn-link' href='/bp-admin/lectores.php'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';

@@ -18,7 +18,7 @@ CREATE TABLE `bp_catalogo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
 <--CREACIÓN DE LA TABLA DE ESTUDIANTES-->
-CREATE TABLE `$bbddusuarios` (
+CREATE TABLE `bp_estudiantes` (
  `ID` int(11) NOT NULL AUTO_INCREMENT,
  `NOMBRE` text NOT NULL,
  `APELLIDOS` text NOT NULL,
