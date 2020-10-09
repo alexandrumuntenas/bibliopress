@@ -2,14 +2,15 @@
 require '../bp-config.php';
 $usuario = mysqli_real_escape_string($databaseconnection, $_POST["usuario"]);
 $contrasena = mysqli_real_escape_string($databaseconnection, $_POST["contrasena"]);
-setcookie('usuario', $usuario);
+setcookie('usuario', $usuario, time() + (3600), "/");
 
 if($usuario != null){
   $logintest = "SELECT * FROM `$bbddusuarios` WHERE `usuario` LIKE $usuario";
   $resultado = $databaseconnection->query($logintest);
+  $perm = $resultado[4];
   if($resultado['PIN'] = $contrasena){
-    setcookie('loggedin', 1, time() + (3600000), "/");
-    setcookie('perm', 1, time() + (3600000), "/");
+    setcookie('loggedin', 1, time() + (3600), "/");
+    setcookie('perm', 0, time() + (3600), "/");
   }
 };
 
