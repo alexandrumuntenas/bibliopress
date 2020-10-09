@@ -11,7 +11,7 @@ $result = mysqli_query($databaseconnection, $query);
     <body class="headerlogin">
         <header>
             <div class="wrapper">
-            <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.html';?>
+            <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';?>
         </header>
     <div class='loginsection'>
         <?php echo "<p class='btn btn-danger'>Se ha eliminado el registro $id</p><br><br><a class='btn btn-link' href='/bp-admin/catalogo.php'>Volver al panel</a>"; ?>

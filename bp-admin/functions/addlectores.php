@@ -21,7 +21,7 @@ $databaseconnection->query($insert);
     <body>
         <header>
             <div class="wrapper">
-            <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.html';?>
+            <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';?>
         </header>
             <div class="header">
                 <h2 class="centered">Dashboard</h2>

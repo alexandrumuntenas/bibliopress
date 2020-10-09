@@ -8,7 +8,7 @@ require '../bp-config.php';
     <body>
         <header>
             <div class="wrapper">
-            <?php require '../bp-include/menu.html';?>
+            <?php require '../bp-include/menu.php';?>
 
             <div class="header">
                 <h2 class="centered">Dashboard</h2>

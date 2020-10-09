@@ -15,7 +15,7 @@ $loggedin = $_COOKIE["loggedin"];
 
 <body class="headerlogin">
     <div class="form">
-    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.html';?>
+    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';?>
         <?php
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
