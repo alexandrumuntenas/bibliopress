@@ -7,11 +7,10 @@ $loggedin = $_COOKIE["loggedin"];
 $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
 $curso = $_REQUEST["element_3"];
-$fechaalta = date('d-j-Y');
 $usuario = "$nombre$apellido";
 $usuariob = str_replace(' ', '', $usuario);
 $usuarioc = strtolower($usuariob);
-$insert = "INSERT INTO bp_estudiantes (`USUARIO`,`NOMBRE`,`APELLIDOS`,`FECHA_ALTA`,`CLASE`) VALUES ('$usuarioc','$nombre','$apellido','$fechaalta','$curso')";
+$insert = "INSERT INTO $bbddusuarios (`USUARIO`,`NOMBRE`,`APELLIDOS`,`CLASE`) VALUES ('$usuarioc','$nombre','$apellido','$curso')";
 $databaseconnection->query($insert);
 
 //Futura interfaz de información
@@ -41,7 +40,7 @@ $databaseconnection->query($insert);
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p>Fecha de Alta > <em>" . $fechaalta . "</em></p><p>Curso > " . $curso . "</p></td>
+                                    <td><p>Curso > " . $curso . "</p></td>
                                 </tr>
                             </tbody>
                         </table> </div>"; ?>

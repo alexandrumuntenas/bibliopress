@@ -2,7 +2,7 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $loggedin = $_COOKIE["loggedin"];
 $USUARIO = $_REQUEST['USUARIO'];
-$query = "DELETE FROM `bp_estudiantes` WHERE `bp_estudiantes`.`USUARIO` = \'$USUARIO";
+$query = "DELETE FROM `$bbddusuarios` WHERE `$bbddusuarios`.`USUARIO` = \'$USUARIO";
 $result = mysqli_query($databaseconnection, $query);
 ?>
 <!DOCTYPE html>

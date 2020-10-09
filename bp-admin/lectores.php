@@ -83,7 +83,7 @@ require '../bp-config.php';
             </div>
             </div>
             <?php
-            $resulta = mysqli_query($databaseconnection, "SELECT * FROM bp_estudiantes");
+            $resulta = mysqli_query($databaseconnection, "SELECT * FROM $bbddusuarios");
             $qty = mysqli_num_rows($resulta);
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>'
             ?>
@@ -91,9 +91,9 @@ require '../bp-config.php';
             <table>
                 <thead>
                 <tr>
+                    <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
-                    <th>Fecha de Alta</th>
                     <th>Clase</th>
                 </tr>
                 </thead>
@@ -103,9 +103,9 @@ require '../bp-config.php';
                     //datos de cada columna
                     while($row = $lectorresultado->fetch_assoc()) {
                     echo '<tr>
+                    <td>' . $row["USUARIO"] . '</td>
                     <td>' . $row["NOMBRE"] . '</td>
                     <td>' . $row["APELLIDOS"] . '</td>
-                    <td>' . $row["FECHA_ALTA"] . '</td>
                     <td>' . $row["CLASE"] . '</td>
                     <td><a href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                 </tr>';}
