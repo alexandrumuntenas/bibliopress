@@ -20,7 +20,7 @@ $loggedin = $_COOKIE["loggedin"];
             </div>
     <div class="">
         
-    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.html';?>
+    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';?>
         <?php
             echo '
             <div class="viewer">

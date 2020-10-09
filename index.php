@@ -12,7 +12,7 @@ require 'bp-config.php';
         
         <header>
             <div class="wrapper">
-            <?php require 'bp-include/menu.html';?>
+            <?php require 'bp-include/menu.php';?>
 
             <div class="header">
                 <h2 class="centered">Catálogo</h2>
