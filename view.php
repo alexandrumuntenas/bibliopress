@@ -25,11 +25,27 @@ $loggedin = $_COOKIE["loggedin"];
             echo '
             <div class="viewer">
             <div class="col-sm">
-            <h5><strong>' . $row["TITULO"] . '</strong>';
-            if($sessionlogged == 1){
-                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $id . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $id . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+            ';
+            if($row['DISPONIBILIDAD'] == 1){
+                echo '<h5 class="btn btn-success"><strong>' . $row["TITULO"] . '</strong></h5>';
             }
-            echo'</h5>
+            else {
+                echo '<h5 class="btn btn-danger"><strong>' . $row["TITULO"] . '</strong></h5>';
+            }
+            
+            if($sessionlogged == 1){
+                if ($sessionclass == 1){
+                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $id . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $id . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+            } else {
+                if($row['DISPONIBILIDAD'] == 1){
+                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id=' . $id . '">Solicitar</a>';
+                }
+                else {
+                    echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id=' . $id . '">Avísame cuando esté disponible</a>';
+                }
+                echo '';
+            }}
+            echo'
             <p><em>' . $row["AUTOR"] . '</em></p>
             <p>Sinópsis </p>
             <p><em>' . $row["DESCRIPCION"] . '</em></p>
