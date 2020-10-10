@@ -5,12 +5,12 @@ $contrasena = mysqli_real_escape_string($databaseconnection, $_POST["contrasena"
 setcookie('usuario', $usuario, time() + (3600), "/");
 
 if($usuario != null){
-  $logintest = "SELECT * FROM `$bbddusuarios` WHERE `usuario` LIKE $usuario";
+  $logintest = "SELECT * FROM `$bbddusuarios` WHERE `usuario` LIKE '" .$usuario. "'";
   $resultado = $databaseconnection->query($logintest);
-  $perm = $resultado[4];
-  if($resultado['PIN'] = $contrasena){
+  $login = mysqli_fetch_assoc($resultado);
+  if($login['PIN'] == $contrasena){
     setcookie('loggedin', 1, time() + (3600), "/");
-    setcookie('perm', 1, time() + (3600), "/");
+    setcookie('perm', $login['PERM'], time() + (3600), "/");
   }
 };
 
