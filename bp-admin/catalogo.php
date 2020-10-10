@@ -1,23 +1,20 @@
 <?php
-//Importación de datos
 require '../bp-config.php';
-
 ?>
 <html>
     <?php require '../bp-include/head.html';?>
-    <body>
-        <header>
-            <div class="wrapper">
-            <?php require '../bp-include/menu.php';?>
-
+    <?php if($sessionlogged == 1){if($sessionclass == 1){echo '<body>';}else{echo'<body class="err404">';}}else{echo'<body class="err404">';}?>
+        <?php 
+            if($sessionlogged == 1){
+                if($sessionclass == 1){
+                    echo '<header><div class="wrapper">';
+                    require '../bp-include/menu.php'; 
+                    echo ' 
             <div class="header">
-                <h2 class="centered">Dashboard</h2>
+                <h2 class="centered">Gestionar Catálogo</h2>
             </div>
         </header>
         <section class="section">
-            <div>
-                <h2 class="stitle">Registros</h2>
-            </div>
             <center>
             <div class="btn-group" role="group">
             <a href="index.php" type="button" class="btn btn-secondary">Inicio</a>
@@ -100,14 +97,11 @@ require '../bp-config.php';
                 </div>
             </div>
             </div>
-            </div>
-            <?php
+            </div>';
             $result = mysqli_query($databaseconnection, "SELECT * FROM $tableMySQL");
             $qty = mysqli_num_rows($result);
-            echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>'
-            ?>
-            <div class="row">
-            <?php
+            echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>';
+            echo '<div class="row">';
             if ($databaseconnection->connect_errno) {
                 echo "Fallo al conectar a MySQL: (" . $databaseconnection->connect_errno . ") " . $databaseconnection->connect_error;
             }else{
@@ -134,31 +128,16 @@ require '../bp-config.php';
                     <a style="color: blue; margin-right:5px;" href="functions/edit.php?id=' . $row[10] . '">Editar</a>                          <a style="color: red;" href="functions/delete.php?id=' . $row[10] . '">Eliminar</a>
                     </div>';
                 };
-                ?>
-            </div>
-            <footer class="page-footer" style="margin-top: 50px;">
-        <?php
-                /*Sector de Paginacion */
-                
-                //Operacion matematica para botón siguiente y atrás 
+                echo '</div><footer class="page-footer" style="margin-top: 50px;">';
                 $IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
                 $DecrementNum =(($compag -1))<1?1:($compag -1);
-            
                 echo "<ul class='pagination'><li class=\"page-item\"><a class='page-link' href=\"?pag=".$DecrementNum."\">&laquo;</a></li>";
-                //Se resta y suma con el numero de pag actual con el cantidad de 
-                //números  a mostrar
                 $Desde=$compag-(ceil($CantidadMostrar/2)-1);
                 $Hasta=$compag+(ceil($CantidadMostrar/2)-1);
-                
-                //Se valida
                 $Desde=($Desde<1)?1: $Desde;
                 $Hasta=($Hasta<$CantidadMostrar)?$CantidadMostrar:$Hasta;
-                //Se muestra los números de paginas
                 for($i=$Desde; $i<=$Hasta;$i++){
-                    //Se valida la paginacion total
-                    //de registros
                     if($i<=$TotalRegistro){
-                        //Validamos la pag activo
                     if($i==$compag){
                     echo "<li class=\"page-item active\"><a class='page-link' href=\"?pag=".$i."\">".$i."</a></li>";
                     }else {
@@ -168,8 +147,30 @@ require '../bp-config.php';
                 }
                 echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=".$IncrimentNum."\">&raquo;</a></li></ul>";
             
-            }
+            }}                else {
+                    
+                echo '<section class="error-container">
+                <span><span>4</span></span>
+                <span>0</span>
+                <span><span>4</span></span>
+              </section>
+              <center>
+                <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+                <a class="btn btn-light" href="/">Llévame de vuelta</a></center>'; 
+            }}
+        else {
+            echo '<section class="error-container">
+            <span><span>4</span></span>
+            <span>0</span>
+            <span><span>4</span></span>
+          </section>
+          <center>
+          <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+          <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
+        };
             ?>
+            ?>
+            
         </footer>
         </section>
         <footer class="page-footer bg-primary">
