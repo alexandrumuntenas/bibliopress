@@ -8,6 +8,8 @@ require 'bp-config.php';
     <?php echo 'Biblioteca del ' . $sname;?>
     </title>
     <?php require 'bp-include/head.php';?>
+    <script type='text/javascript' src='/bp-content/themes/vexia/lives.js'></script>
+    <link rel='stylesheet' type='text/css' href='/bp-content/themes/vexia/lives.css'>
     <body>
         
         <header>
