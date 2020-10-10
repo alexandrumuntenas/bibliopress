@@ -39,7 +39,7 @@ if ($sessionlogged == 1) {
             echo '
             <div class="loginsection card-body">
                 <form name="form" method="post" action="">
-                    <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Update" />
+                    <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Actualizar" />
         
                         <table style="overflow-x: scroll;">
                             <thead>
