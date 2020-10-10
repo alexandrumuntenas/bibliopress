@@ -28,51 +28,82 @@ $result = mysqli_query($databaseconnection, $query);
     <?php if ($sessionlogged == 1) {
         if ($sessionclass == 1) {
             echo '<section class="section flex-column"><center>
-                    <div class="btn-group" role="group">
-                    <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                    <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
-                    <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-                    </center><div class="row">
-                    <div class="cardse card-body">
-                    <h5>Préstamos Activos</h5>
-                    <table>
-                    <thead>
-                    <tr>
-                        <th>Titulo </th>
+            <div class="btn-group" role="group">
+            <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
+            <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
+            <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+            </center><div class="row">
+            <div class="cardse card-body">
+            <h5>Préstamos Activos</h5>
+            <table>
+            <thead>
+            <tr>
+                <th>Titulo </th>
 
-                    </tr>
-                    </thead>
-                    <tbody>
+            </tr>
+            </thead>
+            <tbody>
 
-                    ';
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<tr>
-                                    <td>' . $row["TITULO"] . '</td>
-                                
-                                </tr>';
-                    }
-                    echo '
-                    <tr>
-                        <td><a href="prestamosactivos.php">Ver más...</a></td>
-                    </tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    <div class="cardse card-body">
-                    <h5>En Lista de Espera</h5></div>
-                    <div class="cardse card-body">
-                    <h5>Tus Últimas Lecturas</h5>
-                    </div>
-                    <div class="cardse card-body"><h5>Sobre la Biblioteca</h5></div><div class="cardse card-body"><h5>Último acceso</h5></div>
-                    </div></section>';
+            ';
+            while ($row = $result->fetch_assoc()) {
+                echo '<tr>
+                            <td>' . $row["TITULO"] . '</td>
+                        
+                        </tr>';
+            }
+            echo '
+            <tr>
+                <td><a href="prestamosactivos.php">Ver más...</a></td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="cardse card-body">
+            <h5>En Lista de Espera</h5></div>
+            <div class="cardse card-body">
+            <h5>Tus Últimas Lecturas</h5>
+            </div>
+            <div class="cardse card-body"><h5>Sobre la Biblioteca</h5></div><div class="cardse card-body"><h5>Último acceso</h5></div>
+            </div></section>';
         } else {
-            echo '<section class="section"><center>
-                    <div class="btn-group" role="group">
-                    <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                    <a href="listadedeseos.php" class="btn btn-secondary">Lista de deseos</a>
-                    <a href="unlogger.php" type="button" class="btn btn-danger">Cerrar Sesión</a>
-                    </div>
-                    </center></section>';
+            echo '<section class="section flex-column"><center>
+            <div class="btn-group" role="group">
+            <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
+            <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
+            <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+            </center><div class="row">
+            <div class="cardse card-body">
+            <h5>Préstamos Activos</h5>
+            <table>
+            <thead>
+            <tr>
+                <th>Titulo </th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            ';
+            while ($row = $result->fetch_assoc()) {
+                echo '<tr>
+                            <td>' . $row["TITULO"] . '</td>
+                        
+                        </tr>';
+            }
+            echo '
+            <tr>
+                <td><a href="prestamosactivos.php">Ver más...</a></td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="cardse card-body">
+            <h5>En Lista de Espera</h5></div>
+            <div class="cardse card-body">
+            <h5>Tus Últimas Lecturas</h5>
+            </div>
+            <div class="cardse card-body"><h5>Sobre la Biblioteca</h5></div><div class="cardse card-body"><h5>Último acceso</h5></div>
+            </div></section>';
         }
     } else {
         echo "<section class='section'><div class='viewer'><form name='loginform' id='loginform' method='post' action='logger.php'>
