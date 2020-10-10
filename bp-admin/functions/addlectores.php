@@ -9,11 +9,17 @@ $loggedin = $_COOKIE["loggedin"];
 $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
 $curso = $_REQUEST["element_3"];
-$usuario = "$nombre$apellido";
-$usuariob = str_replace(' ', '', $usuario);
-$usuarioc = strtolower($usuariob);
-$insert = "INSERT INTO $bbddusuarios (`USUARIO`,`NOMBRE`,`APELLIDOS`,`CLASE`) VALUES ('$usuarioc','$nombre','$apellido','$curso')";
-$databaseconnection->query($insert);
+function generateRandomString($length = 9) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+$usuarioc =generateRandomString(9);
+$pin = rand();
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
@@ -26,6 +32,8 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
+        $insert = "INSERT INTO $bbddusuarios (`USUARIO`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`) VALUES ('$usuarioc','$nombre','$apellido','$curso', '$pin')";
+        $databaseconnection->query($insert);
         echo '
         <header>
             <div class="wrapper">';
