@@ -1,10 +1,8 @@
+<html>
 <?php
 require '../bp-config.php';
-?>
-<html>
-    <?php require '../bp-include/head.html';?>
-    <?php if($sessionlogged == 1){if($sessionclass == 1){echo '<body>';}else{echo'<body class="err404">';}}else{echo'<body class="err404">';}?>
-        <?php 
+require '../bp-include/head.php';
+    if($sessionlogged == 1){if($sessionclass == 1){echo '<body>';}else{echo'<body class="err404">';}}else{echo'<body class="err404">';}
             if($sessionlogged == 1){
                 if($sessionclass == 1){
                     echo '<header><div class="wrapper">';
@@ -168,7 +166,6 @@ require '../bp-config.php';
           <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
           <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
         };
-            ?>
             ?>
             
         </footer>
