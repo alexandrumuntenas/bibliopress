@@ -3,13 +3,11 @@
 require '../bp-config.php';
 ?>
 <html>
-<?php require '../bp-include/head.html'; ?>
+<?php require '../bp-include/head.php'; ?>
 
 <body class="headerlogin">
     <header>
-        <title>
-            <?php echo 'Biblioteca del ' . $sname; ?>
-        </title>
+
         <div class="wrapper">
             <?php require '../bp-include/menu.php'; ?>
             <?php if ($sessionlogged == 1) {
