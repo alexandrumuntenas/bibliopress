@@ -23,9 +23,6 @@ $editorial = "SM";
 $anopub = "1919";
 $ejemplar = "1191";
 $ubicacion = "13";*/
-
-$insert = "INSERT INTO $tableMySQL(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
-$databaseconnection->query($insert);
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php'; 
 
 if ($sessionlogged == 1) {
@@ -39,6 +36,8 @@ if ($sessionlogged == 1) {
 } 
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
+        $insert = "INSERT INTO $tableMySQL(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
+        $databaseconnection->query($insert);
         echo '<header><div class="wrapper">';
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         echo '
