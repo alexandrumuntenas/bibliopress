@@ -1,7 +1,10 @@
 <?php
 //Importación de datos
 require '../bp-config.php';
+$query = "SELECT * FROM `$tableMySQL` WHERE `PRESTADOA` = '" . $sessionus . "' LIMIT 5";
+$result = mysqli_query($databaseconnection, $query);
 ?>
+
 <html>
 <?php require '../bp-include/head.php'; ?>
 
@@ -32,6 +35,28 @@ require '../bp-config.php';
                     </center><div class="row">
                     <div class="cardse card-body">
                     <h5>Préstamos Activos</h5>
+                    <table>
+                    <thead>
+                    <tr>
+                        <th>Titulo </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    ';
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<tr>
+                                    <td>' . $row["TITULO"] . '</td>
+                                
+                                </tr>';
+                    }
+                    echo '
+                    <tr>
+                        <td><a href="prestamosactivos.php">Ver más...</a></td>
+                    </tr>
+                    </tbody>
+                    </table>
                     </div>
                     <div class="cardse card-body">
                     <h5>En Lista de Espera</h5></div>
