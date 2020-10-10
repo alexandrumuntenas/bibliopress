@@ -27,11 +27,11 @@ echo '<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
 if ($sessionlog == 1) {
     echo '<li class="nav-item">
-    <a class="nav-link" href="/bp-admin/"><i class="fas fa-user"></i> Área Personal de ' . $sessionus . '</a>
+    <a class="nav-link" href="/bp-user/"><i class="fas fa-user"></i> Área Personal de ' . $sessionus . '</a>
 </li>';
 } else {
     echo '<li class="nav-item">
-    <a class="nav-link" href="/bp-admin/"><i class="fas fa-user"></i> Hola, invitado</a>
+    <a class="nav-link" href="/bp-user/"><i class="fas fa-user"></i> Hola, invitado</a>
 </li>';
 };
 echo '
