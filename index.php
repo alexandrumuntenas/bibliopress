@@ -32,6 +32,13 @@ if($logger == 0){
             $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
             echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>                 ';
             echo '<p class="badge badge-danger badge-pill">'. $qtyp . ' Páginas totales</p>';
+            if ($sessionlogged == 1){
+                echo '<br><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                Añadir nuevo registro
+                </button>
+                <a href="functions/abies.php" class="btn btn-primary">Subir desde Abies</a>';
+            }
+
 
             echo '<div id="display"></div>';
             ?>
@@ -59,9 +66,12 @@ if($logger == 0){
                     echo '<div class="cardse card-body">
                     <h5><strong>' . $row[6] . '</strong></h5>
                     <p><em>' . $row[1] . '</em></p>
-                    <p>' . $desc . '</p>
-                    <a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>
-                    </div>';
+                    <p>' . $desc . '</p>';
+                    if($sessionlogged == 1){
+                        echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+                    }
+                    else {echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';}
+                    echo '</div>';
                 };
                 ?>
                 </div> 
