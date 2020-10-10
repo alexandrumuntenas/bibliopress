@@ -20,6 +20,7 @@ function generateRandomString($length = 9) {
 }
 $usuarioc =generateRandomString(9);
 $pin = rand();
+$FNAME = "$nombre $apellido";
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
@@ -32,7 +33,7 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $insert = "INSERT INTO $bbddusuarios (`USUARIO`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`) VALUES ('$usuarioc','$nombre','$apellido','$curso', '$pin')";
+        $insert = "INSERT INTO $bbddusuarios (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin')";
         $databaseconnection->query($insert);
         echo '
         <header>
