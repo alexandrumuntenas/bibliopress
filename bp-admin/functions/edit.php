@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $id = $_REQUEST['id'];
@@ -5,23 +7,24 @@ $query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
 $loggedin = $_COOKIE["loggedin"];
-?>
-<!DOCTYPE html>
-<html>
+require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 
-<head>
-    <meta charset="utf-8">
-    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.html';?>
-
-<body class="headerlogin">
-    <div class="form">
-    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';?>
-        <?php
+if ($sessionlogged == 1) {
+    if ($sessionclass == 1) {
+        echo '<body>';
+    } else {
+        echo '<body class="err404">';
+    }
+} else {
+    echo '<body class="err404">';
+}
+if ($sessionlogged == 1) {
+    if ($sessionclass == 1) {
+        echo '<div class="form">';
+        require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
             $id = $_REQUEST['id'];
-            $fecha = date("Y-m-d H:i:s"); //Fecha FECHA
-            //Datos
             $ANOPUB = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
             $AUTOR = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
             $EJEMPLAR = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
@@ -44,7 +47,7 @@ $loggedin = $_COOKIE["loggedin"];
                         <table style="overflow-x: scroll;">
                             <thead>
                                 <tr>
-                                    <th><h5>Título <input type="text" name="titulo" placeholder="Escribe el título" required value="'. $row['TITULO'] . '" /></h5></th>
+                                    <th><h5>Título <input type="text" name="titulo" placeholder="Escribe el título" required value="' . $row['TITULO'] . '" /></h5></th>
                                     <th><input type="hidden" name="new" value="1" /></th>
                                     <th><input name="id" type="hidden" value="' . $row['ID'] . '" /></th>
                                 </tr>
@@ -71,15 +74,37 @@ $loggedin = $_COOKIE["loggedin"];
                         <textarea style="width:100%; height:30%;"name="descripcion" placeholder="Escribe un resumen del libro">' . $row["DESCRIPCION"] . '</textarea>
                     </form>
                 </div>';
-        }; ?>
+        }
+    } else {
 
-        <div>
-        </div>
+        echo '<section class="error-container">
+                            <span><span>4</span></span>
+                            <span>0</span>
+                            <span><span>4</span></span>
+                          </section>
+                          <center>
+                            <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+                            <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
+    }
+} else {
+    echo '<section class="error-container">
+                        <span><span>4</span></span>
+                        <span>0</span>
+                        <span><span>4</span></span>
+                      </section>
+                      <center>
+                      <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+                      <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
+};
+?>
+
+<div>
+</div>
+</div>
+<footer class="page-footer bg-primary">
+    <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
     </div>
-    <footer class="page-footer bg-primary">
-        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
-        </div>
-        </footer>
+</footer>
 </body>
 
 </html>

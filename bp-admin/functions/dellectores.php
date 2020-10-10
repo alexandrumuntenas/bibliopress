@@ -7,7 +7,7 @@ $result = mysqli_query($databaseconnection, $query);
 ?>
 <!DOCTYPE html>
 <html>
-<?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.html';?>
+<?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';?>
     <body class="headerlogin">
         <header>
             <div class="wrapper">
