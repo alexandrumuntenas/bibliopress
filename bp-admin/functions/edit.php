@@ -90,7 +90,7 @@ if ($sessionlogged == 1) {
     echo '<section class="error-container">
                         <span><span>4</span></span>
                         <span>0</span>
-                        <span><span>4</span></span>
+                        <span><span>3</span></span>
                       </section>
                       <center>
                       <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
