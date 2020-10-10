@@ -1,4 +1,6 @@
-<?php $sessionlog = $_COOKIE['loggedin']; echo '<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<?php $sessionlog = $_COOKIE['loggedin'];
+$sessionus = $_COOKIE['usuario'];
+echo '<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <a class="navbar-brand" href="/">Biblioteca</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,19 +13,18 @@
         <li class="nav-item">
             <a class="nav-link" href="/search.php"><i class="fas fa-search"></i> Búsqueda</a>
         </li>
-';?>
+'; ?>
 
 <?php
 
-if($sessionlog == 1){
+if ($sessionlog == 1) {
     echo '<li class="nav-item">
-    <a class="nav-link" href="/bp-admin/"><i class="fas fa-user"></i> Área Personal</a>
+    <a class="nav-link" href="/bp-admin/"><i class="fas fa-user"></i> Área Personal de ' . $sessionus . '</a>
 </li>';
-}
-else {
+} else {
     echo '<li class="nav-item">
-    <a class="nav-link" href="/bp-admin/"><i class="fas fa-user"></i> Acceso</a>
-</li>';  
+    <a class="nav-link" href="/bp-admin/"><i class="fas fa-user"></i> Hola, invitado</a>
+</li>';
 };
 echo '
         </ul>
