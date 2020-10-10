@@ -4,8 +4,6 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $loggedin = $_COOKIE["loggedin"];
 $id = $_REQUEST['id'];
-$query = "DELETE FROM $tableMySQL WHERE id=$id";
-$result = mysqli_query($databaseconnection, $query);
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
@@ -18,6 +16,8 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
+        $query = "DELETE FROM $tableMySQL WHERE id=$id";
+        $result = mysqli_query($databaseconnection, $query);
         echo '<header><div class="wrapper">';
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         echo "</header>
