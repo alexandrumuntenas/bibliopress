@@ -12,7 +12,7 @@ $loggedin = $_COOKIE["loggedin"];
 <head>
     <title><?php echo $row["TITULO"]; ?> < Biblioteca</title>
     <meta charset="utf-8">
-    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.html';?>
+    <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';?>
 
 <body class="headerlogin">
             <div class="header">

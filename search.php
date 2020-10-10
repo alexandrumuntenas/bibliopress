@@ -7,7 +7,7 @@ require 'bp-config.php';
     <title>
     <?php echo 'Biblioteca del ' . $sname;?>
     </title>
-    <?php require 'bp-include/head.html';?>
+    <?php require 'bp-include/head.php';?>
     <body>
         
         <header>
