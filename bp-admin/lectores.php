@@ -24,9 +24,7 @@ if ($sessionlogged == 1) {
                     </header>';
         echo '
                     <section class="section">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                    Añadir nuevo registro
-                    </button></div>
+                    </div>
                     <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -61,7 +59,7 @@ if ($sessionlogged == 1) {
                         </ul>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Publicar" />
+                            <input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Añadir" />
                         </div>
                         </form>	
                         </div>
@@ -73,6 +71,9 @@ if ($sessionlogged == 1) {
         $qty = mysqli_num_rows($resulta);
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
         echo '<div class="lectores">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                    Añadir nuevo registro
+                    </button>
                     <table>
                         <thead>
                         <tr>
