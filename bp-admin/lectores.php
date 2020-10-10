@@ -24,28 +24,9 @@ if ($sessionlogged == 1) {
                     </header>';
         echo '
                     <section class="section">
-                    <center>
-                    <div class="btn-group" role="group">
-                    <a href="index.php" type="button" class="btn btn-secondary">Inicio</a>
-                    <div class="btn-group" role="groupF">
-                        <a href="catalogo.php" class="btn btn-secondary">
-                        Catálogo</a>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <button href="catalogo.php" class="dropdown-item">
-                            Añadir nuevo registro</button>
-                            <a href="functions/abies.php" class="dropdown-item">Subir desde Abies</a>
-                        </div>
-                    </div>
-                    <div class="btn-group" role="group">
-                        <a href="lectores.php" id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Lectores</a>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#staticBackdrop">
-                            Añadir nuevo registro
-                            </button></div>
-                    </div>
-                    </div>
-                    </center>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                    Añadir nuevo registro
+                    </button></div>
                     <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -91,7 +72,7 @@ if ($sessionlogged == 1) {
         $resulta = mysqli_query($databaseconnection, "SELECT * FROM $bbddusuarios");
         $qty = mysqli_num_rows($resulta);
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
-        echo '
+        echo '<div class="lectores">
                     <table>
                         <thead>
                         <tr>
@@ -110,13 +91,14 @@ if ($sessionlogged == 1) {
                             <td>' . $row["NOMBRE"] . '</td>
                             <td>' . $row["APELLIDOS"] . '</td>
                             <td>' . $row["CLASE"] . '</td>
-                            <td><a href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
+                            <td><a style="color:blue;"href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                         </tr>';
-                echo '
+            }
+            echo '
                         </tbody>
                      </table>
+                     </div>
                 </section>';
-            }
         }
     } else {
 
