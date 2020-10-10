@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 	fclose($handle);
 	$databaseconnection->close();
 	$_SESSION['ID'] = '';
-	echo "<div class='loginsection'><p>Se han procesado <b>$fila ejemplares</b><br /></p>\n<p class='btn btn-success'>Importaci&oacute;n terminada</p><br><br><a class='btn btn-link' href='/bp-admin/catalogo.php'>Volver al panel</a>";
+	echo "<div class='loginsection'><p>Se han procesado <b>$fila ejemplares</b><br /></p>\n<p class='btn btn-success'>Importaci&oacute;n terminada</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a>";
 } else {
 
 	if (isset($_SESSION['ID'])) {
