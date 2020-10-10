@@ -1,7 +1,11 @@
 <?php
 //Importación de datos
 require 'bp-config.php';
- 
+$logger = $_COOKIE['loggedin'];
+if($logger == 0){
+    setcookie('loggedin', 0, time() + (3600), "/");
+    setcookie('perm', 0, time() + (3600), "/");
+}
 ?>
 <html>
     <title>
