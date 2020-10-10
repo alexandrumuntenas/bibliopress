@@ -36,7 +36,7 @@ if ($sessionlogged == 1) {
 
             $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "', DESCRIPCION='" . $DESCRIPCION . "' where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
-            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/bp-admin/catalogo.php'>Volver al panel</a></div>";
+            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
         } else {
             echo '
