@@ -27,18 +27,19 @@ require '../bp-config.php';
             echo '<section class="section flex-column"><center>
                     <div class="btn-group" role="group">
                     <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                    <div class="btn-group" role="group">
-                        <a href="catalogo.php" class="btn btn-secondary">
-                        Catálogo</a>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <button href="catalogo.php" class="dropdown-item">
-                            Añadir nuevo registro</button>
-                            <a href="functions/abies.php" class="dropdown-item">Subir desde Abies</a>
-                        </div>
+                    <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
+                    <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+                    </center><div class="row">
+                    <div class="cardse card-body">
+                    <h5>Préstamos Activos</h5>
                     </div>
-                    <a href="lectores.php" type="button" class="btn btn-secondary">Lectores</a>
+                    <div class="cardse card-body">
+                    <h5>En Lista de Espera</h5></div>
+                    <div class="cardse card-body">
+                    <h5>Tus Últimas Lecturas</h5>
                     </div>
-                    </center></section>';
+                    <div class="cardse card-body"><h5>Sobre la Biblioteca</h5></div><div class="cardse card-body"><h5>Último acceso</h5></div>
+                    </div></section>';
         } else {
             echo '<section class="section"><center>
                     <div class="btn-group" role="group">
