@@ -1,9 +1,8 @@
-<?php
-require '../bp-config.php';
-?>
 <html>
-<?php require '../bp-include/head.html'; ?>
-<?php
+<?php 
+require '../bp-config.php';
+require '../bp-include/head.php';
+
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '<body>';
@@ -12,8 +11,7 @@ if ($sessionlogged == 1) {
     }
 } else {
     echo '<body class="err404">';
-} ?>
-<?php
+} 
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '';
