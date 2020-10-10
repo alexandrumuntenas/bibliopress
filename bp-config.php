@@ -17,6 +17,7 @@ $lectorresultado = $databaseconnection->query($lectorsql);
 //Cookies para futuro sistema de login
 
 $dformat = date($formatofecha);
-
-?>
-
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+$sessionlogged = $_COOKIE['loggedin'];
+$sessionclass = $_COOKIE['perm'];
