@@ -30,8 +30,8 @@ if($logger == 0){
             $qty = mysqli_num_rows($result);
             $qtya = $qty/9;
             $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
-            echo '<p class="badge badge-success badge-pill">'. $qty . ' Registros</p>                 ';
-            echo '<p class="badge badge-danger badge-pill">'. $qtyp . ' Páginas totales</p>';
+            echo '<p class="badge badge-success">'. $qty . ' Registros</p>                 ';
+            echo '<p class="badge badge-danger">'. $qtyp . ' Páginas totales</p>';
             if ($sessionlogged == 1){
                 echo '<br><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                 Añadir nuevo registro
@@ -130,11 +130,18 @@ if($logger == 0){
                     $long = 250;
                     $desc = substr($row[12], 0, $long);
                     echo '<div class="cardse card-body">
-                    <h5><strong>' . $row[6] . '</strong></h5>
+                    <h5><strong>' . $row[6] . '</strong>                    </h5>';
+                    echo '
                     <p><em>' . $row[1] . '</em></p>
                     <p>' . $desc . '</p>';
+                    if($row[13] == 1){
+                        echo '<p class="badge badge-success">Disponibilidad ✓</p><br>';
+                    }
+                    else {
+                        echo '<p class="badge badge-danger">Disponibilidad ✗</p><br>';
+                    }
                     if($sessionlogged == 1){
-                        echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+                        echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
                     }
                     else {echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';}
                     echo '</div>';
