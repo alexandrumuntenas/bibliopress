@@ -26,9 +26,8 @@ $ubicacion = "13";*/
 
 $insert = "INSERT INTO $tableMySQL(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
 $databaseconnection->query($insert);
-require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.html'; ?>
-?>
-<?php
+require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php'; 
+
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '<body>';
@@ -37,8 +36,7 @@ if ($sessionlogged == 1) {
     }
 } else {
     echo '<body class="err404">';
-} ?>
-<?php
+} 
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '<header><div class="wrapper">';
