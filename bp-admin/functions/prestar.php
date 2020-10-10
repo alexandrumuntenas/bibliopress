@@ -21,7 +21,9 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $fnamecheck = $lectorresultado->fetch_assoc();
+        $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `FULLNAME` = '" .$FNAME. "'";
+        $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
+        $fnamecheck = mysqli_fetch_assoc($fnamedata);
         $query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
         $result = mysqli_query($databaseconnection, $query);
         $row = mysqli_fetch_assoc($result);
@@ -32,7 +34,6 @@ if ($sessionlogged == 1) {
             $databaseconnection->query($sql);
         }
         else {
-            print_r($fnamecheck);
             echo 'Ha fallado papu';
         }
         echo '
