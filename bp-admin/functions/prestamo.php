@@ -27,22 +27,7 @@ if ($sessionlogged == 1) {
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
-            $id = $_REQUEST['id'];
-            $ANOPUB = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
-            $AUTOR = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
-            $EJEMPLAR = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
-            $EDITORIAL = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
-            $TITULO = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
-            $UBICACION = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
-            $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["isbn"]);
-            $DESCRIPCION = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
-
-            mysqli_query($databaseconnection, $update);
-            $status = "<div class='loginsection'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a></div>";
-            echo '<p style="color:#FF0000;">' . $status . '</p>';
-        } else {
-            echo '<section class="section flex-column">
-            <div class="row">
+        } else { echo '<section class="section flex-column"><div class="row">
             <div class="cardse card-body">
             <h5><strong>' . $row["TITULO"] . '</strong>';
             echo '</h5>
@@ -51,7 +36,8 @@ if ($sessionlogged == 1) {
             <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
             <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
             <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
-            <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></div>
+            <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></div>'; 
+            if($row['DISPONIBILIDAD'] == 1){echo '
             <div class="cardse card-body">
             <h5><strong>Prestar libro al usuario</strong></h5>
             <form id="form_1388" class="appnitro"  method="post" action="prestar.php?id=' .$id. '">				
@@ -80,7 +66,9 @@ if ($sessionlogged == 1) {
                             <input id="saveForm" class="btn btn-success" type="submit" name="submit" value="Prestar" />
                         </div>
                         </form>	
-            </div></section>';
+            </div></section>';}
+            else {echo '<div class="cardse card-body">
+                <h5><strong>Prestar libro al usuario</strong></h5>No disponible para préstamo.</div></section>';}
         }
     } else {
 
