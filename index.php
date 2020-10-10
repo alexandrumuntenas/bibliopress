@@ -28,16 +28,17 @@ if($logger == 0){
             <?php
             $result = mysqli_query($databaseconnection, "SELECT * FROM $tableMySQL");
             $qty = mysqli_num_rows($result);
-            $qtya = $qty/9;
+            $qtya = $qty/$CantidadMostrar;
             $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
             echo '<p class="badge badge-success">'. $qty . ' Registros</p>                 ';
             echo '<p class="badge badge-danger">'. $qtyp . ' Páginas totales</p>';
             if ($sessionlogged == 1){
+                if ($sessionclass == 1){
                 echo '<br><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                 Añadir nuevo registro
                 </button>
                 <a href="bp-admin/functions/abies.php" class="btn btn-primary">Subir desde Abies</a>';
-            }
+            }}
 
 
             echo '<div class="modal-dialog modal-dialog-scrollable">
@@ -141,8 +142,9 @@ if($logger == 0){
                         echo '<p class="badge badge-danger">Disponibilidad ✗</p><br>';
                     }
                     if($sessionlogged == 1){
-                        echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
-                    }
+                        if($sessionclass == 1){
+                        echo '<a class="btn btn-info" href="view.php?id=' . $row[10] . '">Ver más</a><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
+                    } else {echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';}}
                     else {echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';}
                     echo '</div>';
                 };
