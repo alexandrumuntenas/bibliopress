@@ -879,6 +879,9 @@ div.calendar {
 @import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
 .err404 {
 	background-image: url('/bp-include/404.bg.jpg');
+	background-size: cover;
+	position: relative;
+	background-repeat: no-repeat;
 }
 
 .error-container {
