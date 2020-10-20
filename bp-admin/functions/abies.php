@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 	fclose($handle);
 	$databaseconnection->close();
 	$_SESSION['ID'] = '';
-	echo "<div class='loginsection'><p>Se han procesado <b>$fila ejemplares</b><br /></p>\n<p class='btn btn-success'>Importaci&oacute;n terminada</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a>";
+	echo "<div class='cardinfo'><p>Se han procesado <b>$fila ejemplares</b><br /></p>\n<p class='btn btn-success'>Importaci&oacute;n terminada</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a>";
 } else {
 
 	if (isset($_SESSION['ID'])) {
@@ -61,9 +61,9 @@ if (isset($_POST['submit'])) {
 	}
 
 	if ($var_session == 'ok') {
-		echo "<div class='loginsection'><form enctype='multipart/form-data' action='abies.php' method='post'>Nombre de archivo *.TXT a subir:<br /><br />\n<input size='50' type='file' name='filename'><br /><br />\n<input type='submit' name='submit' value='Subir'></form></div>";
+		echo "<div class='cardinfo'><form enctype='multipart/form-data' action='abies.php' method='post'>Nombre de archivo *.TXT a subir:<br /><br />\n<input size='50' type='file' name='filename'><br /><br />\n<input type='submit' name='submit' value='Subir'></form></div>";
 	} else {
-		echo "<div class='loginsection'><form name='loginform' id='loginform' method='post' action='abies.php'>
+		echo "<div class='cardinfo'><form name='loginform' id='loginform' method='post' action='abies.php'>
 <p><label>Usuario<br /><input type='text' name='log' id='user_login' class='input' value='' size='20' /></label></p>
 <p><label>Contrase&ntilde;a<br /><input type='password' name='pwd' id='user_pass' class='input' value='' size='20'  /></label></p>
 <p class='submit'><input class='btn btn-primary' type='submit' name='pwd_submit' id='pwd_submit' value='Iniciar sesi&oacute;n' /></p></form></div>";

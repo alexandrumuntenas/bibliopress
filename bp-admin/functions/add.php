@@ -50,7 +50,7 @@ if ($sessionlogged == 1) {
             <div>
                 <h2 class="stitle"></h2>
             </div>
-            <div class="loginsection">
+            <div class="cardinfo">
                        <?php 
                        echo "<table>
                             <thead>
