@@ -27,7 +27,7 @@ if ($sessionlogged == 1) {
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
-        } else { echo '<section class="section flex-column"><div class="row">
+        } else { echo '<section class="bp-section flex-column"><div class="row">
             <div class="bp-card card-body">
             <h5><strong>' . $row["TITULO"] . '</strong>';
             echo '</h5>
