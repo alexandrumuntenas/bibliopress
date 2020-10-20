@@ -24,7 +24,7 @@ if ($sessionlogged == 1) {
             <div class="wrapper">';
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         echo '</header>
-    <div class="cardinfo">';
+    <div class="bp-card-info">';
         echo "<p class='btn btn-danger'>Se ha eliminado el usuario $USUARIO</p><br><br><a class='btn btn-link' href='/bp-admin/lectores.php'>Volver al panel</a>
     </div>";
     } else {

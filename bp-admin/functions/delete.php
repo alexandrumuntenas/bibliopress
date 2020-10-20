@@ -21,7 +21,7 @@ if ($sessionlogged == 1) {
         echo '<header><div class="wrapper">';
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         echo "</header>
-    <div class='cardinfo'>";
+    <div class='bp-card-info'>";
         echo "<p class='btn btn-danger'>Se ha eliminado el registro $id</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a>";
         echo '
     </div>';

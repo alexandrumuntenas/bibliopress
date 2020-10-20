@@ -18,11 +18,11 @@ if($logger == 0){
             <div class="wrapper">
             <?php require 'bp-include/menu.php';?>
 
-            <div class="header">
-                <h2 class="centered">Catálogo</h2>
+            <div class="bp-header">
+                <h2 class="bp-page-title">Catálogo</h2>
             </div>
         </header>
-        <section class="section">
+        <section class="bp-section">
             <br>
             <br>
             <?php
@@ -130,7 +130,7 @@ if($logger == 0){
                 while ($row=$consulta->fetch_row()) {
                     $long = 250;
                     $desc = substr($row[12], 0, $long);
-                    echo '<div class="cardse card-body">
+                    echo '<div class="bp-card card-body">
                     <h5><strong>' . $row[6] . '</strong>                    </h5>';
                     echo '
                     <p><em>' . $row[1] . '</em></p>

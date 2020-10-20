@@ -18,12 +18,12 @@ if ($sessionlogged == 1) {
         echo '<header><div class="wrapper">';
         require '../bp-include/menu.php';
         echo '
-                    <div class="header">
-                        <h2 class="centered">Gestionar Lectores</h2>
+                    <div class="bp-header">
+                        <h2 class="bp-page-title">Gestionar Lectores</h2>
                     </div>
                     </header>';
         echo '
-                    <section class="section">
+                    <section class="bp-section">
                     </div>
                     <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -8,20 +8,20 @@ $result = mysqli_query($databaseconnection, $query);
 <html>
 <?php require '../bp-include/head.php'; ?>
 
-<body class="headerlogin">
+<body>
     <header>
 
         <div class="wrapper">
             <?php require '../bp-include/menu.php'; ?>
             <?php if ($sessionlogged == 1) {
                 echo '
-            <div class="header">
-                <h2 class="centered">Área Personal</h2>
+            <div class="bp-header">
+                <h2 class="bp-page-title">Área Personal</h2>
             </div>';
             } else {
                 echo '
-                <div class="header">
-                    <h2 class="centered">Iniciar Sesión</h2>
+                <div class="bp-header">
+                    <h2 class="bp-page-title">Iniciar Sesión</h2>
                 </div>';
             }; ?>
     </header>
@@ -33,7 +33,7 @@ $result = mysqli_query($databaseconnection, $query);
             <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
             </center><div class="row">
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5>Préstamos Activos</h5>
             <table>
             <thead>
@@ -57,12 +57,12 @@ $result = mysqli_query($databaseconnection, $query);
             </tbody>
             </table>
             </div>
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5>En Lista de Espera</h5></div>
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5>Tus Últimas Lecturas</h5>
             </div>
-            <div class="cardse card-body"><h5>Sobre la Biblioteca</h5></div><div class="cardse card-body"><h5>Último acceso</h5></div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
         } else {
             echo '<section class="section flex-column"><center>
@@ -71,7 +71,7 @@ $result = mysqli_query($databaseconnection, $query);
             <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
             </center><div class="row">
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5>Préstamos Activos</h5>
             <table>
             <thead>
@@ -96,12 +96,12 @@ $result = mysqli_query($databaseconnection, $query);
             </tbody>
             </table>
             </div>
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5>En Lista de Espera</h5></div>
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5>Tus Últimas Lecturas</h5>
             </div>
-            <div class="cardse card-body"><h5>Sobre la Biblioteca</h5></div><div class="cardse card-body"><h5>Último acceso</h5></div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
         }
     } else {

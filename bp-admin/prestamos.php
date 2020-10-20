@@ -18,12 +18,12 @@ if ($sessionlogged == 1) {
         echo '<header><div class="wrapper">';
         require '../bp-include/menu.php';
         echo '
-                    <div class="header">
-                        <h2 class="centered">Gestionar préstamos</h2>
+                    <div class="bp-header">
+                        <h2 class="bp-page-title">Gestionar préstamos</h2>
                     </div>
                     </header>';
         echo '
-                    <section class="section">
+                    <section class="bp-section">
                     </div>
                     ';
         $resulta = mysqli_query($databaseconnection, "SELECT * FROM `" .$tableMySQL. "` WHERE `DISPONIBILIDAD` = 0");

@@ -21,14 +21,14 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        echo '<div class="header">
-        <h2 class="centered">Servicio de Préstamo</h2>
+        echo '<div class="bp-header">
+        <h2 class="bp-page-title">Servicio de Préstamo</h2>
     </div>';
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
         } else { echo '<section class="section flex-column"><div class="row">
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5><strong>' . $row["TITULO"] . '</strong>';
             echo '</h5>
             <p><em>' . $row["AUTOR"] . '</em></p>
@@ -38,7 +38,7 @@ if ($sessionlogged == 1) {
             <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
             <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></div>'; 
             if($row['DISPONIBILIDAD'] == 1){echo '
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
             <h5><strong>Prestar libro al usuario</strong></h5>
             <form id="form_1388" class="appnitro"  method="post" action="prestar.php?id=' .$id. '">				
                         <ul>
@@ -67,7 +67,7 @@ if ($sessionlogged == 1) {
                         </div>
                         </form>	
             </div></section>';}
-            else {echo '<div class="cardse card-body">
+            else {echo '<div class="bp-card card-body">
                 <h5><strong>Prestar libro al usuario</strong></h5>No disponible para préstamo.</div></section>';}
         }
     } else {

@@ -16,11 +16,11 @@ require 'bp-config.php';
             <div class="wrapper">
             <?php require 'bp-include/menu.php';?>
 
-            <div class="header">
-                <h2 class="centered">Búsqueda</h2>
+            <div class="bp-header">
+                <h2 class="bp-page-title">Búsqueda</h2>
             </div>
         </header>
-        <section class="section">
+        <section class="bp-section">
             <br>
             <br>
             <?php

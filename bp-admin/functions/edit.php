@@ -36,11 +36,11 @@ if ($sessionlogged == 1) {
 
             $update = "UPDATE $tableMySQL set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "', DESCRIPCION='" . $DESCRIPCION . "' where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
-            $status = "<div class='cardinfo'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a></div>";
+            $status = "<div class='bp-card-info'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
         } else {
             echo '
-            <div class="cardinfo card-body">
+            <div class="bp-card-info card-body">
                 <form name="form" method="post" action="">
                     <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Actualizar" />
         

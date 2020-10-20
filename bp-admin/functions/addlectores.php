@@ -41,15 +41,15 @@ if ($sessionlogged == 1) {
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         echo '
         </header>
-            <div class="header">
-                <h2 class="centered">Dashboard</h2>
+            <div class="bp-header">
+                <h2 class="bp-page-title">Dashboard</h2>
             </div>
         </header>
-        <section class="section">
+        <section class="bp-section">
             <div>
                 <h2 class="stitle"></h2>
             </div>
-            <div class="cardse card-body">
+            <div class="bp-card card-body">
                        <table>
                             <thead>
                                 <tr>

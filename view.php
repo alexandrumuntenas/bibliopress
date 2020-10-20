@@ -14,16 +14,16 @@ $loggedin = $_COOKIE["loggedin"];
     <meta charset="utf-8">
     <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';?>
 
-<body class="headerlogin">
-            <div class="header">
-                <h2 class="centered"><?php echo $row["TITULO"]; ?></h2>
+<body>
+            <div class="bp-header">
+                <h2 class="bp-page-title"><?php echo $row["TITULO"]; ?></h2>
             </div>
     <div class="">
         
     <?php require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';?>
         <?php
             echo '
-            <div class="viewer">
+            <div class="bp-viewer">
             <div class="col-sm">
             ';
             if($row['DISPONIBILIDAD'] == 1){
