@@ -53,7 +53,6 @@ $result = mysqli_query($databaseconnection, $query);
             }
             echo '
             <tr>
-                <td><a href="prestamosactivos.php">Ver más...</a></td>
             </tr>
             </tbody>
             </table>
@@ -106,7 +105,7 @@ $result = mysqli_query($databaseconnection, $query);
             </div></section>';
         }
     } else {
-        echo "<section class='section'><div class='viewer'><form name='loginform' id='loginform' method='post' action='logger.php'>
+        echo "<section class='section'><div><form name='loginform' id='loginform' method='post' action='logger.php'>
                     <p><strong><label>Usuario</strong><br /><input type='text' name='usuario' id='user_login' class='input' value='' /></label></p>
                     <p><strong><label>PIN</strong><br /><input type='password' name='contrasena' id='user_pass' class='input' value=''  /></label></p>
                     <p class='submit'><input class='btn btn-primary' type='submit' name='pwd_submit' id='pwd_submit' value='Iniciar sesi&oacute;n' /></p></form></div></section>";
