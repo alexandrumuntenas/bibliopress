@@ -150,7 +150,7 @@ if($logger == 0){
                 };
                 ?>
                 </div> 
-        <footer class="page-footer" style="margin-top: 50px;">
+        <footer class="page-footer" style="overflow-x:scroll;margin-top: 50px;">
         <?php
                 /*Sector de Paginacion */
                 
