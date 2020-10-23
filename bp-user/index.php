@@ -30,7 +30,6 @@ $result = mysqli_query($databaseconnection, $query);
             echo '<section class="bp-section flex-column"><center>
             <div class="btn-group" role="group">
             <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-            <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
             </center><div class="row">
             <div class="bp-card card-body">
