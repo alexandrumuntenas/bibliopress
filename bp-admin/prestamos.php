@@ -53,7 +53,7 @@ if ($sessionlogged == 1) {
                             <td>' . $row["NOMBRE"] . '</td>
                             <td>' . $row["FECHADEV"] . '</td>
                             <td>' . $data["FULLNAME"] . '</td>
-                            <td><a style="color:blue;"href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
+                            <td><a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
                         </tr>';
             }
             echo '
