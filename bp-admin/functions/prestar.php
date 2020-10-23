@@ -21,10 +21,11 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
+
         $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `FULLNAME` = '" .$FNAME. "'";
         $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
         $fnamecheck = mysqli_fetch_assoc($fnamedata);
-        $fnamecheck['USUARIO'] = $usuariocompleto;
+        $usuariocompleto = $fnamecheck['USUARIO'];
         $query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
         $result = mysqli_query($databaseconnection, $query);
         $row = mysqli_fetch_assoc($result);
@@ -32,7 +33,7 @@ if ($sessionlogged == 1) {
         $comprobadordata = mysqli_query($databaseconnection, $comprobadorsql);
         $cantidadprestada = mysqli_num_rows($comprobadordata);
 
-        if ($cantidadprestada >= 6){
+        if ($cantidadprestada >= 5){
             echo '<section class="bp-section">
             <div>
                 <h2 class="stitle"></h2>
@@ -52,8 +53,6 @@ if ($sessionlogged == 1) {
         </section>';
         } else {
             if($fnamecheck['FULLNAME'] == $FNAME){
-            echo 'To correcto';
-            print_r($fnamecheck);
             $sql = "UPDATE `bp_catalogo` SET `DISPONIBILIDAD` = '0', `PRESTADOA` = '" .$fnamecheck['USUARIO']. "', `FECHADEV` = '" .$timestamp. "' WHERE `bp_catalogo`.`ID` = ".$id;
             $databaseconnection->query($sql);
         }
