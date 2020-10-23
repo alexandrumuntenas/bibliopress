@@ -57,9 +57,9 @@ $result = mysqli_query($databaseconnection, $query);
             </table>
             </div>
             <div class="bp-card card-body">
-            <h5>En Lista de Espera</h5></div>
+            <h5>En Lista de Espera</h5><p>No te emociones, seguimos trabajando en ello</p></div>
             <div class="bp-card card-body">
-            <h5>Tus Últimas Lecturas</h5>
+            <h5>Tus Últimas Lecturas</h5><p>No te emociones, seguimos trabajando en ello</p>
             </div>
             <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del '.$sname.'</p><p>Hay un total de '.$numerolibros. ' libros en todo el catálogo, de los cuales, '.$qtyprestados.' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
@@ -94,9 +94,9 @@ $result = mysqli_query($databaseconnection, $query);
             </table>
             </div>
             <div class="bp-card card-body">
-            <h5>En Lista de Espera</h5></div>
+            <h5>En Lista de Espera</h5><p>No te emociones, seguimos trabajando en ello</p></div>
             <div class="bp-card card-body">
-            <h5>Tus Últimas Lecturas</h5>
+            <h5>Tus Últimas Lecturas</h5><p>No te emociones, seguimos trabajando en ello</p>
             </div>
             <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del '.$sname.'</p><p>Hay un total de '.$numerolibros. ' libros en todo el catálogo, de los cuales, '.$qtyprestados.' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
