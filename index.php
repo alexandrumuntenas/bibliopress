@@ -107,7 +107,7 @@ if($logger == 0){
                 </div>
             </div>
             </div>
-            </div><div id="display"></div>';
+            </div>';
             ?>
             <div class="row">
             <?php
