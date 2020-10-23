@@ -1,23 +1,7 @@
 <?php
-
-//Carga el archivo de configuración
-require('bp-settings.php');
-
-//Formato de fecha predefinido
-$formatofecha = "Y";
-
-//Queries de SQL predefinido
-$sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, ID, DESCRIPCION, DISPONIBILIDAD, PRESTADOA FROM $tableMySQL";
-$resultado = $databaseconnection->query($sql);
-
-$bbddusuarios = "bp_usuarios";
-$lectorsql = "SELECT * FROM `$bbddusuarios`";
-$lectorresultado = $databaseconnection->query($lectorsql);
-
-//Cookies para futuro sistema de login
-
-$dformat = date($formatofecha);
-
+require('bp-settings.php'); $formatofecha = "Y"; $sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, ID, DESCRIPCION, DISPONIBILIDAD, PRESTADOA FROM $tableMySQL"; $resultado = $databaseconnection->query($sql); $bbddusuarios = "bp_usuarios"; $lectorsql = "SELECT * FROM `$bbddusuarios`"; $lectorresultado = $databaseconnection->query($lectorsql); $dformat = date($formatofecha); $numerolibros = mysqli_num_rows($resultado); 
+$qtyprestadosql = "SELECT *  FROM ".$tableMySQL." WHERE `DISPONIBILIDAD` = 0"; $qtyprestadoquery = $databaseconnection->query($qtyprestadosql);
+$qtyprestados = mysqli_num_rows($qtyprestadoquery);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 $sessionlogged = $_COOKIE['loggedin'];

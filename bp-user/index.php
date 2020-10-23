@@ -61,13 +61,12 @@ $result = mysqli_query($databaseconnection, $query);
             <div class="bp-card card-body">
             <h5>Tus Últimas Lecturas</h5>
             </div>
-            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del '.$sname.'</p><p>Hay un total de '.$numerolibros. ' libros en todo el catálogo, de los cuales, '.$qtyprestados.' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
         } else {
             echo '<section class="bp-section flex-column"><center>
             <div class="btn-group" role="group">
             <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-            <a href="profile.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card"></i></a>
             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
             </center><div class="row">
             <div class="bp-card card-body">
@@ -90,7 +89,6 @@ $result = mysqli_query($databaseconnection, $query);
             }
             echo '
             <tr>
-                <td><a href="prestamosactivos.php">Ver más...</a></td>
             </tr>
             </tbody>
             </table>
@@ -100,7 +98,7 @@ $result = mysqli_query($databaseconnection, $query);
             <div class="bp-card card-body">
             <h5>Tus Últimas Lecturas</h5>
             </div>
-            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del '.$sname.'</p><p>Hay un total de '.$numerolibros. ' libros en todo el catálogo, de los cuales, '.$qtyprestados.' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
         }
     } else {
