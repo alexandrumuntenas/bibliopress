@@ -34,18 +34,21 @@ if ($sessionlogged == 1) {
         $cantidadprestada = mysqli_num_rows($comprobadordata);
 
         if ($cantidadprestada >= 5){
+            echo '
+        <header>
+            <div class="wrapper">';
+        require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
+        echo '
+        </header>
+            <div class="bp-header">
+                <h2 class="bp-page-title">Dashboard</h2>
+            </div>
+        </header>';
             echo '<section class="bp-section">
             <div>
                 <h2 class="stitle"></h2>
             </div>
-            <div class="bp-card card-body">
-                       <table>
-                            <thead>
-                                <tr>
-                                    <th><h5>Parece que ' . $apellido . ', ' . $nombre . ' tiene ya 5 préstamos activos</em><strong></strong></h5></th>
-                                </tr>
-                            </thead>
-                        </table> </div>
+            <div class="bp-card card-body"><h5>Parece que ' . $apellido . ', ' . $nombre . ' tiene ya 5 préstamos activos</em><strong></strong></h5></div>
                         <div class="btn-group" role="group">
                             <a class="btn btn-primary" href="/">Volver</a>
                         </div>
@@ -72,13 +75,7 @@ if ($sessionlogged == 1) {
                 <h2 class="stitle"></h2>
             </div>
             <div class="bp-card card-body">
-                       <table>
-                            <thead>
-                                <tr>
-                                    <th><h5>Se ha prestado el libro <em>' .$row['TITULO']. '</em> a <strong>' . $apellido . ', ' . $nombre . '</strong></h5></th>
-                                </tr>
-                            </thead>
-                        </table> </div>
+                       <h5>Se ha prestado el libro <em>' .$row['TITULO']. '</em> a <strong>' . $apellido . ', ' . $nombre . '</strong></h5></th></div>
                         <div class="btn-group" role="group">
                             <a class="btn btn-primary" href="/">Volver</a>
                             <input type = "button" class="btn btn-success" value = "Imprimir página" onclick = "window.print()" />
