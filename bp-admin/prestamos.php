@@ -32,14 +32,14 @@ if ($sessionlogged == 1) {
         echo '<div class="lectores">
         
                     <table id="tb-pres">
-                    <input class="inputbusqueda" type="text" id="titulolibro" onkeyup="ttlibro()" placeholder="Busca por título del libro..." title="Escribe el título del libro">
+                    <div class="row"><input class="inputbusqueda" type="text" id="titulolibro" onkeyup="ttlibro()" placeholder="Busca por título del libro..." title="Escribe el título del libro"></div>
                         <thead>
 
                         <tr>
                             <th>Título del Libro</th>
-                            <th>Fecha de préstamo</th>
                             <th>Fecha de devolución</th>
                             <th>Usuario</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>';
@@ -49,11 +49,10 @@ if ($sessionlogged == 1) {
         $nombre = mysqli_query($databaseconnection, "SELECT * FROM `" .$bbddusuarios. "` WHERE `USUARIO` LIKE '" .$row["PRESTADOA"]. "'");
         $data = $nombre->fetch_assoc();
                 echo '<tr>
-                            <td>' . $row["TITULO"] . '</td>
-                            <td>' . $row["NOMBRE"] . '</td>
-                            <td>' . $row["FECHADEV"] . '</td>
-                            <td>' . $data["FULLNAME"] . '</td>
-                            <td><a style="color:green;" href="functions/prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
+                            <td data-label="Título del libro"><br>' . $row["TITULO"] . '</td>
+                            <td data-label="Fecha de devolución"><br>' . $row["FECHADEV"] . '</td>
+                            <td data-label="Título prestado al usuario "><br>' . $data["FULLNAME"] . '</td>
+                            <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
                         </tr>';
             }
             echo '

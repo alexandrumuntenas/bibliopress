@@ -71,7 +71,7 @@ if ($sessionlogged == 1) {
         $qty = mysqli_num_rows($resulta);
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
         echo '<div class="lectores">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+        <button type="button" style="margin-bottom:10px;" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                     Añadir nuevo registro
                     </button>
                     <table>
@@ -81,6 +81,7 @@ if ($sessionlogged == 1) {
                             <th>Nombre</th>
                             <th>Apellidos</th>
                             <th>Clase</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>';
@@ -88,11 +89,11 @@ if ($sessionlogged == 1) {
             //datos de cada columna
             while ($row = $lectorresultado->fetch_assoc()) {
                 echo '<tr>
-                            <td>' . $row["USUARIO"] . '</td>
-                            <td>' . $row["NOMBRE"] . '</td>
-                            <td>' . $row["APELLIDOS"] . '</td>
-                            <td>' . $row["CLASE"] . '</td>
-                            <td><a style="color:blue;"href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
+                            <td data-label="Usuario"><br>' . $row["USUARIO"] . '</td>
+                            <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
+                            <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
+                            <td data-label="Clase o Grupo"><br>' . $row["CLASE"] . '</td>
+                            <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                         </tr>';
             }
             echo '
