@@ -25,7 +25,7 @@ require 'bp-config.php';
             <br>
             <?php
             echo '<div class="row"><input class="buscador-ajax" type="text" id="search" placeholder="Introduce el título del libro" /></div>';
-            echo '<div id="display"></div>';
+            echo '<div class"row"><div id="display"></div></div>';
             ?>
         </section>
         <footer class="page-footer bg-primary">
