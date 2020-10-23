@@ -53,7 +53,7 @@ if ($sessionlogged == 1) {
                             <td>' . $row["NOMBRE"] . '</td>
                             <td>' . $row["FECHADEV"] . '</td>
                             <td>' . $data["FULLNAME"] . '</td>
-                            <td><a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
+                            <td><a style="color:green;" href="functions/prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
                         </tr>';
             }
             echo '
