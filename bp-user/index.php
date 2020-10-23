@@ -61,7 +61,7 @@ $result = mysqli_query($databaseconnection, $query);
             <div class="bp-card card-body">
             <h5>Tus Últimas Lecturas</h5><p>No te emociones, seguimos trabajando en ello</p>
             </div>
-            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del '.$sname.'</p><p>Hay un total de '.$numerolibros. ' libros en todo el catálogo, de los cuales, '.$qtyprestados.' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del ' . $sname . '</p><p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
         } else {
             echo '<section class="bp-section flex-column"><center>
@@ -98,7 +98,7 @@ $result = mysqli_query($databaseconnection, $query);
             <div class="bp-card card-body">
             <h5>Tus Últimas Lecturas</h5><p>No te emociones, seguimos trabajando en ello</p>
             </div>
-            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del '.$sname.'</p><p>Hay un total de '.$numerolibros. ' libros en todo el catálogo, de los cuales, '.$qtyprestados.' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del ' . $sname . '</p><p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p></div><div class="bp-card card-body"><h5>Último acceso</h5></div>
             </div></section>';
         }
     } else {

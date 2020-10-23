@@ -23,7 +23,7 @@ $editorial = "SM";
 $anopub = "1919";
 $ejemplar = "1191";
 $ubicacion = "13";*/
-require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php'; 
+require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
@@ -33,7 +33,7 @@ if ($sessionlogged == 1) {
     }
 } else {
     echo '<body class="err404">';
-} 
+}
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         $insert = "INSERT INTO $tableMySQL(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";

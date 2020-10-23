@@ -27,7 +27,8 @@ if ($sessionlogged == 1) {
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
-        } else { echo '<section class="bp-section flex-column"><div class="row">
+        } else {
+            echo '<section class="bp-section flex-column"><div class="row">
             <div class="bp-card card-body">
             <h5><strong>' . $row["TITULO"] . '</strong>';
             echo '</h5>
@@ -36,11 +37,12 @@ if ($sessionlogged == 1) {
             <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
             <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
             <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
-            <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></div>'; 
-            if($row['DISPONIBILIDAD'] == 1){echo '
+            <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></div>';
+            if ($row['DISPONIBILIDAD'] == 1) {
+                echo '
             <div class="bp-card card-body">
             <h5><strong>Prestar libro al usuario</strong></h5>
-            <form id="form_1388" class="appnitro"  method="post" action="prestar.php?id=' .$id. '">				
+            <form id="form_1388" class="appnitro"  method="post" action="prestar.php?id=' . $id . '">				
                         <ul>
                             
                         <li id="li_1">
@@ -57,8 +59,8 @@ if ($sessionlogged == 1) {
                         <li id="li_3">
                         <label class="description" for="element_3">Fecha de devolución </label>
                         <div>';
-                        echo date("d-m-Y",strtotime($fecha_actual."+ 15 days"));
-                        echo '
+                echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days"));
+                echo '
                         </div> 
                         </li>
                         </ul>
@@ -66,9 +68,11 @@ if ($sessionlogged == 1) {
                             <input id="saveForm" class="btn btn-success" type="submit" name="submit" value="Prestar" />
                         </div>
                         </form>	
-            </div></section>';}
-            else {echo '<div class="bp-card card-body">
-                <h5><strong>Prestar libro al usuario</strong></h5>No disponible para préstamo.</div></section>';}
+            </div></section>';
+            } else {
+                echo '<div class="bp-card card-body">
+                <h5><strong>Prestar libro al usuario</strong></h5>No disponible para préstamo.</div></section>';
+            }
         }
     } else {
 

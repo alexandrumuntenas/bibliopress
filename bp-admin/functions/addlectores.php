@@ -9,7 +9,8 @@ $loggedin = $_COOKIE["loggedin"];
 $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
 $curso = $_REQUEST["element_3"];
-function generateRandomString($length = 9) {
+function generateRandomString($length = 9)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -18,7 +19,7 @@ function generateRandomString($length = 9) {
     }
     return $randomString;
 }
-$usuarioc =generateRandomString(9);
+$usuarioc = generateRandomString(9);
 $pin = rand();
 $FNAME = "$nombre $apellido";
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';

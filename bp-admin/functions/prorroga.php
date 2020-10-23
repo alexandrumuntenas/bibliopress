@@ -22,7 +22,7 @@ if ($sessionlogged == 1) {
         $query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
         $result = mysqli_query($databaseconnection, $query);
         $row = mysqli_fetch_assoc($result);
-        $sql = "UPDATE `bp_catalogo` SET `FECHADEV` = '".$prorrogafecha."' WHERE `bp_catalogo`.`ID` = ".$id;
+        $sql = "UPDATE `bp_catalogo` SET `FECHADEV` = '" . $prorrogafecha . "' WHERE `bp_catalogo`.`ID` = " . $id;
         $databaseconnection->query($sql);
 
         echo '
@@ -39,15 +39,14 @@ if ($sessionlogged == 1) {
             <div>
                 <h2 class="stitle"></h2>
             </div>
-            <div class="bp-card card-body"><h5>Se ha atrasado la devolución del libro <em>' .$row['TITULO']. '</em></h5></div>
+            <div class="bp-card card-body"><h5>Se ha atrasado la devolución del libro <em>' . $row['TITULO'] . '</em></h5></div>
                         <div class="btn-group" role="group">
                             <a class="btn btn-primary" href="/bp-admin/prestamos.php">Volver</a>
                             <input type = "button" class="btn btn-success" value = "Imprimir página" onclick = "window.print()" />
                         </div>
             
         </section>';
-    }  
-    else {
+    } else {
 
         echo '<section class="error-container">
                                 <span><span>4</span></span>
@@ -57,8 +56,8 @@ if ($sessionlogged == 1) {
                               <center>
                                 <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
                                 <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
-    }}
- else {
+    }
+} else {
     echo '<section class="error-container">
                             <span><span>4</span></span>
                             <span>0</span>

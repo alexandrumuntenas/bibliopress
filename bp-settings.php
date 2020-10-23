@@ -20,4 +20,3 @@ $tableMySQL = 'bp_catalogo';  //Nombre de la tabla en la base de datos
 
 //Parámetro Lista
 $CantidadMostrar=9;
-?>

@@ -1,5 +1,5 @@
 <html>
-<?php 
+<?php
 require '../bp-config.php';
 require '../bp-include/head.php';
 
@@ -11,7 +11,7 @@ if ($sessionlogged == 1) {
     }
 } else {
     echo '<body class="err404">';
-} 
+}
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '';
@@ -26,7 +26,7 @@ if ($sessionlogged == 1) {
                     <section class="bp-section">
                     </div>
                     ';
-        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `" .$tableMySQL. "` WHERE `DISPONIBILIDAD` = 0");
+        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `" . $tableMySQL . "` WHERE `DISPONIBILIDAD` = 0");
         $qty = mysqli_num_rows($resulta);
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
         echo '<div class="lectores">
@@ -46,8 +46,8 @@ if ($sessionlogged == 1) {
         if ($resulta->num_rows > 0) {
             //datos de cada columna
             while ($row = $resulta->fetch_assoc()) {
-        $nombre = mysqli_query($databaseconnection, "SELECT * FROM `" .$bbddusuarios. "` WHERE `USUARIO` LIKE '" .$row["PRESTADOA"]. "'");
-        $data = $nombre->fetch_assoc();
+                $nombre = mysqli_query($databaseconnection, "SELECT * FROM `" . $bbddusuarios . "` WHERE `USUARIO` LIKE '" . $row["PRESTADOA"] . "'");
+                $data = $nombre->fetch_assoc();
                 echo '<tr>
                             <td data-label="Título del libro"><br>' . $row["TITULO"] . '</td>
                             <td data-label="Fecha de devolución"><br>' . $row["FECHADEV"] . '</td>
