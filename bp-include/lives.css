@@ -49,16 +49,7 @@ a {
     }
 
     .tarjetasbusqueda{
-        border: none;
-        padding: 15px;
-        margin: 10px;
-        width: 500px;
-        border:1px solid #dfe1e5;
-        outline:none;
-        border-radius: 12PX;
-        list-style:none;
-        text-decoration: none;
-        background-color: #FFF;
+        height:auto;margin:15px;width:250px;background-color:#fff
     }
     .tarjetasbusqueda:hover{
         box-shadow: 0 1px 6px rgba(32,33,36,.28);
@@ -66,6 +57,7 @@ a {
     .livesa:hover{
         color: #000;
         text-decoration: none;
+        height:auto;margin:15px;width:250px;background-color:#fff
     }
     .buscador-ajax:hover{
         box-shadow: 0 1px 6px rgba(32,33,36,.28);
