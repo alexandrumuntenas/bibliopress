@@ -38,7 +38,8 @@ if ($logger == 0) {
                 echo '<br><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                 Añadir nuevo registro
                 </button>
-                <a href="bp-admin/functions/abies.php" class="btn btn-primary">Subir desde Abies</a>';
+                <a href="bp-admin/functions/abies.php" class="btn btn-primary">Subir desde Abies</a>
+                <a href="bp-admin/functions/imprimircat.php" class="btn btn-primary">Imprimir catálogo</a>';
             }
         }
 
