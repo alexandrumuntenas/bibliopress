@@ -39,6 +39,7 @@ if ($logger == 0) {
                 Añadir nuevo registro
                 </button>
                 <a href="bp-admin/functions/abies.php" class="btn btn-primary">Subir desde Abies</a>
+                <a href="bp-admin/functions/imprimiretqlib.php" class="btn btn-primary">Imprimir etiquetas</a>
                 <a href="bp-admin/functions/imprimircat.php" class="btn btn-primary">Imprimir catálogo</a>';
             }
         }

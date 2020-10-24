@@ -41,44 +41,14 @@ if ($sessionlogged == 1) {
                     </div><input class="btn btn-primary" style="margin-bottom:30px;" type="button" onclick="printDiv(\'imprimircatalogo\')" value="Imprimir catálogo" />
                     ';
         echo '<div id="imprimircatalogo">
-<h2>Catálogo del ' . $sname . '</h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Título del libro</th>
-                            <th>Autor</th>
-                            <th>Ejemplar</th>
-                            <th>Editorial</th>
-                            <th>Disponibilidad</th>
-                        </tr>
-                        </thead>
-                        <tbody>';
+<h2>Catálogo del ' . $sname . '</h2>';
         if ($lectorresultado->num_rows > 0) {
             //datos de cada columna
             while ($row = $resultado->fetch_assoc()) {
-                echo '<tr>
-                            <td data-label="Título del libro"><br>' . $row["TITULO"] . '</td>
-                            <td data-label="Autor"><br>' . $row["AUTOR"] . '</td>
-                            <td data-label="Ejemplar"><br>' . $row["EJEMPLAR"] . '</td>
-                            <td data-label="Editorial"><br>' . $row["EDITORIAL"] . '</td>
-                            <td data-label="Ejemplar"><br>'.$row["EJEMPLAR"].'
-                            <td data-label="Disponibilidad"><br>                    ';
-                if ($row['DISPONIBILIDAD'] == 1) {
-                    echo '✓</p>';
-                } else {
-                    echo '✗</p>';
-                }
-                echo '</tr>';
-            }
-            echo '
-                        </tbody>
-                     </table>
-                     </div></div>
-                </section>
-                ';
+                echo '<img alt="'.$row["TITULO"].'" src="/bp-include/cdgbra.php?text='.$row["ID"].'&print=true&size=40"><br>';
         }
-    } else {
-
+    }} else {
+ 
         echo '<section class="error-container">
                             <span><span>4</span></span>
                             <span>0</span>
