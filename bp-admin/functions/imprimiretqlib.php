@@ -20,7 +20,7 @@ if ($sessionlogged == 1) {
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         echo '
                     <div class="bp-header">
-                        <h2 class="bp-page-title">Imprimir Catálogo</h2>
+                        <h2 class="bp-page-title">Imprimir Códigos de Barras</h2>
                     </div>
                     </header>';
         echo '
