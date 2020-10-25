@@ -33,7 +33,12 @@ $loggedin = $_COOKIE["loggedin"];
 
         if ($sessionlogged == 1) {
             if ($sessionclass == 1) {
-                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $id . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $id . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+                if ($row['DISPONIBILIDAD'] == 1) {
+                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $id . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $id . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+                } else {
+                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $id . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $id . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+                }
+                
             } else {
                 if ($row['DISPONIBILIDAD'] == 1) {
                     echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id=' . $id . '">Solicitar</a>';
@@ -54,7 +59,7 @@ $loggedin = $_COOKIE["loggedin"];
             <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
             <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
             <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>'; ?>
-        <a class="btn btn-info" href="<?= $_SERVER["HTTP_REFERER"] ?>">
+        <a class="btn btn-info" href="/">
             < Volver</a> </div> </div> </div> <footer class="page-footer bg-primary">
                 <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress
         </a>

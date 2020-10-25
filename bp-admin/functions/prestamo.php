@@ -70,8 +70,35 @@ if ($sessionlogged == 1) {
                         </form>	
             </div></section>';
             } else {
+                $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` = '" . $row['PRESTADOA'] . "'";
+                $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
+                $fnamecheck = mysqli_fetch_assoc($fnamedata);
                 echo '<div class="bp-card card-body">
-                <h5><strong>Prestar libro al usuario</strong></h5>No disponible para préstamo.</div></section>';
+                <h5><strong>Gestionar Préstamo Activo</strong></h5>
+                <table>
+                <tbody>
+                <tr>
+                <th>
+                Usuario
+                </th>
+                <td>
+                '.$fnamecheck['FULLNAME'].'
+                </td>
+                </tr>
+                <tr>
+                <th>
+                Fecha de Devolución
+                </th>
+                <td>
+                '.$row['FECHADEV'].'
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="modal-footer">
+                            <a class="btn btn-primary" href="prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a class="btn btn-danger" style="margin-left: 10px;" href="devolver.php?id=' . $row["ID"] . '">Devolver</a>
+                        </div>
+                </section>';
             }
         }
     } else {

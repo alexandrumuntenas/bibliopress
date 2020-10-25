@@ -77,7 +77,7 @@ if ($sessionlogged == 1) {
             <div class="bp-card card-body">
                        <h5>Se ha prestado el libro <em>' . $row['TITULO'] . '</em> a <strong>' . $apellido . ', ' . $nombre . '</strong></h5></th></div>
                         <div class="btn-group" role="group">
-                            <a class="btn btn-primary" href="/">Volver</a>
+                            <a class="btn btn-primary" href="/">Volver al inicio</a>
                             <input type = "button" class="btn btn-success" value = "Imprimir página" onclick = "window.print()" />
                         </div>
             
