@@ -1,78 +1,85 @@
-<?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php")) {   
-  ?>
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Nueva instalación de Bibliopress 1.0</title>
-<link rel="icon" type="image/png" href="bibliopress.png">
-<link rel="stylesheet" type="text/css" href="view.css" media="all">
-<script type="text/javascript" src="view.js"></script>
+<?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php")) {
+?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
 
-</head>
-<body id="main_body" >
-	
-	<img id="top" src="top.png" alt="">
-	<div id="form_container">
-	
-		<h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
-		<form id="form_4248" class="appnitro"  method="post" action="step2.php">
-					<div class="form_description">
-			<h2><strong>Parece que Bibliopress ya está instalado...</h2>
-			<p>Parece que ya has instalado Bibliopress. Para volver a instalarlo, por favor, primero vacía las tablas de tu base de datos antigua y elimina el archivo bp-settings.php de tu servidor</p>
-		<div id="footer">
-		</div>
-	</div>
-	</body>
-</html>
-<?php                    
-}
-else {?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Nueva instalación de Bibliopress 1.0</title>
-<link rel="icon" type="image/png" href="bibliopress.png">
-<link rel="stylesheet" type="text/css" href="view.css" media="all">
-<script type="text/javascript" src="view.js"></script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Nueva instalación de Bibliopress 1.0</title>
+        <link rel="icon" type="image/png" href="bibliopress.png">
+        <link rel="stylesheet" type="text/css" href="view.css" media="all">
+        <script type="text/javascript" src="view.js"></script>
 
-</head>
-<body id="main_body" >
-	
-	<img id="top" src="top.png" alt="">
-	<div id="form_container">
-	
-		<h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
-		<form id="form_4248" class="appnitro"  method="post" action="step2.php">
-					<div class="form_description">
-			<h2><strong>Nueva instalación de Bibliopress 1.0</h2>
-			<p>Una nueva aplicación web para la gestión de bibliotecas escolares! Una alternativa nueva e intuitiva a Abies, Abies Web, Biblioweb, ebiblio...</p>
-</div>	
-        <?php 
-        $servername = $_POST['element_1'];
-        $username = $_POST['element_2'];
-        $password = $_POST['element_3'];
-        $dbname = $_POST['element_5'];
+    </head>
 
-        $conn= mysqli_connect($servername,$username,$password,$dbname);
+    <body id="main_body">
 
-        $usuario = mysqli_real_escape_string($conn, $_POST["element_7"]);
-        $nombre = mysqli_real_escape_string($conn, $_POST["element_8"]);
-        $apellidos = mysqli_real_escape_string($conn, $_POST["element_9"]);
-        $pin = mysqli_real_escape_string($conn, $_POST["element_10"]);
-        $fullname = "$nombre $apellidos";
+        <img id="top" src="top.png" alt="">
+        <div id="form_container">
 
-        $cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
-        $uabies = mysqli_real_escape_string($conn, $_POST["element_13"]);
-        $cabies = mysqli_real_escape_string($conn, $_POST["element_14"]);
-        echo '<p>Conexión a la BBDD: ';
-        if (!$conn) {
-            die("<span style='color:red'>Error! Conexión fallida: " . mysqli_connect_error());
-          }
-        else {echo "<span style='color:green'>OK!";};
+            <h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
+            <form id="form_4248" class="appnitro" method="post" action="step2.php">
+                <div class="form_description">
+                    <h2><strong>Parece que Bibliopress ya está instalado...</h2>
+                    <p>Parece que ya has instalado Bibliopress. Para volver a instalarlo, por favor, primero vacía las tablas de tu base de datos antigua y elimina el archivo bp-settings.php de tu servidor</p>
+                    <a href="/" class="footer button_text">Volver al inicio</a>
+                    <div id="footer">
 
-        $bpusuario = "CREATE TABLE `bp_usuarios` (
+                    </div>
+                </div>
+    </body>
+
+    </html>
+<?php
+} else { ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Nueva instalación de Bibliopress 1.0</title>
+        <link rel="icon" type="image/png" href="bibliopress.png">
+        <link rel="stylesheet" type="text/css" href="view.css" media="all">
+        <script type="text/javascript" src="view.js"></script>
+
+    </head>
+
+    <body id="main_body">
+
+        <img id="top" src="top.png" alt="">
+        <div id="form_container">
+
+            <h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
+            <form id="form_4248" class="appnitro" method="post" action="step2.php">
+                <div class="form_description">
+                    <h2><strong>Nueva instalación de Bibliopress 1.0</h2>
+                    <p>Una nueva aplicación web para la gestión de bibliotecas escolares! Una alternativa nueva e intuitiva a Abies, Abies Web, Biblioweb, ebiblio...</p>
+                </div>
+                <?php
+                $servername = $_POST['element_1'];
+                $username = $_POST['element_2'];
+                $password = $_POST['element_3'];
+                $dbname = $_POST['element_5'];
+
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                $usuario = mysqli_real_escape_string($conn, $_POST["element_7"]);
+                $nombre = mysqli_real_escape_string($conn, $_POST["element_8"]);
+                $apellidos = mysqli_real_escape_string($conn, $_POST["element_9"]);
+                $pin = mysqli_real_escape_string($conn, $_POST["element_10"]);
+                $fullname = "$nombre $apellidos";
+
+                $cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
+                $uabies = mysqli_real_escape_string($conn, $_POST["element_13"]);
+                $cabies = mysqli_real_escape_string($conn, $_POST["element_14"]);
+                echo '<p>Conexión a la BBDD: ';
+                if (!$conn) {
+                    die("<span style='color:red'>Error! Conexión fallida: " . mysqli_connect_error());
+                } else {
+                    echo "<span style='color:green'>OK!";
+                };
+
+                $bpusuario = "CREATE TABLE `bp_usuarios` (
             `USUARIO` tinytext NOT NULL,
             `FULLNAME` longtext NOT NULL,
             `NOMBRE` text NOT NULL,
@@ -84,8 +91,8 @@ else {?>
             FULLTEXT KEY `CLASE` (`CLASE`)
            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-        
-        $bpcatalogo = "CREATE TABLE `bp_catalogo` (
+
+                $bpcatalogo = "CREATE TABLE `bp_catalogo` (
             `ANOPUB` varchar(8) DEFAULT NULL,
             `AUTOR` varchar(30) DEFAULT NULL,
             `EJEMPLAR` varchar(8) NOT NULL,
@@ -106,37 +113,37 @@ else {?>
             UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
            ) ENGINE=InnoDB AUTO_INCREMENT=1623 DEFAULT CHARSET=utf8mb4";
 
-        $bpadminuser = "INSERT INTO `bp_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
-        
-        echo '</span></p>';
-        echo '<p>Creación de tabla "Usuarios": ';
-        if (!mysqli_query($conn,$bpusuario)) {
-        echo("<span style='color:red'>Error!");
-        } else {
-            echo("<span style='color: green'>OK!");
-        }
+                $bpadminuser = "INSERT INTO `bp_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
 
-        echo '</span></p>';
-        echo '<p>Creación de tabla "Catálogo": ';
-        if (!mysqli_query($conn,$bpcatalogo)) {
-        echo("<span style='color:red'>Error!");
-        } else {
-            echo("<span style='color: green'>OK!</span>");
-        }
+                echo '</span></p>';
+                echo '<p>Creación de tabla "Usuarios": ';
+                if (!mysqli_query($conn, $bpusuario)) {
+                    echo ("<span style='color:red'>Error!");
+                } else {
+                    echo ("<span style='color: green'>OK!");
+                }
 
-        echo '</span></p>';
-        echo '<p>Creación de "Usuario Administrativo" ';
-        if (!mysqli_query($conn,$bpadminuser)) {
-        echo("<span style='color:red'>Error!".mysqli_error($conn));
-        } else {
-            echo("<span style='color: green'>OK!</span>");
-        }
-        
-        echo '</span></p>';
-        echo '<p>Redireccionandote a la página principal en 25 segundos...</p><meta http-equiv="refresh" content="25;url=/" />
+                echo '</span></p>';
+                echo '<p>Creación de tabla "Catálogo": ';
+                if (!mysqli_query($conn, $bpcatalogo)) {
+                    echo ("<span style='color:red'>Error!");
+                } else {
+                    echo ("<span style='color: green'>OK!</span>");
+                }
+
+                echo '</span></p>';
+                echo '<p>Creación de "Usuario Administrativo" ';
+                if (!mysqli_query($conn, $bpadminuser)) {
+                    echo ("<span style='color:red'>Error!" . mysqli_error($conn));
+                } else {
+                    echo ("<span style='color: green'>OK!</span>");
+                }
+
+                echo '</span></p>';
+                echo '<p>Redireccionandote a la página principal en 25 segundos...</p><meta http-equiv="refresh" content="25;url=/" />
         ';
-        $ficheroconfig = fopen($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php","wb") or die("Unable to open file!");
-        $txt = "<?php
+                $ficheroconfig = fopen($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php", "wb") or die("Unable to open file!");
+                $txt = "<?php
 
         // Valores MYSQL
         \$serverMySQL = '$servername'; //Host de la base de datos
@@ -159,12 +166,13 @@ else {?>
         //Parámetro Lista
         \$CantidadMostrar=9;
         ";
-        fwrite($ficheroconfig, $txt);
-        ?>
-		<div id="footer">
-		</div>
-	</div>
-	<img id="bottom" src="bottom.png" alt="">
-	</body>
-</html>
-    <?php } ?>
+                fwrite($ficheroconfig, $txt);
+                ?>
+                <div id="footer">
+                </div>
+        </div>
+        <img id="bottom" src="bottom.png" alt="">
+    </body>
+
+    </html>
+<?php } ?>
