@@ -1,6 +1,0 @@
-                        <tr>
-                            <th></th>
-                            <th>Fecha de préstamo</th>
-                            <th>Fecha de devolución</th>
-                            <th><input type="text" id="uslibro" onkeyup="uslibro()" placeholder="Busca por nombre del usuario" title="Escribe el nombre del usuario"></th>
-                        </tr>
