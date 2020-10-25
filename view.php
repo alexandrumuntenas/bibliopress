@@ -3,7 +3,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $loggedin = $_COOKIE["loggedin"];
 if (empty($_POST['escaner'])) {
     $id = $_REQUEST['id'];
-    $query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
+    $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $id . "'";
     $result = mysqli_query($databaseconnection, $query);
     $row = mysqli_fetch_assoc($result);  ?>
 
@@ -72,7 +72,7 @@ if (empty($_POST['escaner'])) {
 <?php
 } else { 
     $id = $_POST["escaner"];
-    $query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
+    $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $id . "'";
     $result = mysqli_query($databaseconnection, $query);
     $row = mysqli_fetch_assoc($result);  
     if (mysqli_num_rows($result)==0) { 

@@ -27,7 +27,7 @@ if ($logger == 0) {
         <br>
         <br>
         <?php
-        $result = mysqli_query($databaseconnection, "SELECT * FROM $tableMySQL");
+        $result = mysqli_query($databaseconnection, "SELECT * FROM bp_catalogo");
         $qty = mysqli_num_rows($result);
         $qtya = $qty / $CantidadMostrar;
         $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
@@ -65,7 +65,7 @@ if ($logger == 0) {
                     </button>
                 </div>
                 <div class="modal-body">
-                <form id="form_1388" class="appnitro"  method="post" action="functions/add.php">				
+                <form id="form_1388" class="appnitro"  method="post" action="/bp-admin/functions/add.php">				
                 <ul>
                     
                 <li id="li_1">

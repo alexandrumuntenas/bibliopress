@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 			$data[45] = $databaseconnection->real_escape_string($data[45]);
 			$data[47] = $databaseconnection->real_escape_string($data[47]);
 			$data[49] = $databaseconnection->real_escape_string($data[49]);
-			$import = "INSERT INTO " .  $tableMySQL . " (ANOPUB,AUTOR,EJEMPLAR,EDITORIAL,CIUDAD, SIGNATURA,TIPOEJEMPLAR,TITULO,UBICACION,ISBN) values('$data[0]','$data[1]','$data[3]','$data[9]','$data[32]','$data[43]','$data[45]','$data[47]','$data[49]','$data[18]')";
+			$import = "INSERT INTO bp_catalogo (ANOPUB,AUTOR,EJEMPLAR,EDITORIAL,CIUDAD, SIGNATURA,TIPOEJEMPLAR,TITULO,UBICACION,ISBN) values('$data[0]','$data[1]','$data[3]','$data[9]','$data[32]','$data[43]','$data[45]','$data[47]','$data[49]','$data[18]')";
 			$rs = mysqli_query($databaseconnection, $import);
 		}
 	}

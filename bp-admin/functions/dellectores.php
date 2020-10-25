@@ -16,7 +16,7 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $devolucionlibros = "UPDATE FROM `$tableMySQL` WHERE ";
+        $devolucionlibros = "UPDATE FROM `bp_catalogo` WHERE ";
         $query = "DELETE FROM `$bbddusuarios` WHERE `USUARIO` = '" . $USUARIO . "' ";
         $result = mysqli_query($databaseconnection, $query);
         $err = mysqli_error($databaseconnection);

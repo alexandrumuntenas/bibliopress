@@ -26,7 +26,7 @@ if ($sessionlogged == 1) {
                     <section class="bp-section">
                     </div>
                     ';
-        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `" . $tableMySQL . "` WHERE `DISPONIBILIDAD` = 0");
+        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `bp_catalogo` WHERE `DISPONIBILIDAD` = 0");
         $qty = mysqli_num_rows($resulta);
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
         echo '<div class="lectores">

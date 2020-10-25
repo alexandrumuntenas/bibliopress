@@ -80,47 +80,44 @@
                 };
 
                 $bpusuario = "CREATE TABLE `bp_usuarios` (
-            `USUARIO` tinytext NOT NULL,
-            `FULLNAME` longtext NOT NULL,
-            `NOMBRE` text NOT NULL,
-            `APELLIDOS` text NOT NULL,
-            `CLASE` text NOT NULL,
-            `PIN` BIGINT(20) NOT NULL,
-            `PERM` int(11) NOT NULL,
-            PRIMARY KEY (`USUARIO`(255)),
-            FULLTEXT KEY `CLASE` (`CLASE`)
-           ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+                    `USUARIO` tinytext NOT NULL,
+                    `FULLNAME` longtext NOT NULL,
+                    `NOMBRE` text CHARACTER SET utf8mb4 NOT NULL,
+                    `APELLIDOS` mediumtext CHARACTER SET utf8mb4 NOT NULL,
+                    `CLASE` text CHARACTER SET utf8mb4 NOT NULL,
+                    `PIN` int(11) NOT NULL,
+                    `PERM` int(1) NOT NULL,
+                    PRIMARY KEY (`USUARIO`(64))
+                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
 
                 $bpcatalogo = "CREATE TABLE `bp_catalogo` (
-            `ANOPUB` varchar(8) DEFAULT NULL,
-            `AUTOR` varchar(30) DEFAULT NULL,
-            `EJEMPLAR` varchar(8) NOT NULL,
-            `EDITORIAL` varchar(50) DEFAULT NULL,
-            `SIGNATURA` varchar(18) DEFAULT NULL,
-            `TIPOEJEMPLAR` varchar(12) DEFAULT NULL,
-            `TITULO` varchar(80) DEFAULT NULL,
-            `UBICACION` varchar(12) DEFAULT NULL,
-            `ISBN` varchar(18) DEFAULT NULL,
-            `CIUDAD` varchar(18) DEFAULT NULL,
-            `ID` int(11) NOT NULL AUTO_INCREMENT,
-            `FECHA` date DEFAULT NULL,
-            `DESCRIPCION` longtext NOT NULL,
-            `DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
-            `PRESTADOA` varchar(25) NOT NULL,
-            `FECHADEV` date NOT NULL DEFAULT current_timestamp(),
-            PRIMARY KEY (`ID`),
-            UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
-           ) ENGINE=InnoDB AUTO_INCREMENT=1623 DEFAULT CHARSET=utf8mb4";
-
-                $bprestablecercontador = "ALTER TABLE `bp_catalogo` AUTO_INCREMENT = 1";
+                    `ANOPUB` varchar(8) DEFAULT NULL,
+                    `AUTOR` varchar(30) DEFAULT NULL,
+                    `EJEMPLAR` varchar(8) NOT NULL,
+                    `EDITORIAL` varchar(50) DEFAULT NULL,
+                    `SIGNATURA` varchar(18) DEFAULT NULL,
+                    `TIPOEJEMPLAR` varchar(12) DEFAULT NULL,
+                    `TITULO` varchar(80) DEFAULT NULL,
+                    `UBICACION` varchar(12) DEFAULT NULL,
+                    `ISBN` varchar(18) DEFAULT NULL,
+                    `CIUDAD` varchar(18) DEFAULT NULL,
+                    `ID` int(11) NOT NULL AUTO_INCREMENT,
+                    `FECHA` date DEFAULT NULL,
+                    `DESCRIPCION` longtext NOT NULL,
+                    `DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
+                    `PRESTADOA` varchar(25) NOT NULL,
+                    `FECHADEV` date DEFAULT NULL,
+                    PRIMARY KEY (`ID`),
+                    UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
+                   ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
 
                 $bpadminuser = "INSERT INTO `bp_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
 
                 echo '</span></p>';
                 echo '<p>Creación de tabla "Usuarios": ';
                 if (!mysqli_query($conn, $bpusuario)) {
-                    echo ("<span style='color:red'>Error!");
+                    echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
                 } else {
                     echo ("<span style='color: green'>OK!");
                 }
@@ -128,7 +125,7 @@
                 echo '</span></p>';
                 echo '<p>Creación de tabla "Catálogo": ';
                 if (!mysqli_query($conn, $bpcatalogo)) {
-                    echo ("<span style='color:red'>Error!");
+                    echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
                 } else {
                     echo ("<span style='color: green'>OK!</span>");
                 }
@@ -140,7 +137,6 @@
                 } else {
                     echo ("<span style='color: green'>OK!</span>");
                 }
-                mysqli_query($conn, $bprestablecercontador);
                 echo '</span></p>';
                 echo '<p>Redireccionandote a la página principal en 25 segundos...</p><meta http-equiv="refresh" content="25;url=/" />
         ';
@@ -152,7 +148,7 @@
         \$dbMySQL = '$dbname'; //Nombre de la base de datos
         \$userMySQL = '$username'; //Usuario de la base de datos
         \$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
-        \$tableMySQL = 'bp_catalogo';  //Nombre de la tabla en la base de datos
+        \bp_catalogo = 'bp_catalogo';  //Nombre de la tabla en la base de datos
         
         
         // Credenciales subida de archivos

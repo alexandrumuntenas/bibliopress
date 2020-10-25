@@ -1,14 +1,14 @@
 <?php
 require('bp-settings.php');
 $formatofecha = "Y";
-$sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, ID, DESCRIPCION, DISPONIBILIDAD, PRESTADOA, FECHADEV FROM $tableMySQL";
+$sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, ID, DESCRIPCION, DISPONIBILIDAD, PRESTADOA, FECHADEV FROM bp_catalogo";
 $resultado = $databaseconnection->query($sql);
 $bbddusuarios = "bp_usuarios";
 $lectorsql = "SELECT * FROM `$bbddusuarios`";
 $lectorresultado = $databaseconnection->query($lectorsql);
 $dformat = date($formatofecha);
 $numerolibros = mysqli_num_rows($resultado);
-$qtyprestadosql = "SELECT *  FROM " . $tableMySQL . " WHERE `DISPONIBILIDAD` = 0";
+$qtyprestadosql = "SELECT *  FROM bp_catalogo WHERE `DISPONIBILIDAD` = 0";
 $qtyprestadoquery = $databaseconnection->query($qtyprestadosql);
 $qtyprestados = mysqli_num_rows($qtyprestadoquery);
 $aq112 = mysqli_fetch_assoc($resultado);

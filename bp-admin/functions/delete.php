@@ -16,7 +16,7 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $query = "DELETE FROM $tableMySQL WHERE id=$id";
+        $query = "DELETE FROM bp_catalogo WHERE id=$id";
         $result = mysqli_query($databaseconnection, $query);
         echo '<header><div class="wrapper">';
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';

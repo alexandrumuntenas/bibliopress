@@ -26,10 +26,10 @@ if ($sessionlogged == 1) {
         $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
         $fnamecheck = mysqli_fetch_assoc($fnamedata);
         $usuariocompleto = $fnamecheck['USUARIO'];
-        $query = "SELECT * FROM `$tableMySQL` WHERE `ID` = '" . $id . "'";
+        $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $id . "'";
         $result = mysqli_query($databaseconnection, $query);
         $row = mysqli_fetch_assoc($result);
-        $comprobadorsql = "SELECT * FROM `$tableMySQL` WHERE `PRESTADOA` = '" . $usuariocompleto . "'";
+        $comprobadorsql = "SELECT * FROM `bp_catalogo` WHERE `PRESTADOA` = '" . $usuariocompleto . "'";
         $comprobadordata = mysqli_query($databaseconnection, $comprobadorsql);
         $cantidadprestada = mysqli_num_rows($comprobadordata);
 

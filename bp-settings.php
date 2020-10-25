@@ -4,9 +4,7 @@
         $serverMySQL = 'localhost'; //Host de la base de datos
         $dbMySQL = 'bibliopress'; //Nombre de la base de datos
         $userMySQL = 'root'; //Usuario de la base de datos
-        $pwdMySQL = ''; //Contraseña del usuario de la base de datos
-        $tableMySQL = 'bp_catalogo';  //Nombre de la tabla en la base de datos
-        
+        $pwdMySQL = ''; //Contraseña del usuario de la base de datos        
         
         // Credenciales subida de archivos
         
