@@ -113,6 +113,8 @@
             UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
            ) ENGINE=InnoDB AUTO_INCREMENT=1623 DEFAULT CHARSET=utf8mb4";
 
+                $bprestablecercontador = "ALTER TABLE `bp_catalogo` AUTO_INCREMENT = 1";
+
                 $bpadminuser = "INSERT INTO `bp_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
 
                 echo '</span></p>';
@@ -138,7 +140,7 @@
                 } else {
                     echo ("<span style='color: green'>OK!</span>");
                 }
-
+                mysqli_query($conn, $bprestablecercontador);
                 echo '</span></p>';
                 echo '<p>Redireccionandote a la página principal en 25 segundos...</p><meta http-equiv="refresh" content="25;url=/" />
         ';
