@@ -61,7 +61,6 @@ if ($sessionlogged == 1) {
                             <td data-label="Autor"><br>' . $row["AUTOR"] . '</td>
                             <td data-label="Ejemplar"><br>' . $row["EJEMPLAR"] . '</td>
                             <td data-label="Editorial"><br>' . $row["EDITORIAL"] . '</td>
-                            <td data-label="Ejemplar"><br>'.$row["EJEMPLAR"].'
                             <td data-label="Disponibilidad"><br>                    ';
                 if ($row['DISPONIBILIDAD'] == 1) {
                     echo '✓</p>';
