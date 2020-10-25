@@ -85,7 +85,7 @@
             `NOMBRE` text NOT NULL,
             `APELLIDOS` text NOT NULL,
             `CLASE` text NOT NULL,
-            `PIN` int(4) NOT NULL,
+            `PIN` BIGINT(20) NOT NULL,
             `PERM` int(11) NOT NULL,
             PRIMARY KEY (`USUARIO`(255)),
             FULLTEXT KEY `CLASE` (`CLASE`)

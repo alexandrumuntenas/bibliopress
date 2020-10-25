@@ -35,12 +35,21 @@ if ($logger == 0) {
         echo '<p class="badge badge-danger">' . $qtyp . ' Páginas totales</p>';
         if ($sessionlogged == 1) {
             if ($sessionclass == 1) {
-                echo '<br><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                Añadir nuevo registro
+                echo '<br>
+                
+                <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group mr-2" role="group">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">Añadir nuevo registro</button>
+                    <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/abies.php\';" />Subir desde Abies</button>
+                </div>
+                <div class="btn-group mr-2" role="group">
+                    <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/imprimiretqlib.php\';">Imprimir etiquetas</button>
+                    <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/imprimircat.php\';" />Imprimir catálogo</button>
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
+                Búsqueda por Código de Barras
                 </button>
-                <a href="bp-admin/functions/abies.php" class="btn btn-primary">Subir desde Abies</a>
-                <a href="bp-admin/functions/imprimiretqlib.php" class="btn btn-primary">Imprimir etiquetas</a>
-                <a href="bp-admin/functions/imprimircat.php" class="btn btn-primary">Imprimir catálogo</a>';
+                </div>';
             }
         }
 
@@ -110,6 +119,137 @@ if ($logger == 0) {
                 </div>
                 </div>
             </div>
+            </div>
+            </div>
+            <div class="modal fade" id="modal2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Escanear Código de Barras</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <div id="scanner-container"></div>
+                <input type="button" id="btn" value="Activar Escáner o Detener Escáner" />
+            
+                <script src="bp-include/quagga.js"></script>
+            
+                <script>
+                
+                    var _scannerIsRunning = false;
+                
+                    function startScanner() {
+                        Quagga.init({
+                            inputStream: {
+                                name: "Live",
+                                type: "LiveStream",
+                                target: document.querySelector(\'#scanner-container\'),
+                                constraints: {
+                                    width: 480,
+                                    height: 320,
+                                    facingMode: "environment"
+                                },
+                            },
+                            decoder: {
+                                readers: [
+                                    "code_128_reader",
+                                    "ean_reader",
+                                    "ean_8_reader",
+                                    "code_39_reader",
+                                    "code_39_vin_reader",
+                                    "codabar_reader",
+                                    "upc_reader",
+                                    "upc_e_reader",
+                                    "i2of5_reader"
+                                ],
+                                debug: {
+                                    showCanvas: true,
+                                    showPatches: true,
+                                    showFoundPatches: true,
+                                    showSkeleton: true,
+                                    showLabels: true,
+                                    showPatchLabels: true,
+                                    showRemainingPatchLabels: true,
+                                    boxFromPatches: {
+                                        showTransformed: true,
+                                        showTransformedBox: true,
+                                        showBB: true
+                                    }
+                                }
+                            },
+            
+                        }, function (err) {
+                            if (err) {
+                                console.log(err);
+                                return
+                            }
+            
+                            console.log("Initialization finished. Ready to start");
+                            Quagga.start();
+            
+                            // Set flag to is running
+                            _scannerIsRunning = true;
+                        });
+            
+                        Quagga.onProcessed(function (result) {
+                            var drawingCtx = Quagga.canvas.ctx.overlay,
+                            drawingCanvas = Quagga.canvas.dom.overlay;
+            
+                            if (result) {
+                                if (result.boxes) {
+                                    drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+                                    result.boxes.filter(function (box) {
+                                        return box !== result.box;
+                                    }).forEach(function (box) {
+                                        Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
+                                    });
+                                }
+            
+                                if (result.box) {
+                                    Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
+                                }
+            
+                                if (result.codeResult && result.codeResult.code) {
+                                    Quagga.ImageDebug.drawPath(result.line, { x: \'x\', y: \'y\' }, drawingCtx, { color: \'red\', lineWidth: 3 });
+                                }
+                            }
+                        });
+            
+            
+                        Quagga.onDetected(function (result) {
+                            console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
+                            document.getElementById(\'escaner\').value=result.codeResult.code ; 
+                            var audio = new Audio(\'bp-include/barcode.wav\');
+                            audio.play();
+                        });
+                    }
+                    
+                    
+                    
+                    // Start/stop scanner
+                    document.getElementById("btn").addEventListener("click", function () {
+                        if (_scannerIsRunning) {
+                            Quagga.stop();
+                        } else {
+                            startScanner();
+                        }
+                    }, false);
+                </script>
+
+                <br>
+                <br>
+                <form method="POST" action="view.php">
+                <input id="escaner" name="escaner" class="element text medium" type="text" maxlength="255" value=""/> 
+                <button type="submit" class="btn btn-primary">Ver</button>
+                </form>
+                </div>
+                <div class="modal-footer">
+
+                </form>
+                </div>
+                </div>
             </div>
             </div>';
         ?>
