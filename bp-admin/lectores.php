@@ -67,7 +67,7 @@ if ($sessionlogged == 1) {
                     </div>
                     </div>
                     </div>';
-        $resulta = mysqli_query($databaseconnection, "SELECT * FROM $bbddusuarios");
+        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios`");
         $qty = mysqli_num_rows($resulta);
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
         echo '<div class="lectores">

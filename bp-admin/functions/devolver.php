@@ -25,7 +25,7 @@ if ($sessionlogged == 1) {
         $status = "";
         $id = $_REQUEST['id'];
 
-        $update = "UPDATE bp_catalogo set DISPONIBILIDAD='1', PRESTADOA='' where id='" . $id . "'";
+        $update = "UPDATE `bp_catalogo` set DISPONIBILIDAD='1', PRESTADOA='' where id='" . $id . "'";
         mysqli_query($databaseconnection, $update);
         echo mysqli_error($databaseconnection);
         $status = "<div class='bp-card-info'><p class='btn btn-success'>Se ha devuelto el libro con identificador $id</p><br><br><a class='btn btn-link' href='/bp-admin/prestamos.php'>Volver al panel</a></div>";

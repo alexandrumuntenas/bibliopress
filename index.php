@@ -27,7 +27,7 @@ if ($logger == 0) {
         <br>
         <br>
         <?php
-        $result = mysqli_query($databaseconnection, "SELECT * FROM bp_catalogo");
+        $result = mysqli_query($databaseconnection, "SELECT * FROM `bp_catalogo`");
         $qty = mysqli_num_rows($result);
         $qtya = $qty / $CantidadMostrar;
         $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);

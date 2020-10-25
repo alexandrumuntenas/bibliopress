@@ -34,7 +34,7 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $insert = "INSERT INTO $bbddusuarios (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin')";
+        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin')";
         $databaseconnection->query($insert);
         echo '
         <header>

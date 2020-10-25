@@ -46,7 +46,7 @@ if ($sessionlogged == 1) {
         if ($resulta->num_rows > 0) {
             //datos de cada columna
             while ($row = $resulta->fetch_assoc()) {
-                $nombre = mysqli_query($databaseconnection, "SELECT * FROM `" . $bbddusuarios . "` WHERE `USUARIO` LIKE '" . $row["PRESTADOA"] . "'");
+                $nombre = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $row["PRESTADOA"] . "'");
                 $data = $nombre->fetch_assoc();
                 echo '<tr>
                             <td data-label="Título del libro"><br>' . $row["TITULO"] . '</td>

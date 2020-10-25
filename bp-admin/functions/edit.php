@@ -34,7 +34,7 @@ if ($sessionlogged == 1) {
             $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["isbn"]);
             $DESCRIPCION = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
 
-            $update = "UPDATE bp_catalogo set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "', DESCRIPCION='" . $DESCRIPCION . "' where id='" . $id . "'";
+            $update = "UPDATE `bp_catalogo` set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "', DESCRIPCION='" . $DESCRIPCION . "' where id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
             $status = "<div class='bp-card-info'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
