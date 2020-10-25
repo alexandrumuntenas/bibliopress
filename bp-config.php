@@ -12,8 +12,8 @@ $qtyprestadosql = "SELECT *  FROM " . $tableMySQL . " WHERE `DISPONIBILIDAD` = 0
 $qtyprestadoquery = $databaseconnection->query($qtyprestadosql);
 $qtyprestados = mysqli_num_rows($qtyprestadoquery);
 $aq112 = mysqli_fetch_assoc($resultado);
-//ini_set('display_errors', 0);
-//ini_set('display_startup_errors', 0);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 $sessionlogged = $_COOKIE['loggedin'];
 $sessionclass = $_COOKIE['perm'];
 $sessionus = $_COOKIE['usuario'];
