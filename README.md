@@ -48,7 +48,7 @@ Estas son las funciones que incluye e incluirá Bibliopress
 - [ ] Sistema de notificación
 - [ ] Sistema de creación de etiqueta de cada estudiante
 - [ ] Sistema de impresión de etiquetas de cada libro
-- [ ] Integración de uso de la Web Cam para escanear Códigos de Barras
-- [ ] Integración con Lector de Códigos de Barras
+- [x] Integración de uso de la Web Cam para escanear Códigos de Barras
+- [x] Integración con Lector de Códigos de Barras
 
 Proyecto realizado por duoestudios
