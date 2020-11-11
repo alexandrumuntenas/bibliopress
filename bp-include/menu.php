@@ -28,7 +28,7 @@ if ($sessionlog == 1) {
 };
 echo '
         <li class="nav-item">
-            <a class="nav-link" href="/search.php"><i class="fas fa-search"></i> Búsqueda</a>
+            <a class="nav-link" data-toggle="modal" data-target="#searchmodal" data-backdrop="false"><i class="fas fa-search"></i> Búsqueda</a>
         </li>
         
 ';
@@ -44,10 +44,6 @@ if ($sessionlog == 1) {
       </button>';
 };
 echo '
-    <!-- Button trigger modal -->
-
-
-<!-- Modal -->
 <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -80,6 +76,23 @@ echo '
       </div>
       </div>
     </div></form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Búsqueda -->
+<div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+      <input class="buscador-ajax" type="text" id="search" placeholder="Introduce el título del libro a buscar" />
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="row"></div>
+      <div class"row"><div id="display"></div></div>
       </div>
     </div>
   </div>

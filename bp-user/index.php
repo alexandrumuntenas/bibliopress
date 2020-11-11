@@ -3,7 +3,7 @@
 require '../bp-config.php';
 $query = "SELECT * FROM `bp_catalogo` WHERE `PRESTADOA` = '" . $sessionus . "' LIMIT 5";
 $result = mysqli_query($databaseconnection, $query);
-$querylector = "SELECT *  FROM `bp_usuarios` WHERE `USUARIO` LIKE '".$sessionus."'";
+$querylector = "SELECT *  FROM `bp_usuarios` WHERE `USUARIO` LIKE '" . $sessionus . "'";
 $qlectorre = mysqli_query($databaseconnection, $querylector);
 $qlector = mysqli_fetch_assoc($qlectorre);
 ?>
@@ -101,7 +101,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
             <div class="bp-card card-body">
             <h5>Tus Últimas Lecturas</h5><p>No te emociones, seguimos trabajando en ello</p>
             </div>
-            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del ' . $sname . '</p><p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p></div><div class="bp-card card-body"><h5>Este es tu código de barras para iniciar sesión</h5><img src="/bp-include/cdgbra.php?codetype=Code39&text='.$qlector['PIN'].'"/></div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del ' . $sname . '</p><p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p></div><div class="bp-card card-body"><h5>Este es tu código de barras para iniciar sesión</h5><img src="/bp-include/cdgbra.php?codetype=Code39&text=' . $qlector['PIN'] . '"/></div>
             </div></section>';
         }
     } else {
