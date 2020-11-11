@@ -148,8 +148,6 @@
         \$dbMySQL = '$dbname'; //Nombre de la base de datos
         \$userMySQL = '$username'; //Usuario de la base de datos
         \$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
-        \bp_catalogo = 'bp_catalogo';  //Nombre de la tabla en la base de datos
-        
         
         // Credenciales subida de archivos
         
