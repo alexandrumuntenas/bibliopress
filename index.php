@@ -274,11 +274,58 @@ if ($logger == 0) {
                 while ($row = $consulta->fetch_row()) {
                     $long = 250;
                     $desc = substr($row[12], 0, $long);
+                    echo '
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="libro'.$row[10].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5><strong>' . $row[6] . '</strong> (' . $row[1] . ')</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          <p>Sinópsis </p>
+                          '.$row[12].'
+                            <br>
+                            <br>
+                            <p><strong>ISBN</strong> <em>' . $row[8] . '</em></p>
+                            <p><strong>Ubicación</strong> <em>' . $row[7] . '</p></em>
+                            <p><strong>Ejemplar</strong> <em>' . $row[2] . ' </em></p>
+                            <p><strong>Año de Publicación</strong> <em>' . $row[0] . '</em></p>
+                            <p><strong>Editorial</strong> <em>' . $row[3] . '</em></p>
+                          </div>
+                          <div class="modal-footer">
+                          ';
+                          if ($sessionlogged == 1) {
+                            if ($sessionclass == 1) {
+                                if ($row['DISPONIBILIDAD'] == 1) {
+                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id='.$row[10].'">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id='.$row[10].'">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+                                } else {
+                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id='.$row[10].'">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id='.$row[10].'">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+                                }
+                                
+                            } else {
+                                if ($row['DISPONIBILIDAD'] == 1) {
+                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id='.$row[10].'">Solicitar</a>';
+                                } else {
+                                    echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id='.$row[10].'">Avísame cuando esté disponible</a>';
+                                }
+                                echo '';
+                            }
+                        } echo '
+                          </div>
+                        </div>
+                      </div>
+                    </div>';
+
                     echo '<div class="bp-card card-body">
                     <h5><strong>' . $row[6] . '</strong>                    </h5>';
                     echo '
                     <p><em>' . $row[1] . '</em></p>
-                    <p>' . $desc . '</p>';
+                    <p>' . $desc . '...</p>';
                     if ($row[13] == 1) {
                         echo '<p class="badge badge-success">Disponibilidad ✓</p><br>';
                     } else {
@@ -286,12 +333,14 @@ if ($logger == 0) {
                     }
                     if ($sessionlogged == 1) {
                         if ($sessionclass == 1) {
-                            echo '<a class="btn btn-info" href="view.php?id=' . $row[10] . '">Ver más</a><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
+                            echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">Ver más</button><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
                         } else {
                             echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';
                         }
                     } else {
-                        echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';
+                        echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">
+                        Ver más
+                      </button>';
                     }
                     echo '</div>';
                 };
