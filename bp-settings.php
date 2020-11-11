@@ -8,11 +8,11 @@
         
         // Credenciales subida de archivos
         
-        $userUpload = 'a3media'; //Usuario de carga
-        $pwdUpload = '4312'; //Contraseña del usuario de carga
+        $userUpload = 'bibliopress'; //Usuario de carga
+        $pwdUpload = 'root'; //Contraseña del usuario de carga
         
         // Otros parametros
-        $sname = 'IES Montevives'; //Nombre de la biblioteca/institución
+        $sname = 'Centro'; //Nombre de la biblioteca/institución
         
         $databaseconnection = mysqli_connect($serverMySQL,$userMySQL,$pwdMySQL,$dbMySQL);
         
