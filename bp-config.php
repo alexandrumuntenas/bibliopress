@@ -20,5 +20,5 @@ $fecha_actual = date('m/d/Y');
 $timestamp = date("Y-m-d", strtotime($fecha_actual . "+ 15 days"));
 $prorrogafecha = date("Y-m-d", strtotime($aq112['FECHADEV'] . "+ 15 days"));
 echo mysqli_error($databaseconnection);
-ini_set('display_errors', 1);
-error_reporting(1);
+ini_set('display_errors', 0);
+error_reporting(0);
