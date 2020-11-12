@@ -290,7 +290,7 @@ if ($logger == 0) {
                 $desc = substr($row[12], 0, $long);
                 echo '
                     <div class="modal fade" id="prestamo' . $row[10] . '" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                         <div class="modal-header">
                             <h5><strong>Realizar préstamo de ' . $row[6] . '</strong> (' . $row[1] . ')</h5>
@@ -299,30 +299,27 @@ if ($logger == 0) {
                             </button>
                         </div>
                         <div class="modal-body">';
-                        $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $row[10] . "'";
-                        $result = mysqli_query($databaseconnection, $query);
-                        $row = mysqli_fetch_assoc($result);
-                        $loggedin = $_COOKIE["loggedin"];
-                        $fecha_actual = date('m/d/Y');
-                                require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
-                                $status = "";
-                                if (isset($_POST['new']) && $_POST['new'] == 1) {
-                                } else {
-                                    echo '<section class="bp-section flex-column"><div class="row">
-                                    <div class="bp-card card-body">
+                $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $row[10] . "'";
+                $result = mysqli_query($databaseconnection, $query);
+                $row = mysqli_fetch_assoc($result);
+                $loggedin = $_COOKIE["loggedin"];
+                $fecha_actual = date('m/d/Y');
+                $status = "";
+                if (isset($_POST['new']) && $_POST['new'] == 1) {
+                } else {
+                    echo '
                                     <h5><strong>' . $row["TITULO"] . '</strong>';
-                                    echo '</h5>
+                    echo '</h5>
                                     <p><em>' . $row["AUTOR"] . '</em></p>
                                     <p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p>
                                     <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
                                     <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
                                     <p><strong>Año de Publicación</strong> <em>' . $row["ANOPUB"] . '</em></p>
-                                    <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p></div>';
-                                    if ($row['DISPONIBILIDAD'] == 1) {
-                                        echo '
-                                    <div class="bp-card card-body">
+                                    <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>';
+                    if ($row['DISPONIBILIDAD'] == 1) {
+                        echo '
                                     <h5><strong>Prestar libro al usuario</strong></h5>
-                                    <form id="form_1388" class="appnitro"  method="post" action="prestar.php?id=' . $id . '">				
+                                    <form id="form_1388" class="appnitro"  method="post" action="prestar.php?id=' . $row['ID'] . '">				
                                                 <ul>
                                                     
                                                 <li id="li_1">
@@ -339,8 +336,8 @@ if ($logger == 0) {
                                                 <li id="li_3">
                                                 <label class="description" for="element_3">Fecha de devolución </label>
                                                 <div>';
-                                        echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days"));
-                                        echo '
+                        echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days"));
+                        echo '
                                                 </div> 
                                                 </li>
                                                 </ul>
@@ -348,13 +345,12 @@ if ($logger == 0) {
                                                     <input id="saveForm" class="btn btn-success" type="submit" name="submit" value="Prestar" />
                                                 </div>
                                                 </form>	
-                                    </div></section>';
-                                    } else {
-                                        $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` = '" . $row['PRESTADOA'] . "'";
-                                        $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
-                                        $fnamecheck = mysqli_fetch_assoc($fnamedata);
-                                        echo '<div class="bp-card card-body">
-                                        <h5><strong>Gestionar Préstamo Activo</strong></h5>
+                                    ';
+                    } else {
+                        $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` = '" . $row['PRESTADOA'] . "'";
+                        $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
+                        $fnamecheck = mysqli_fetch_assoc($fnamedata);
+                        echo '                                        <h5><strong>Gestionar Préstamo Activo</strong></h5>
                                         <table>
                                         <tbody>
                                         <tr>
@@ -362,7 +358,7 @@ if ($logger == 0) {
                                         Usuario
                                         </th>
                                         <td>
-                                        '.$fnamecheck['FULLNAME'].'
+                                        ' . $fnamecheck['FULLNAME'] . '
                                         </td>
                                         </tr>
                                         <tr>
@@ -370,44 +366,37 @@ if ($logger == 0) {
                                         Fecha de Devolución
                                         </th>
                                         <td>
-                                        '.$row['FECHADEV'].'
+                                        ' . $row['FECHADEV'] . '
                                         </td>
                                         </tr>
                                         </tbody>
-                                        </table>
-                                        <div class="modal-footer">
-                                                    <a class="btn btn-primary" href="prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a class="btn btn-danger" style="margin-left: 10px;" href="devolver.php?id=' . $row["ID"] . '">Devolver</a>
-                                                </div>
-                                        </section>';
-                                    }}
-                        echo '
-                        <div>
-                        </div>
-                        </div>
-                        </div>
+                                        </table>                                       ';
+                    }
+                }
+                if ($row['DISPONIBILIDAD'] == 0) {
+                    echo '
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                        </div>
-                        </div>
-                    </div>
+                        <a class="btn btn-primary" href="prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a class="btn btn-danger" style="margin-left: 10px;" href="devolver.php?id=' . $row["ID"] . '">Devolver</a>
+                        </div>';
+                }
+                echo ' </div>
                     </div>
                     <!-- Modal Viewer -->
-                    <div class="modal fade" id="libro' . $row[10] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="libro' . $row['ID'] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-scrollable">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5><strong>' . $row[6] . '</strong> (' . $row[1] . ')</h5>
+                            <h5><strong>' . $row['TITULO'] . '</strong> (' . $row['AUTOR'] . ')</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
                           <p><strong>Sinópsis </strong></p>
-                          ' . $row[12] . '
+                          ' . $row['DESCRIPCION'] . '
                             <br>
                             <br>
-                            <p><em>' . $row["AUTOR"] . '</em></p>
+                            <p><strong>Autor</strong><em>' . $row["AUTOR"] . '</em></p>
                             <p><strong>ISBN</strong> <em>' . $row["ISBN"] . '</em></p>
                             <p><strong>Ubicación</strong> <em>' . $row["UBICACION"] . '</p></em>
                             <p><strong>Ejemplar</strong> <em>' . $row["EJEMPLAR"] . ' </em></p>
@@ -419,15 +408,15 @@ if ($logger == 0) {
                 if ($sessionlogged == 1) {
                     if ($sessionclass == 1) {
                         if ($row['DISPONIBILIDAD'] == 1) {
-                            echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+                            echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row['ID'] . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row['ID'] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row['ID'] . '">Eliminar</a>';
                         } else {
-                            echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $id . '">Eliminar</a>';
+                            echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row['ID'] . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row['ID'] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row['ID'] . '">Eliminar</a>';
                         }
                     } else {
                         if ($row['DISPONIBILIDAD'] == 1) {
-                            echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id=' . $row[10] . '">Solicitar</a>';
+                            echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id=' . $row['ID'] . '">Solicitar</a>';
                         } else {
-                            echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id=' . $row[10] . '">Avísame cuando esté disponible</a>';
+                            echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id=' . $row['ID'] . '">Avísame cuando esté disponible</a>';
                         }
                         echo '';
                     }
