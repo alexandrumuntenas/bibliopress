@@ -32,17 +32,17 @@ echo '
         </li>
         
 ';
-
+if ($sessionlog == 1) {
+  echo '<a class="nav-link" href="/bp-user/"><i class="fas fa-user"></i> Área Personal de ' . $sessionus . '</a>';
+};
 echo '
         </ul>
     </div>';
-if ($sessionlog == 1) {
-    echo '<a class="nav-link" href="/bp-user/"><i class="fas fa-user"></i> Área Personal de ' . $sessionus . '</a>';
-} else {
-    echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
-        Acceder
-      </button>';
-};
+if ($sessionlog == 0) {
+      echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
+          Acceder
+        </button>';
+  };
 echo '
 <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
