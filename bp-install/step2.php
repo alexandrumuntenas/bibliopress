@@ -110,6 +110,14 @@
                     UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
                    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
 
+                $bpsesiones = "CREATE TABLE `bp_sesiones` (
+                    `PHPSESSID` text NOT NULL,
+                    `USUARIO` text NOT NULL,
+                    `LOGGEDIN` text NOT NULL,
+                    `PERM` int(11) NOT NULL,
+                    UNIQUE KEY `PHPSESSID` (`PHPSESSID`) USING HASH
+                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+
                 $bpadminuser = "INSERT INTO `bp_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
 
                 echo '</span></p>';
@@ -123,6 +131,13 @@
                 echo '</span></p>';
                 echo '<p>Creación de tabla "Catálogo": ';
                 if (!mysqli_query($conn, $bpcatalogo)) {
+                    echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
+                } else {
+                    echo ("<span style='color: green'>OK!</span>");
+                }
+                echo '</span></p>';
+                echo '<p>Creación de tabla "Sesiones": ';
+                if (!mysqli_query($conn, $bpsesiones)) {
                     echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
                 } else {
                     echo ("<span style='color: green'>OK!</span>");
