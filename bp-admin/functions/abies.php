@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html>
 <?php
-session_start();
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 
-$_SESSION['ID'] = '';
-if (isset($_POST['pwd_submit'])) {
-
-	$username = strip_tags($_POST['log']);
-	$password = strip_tags($_POST['pwd']);
-	$result = ($username == $userUpload) && ($password == $pwdUpload);
-
-	if ($result) {
-		$_SESSION['ID'] = 'ok';
-	} else {
-		$_SESSION['ID'] = 'failed';
-	}
+if ($sessionlogged == 1) {
+    if ($sessionclass == 1) {
+        echo '<body>';
+    } else {
+        echo '<body class="err404">';
+    }
+} else {
+    echo '<body class="err404">';
 }
-
+if ($sessionlogged == 1) {
+    if ($sessionclass == 1) {
+		
 if (isset($_POST['submit'])) {
 	if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
 	}
@@ -48,33 +45,30 @@ if (isset($_POST['submit'])) {
 	echo "<div class='bp-card-info'><p>Se han procesado <b>$fila ejemplares</b><br /></p>\n<p class='btn btn-success'>Importaci&oacute;n terminada</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a>";
 } else {
 
-	if (isset($_SESSION['ID'])) {
-		$var_session = $_SESSION['ID'];
-	} else {
-		$var_session = "";
-	}
+	echo "<div class='bp-card-info'><form enctype='multipart/form-data' action='abies.php' method='post'>Nombre de archivo *.TXT a subir:<br /><br />\n<input size='50' type='file' name='filename'><br /><br />\n<input type='submit' name='submit' value='Subir'></form></div>";
 
-	if ($var_session == 'ok') {
-		echo "<div class='bp-card-info'><form enctype='multipart/form-data' action='abies.php' method='post'>Nombre de archivo *.TXT a subir:<br /><br />\n<input size='50' type='file' name='filename'><br /><br />\n<input type='submit' name='submit' value='Subir'></form></div>";
-	} else {
-		echo "<div class='bp-card-info'><form name='loginform' id='loginform' method='post' action='abies.php'>
-<p><label>Usuario<br /><input type='text' name='log' id='user_login' class='input' value='' size='20' /></label></p>
-<p><label>Contrase&ntilde;a<br /><input type='password' name='pwd' id='user_pass' class='input' value='' size='20'  /></label></p>
-<p class='submit'><input class='btn btn-primary' type='submit' name='pwd_submit' id='pwd_submit' value='Iniciar sesi&oacute;n' /></p></form></div>";
-		if ($var_session == "failed") {
-			echo "<p style=' color: red;'>Error en usuario o clave</p>";
-		}
-	}
 }
-?>
-</td>
+    } else {
 
-</tr>
-</table>
-</td>
-</tr>
-</table>
-
+        echo '<section class="error-container">
+                                <span><span>4</span></span>
+                                <span>0</span>
+                                <span><span>4</span></span>
+                              </section>
+                              <center>
+                                <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+                                <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
+    }
+} else {
+    echo '<section class="error-container">
+                            <span><span>4</span></span>
+                            <span>0</span>
+                            <span><span>4</span></span>
+                          </section>
+                          <center>
+                          <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+                          <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
+} ?>
 </body>
 
 </html>
