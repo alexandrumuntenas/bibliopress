@@ -43,10 +43,10 @@ if ($logger == 0) {
                     <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/abies.php\';" />Subir desde Abies</button>
                 </div>
                 <div class="btn-group mr-2" role="group">
-                    <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/imprimiretqlib.php\';">Imprimir etiquetas</button>
+                    <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/imprimiretqlib.php\';" disabled>Imprimir etiquetas</button>
                     <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/imprimircat.php\';" />Imprimir catálogo</button>
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2" disabled>
                 Búsqueda por Código de Barras
                 </button>
                 </div>';
