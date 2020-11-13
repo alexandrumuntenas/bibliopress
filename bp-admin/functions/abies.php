@@ -6,7 +6,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 
 $_SESSION['ID'] = '';
-// Check user and password
 if (isset($_POST['pwd_submit'])) {
 
 	$username = strip_tags($_POST['log']);
@@ -20,20 +19,15 @@ if (isset($_POST['pwd_submit'])) {
 	}
 }
 
-//Upload File
 if (isset($_POST['submit'])) {
 	if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
 	}
-	//Import uploaded file to Database
 	ini_set("auto_detect_line_endings", true);
-	//$query = "SET CHARACTER SET utf8";
-	//$rs = mysql_query($query);
 	$handle = fopen($_FILES['filename']['tmp_name'], "r");
 	$fila = -5;
 	while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
 		$fila++;
 		if ($fila > 0) {
-			// Eliminar caracteres especiales que hacen fallar la consulta INSERT en MySQL        	
 			$data[0] = $databaseconnection->real_escape_string($data[0]);
 			$data[1] = $databaseconnection->real_escape_string($data[1]);
 			$data[3] = $databaseconnection->real_escape_string($data[3]);
