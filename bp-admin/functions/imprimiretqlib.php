@@ -45,10 +45,11 @@ if ($sessionlogged == 1) {
         if ($lectorresultado->num_rows > 0) {
             //datos de cada columna
             while ($row = $resultado->fetch_assoc()) {
-                echo '<img alt="'.$row["TITULO"].'" src="/bp-include/cdgbra.php?text='.$row["ID"].'&print=true&size=40"><br>';
+                echo '<img alt="' . $row["TITULO"] . '" src="/bp-include/cdgbra.php?text=' . $row["ID"] . '&print=true&size=40"><br>';
+            }
         }
-    }} else {
- 
+    } else {
+
         echo '<section class="error-container">
                             <span><span>4</span></span>
                             <span>0</span>

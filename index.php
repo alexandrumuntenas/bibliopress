@@ -277,7 +277,7 @@ if ($logger == 0) {
                     echo '
                     
                     <!-- Modal -->
-                    <div class="modal fade" id="libro'.$row[10].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="libro' . $row[10] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -288,7 +288,7 @@ if ($logger == 0) {
                           </div>
                           <div class="modal-body">
                           <p>Sinópsis </p>
-                          '.$row[12].'
+                          ' . $row[12] . '
                             <br>
                             <br>
                             <p><strong>ISBN</strong> <em>' . $row[8] . '</em></p>
@@ -299,23 +299,23 @@ if ($logger == 0) {
                           </div>
                           <div class="modal-footer">
                           ';
-                          if ($sessionlogged == 1) {
-                            if ($sessionclass == 1) {
-                                if ($row[13] == 1) {
-                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id='.$row[10].'">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id='.$row[10].'">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
-                                } else {
-                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id='.$row[10].'">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id='.$row[10].'">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
-                                }
-                                
+                    if ($sessionlogged == 1) {
+                        if ($sessionclass == 1) {
+                            if ($row[13] == 1) {
+                                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
                             } else {
-                                if ($row[13] == 1) {
-                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id='.$row[10].'">Solicitar</a>';
-                                } else {
-                                    echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id='.$row[10].'">Avísame cuando esté disponible</a>';
-                                }
-                                echo '';
+                                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
                             }
-                        } echo '
+                        } else {
+                            if ($row[13] == 1) {
+                                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id=' . $row[10] . '">Solicitar</a>';
+                            } else {
+                                echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id=' . $row[10] . '">Avísame cuando esté disponible</a>';
+                            }
+                            echo '';
+                        }
+                    }
+                    echo '
                           </div>
                         </div>
                       </div>

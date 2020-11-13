@@ -82,7 +82,7 @@ if ($sessionlogged == 1) {
                 Usuario
                 </th>
                 <td>
-                '.$fnamecheck['FULLNAME'].'
+                ' . $fnamecheck['FULLNAME'] . '
                 </td>
                 </tr>
                 <tr>
@@ -90,7 +90,7 @@ if ($sessionlogged == 1) {
                 Fecha de Devolución
                 </th>
                 <td>
-                '.$row['FECHADEV'].'
+                ' . $row['FECHADEV'] . '
                 </td>
                 </tr>
                 </tbody>

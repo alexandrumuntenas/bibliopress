@@ -8,21 +8,21 @@ echo '<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">';
 if ($sessionlog == 1) {
-    if ($sessionclass == 1) {
-        echo '<li class="nav-item">
+  if ($sessionclass == 1) {
+    echo '<li class="nav-item">
                 <a class="nav-link" href="/"><i class="fas fa-star"></i> Catálogo</span></a>
             </li><li class="nav-item">
             <a class="nav-link" href="/bp-admin/lectores.php"><i class="fas fa-book-reader"></i> Lectores</span></a>
         </li><li class="nav-item">
         <a class="nav-link" href="/bp-admin/prestamos.php"><i class="fas fa-people-carry"></i> Préstamos</span></a>
     </li>';
-    } else {
-        echo '<li class="nav-item">
+  } else {
+    echo '<li class="nav-item">
             <a class="nav-link" href="/"><i class="fas fa-star"></i> Inicio</span></a>
         </li>';
-    }
+  }
 } else {
-    echo '        <li class="nav-item">
+  echo '        <li class="nav-item">
             <a class="nav-link" href="/"><i class="fas fa-star"></i> Inicio</span></a>
         </li>';
 };
@@ -39,10 +39,10 @@ echo '
         </ul>
     </div>';
 if ($sessionlog == 0) {
-      echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
+  echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
           Acceder
         </button>';
-  };
+};
 echo '
 <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
