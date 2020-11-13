@@ -117,25 +117,7 @@
 					</li>
 					<li class="section_break">
 						<h3>
-							<h3>Configuración del Cargador de Abies</h3>
-						</h3>
-						<p></p>
-					</li>
-					<li id="li_12">
-						<label class="description" for="element_13">Usuario del cargador de Abies </label>
-						<div>
-							<input id="element_13" name="element_13" class="element text large" type="text" maxlength="255" value="" />
-						</div>
-					</li>
-					<li id="li_12">
-						<label class="description" for="element_14">Contraseña del cargador de Abies </label>
-						<div>
-							<input id="element_14" name="element_14" class="element text large" type="text" maxlength="255" value="" />
-						</div>
-					</li>
-					<li class="section_break">
-						<h3>
-							<h3>Últimas configuraciones</h3>
+							<h3>Configuración Web</h3>
 						</h3>
 						<p></p>
 					</li>
@@ -143,6 +125,12 @@
 						<label class="description" for="element_12">Nombre del Centro (Sin incluir 'Biblioteca del') </label>
 						<div>
 							<input id="element_12" name="element_12" class="element text large" type="text" maxlength="255" value="" />
+						</div>
+					</li>
+					<li id="li_12">
+						<label class="description" for="element_13">Enlace del Sitio Web</label>
+						<div>
+							<input id="element_13" name="element_13" class="element text large" type="text" maxlength="255" value="" />
 						</div>
 					</li>
 

@@ -68,10 +68,8 @@
                 $apellidos = mysqli_real_escape_string($conn, $_POST["element_9"]);
                 $pin = mysqli_real_escape_string($conn, $_POST["element_10"]);
                 $fullname = "$nombre $apellidos";
-
+                $sitelinkfrompost = mysqli_real_escape_string($conn, $_POST['element_13']);
                 $cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
-                $uabies = mysqli_real_escape_string($conn, $_POST["element_13"]);
-                $cabies = mysqli_real_escape_string($conn, $_POST["element_14"]);
                 echo '<p>Conexión a la BBDD: ';
                 if (!$conn) {
                     die("<span style='color:red'>Error! Conexión fallida: " . mysqli_connect_error());
@@ -138,7 +136,7 @@
                     echo ("<span style='color: green'>OK!</span>");
                 }
                 echo '</span></p>';
-                echo '<p>Redireccionandote a la página principal en 25 segundos...</p><meta http-equiv="refresh" content="25;url=/" />
+                echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="5;url=/" />
         ';
                 $ficheroconfig = fopen($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php", "wb") or die("Unable to open file!");
                 $txt = "<?php
@@ -149,14 +147,10 @@
         \$userMySQL = '$username'; //Usuario de la base de datos
         \$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
         
-        // Credenciales subida de archivos
-        
-        \$userUpload = '$uabies'; //Usuario de carga
-        \$pwdUpload = '$cabies'; //Contraseña del usuario de carga
-        
         // Otros parametros
         \$sname = '$cname'; //Nombre de la biblioteca/institución
-        
+        \$sitelink = '$sitelinkfrompost'; //Enlace del sitio web para cumplir con GDPR
+
         \$databaseconnection = mysqli_connect(\$serverMySQL,\$userMySQL,\$pwdMySQL,\$dbMySQL);
         
         //Parámetro Lista

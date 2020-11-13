@@ -6,11 +6,6 @@ $dbMySQL = 'bibliopress'; //Nombre de la base de datos
 $userMySQL = 'root'; //Usuario de la base de datos
 $pwdMySQL = ''; //Contraseña del usuario de la base de datos        
 
-// Credenciales subida de archivos
-
-$userUpload = 'bibliopress'; //Usuario de carga
-$pwdUpload = 'root'; //Contraseña del usuario de carga
-
 // Otros parametros
 $sname = 'IES Montevives'; //Nombre de la biblioteca/institución
 $sitelink = 'https://localhost.com';
