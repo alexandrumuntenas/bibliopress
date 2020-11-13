@@ -55,10 +55,11 @@ if ($sessionlogged == 1) {
                             <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
                         </tr>';
             }
-            echo '
+        }
+        echo '
                         </tbody>
                      </table>
-                     </div>
+                </div></div>
                 </section><script>function ttlibro() {
                     var input, filter, table, tr, td, i, txtValue;
                     input = document.getElementById("titulolibro");
@@ -98,7 +99,6 @@ if ($sessionlogged == 1) {
                 }
                 
                 </script>';
-        }
     } else {
 
         echo '<section class="error-container">
