@@ -27,9 +27,9 @@ if ($sessionlogged == 1) {
             $fecha = date("Y-m-d H:i:s"); 
             $nombre = $_REQUEST["nombre"];
             $apellidos = $_REQUEST["APELLIDOS"];
-            $curso = $_REQUEST["CLASE"];
+            $grupo = $_REQUEST["GRUPO"];
 
-            $update = "UPDATE `$bbddusuarios` set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $curso . "' where USUARIO='" . $USUARIO . "'";
+            $update = "UPDATE `$bbddusuarios` set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $grupo . "' where USUARIO='" . $USUARIO . "'";
             mysqli_query($databaseconnection, $update);
             $status = "<div class='bp-card-info'><p class='btn btn-success'>Se ha actualizado el registro $USUARIO</p><br><br><a class='btn btn-link' href='/bp-admin/usuarios.php'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
@@ -51,7 +51,7 @@ if ($sessionlogged == 1) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p><strong>GRUPO <small class="form-text text-muted">Grupo actual: ' . $row['CLASE'] . '</small><select class="form-control form-control-sm" id="element_3" name="element_3" value="">
+                                    <td><p><strong>GRUPO <small class="form-text text-muted">Grupo actual: ' . $row['CLASE'] . '</small><select class="form-control form-control-sm" id="GRUPO" name="GRUPO" value="">
                             <option value="No asignado">Selecciona el grupo</option>';
                         if ($gruposql->num_rows > 0) {
                             while ($grupos = $gruposql->fetch_assoc()) {
