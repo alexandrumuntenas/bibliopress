@@ -37,6 +37,7 @@ if ($sessionlogged == 1) {
         } else {
             echo '
             <div class="bp-card-info card-body">
+            <h2><i class="fas fa-user-edit"></i> Editar Usuario '.$row['NOMBRE'].' ' .$row['APELLIDOS'].'</h2>
                 <form name="form" method="post" action="">
                     <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Actualizar" />
         
