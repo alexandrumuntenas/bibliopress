@@ -43,14 +43,14 @@ if ($sessionlogged == 1) {
                         <table style="overflow-x: scroll;">
                             <thead>
                                 <tr>
-                                    <th><input type="hidden" name="new" value="1" /><input name="USUARIO" type="hidden" value="' . $row['USUARIO'] . '" /><h5>Nombre <input type="text" name="nombre" placeholder="Escribe el nombre del lector" required value="' . $row['NOMBRE'] . '" /></h5><h5>Apellidos <input type="text" name="APELLIDOS" placeholder="Escribe los apellidos del lector" required value="' . $row['APELLIDOS'] . '" /></h5></th>
-                                    <th></th>
+                                    <th><input type="hidden" name="new" value="1" /><input name="USUARIO" type="hidden" value="' . $row['USUARIO'] . '" /><p><strong>Nombre <input class="form-control" type="text" name="nombre" placeholder="Escribe el nombre del lector" required value="' . $row['NOMBRE'] . '" /></p></th>
+                                    <th><p>Apellidos <input class="form-control" type="text" name="APELLIDOS" placeholder="Escribe los apellidos del lector" required value="' . $row['APELLIDOS'] . '" /></strong></p></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p>Clase <em><input type="text" name="CLASE" placeholder="Escribe el curso" required value="' . $row["CLASE"] . '" /></em></p></td>
+                                    <td><p><strong>GRUPO <input class="form-control" type="text" name="CLASE" placeholder="Escribe el curso" required value="' . $row["CLASE"] . '" /></strong></p></td>
                                     <td></td>
                                     <td></td>
                                 </tr>

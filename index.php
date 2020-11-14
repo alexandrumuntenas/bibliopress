@@ -273,7 +273,7 @@ require 'bp-config.php';
                     
                     <!-- Modal -->
                     <div class="modal fade" id="libro' . $row[10] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
+                      <div class="modal-dialog modal-dialog-scrollable">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5><strong>' . $row[6] . '</strong> (' . $row[1] . ')</h5>
@@ -282,7 +282,7 @@ require 'bp-config.php';
                             </button>
                           </div>
                           <div class="modal-body">
-                          <p>Sinópsis </p>
+                          <p><strong>Sinópsis </strong></p>
                           ' . $row[12] . '
                             <br>
                             <br>

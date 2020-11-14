@@ -46,31 +46,31 @@ if ($sessionlogged == 1) {
                         <table style="overflow-x: scroll;">
                             <thead>
                                 <tr>
-                                    <th><h5>Título <input type="text" name="titulo" placeholder="Escribe el título" required value="' . $row['TITULO'] . '" /></h5></th>
+                                    <th><p><strong>TÍTULO <input class="form-control" type="text" name="titulo" placeholder="Escribe el título" required value="' . $row['TITULO'] . '" /></strong></hp></th>
                                     <th><input type="hidden" name="new" value="1" /></th>
                                     <th><input name="id" type="hidden" value="' . $row['ID'] . '" /></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p>Autor <em><input type="text" name="autor" placeholder="Escribe el Autor" required value="' . $row["AUTOR"] . '" /></em></p></td>
+                                    <td><p><strong>AUTOR <input class="form-control" type="text" name="autor" placeholder="Escribe el Autor" required value="' . $row["AUTOR"] . '" /></strong></p></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><p><strong>ISBN</strong> <em><input type="text" name="isbn" placeholder="Escribe el ISBN" required value="' . $row["ISBN"] . '" /></em></p></td>
-                                    <td><p><strong>Ubicación</strong> <em><input type="text" name="ubicacion" placeholder="Escribe dónde se sitúa este libro" required value="' . $row["UBICACION"] . '" /></em></td>
-                                    <td><p><strong>Ejemplar</strong> <em><input type="text" name="ejemplar" placeholder="Escribe el identificador de Ejemplar" required value="' . $row["EJEMPLAR"] . '" /> </em></td>
+                                    <td><p><strong>ISBN</strong> <em><input class="form-control" type="text" name="isbn" placeholder="Escribe el ISBN" required value="' . $row["ISBN"] . '" /></em></p></td>
+                                    <td><p><strong>UBICACIÓN</strong> <em><input class="form-control" type="text" name="ubicacion" placeholder="Escribe dónde se sitúa este libro" required value="' . $row["UBICACION"] . '" /></em></td>
+                                    <td><p><strong>EJEMPLAR</strong> <em><input class="form-control" type="text" name="ejemplar" placeholder="Escribe el identificador de Ejemplar" required value="' . $row["EJEMPLAR"] . '" /> </em></td>
                                 </tr>
                                 <tr>
-                                    <td><p><strong>Editorial</strong> <em><input type="text" name="editorial" placeholder="Escribe la Editorial" required value="' . $row["EDITORIAL"] . '" /></em></p></td>
-                                    <td><p><strong>Año de Publicación</strong> <em><input type="text" name="anopub" placeholder="Escribe el Año de Publicación" required value="' . $row["ANOPUB"] . '" /></td>
+                                    <td><p><strong>EDITORIAL</strong> <em><input class="form-control" type="text" name="editorial" placeholder="Escribe la Editorial" required value="' . $row["EDITORIAL"] . '" /></em></p></td>
+                                    <td><p><strong>AÑO DE PUBLICACIÓN</strong> <em><input class="form-control" type="text" name="anopub" placeholder="Escribe el Año de Publicación" required value="' . $row["ANOPUB"] . '" /></td>
                                     <td><p><strong></strong></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <strong>Descripción</strong>
-                        <textarea style="width:100%; height:30%;"name="descripcion" placeholder="Escribe un resumen del libro">' . $row["DESCRIPCION"] . '</textarea>
+                        <strong>SIPNÓSIS</strong>
+                        <textarea class="form-control" style="width:100%; height:30%;"name="descripcion" placeholder="Escribe un resumen del libro">' . $row["DESCRIPCION"] . '</textarea>
                     </form>
                 </div>';
         }
