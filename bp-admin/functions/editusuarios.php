@@ -32,7 +32,7 @@ if ($sessionlogged == 1) {
 
             $update = "UPDATE `$bbddusuarios` set NOMBRE='" . $nombre . "', APELLIDOS='" . $apellidos . "', CLASE='" . $curso . "' where USUARIO='" . $USUARIO . "'";
             mysqli_query($databaseconnection, $update);
-            $status = "<div class='bp-card-info'><p class='btn btn-success'>Se ha actualizado el registro $USUARIO</p><br><br><a class='btn btn-link' href='/bp-admin/lectores.php'>Volver al panel</a></div>";
+            $status = "<div class='bp-card-info'><p class='btn btn-success'>Se ha actualizado el registro $USUARIO</p><br><br><a class='btn btn-link' href='/bp-admin/usuarios.php'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
         } else {
             echo '

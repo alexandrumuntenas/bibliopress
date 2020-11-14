@@ -4,7 +4,7 @@
 //Importación de datos
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 
-//Tomar datos de formulario añadir registro desde lectores.php
+//Tomar datos de formulario añadir registro desde usuarios.php
 $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
 $curso = $_REQUEST["element_3"];
@@ -33,7 +33,7 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin')";
+        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin')";
         $databaseconnection->query($insert);
         echo '
         <header>
@@ -58,12 +58,12 @@ if ($sessionlogged == 1) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p>Curso > ' . $curso . '</p></td>
+                                    <td><p>Grupo > ' . $grupo . '</p></td>
                                 </tr>
                             </tbody>
                         </table> </div>
                         <div class="btn-group" role="group">
-                            <a class="btn btn-primary" href="/bp-admin/lectores.php">Volver</a>
+                            <a class="btn btn-primary" href="/bp-admin/usuarios.php">Volver</a>
                             <input type = "button" class="btn btn-success" value = "Imprimir página" onclick = "window.print()" />
                         </div>
             

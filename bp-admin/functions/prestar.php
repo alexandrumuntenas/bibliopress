@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php
-//Importación de datos
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $id = $_REQUEST['id'];
-//Tomar datos de formulario añadir registro desde lectores.php
 $nombre = $_REQUEST["element_1"];
 $apellido = $_REQUEST["element_2"];
 $FNAME = "$nombre $apellido";

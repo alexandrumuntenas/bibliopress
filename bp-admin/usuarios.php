@@ -19,7 +19,7 @@ if ($sessionlogged == 1) {
         require '../bp-include/menu.php';
         echo '
                     <div class="bp-header">
-                        <h2 class="bp-page-title">Gestionar Lectores</h2>
+                        <h2 class="bp-page-title">Gestionar Usuarios</h2>
                     </div>
                     </header>';
         echo '
@@ -30,13 +30,13 @@ if ($sessionlogged == 1) {
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header ">
-                            <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo lector</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo usuario</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form id="form_1388" class="appnitro"  method="post" action="functions/addlectores.php">				
+                        <form id="form_1388" class="appnitro"  method="post" action="functions/addusuario.php">				
                         <ul>
                             
                         <li id="li_1">
@@ -55,6 +55,16 @@ if ($sessionlogged == 1) {
                         <div>
                             <input id="element_3" name="element_3" class="element text large" type="text" maxlength="255" value=""/> 
                         </div> 
+                        </li>
+                        <li>
+                        <label class="description" for="element_4">Tipo de usuario</label>
+                        <div>
+                        <select name="element_4" required>
+                        <option value="0">Lector</option>
+                        <option value="1" disabled>Bibliotecario</option>
+                        <option value="1">Administrador</option>
+                        </select>
+                        </div>
                         </li>
                         </ul>
                         <div class="modal-footer">
@@ -93,7 +103,7 @@ if ($sessionlogged == 1) {
                             <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
                             <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
                             <td data-label="Clase o Grupo"><br>' . $row["CLASE"] . '</td>
-                            <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editlectores.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/dellectores.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
+                            <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                         </tr>';
             }
             echo '

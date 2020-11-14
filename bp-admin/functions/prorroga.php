@@ -4,7 +4,7 @@
 //Importación de datos
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $id = $_REQUEST['id'];
-//Tomar datos de formulario añadir registro desde lectores.php
+//Tomar datos de formulario añadir registro desde usuarios.php
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {

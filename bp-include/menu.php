@@ -12,7 +12,7 @@ if ($sessionlogged == 1) {
     echo '<li class="nav-item">
                 <a class="nav-link" href="/"><i class="fas fa-star"></i> Catálogo</span></a>
             </li><li class="nav-item">
-            <a class="nav-link" href="/bp-admin/lectores.php"><i class="fas fa-book-reader"></i> Lectores</span></a>
+            <a class="nav-link" href="/bp-admin/usuarios.php"><i class="fas fa-book-reader"></i> Lectores</span></a>
         </li><li class="nav-item">
         <a class="nav-link" href="/bp-admin/prestamos.php"><i class="fas fa-people-carry"></i> Préstamos</span></a>
     </li>';
