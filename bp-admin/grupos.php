@@ -19,7 +19,7 @@ if ($sessionlogged == 1) {
         require '../bp-include/menu.php';
         echo '
                     <div class="bp-header">
-                        <h2 class="bp-page-title">Gestionar Usuarios</h2>
+                        <h2 class="bp-page-title">Gestionar Gruposs</h2>
                     </div>
                     </header>';
         echo '
@@ -30,47 +30,20 @@ if ($sessionlogged == 1) {
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header ">
-                            <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo usuario</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo grupo</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form id="form_1388" class="appnitro"  method="post" action="functions/addusuario.php">				
+                        <form id="form_1388" class="appnitro"  method="post" action="functions/addgrupo.php">				
                         <ul>
                             
                         <li id="li_1">
-                        <label class="description" for="element_1">Nombre </label>
+                        <label class="description" for="element_1">Nombre del grupo</label>
                         <div>
                             <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value=""/> 
                         </div> 
-                        </li>		<li id="li_2">
-                        <label class="description" for="element_2">Apellido </label>
-                        <div>
-                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value=""/> 
-                        </div> 
-                        </li>
-                        <li id="li_3">
-                        <label class="description" for="element_3">Grupo </label>
-                        <div>
-                        <select class="form-control form-control-sm" id="element_3" name="element_3">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        </div> 
-                        </li>
-                        <li>
-                        <label class="description" for="element_4">Tipo de usuario</label>
-                        <div>
-                        <select class="form-control form-control-sm" name="element_4" required>
-                        <option value="0">Lector</option>
-                        <option value="1" disabled>Bibliotecario</option>
-                        <option value="1">Administrador</option>
-                        </select>
-                        </div>
                         </li>
                         </ul>
                         <div class="modal-footer">
@@ -83,7 +56,7 @@ if ($sessionlogged == 1) {
                     </div>
                     </div>
                     </div>';
-        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios`");
+        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `$bbddgrupos`");
         $qty = mysqli_num_rows($resulta);
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
         echo '<div class="lectores">
@@ -93,31 +66,26 @@ if ($sessionlogged == 1) {
                     <table>
                         <thead>
                         <tr>
-                            <th>Usuario</th>
                             <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Grupo</th>
-                            <th></th>
+                            <th>Usuarios</th>
                         </tr>
                         </thead>
                         <tbody>';
-        if ($lectorresultado->num_rows > 0) {
+        if ($gruposql->num_rows > 0) {
             //datos de cada columna
-            while ($row = $lectorresultado->fetch_assoc()) {
+            while ($row = $gruposql->fetch_assoc()) {
                 echo '<tr>
-                            <td data-label="Usuario"><br>' . $row["USUARIO"] . '</td>
-                            <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
-                            <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
-                            <td data-label="Clase o Grupo"><br>' . $row["CLASE"] . '</td>
+                            <td data-label="Usuario"><br>' . $gruporesultado["NOMBRE"] . '</td>
+                            <td data-label="Nombre"><br>' . $gruporesultado["USUARIOS"] . '</td>
                             <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                         </tr>';
             }
-            echo '
+        }
+        echo '
                         </tbody>
                      </table>
                      </div>
                 </section>';
-        }
     } else {
 
         echo '<section class="error-container">
