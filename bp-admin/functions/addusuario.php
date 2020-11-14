@@ -5,9 +5,11 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 
 //Tomar datos de formulario añadir registro desde usuarios.php
-$nombre = $_REQUEST["element_1"];
-$apellido = $_REQUEST["element_2"];
-$curso = $_REQUEST["element_3"];
+$nombre = $_POST["element_1"];
+$apellido = $_POST["element_2"];
+$curso = $_POST["element_3"];
+$permiso = $_POST["element_4"];
+
 function generateRandomString($length = 9)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -33,8 +35,9 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin')";
+        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
         $databaseconnection->query($insert);
+        echo mysqli_error($databaseconnection);
         echo '
         <header>
             <div class="wrapper">';
@@ -58,7 +61,7 @@ if ($sessionlogged == 1) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p>Grupo > ' . $grupo . '</p></td>
+                                    <td><p>Grupo > ' . $curso  . '</p></td>
                                 </tr>
                             </tbody>
                         </table> </div>
