@@ -12,6 +12,15 @@ if ($sessionlogged == 1) {
 } else {
     echo '<body class="err404">';
 }
+
+
+
+if (isset($_POST['submit'])) {
+    $nombre = $_POST["element_1"];
+    $insert = "INSERT INTO `$bbddgrupos` (`NOMBRE`) VALUES ('$nombre')";
+    $databaseconnection->query($insert);
+    echo mysqli_error($databaseconnection);
+}
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '';
@@ -19,7 +28,7 @@ if ($sessionlogged == 1) {
         require '../bp-include/menu.php';
         echo '
                     <div class="bp-header">
-                        <h2 class="bp-page-title">Gestionar Gruposs</h2>
+                        <h2 class="bp-page-title">Gestionar Grupos</h2>
                     </div>
                     </header>';
         echo '
@@ -36,7 +45,7 @@ if ($sessionlogged == 1) {
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form id="form_1388" class="appnitro"  method="post" action="functions/addgrupo.php">				
+                        <form id="form_1388" class="appnitro"  method="post" action="">				
                         <ul>
                             
                         <li id="li_1">
@@ -75,9 +84,9 @@ if ($sessionlogged == 1) {
             //datos de cada columna
             while ($row = $gruposql->fetch_assoc()) {
                 echo '<tr>
-                            <td data-label="Usuario"><br>' . $gruporesultado["NOMBRE"] . '</td>
-                            <td data-label="Nombre"><br>' . $gruporesultado["USUARIOS"] . '</td>
-                            <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
+                            <td data-label="Usuario"><br>' . $row["NOMBRE"] . '</td>
+                            <td data-label="Nombre"><br>' . $row["USUARIOS"] . '</td>
+                            <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editusuarios.php?USUARIO=' . $row["ID"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["ID"] . '">Eliminar</a></td>
                         </tr>';
             }
         }

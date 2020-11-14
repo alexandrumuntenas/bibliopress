@@ -54,18 +54,19 @@ if ($sessionlogged == 1) {
                         <label class="description" for="element_3">Grupo </label>
                         <div>
                         <select class="form-control form-control-sm" id="element_3" name="element_3">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="No asignado">Selecciona el grupo</option>
+                            <option value="1ESOA">1ESOA</option>
+                            <option value="1ESOB">1ESOB</option>
+                            <option value="1ESOC">1ESOC</option>
+                            <option value="1ESOD">1ESOD</option>
+                            <option value="1ESOE">1ESOE</option>
                         </select>
                         </div> 
                         </li>
                         <li>
                         <label class="description" for="element_4">Tipo de usuario</label>
                         <div>
-                        <select class="form-control form-control-sm" name="element_4" required>
+                        <select class="form-control form-control-sm" id="element_4" name="element_4" required>
                         <option value="0">Lector</option>
                         <option value="1" disabled>Bibliotecario</option>
                         <option value="1">Administrador</option>
