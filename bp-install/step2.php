@@ -118,6 +118,14 @@
                     UNIQUE KEY `PHPSESSID` (`PHPSESSID`) USING HASH
                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
+                $bpgrupos = "CREATE TABLE `bp_grupo` (
+                `ID` int(11) NOT NULL AUTO_INCREMENT,
+                `NOMBRE` text NOT NULL,
+                `USUARIOS` mediumtext NOT NULL,
+                PRIMARY KEY (`ID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
+                ";
+
                 $bpadminuser = "INSERT INTO `bp_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
 
                 echo '</span></p>';
@@ -135,6 +143,7 @@
                 } else {
                     echo ("<span style='color: green'>OK!</span>");
                 }
+
                 echo '</span></p>';
                 echo '<p>Creación de tabla "Sesiones": ';
                 if (!mysqli_query($conn, $bpsesiones)) {
@@ -143,6 +152,14 @@
                     echo ("<span style='color: green'>OK!</span>");
                 }
 
+                echo '</span></p>';
+                echo '<p>Creación de tabla "Grupos": ';
+                if (!mysqli_query($conn, $bpgrupos)) {
+                    echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
+                } else {
+                    echo ("<span style='color: green'>OK!</span>");
+                }
+                
                 echo '</span></p>';
                 echo '<p>Creación de "Usuario Administrativo" ';
                 if (!mysqli_query($conn, $bpadminuser)) {
