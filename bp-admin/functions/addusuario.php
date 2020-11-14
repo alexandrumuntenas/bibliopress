@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php
-//Importación de datos
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 
-//Tomar datos de formulario añadir registro desde usuarios.php
 $nombre = $_POST["element_1"];
 $apellido = $_POST["element_2"];
 $curso = $_POST["element_3"];

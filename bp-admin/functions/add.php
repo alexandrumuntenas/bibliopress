@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php
-//Importación de datos
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 
-//Tomar datos de formulario añadir registro desde catalogo.php
 $titulo = mysqli_real_escape_string($databaseconnection, $_POST["element_1"]);
 $autor = mysqli_real_escape_string($databaseconnection, $_POST["element_2"]);
 $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["element_3"]);
@@ -13,15 +11,6 @@ $anopub = mysqli_real_escape_string($databaseconnection, $_POST["element_5"]);
 $ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["element_6"]);
 $ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["element_7"]);
 $descripcion = mysqli_real_escape_string($databaseconnection, $_POST["element_8"]);
-
-//Utilizado durante las pruebas
-/*$titulo = "Hola";
-$autor = "SM";
-$ISBN = "181818";
-$editorial = "SM";
-$anopub = "1919";
-$ejemplar = "1191";
-$ubicacion = "13";*/
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 
 if ($sessionlogged == 1) {

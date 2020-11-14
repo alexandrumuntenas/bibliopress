@@ -24,8 +24,7 @@ if ($sessionlogged == 1) {
         $status = "";
         if (isset($_POST['new']) && $_POST['new'] == 1) {
             $USUARIO = $_REQUEST['USUARIO'];
-            $fecha = date("Y-m-d H:i:s"); //Fecha FECHA
-            //Datos
+            $fecha = date("Y-m-d H:i:s"); 
             $nombre = $_REQUEST["nombre"];
             $apellidos = $_REQUEST["APELLIDOS"];
             $curso = $_REQUEST["CLASE"];
