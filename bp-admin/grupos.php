@@ -86,7 +86,7 @@ if ($sessionlogged == 1) {
                 echo '<tr>
                             <td data-label="Usuario"><br>' . $row["NOMBRE"] . '</td>
                             <td data-label="Nombre"><br>' . $row["USUARIOS"] . '</td>
-                            <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editusuarios.php?USUARIO=' . $row["ID"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["ID"] . '">Eliminar</a></td>
+                            <td data-label="Acciones disponibles"><a style="color:red;" href="functions/delgrupo.php?GRUPO=' . $row["ID"] . '">Eliminar</a></td>
                         </tr>';
             }
         }
