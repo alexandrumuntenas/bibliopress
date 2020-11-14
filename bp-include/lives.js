@@ -22,3 +22,7 @@ $(document).ready(function () {
         }
     });
 });
+
+function selectall(){
+    $("input:checkbox").attr('checked', true);
+}
