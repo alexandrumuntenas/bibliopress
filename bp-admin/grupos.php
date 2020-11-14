@@ -31,8 +31,49 @@ if ($sessionlogged == 1) {
                         <h2 class="bp-page-title">Gestionar Grupos</h2>
                     </div>
                     </header>';
-        echo '
+        echo
+            '
                     <section class="bp-section">
+                    </div>
+                    <div class="modal fade" id="promotemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Promocionar curso</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="functions/promote.php">
+                            <select class="form-control form-control-sm" id="inicial" name="inicial">
+                            <option value="No asignado">Selecciona el grupo</option>';
+        if ($gruposql->num_rows > 0) {
+            //datos de cada columna
+            while ($row = $gruposql->fetch_assoc()) {
+                echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+            }
+        }
+        mysqli_data_seek($gruposql, 0);
+        echo
+            '</select><p>a</p>
+                                        <select class="form-control form-control-sm" id="final" name="final">
+                                                <option value="No asignado">Selecciona el grupo</option>';
+        if ($gruposql->num_rows > 0) {
+            //datos de cada columna
+            while ($row = $gruposql->fetch_assoc()) {
+                echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+            }
+        }
+        echo '</select>
+                            
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-primary" type="submit">Promocionar</button>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
                     </div>
                     <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -64,13 +105,15 @@ if ($sessionlogged == 1) {
                         </div>
                     </div>
                     </div>
-                    </div>';
-        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `$bbddgrupos`");
-        $qty = mysqli_num_rows($resulta);
-        echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
+                    </div>
+                    ';
+
         echo '<div class="lectores">
         <button type="button" style="margin-bottom:10px;" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                     Añadir nuevo registro
+                    </button>
+        <button type="button" style="margin-bottom:10px;" class="btn btn-success" data-toggle="modal" data-target="#promotemodal">
+                    Promocionar 
                     </button>
                     <table>
                         <thead>
@@ -80,13 +123,14 @@ if ($sessionlogged == 1) {
                         </tr>
                         </thead>
                         <tbody>';
+        mysqli_data_seek($gruposql, 0);
         if ($gruposql->num_rows > 0) {
             //datos de cada columna
-            while ($row = $gruposql->fetch_assoc()) {
+            while ($gr = $gruposql->fetch_assoc()) {
                 echo '<tr>
-                            <td data-label="Usuario"><br>' . $row["NOMBRE"] . '</td>
-                            <td data-label="Nombre"><br>' . $row["USUARIOS"] . '</td>
-                            <td data-label="Acciones disponibles"><a style="color:red;" href="functions/delgrupo.php?GRUPO=' . $row["ID"] . '">Eliminar</a></td>
+                            <td data-label="Usuario"><br>' . $gr["NOMBRE"] . '</td>
+                            <td data-label="Nombre"><br>' . $gr["USUARIOS"] . '</td>
+                            <td data-label="Acciones disponibles"><a style="color:red;" href="functions/delgrupo.php?GRUPO=' . $gr["ID"] . '">Eliminar</a></td>
                         </tr>';
             }
         }

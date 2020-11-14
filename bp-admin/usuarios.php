@@ -25,9 +25,8 @@ if ($sessionlogged == 1) {
         echo '
                     <section class="bp-section">
                     </div>
-                    <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable">
                         <div class="modal-content">
                         <div class="modal-header ">
                             <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-user-plus"></i> Añadir nuevo usuario</h5>
