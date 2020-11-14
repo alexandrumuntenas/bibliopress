@@ -54,12 +54,12 @@ if ($sessionlogged == 1) {
                         <label class="description" for="element_3">Grupo </label>
                         <div>
                         <select class="form-control form-control-sm" id="element_3" name="element_3">
-                            <option value="No asignado">Selecciona el grupo</option>
-                            <option value="1ESOA">1ESOA</option>
-                            <option value="1ESOB">1ESOB</option>
-                            <option value="1ESOC">1ESOC</option>
-                            <option value="1ESOD">1ESOD</option>
-                            <option value="1ESOE">1ESOE</option>
+                            <option value="No asignado">Selecciona el grupo</option>';
+                        if ($gruposql->num_rows > 0) {
+                        while ($grupos = $gruposql->fetch_assoc()) {
+                            echo '<option value="'.$grupos['NOMBRE']. '">' . $grupos['NOMBRE'] . '</option>';
+                        }
+                    } echo'
                         </select>
                         </div> 
                         </li>
