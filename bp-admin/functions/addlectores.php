@@ -3,7 +3,6 @@
 <?php
 //Importación de datos
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
-$loggedin = $_COOKIE["loggedin"];
 
 //Tomar datos de formulario añadir registro desde lectores.php
 $nombre = $_REQUEST["element_1"];

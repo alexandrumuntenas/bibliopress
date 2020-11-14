@@ -1,5 +1,5 @@
-<?php $sessionlog = $_COOKIE['loggedin'];
-$sessionus = $_COOKIE['usuario'];
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
+
 echo '<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <a class="navbar-brand" href="/">Biblioteca</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,7 @@ echo '<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">';
-if ($sessionlog == 1) {
+if ($sessionlogged == 1) {
   if ($sessionclass == 1) {
     echo '<li class="nav-item">
                 <a class="nav-link" href="/"><i class="fas fa-star"></i> Catálogo</span></a>
@@ -35,13 +35,13 @@ echo '
         </li>
         
 ';
-if ($sessionlog == 1) {
+if ($sessionlogged == 1) {
   echo '<a class="nav-link" href="/bp-user/"><i class="fas fa-user"></i> Área Personal de ' . $sessionus . '</a>';
 };
 echo '
         </ul>
     </div>';
-if ($sessionlog == 0) {
+if ($sessionlogged == 0) {
   echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
           Acceder
         </button>';

@@ -6,7 +6,6 @@ $id = $_REQUEST['id'];
 $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $id . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
-$loggedin = $_COOKIE["loggedin"];
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 
 if ($sessionlogged == 1) {

@@ -6,7 +6,6 @@ $USUARIO = $_REQUEST['USUARIO'];
 $query = "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` = '" . $USUARIO . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
-$loggedin = $_COOKIE["loggedin"];
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {

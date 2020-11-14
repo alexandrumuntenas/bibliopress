@@ -1,6 +1,5 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
-$loggedin = $_COOKIE["loggedin"];
 if (empty($_POST['escaner'])) {
     $id = $_REQUEST['id'];
     $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $id . "'";

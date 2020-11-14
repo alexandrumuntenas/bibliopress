@@ -3,7 +3,6 @@
 <?php
 //Importación de datos
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
-$loggedin = $_COOKIE["loggedin"];
 
 //Tomar datos de formulario añadir registro desde catalogo.php
 $titulo = mysqli_real_escape_string($databaseconnection, $_POST["element_1"]);

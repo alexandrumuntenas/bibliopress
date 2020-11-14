@@ -2,7 +2,6 @@
 <html>
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
-$loggedin = $_COOKIE["loggedin"];
 $USUARIO = $_REQUEST['USUARIO'];
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 if ($sessionlogged == 1) {
