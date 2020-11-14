@@ -70,6 +70,7 @@
                 $fullname = "$nombre $apellidos";
                 $sitelinkfrompost = mysqli_real_escape_string($conn, $_POST['element_13']);
                 $cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
+                $prefixtable = mysqli_real_escape_string($conn, $_POST["element_14"]);
                 echo '<p>Conexión a la BBDD: ';
                 if (!$conn) {
                     die("<span style='color:red'>Error! Conexión fallida: " . mysqli_connect_error());
@@ -77,7 +78,8 @@
                     echo "<span style='color:green'>OK!";
                 };
 
-                $bpusuario = "CREATE TABLE `bp_usuarios` (
+                $cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
+                $bpusuario = "CREATE TABLE `".$prefixtable."_usuarios` (
                     `USUARIO` tinytext NOT NULL,
                     `FULLNAME` longtext NOT NULL,
                     `NOMBRE` text CHARACTER SET utf8mb4 NOT NULL,
@@ -89,7 +91,7 @@
                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
 
-                $bpcatalogo = "CREATE TABLE `bp_catalogo` (
+                $bpcatalogo = "CREATE TABLE `" . $prefixtable . "_catalogo` (
                     `ANOPUB` varchar(8) DEFAULT NULL,
                     `AUTOR` varchar(30) DEFAULT NULL,
                     `EJEMPLAR` varchar(8) NOT NULL,
@@ -110,7 +112,7 @@
                     UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
                    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
 
-                $bpsesiones = "CREATE TABLE `bp_sesiones` (
+                $bpsesiones = "CREATE TABLE `" . $prefixtable . "_sesiones` (
                     `PHPSESSID` text NOT NULL,
                     `USUARIO` text NOT NULL,
                     `LOGGEDIN` text NOT NULL,
@@ -118,7 +120,7 @@
                     UNIQUE KEY `PHPSESSID` (`PHPSESSID`) USING HASH
                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
-                $bpgrupos = "CREATE TABLE `bp_grupo` (
+                $bpgrupos = "CREATE TABLE `" . $prefixtable . "_grupo` (
                 `ID` int(11) NOT NULL AUTO_INCREMENT,
                 `NOMBRE` text NOT NULL,
                 `USUARIOS` mediumtext NOT NULL,
@@ -126,7 +128,7 @@
                 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
                 ";
 
-                $bpadminuser = "INSERT INTO `bp_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
+                $bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
 
                 echo '</span></p>';
                 echo '<p>Creación de tabla "Usuarios": ';
@@ -159,7 +161,7 @@
                 } else {
                     echo ("<span style='color: green'>OK!</span>");
                 }
-                
+
                 echo '</span></p>';
                 echo '<p>Creación de "Usuario Administrativo" ';
                 if (!mysqli_query($conn, $bpadminuser)) {
@@ -178,7 +180,8 @@
         \$dbMySQL = '$dbname'; //Nombre de la base de datos
         \$userMySQL = '$username'; //Usuario de la base de datos
         \$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
-        
+        \$prefix = '$prefixtable'; //Prefijo de tablas. No cambiar
+
         // Otros parametros
         \$sname = '$cname'; //Nombre de la biblioteca/institución
         \$sitelink = '$sitelinkfrompost'; //Enlace del sitio web para cumplir con GDPR

@@ -30,7 +30,7 @@ if ($sessionlogged == 1) {
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header ">
-                            <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo usuario</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-user-plus"></i> Añadir nuevo usuario</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -88,7 +88,7 @@ if ($sessionlogged == 1) {
         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
         echo '<div class="lectores">
         <button type="button" style="margin-bottom:10px;" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                    Añadir nuevo registro
+                    <i class="fas fa-user-plus"></i> Añadir nuevo registro
                     </button>
                     <table>
                         <thead>
@@ -112,12 +112,12 @@ if ($sessionlogged == 1) {
                             <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                         </tr>';
             }
-            echo '
+        }
+        echo '
                         </tbody>
                      </table>
                      </div>
                 </section>';
-        }
     } else {
 
         echo '<section class="error-container">

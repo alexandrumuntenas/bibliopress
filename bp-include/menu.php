@@ -14,6 +14,8 @@ if ($sessionlogged == 1) {
             </li><li class="nav-item">
             <a class="nav-link" href="/bp-admin/usuarios.php"><i class="fas fa-book-reader"></i> Usuarios</span></a>
         </li><li class="nav-item">
+            <a class="nav-link" href="/bp-admin/grupos.php"><i class="fas fa-users"></i> Grupos</span></a>
+        </li><li class="nav-item">
         <a class="nav-link" href="/bp-admin/prestamos.php"><i class="fas fa-people-carry"></i> Préstamos</span></a>
     </li>';
   } else {

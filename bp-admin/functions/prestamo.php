@@ -3,7 +3,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $id = $_REQUEST['id'];
-$query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $id . "'";
+$query = "SELECT * FROM `$bbddcatalogo` WHERE `ID` = '" . $id . "'";
 $result = mysqli_query($databaseconnection, $query);
 $row = mysqli_fetch_assoc($result);
 $fecha_actual = date('m/d/Y');

@@ -85,6 +85,12 @@
 							<input id="element_5" name="element_5" class="element text large" type="text" maxlength="255" value="" />
 						</div>
 					</li>
+					<li id="li_5">
+						<label class="description" for="element_5">Prefijo de tabla</label>
+						<div>
+							<input id="element_5" name="element_14" class="element text large" type="text" maxlength="255" value="bp_" />
+						</div>
+					</li>
 					<li class="section_break">
 						<h3>
 							<h3>Configuración del usuario administrativo (Luego podrás asignar a más usuarios)</h3>

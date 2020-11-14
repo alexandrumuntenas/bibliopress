@@ -2,7 +2,7 @@
 require '../bp-config.php';
 if (isset($_POST['search'])) {
    $busqueda = $_POST['search'];
-   $Queray = "SELECT TITULO, ID, DESCRIPCION, AUTOR, DISPONIBILIDAD FROM `bp_catalogo` WHERE TITULO LIKE '%$busqueda%'LIMIT 5";
+   $Queray = "SELECT TITULO, ID, DESCRIPCION, AUTOR, DISPONIBILIDAD FROM `$bbddcatalogo` WHERE TITULO LIKE '%$busqueda%'LIMIT 5";
    $ExecQuery = MySQLi_query($databaseconnection, $Queray);
    echo '<div class="row">';
    while ($Result = MySQLi_fetch_array($ExecQuery)) {

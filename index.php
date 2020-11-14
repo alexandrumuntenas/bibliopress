@@ -22,7 +22,7 @@ require 'bp-config.php';
         <br>
         <br>
         <?php
-        $result = mysqli_query($databaseconnection, "SELECT * FROM `bp_catalogo`");
+        $result = mysqli_query($databaseconnection, "SELECT * FROM `$bbddcatalogo`");
         $qty = mysqli_num_rows($result);
         $qtya = $qty / $CantidadMostrar;
         $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
@@ -255,11 +255,11 @@ require 'bp-config.php';
             } else {
                 // Validado de la variable GET
                 $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
-                $TotalReg       = $databaseconnection->query("SELECT * FROM `bp_catalogo`");
+                $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddcatalogo`");
                 //Se divide la cantidad de registro de la BD con la cantidad a mostrar 
                 $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
                 //Consulta SQL
-                $consultavistas = "SELECT * FROM `bp_catalogo`
+                $consultavistas = "SELECT * FROM `$bbddcatalogo`
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;

@@ -1,7 +1,7 @@
 <?php
 //Importación de datos
 require '../bp-config.php';
-$query = "SELECT * FROM `bp_catalogo` WHERE `PRESTADOA` = '" . $sessionus . "' LIMIT 5";
+$query = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' LIMIT 5";
 $result = mysqli_query($databaseconnection, $query);
 $querylector = "SELECT *  FROM `bp_usuarios` WHERE `USUARIO` LIKE '" . $sessionus . "'";
 $qlectorre = mysqli_query($databaseconnection, $querylector);

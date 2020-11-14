@@ -10,7 +10,7 @@ if ($logger == 1) {
     $resultado = $databaseconnection->query($logintest);
     $login = mysqli_fetch_assoc($resultado);
     if ($login['PIN'] == $contrasena) {
-      $sloginsql = "INSERT INTO `bp_sesiones` (`PHPSESSID`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$usuario', '1', '".$login['PERM']."');";
+      $sloginsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$usuario', '1', '".$login['PERM']."');";
       $sloginresult = $databaseconnection->query($sloginsql);
       if($sloginresult == true){
         echo "<meta http-equiv='refresh' content='5;url=index.php' /><br><strong>Se ha iniciado sesión correctamente <em>$usuario</em>, accediendo al panel...</strong>";

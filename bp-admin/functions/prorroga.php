@@ -18,10 +18,10 @@ if ($sessionlogged == 1) {
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
 
-        $query = "SELECT * FROM `bp_catalogo` WHERE `ID` = '" . $id . "'";
+        $query = "SELECT * FROM `$bbddcatalogo` WHERE `ID` = '" . $id . "'";
         $result = mysqli_query($databaseconnection, $query);
         $row = mysqli_fetch_assoc($result);
-        $sql = "UPDATE `bp_catalogo` SET `FECHADEV` = '" . $prorrogafecha . "' WHERE `bp_catalogo`.`ID` = " . $id;
+        $sql = "UPDATE `$bbddcatalogo` SET `FECHADEV` = '" . $prorrogafecha . "' WHERE `$bbddcatalogo`.`ID` = " . $id;
         $databaseconnection->query($sql);
 
         echo '
