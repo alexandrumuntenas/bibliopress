@@ -14,8 +14,19 @@ echo "<head>
     <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js' integrity='sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ' crossorigin='anonymous'></script>
     <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous'></script>
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx' crossorigin='anonymous'></script>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx' crossorigin='anonymous'></script>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
     <script type='text/javascript' src='/bp-include/lives.js'></script>
-<link rel='stylesheet' type='text/css' href='/bp-include/lives.css'>
+    <link rel='stylesheet' type='text/css' href='/bp-include/lives.css'>
+    <script src=\"/assets/js/jquery.min.js\"></script>
+    <script src=\"/assets/bootstrap/js/bootstrap.min.js\"></script>
+    <script src=\"/assets/js/bs-init.js\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js\"></script>
+    <script src=\"/assets/js/theme.js\"></script>
+    <link rel=\"stylesheet\" href=\"/assets/bootstrap/css/bootstrap.min.css\">
+    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i\">
+    <link rel=\"stylesheet\" href=\"/assets/fonts/fontawesome-all.min.css \">
+    <link rel=\"stylesheet\" href=\"/assets/fonts/font-awesome.min.css \">
+    <link rel=\"stylesheet\" href=\"/assets/fonts/fontawesome5-overrides.min.css\">
+    <link rel=\"stylesheet\" href=\"/assets/css/extra.css\">
 </head>";
