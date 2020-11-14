@@ -108,7 +108,7 @@ if ($sessionlogged == 1) {
                             <td data-label="Usuario"><br>' . $row["USUARIO"] . '</td>
                             <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
                             <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
-                            <td data-label="Clase o Grupo"><br>' . $row["CLASE"] . '</td>
+                            <td data-label="Grupo"><br>' . $row["CLASE"] . '</td>
                             <td data-label="Acciones disponibles"><br><a style="color:blue;"href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
                         </tr>';
             }

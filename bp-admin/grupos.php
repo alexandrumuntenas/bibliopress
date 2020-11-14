@@ -128,9 +128,9 @@ if ($sessionlogged == 1) {
             //datos de cada columna
             while ($gr = $gruposql->fetch_assoc()) {
                 echo '<tr>
-                            <td data-label="Usuario"><br>' . $gr["NOMBRE"] . '</td>
-                            <td data-label="Nombre"><br>' . $gr["USUARIOS"] . '</td>
-                            <td data-label="Acciones disponibles"><a style="color:red;" href="functions/delgrupo.php?GRUPO=' . $gr["ID"] . '">Eliminar</a></td>
+                            <td data-label="Nombre"><br>' . $gr["NOMBRE"] . '</td>
+                            <td data-label="Usuarios"><br><button type="button" class="btn btn-light" disabled/>Ver usuarios</button></td>
+                            <td data-label="Acciones disponibles"><br><a style="color:red;" href="functions/delgrupo.php?GRUPO=' . $gr["ID"] . '">Eliminar</a></td>
                         </tr>';
             }
         }
