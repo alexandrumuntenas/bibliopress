@@ -44,13 +44,22 @@ if ($sessionlogged == 1) {
                             <thead>
                                 <tr>
                                     <th><input type="hidden" name="new" value="1" /><input name="USUARIO" type="hidden" value="' . $row['USUARIO'] . '" /><p><strong>Nombre <input class="form-control" type="text" name="nombre" placeholder="Escribe el nombre del lector" required value="' . $row['NOMBRE'] . '" /></p></th>
-                                    <th><p>Apellidos <input class="form-control" type="text" name="APELLIDOS" placeholder="Escribe los apellidos del lector" required value="' . $row['APELLIDOS'] . '" /></strong></p></th>
+                                    <th><p>Apellidos <input class="form-control" type="text" name="APELLIDOS" placeholder="Escribe los apellidos del lector" required value="' . $row['APELLIDOS'] .
+                '" /></strong></p></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><p><strong>GRUPO <input class="form-control" type="text" name="CLASE" placeholder="Escribe el curso" required value="' . $row["CLASE"] . '" /></strong></p></td>
+                                    <td><p><strong>GRUPO <small class="form-text text-muted">Grupo actual: ' . $row['CLASE'] . '</small><select class="form-control form-control-sm" id="element_3" name="element_3" value="">
+                            <option value="No asignado">Selecciona el grupo</option>';
+                        if ($gruposql->num_rows > 0) {
+                            while ($grupos = $gruposql->fetch_assoc()) {
+                                echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
+                            }
+                        }
+                        echo '
+                        </select></p></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
@@ -80,7 +89,7 @@ if ($sessionlogged == 1) {
                               <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
                               <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
 };
-?>?>
+?>
 
 <div>
 </div>
