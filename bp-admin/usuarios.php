@@ -48,6 +48,11 @@ if ($sessionlogged == 1) {
                         <div>
                             <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value=""/> 
                         </div> 
+                        </li>		<li id="li_2">
+                        <label class="description" for="element_5">Correo Electrónico </label>
+                        <div>
+                            <input id="element_5" name="element_5" class="form-control form-control-sm" type="text" maxlength="255" value=""/> 
+                        </div> 
                         </li>
                         <li id="li_3">
                         <label class="description" for="element_3">Grupo </label>
@@ -93,7 +98,7 @@ if ($sessionlogged == 1) {
                     <table>
                         <thead>
                         <tr>
-                            <th>Usuario</th>
+                            <th>Correo Electrónico</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
                             <th>Grupo</th>

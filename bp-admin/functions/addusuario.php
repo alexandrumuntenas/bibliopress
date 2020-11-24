@@ -3,22 +3,14 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 
-$nombre = $_POST["element_1"];
-$apellido = $_POST["element_2"];
-$curso = $_POST["element_3"];
-$permiso = $_POST["element_4"];
+$estructuramsg = "Información de Acceso\nUsuario: $celectronico\nContraseña: $pin\n\n\n$sname";
 
-function generateRandomString($length = 9)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-$usuarioc = generateRandomString(9);
+$nombre = mysqli_real_escape_string($databaseconnection,$_POST["element_1"]);
+$apellido = mysqli_real_escape_string($databaseconnection, $_POST["element_2"]);
+$curso = mysqli_real_escape_string($databaseconnection,$_POST["element_3"]);
+$permiso = mysqli_real_escape_string($databaseconnection,$_POST["element_4"]);
+$celectronico = mysqli_real_escape_string($databaseconnection,$_POST["element_5"]);
+
 $pin = rand();
 $FNAME = "$nombre $apellido";
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
@@ -33,9 +25,10 @@ if ($sessionlogged == 1) {
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
-        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$usuarioc','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
+        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
         $databaseconnection->query($insert);
         echo mysqli_error($databaseconnection);
+        mail($celectronico, "Accede a la biblioteca de $sname", $estructuramsg);
         echo '
         <header>
             <div class="wrapper">';
