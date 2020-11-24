@@ -3,15 +3,15 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 
-$estructuramsg = "Información de Acceso\nUsuario: $celectronico\nContraseña: $pin\n\n\n$sname";
-
 $nombre = mysqli_real_escape_string($databaseconnection,$_POST["element_1"]);
 $apellido = mysqli_real_escape_string($databaseconnection, $_POST["element_2"]);
 $curso = mysqli_real_escape_string($databaseconnection,$_POST["element_3"]);
 $permiso = mysqli_real_escape_string($databaseconnection,$_POST["element_4"]);
 $celectronico = mysqli_real_escape_string($databaseconnection,$_POST["element_5"]);
 
-$pin = rand();
+$random = rand();
+$pin = password_hash($random,PASSWORD_BCRYPT);
+
 $FNAME = "$nombre $apellido";
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
 if ($sessionlogged == 1) {
@@ -28,7 +28,6 @@ if ($sessionlogged == 1) {
         $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
         $databaseconnection->query($insert);
         echo mysqli_error($databaseconnection);
-        mail($celectronico, "Accede a la biblioteca de $sname", $estructuramsg);
         echo '
         <header>
             <div class="wrapper">';
@@ -52,6 +51,7 @@ if ($sessionlogged == 1) {
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><p>PIN > '.$random.'</p></br></td>
                                     <td><p>Grupo > ' . $curso  . '</p></td>
                                 </tr>
                             </tbody>
@@ -63,7 +63,6 @@ if ($sessionlogged == 1) {
             
         </section>';
     } else {
-
         echo '<section class="error-container">
                                 <span><span>4</span></span>
                                 <span>0</span>

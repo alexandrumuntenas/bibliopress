@@ -2,6 +2,7 @@
 require '../bp-config.php';
 $usuario = mysqli_real_escape_string($databaseconnection, $_POST["usuario"]);
 $contrasena = mysqli_real_escape_string($databaseconnection, $_POST["contrasena"]);
+
 if ($logger == 1) {
   echo "<meta http-equiv='refresh' content='5;url=index.php' /><strong>Ya has iniciado sesión! Volviendo al panel...</strong>";
 } else {
@@ -9,7 +10,7 @@ if ($logger == 1) {
     $logintest = "SELECT * FROM `$bbddusuarios` WHERE `usuario` LIKE '" . $usuario . "'";
     $resultado = $databaseconnection->query($logintest);
     $login = mysqli_fetch_assoc($resultado);
-    if ($login['PIN'] == $contrasena) {
+    if (password_verify($contrasena, $login['PIN'])) {
       $sloginsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$usuario', '1', '".$login['PERM']."');";
       $sloginresult = $databaseconnection->query($sloginsql);
       if($sloginresult == true){
