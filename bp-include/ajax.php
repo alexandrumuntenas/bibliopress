@@ -10,7 +10,7 @@ if (isset($_POST['search'])) {
       $desc = substr($Result['DESCRIPCION'], 0, $long);
 ?>
       <div class="tarjetasbusqueda card-body">
-         <h6><?php echo $Result['TITULO']; ?> por <em><?php echo $Result['AUTOR']; ?></em></h6>
+         <h6><strong><?php echo $Result['TITULO']; ?></strong> por <em><?php echo $Result['AUTOR']; ?></em></h6>
          <h7></h7>
          <p><em><?php echo $desc; ?></em></p>
          <?php
