@@ -10,67 +10,81 @@ $qlector = mysqli_fetch_assoc($qlectorre);
 <?php require '../bp-include/head.php'; ?>
 
 <body>
-    <?php require '../bp-include/menu.php'; ?>
-    <div>
-        <header>
-            <div class="bp-header">
-                <h2 class="bp-page-title">Mi Perfil</h2>
-            </div>
-        </header>
-        <section class="bp-section">
-            <div>
-                <center>
-                    <div class="btn-group" role="group">
-                        <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                        <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
-                        <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-                </center>
-                <div class="row">
-                    <div class="bp-card card-body">
-                        <h5>Sobre Mí</h5>
-                        <form id="form_1388" method="post" action="/bp-admin/functions/actualizar.php">
-                            <ul>
+    <?php if ($sessionlogged == 1) { ?>
+        <?php require '../bp-include/menu.php'; ?>
+        <div>
+            <header>
+                <div class="bp-header">
+                    <h2 class="bp-page-title">Mi Perfil</h2>
+                </div>
+            </header>
+            <section class="bp-section">
+                <div>
+                    <center>
+                        <div class="btn-group" role="group">
+                            <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
+                            <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
+                            <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+                    </center>
+                    <div class="row">
+                        <div class="bp-card card-body">
+                            <h5>Sobre Mí</h5>
+                            <form id="form_1388" method="post" action="/bp-admin/functions/actualizar.php">
+                                <ul>
 
-                                <li id="li_1">
-                                    <label class="description" for="element_1">Nombre </label>
-                                    <div>
-                                        <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['NOMBRE']; ?>" readonly />
-                                    </div>
-                                </li>
-                                <li id="li_2">
-                                    <label class="description" for="element_2">Apellido </label>
-                                    <div>
-                                        <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['APELLIDOS']; ?>" readonly />
-                                    </div>
-                                </li>
-                                <li id="li_2">
-                                    <label class="description" for="element_5">Correo Electrónico </label>
-                                    <div>
-                                        <input id="element_5" name="element_5" class="form-control form-control-sm" type="email" maxlength="255" value="<?php echo $sessionus; ?>" />
-                                    </div>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                    <div class="bp-card card-body">
-                        <h5>Mi Avatar</h5>
-                        <p>No te emociones, seguimos trabajando en ello</p>
-                    </div>
-                    <div class="bp-card card-body">
-                        <h5>Notificaciones</h5>
-                        <p>No te emociones, seguimos trabajando en ello</p>
+                                    <li id="li_1">
+                                        <label class="description" for="element_1">Nombre </label>
+                                        <div>
+                                            <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['NOMBRE']; ?>" readonly />
+                                        </div>
+                                    </li>
+                                    <li id="li_2">
+                                        <label class="description" for="element_2">Apellido </label>
+                                        <div>
+                                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['APELLIDOS']; ?>" readonly />
+                                        </div>
+                                    </li>
+                                    <li id="li_2">
+                                        <label class="description" for="element_5">Correo Electrónico </label>
+                                        <div>
+                                            <input id="element_5" name="element_5" class="form-control form-control-sm" type="email" maxlength="255" value="<?php echo $sessionus; ?>" />
+                                        </div>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                        <div class="bp-card card-body">
+                            <h5>Mi Avatar</h5>
+                            <p>No te emociones, seguimos trabajando en ello</p>
+                        </div>
+                        <div class="bp-card card-body">
+                            <h5>Notificaciones</h5>
+                            <p>No te emociones, seguimos trabajando en ello</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-    </div>
-</div>
-</div>
-    <footer class="page-footer bg-primary">
-        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
+            </section>
         </div>
-    </footer>
-</body>
+        </div>
+        </div>
+        </div>
+    <?php } else { ?>
+
+        <body class="err403">
+            <section class="error-container">
+                <span><span>4</span></span>
+                <span>0</span>
+                <span><span>3</span></span>
+            </section>
+            <center>
+                <h2 style="color:#FFF; margin-bottom:15px;">No tienes permiso para acceder a esta página... :/</h2>
+                <a class="btn btn-light" href="/">Llévame de vuelta</a>
+            </center>
+        <?php } ?>
+        <footer class="page-footer bg-primary">
+            <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
+            </div>
+        </footer>
+        </body>
 
 </html>
