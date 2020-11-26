@@ -5,6 +5,7 @@ echo '<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+  
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">';
 if ($sessionlogged == 1) {
@@ -33,12 +34,12 @@ echo '
             <a class="nav-link" data-toggle="modal" data-target="#searchmodal" data-backdrop="false"><i class="fas fa-search"></i> Búsqueda</a>
         </li>        
 ';
-if ($sessionlogged == 1) {
-  echo '<a class="nav-link" href="/bp-user/"><i class="fas fa-user"></i> Área Personal de ' . $sessionus . '</a>';
-};
 echo '
         </ul>
-    </div>';
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+    <li><a class="nav-link" href="/bp-user/">Hola, '; if ($sessionlogged == 1) {echo $sessionus;}; echo '<img class="pull-right" style="margin-left:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="/bp-include/avatar.png"></a></li>
+</ul>';
 if ($sessionlogged == 0) {
   echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
           Acceder
