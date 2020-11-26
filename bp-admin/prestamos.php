@@ -15,7 +15,7 @@ if ($sessionlogged == 1) {
             <div>
                 <header>
                     <div class="bp-header">
-                        <h2 class="bp-page-title">Catálogo</h2>
+                        <h2 class="bp-page-title">Gestionar Préstamos</h2>
                     </div>
                 </header>
                 <section class="bp-section">
