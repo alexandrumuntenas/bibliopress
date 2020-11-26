@@ -123,6 +123,7 @@ if ($sessionlogged == 1) {
                     </div>
             </div>
             </div>
+            </div>
             </section>
         <?php } else { ?>
 

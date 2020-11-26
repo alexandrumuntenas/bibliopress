@@ -61,6 +61,7 @@ if ($sessionlogged == 1) {
             </section>
             </div>
             </div>
+            </div>
         <?php } else { ?>
 
             <body class="err403">

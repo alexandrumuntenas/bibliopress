@@ -79,6 +79,8 @@ $qlector = mysqli_fetch_assoc($qlectorre);
             </section>
         </div>
         </div>
+        </div>
+        </div>
     <?php } else { ?>
         <?php require '../bp-include/menu.php'; ?>
         <div>
@@ -142,6 +144,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                         </section> <?php } ?>
                 </div>
             </section>
+        </div>
         </div>
         </div> <?php } ?>
     <footer class="page-footer bg-primary">

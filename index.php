@@ -372,7 +372,7 @@
             ?>
             </footer>
         </section>
-    </div></div>
+    </div></div></div>  
     <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
         </div>

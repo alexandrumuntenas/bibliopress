@@ -15,13 +15,17 @@
       ';
         };
       }; ?>
-      <?php if ($sessionlogged == 1) {
-        echo '
-      <a href="/bp-user/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-id-card-alt"></i> Mi Perfil</a>';
-      } else {
-        echo '
-      <a href="/bp-user/" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>';
-      };
+      <?php if ($sessionlogged == 1) { ?>
+        <a class="nav-link dropdown-toggle list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="/bp-include/avatar.png">Mi perfil</a>
+        <div class="dropdown-menu dropdown-menu-right" style="margin-right: 15px;" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      <?php } else { ?>
+        <a href="/bp-user/" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>
+      <?php };
       ?>
     </div>
   </div>
@@ -73,3 +77,26 @@
       </div>
     </div>
   </div>
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary" id="menu-toggle"><i class="fas fa-bars"></i></button>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item dropdown">
+          <li class="nav-item navbar-nav ml-auto">
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
