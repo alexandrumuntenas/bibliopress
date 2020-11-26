@@ -3,7 +3,7 @@ echo "<head>
     <title>Biblioteca del " . $sname . "</title>
     <meta charset='utf8mb4'/>
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-    <link rel='icon' type='image/png' href='bibliopress.png'>
+    <link rel='icon' type='image/png' href='/bibliopress.png'>
     <link rel='stylesheet' href='/bp-include/style.min.css'>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css' integrity='sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2' crossorigin='anonymous'>
     <script src='https://use.fontawesome.com/releases/v5.14.0/js/all.js' data-auto-replace-svg='nest'></script>
@@ -17,7 +17,6 @@ echo "<head>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx' crossorigin='anonymous'></script>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
     <script type='text/javascript' src='/bp-include/lives.js'></script>
-    <link rel='stylesheet' type='text/css' href='/bp-include/lives.css'>
     <script src=\"/bp-include/js/jquery.min.js\"></script>
     <script src=\"/bp-include/bootstrap/js/bootstrap.min.js\"></script>
     <script src=\"/bp-include/js/bs-init.js\"></script>
