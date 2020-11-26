@@ -18,10 +18,10 @@
       <?php if ($sessionlogged == 1) { ?>
         <a class="nav-link dropdown-toggle list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="/bp-include/avatar.png">Mi perfil</a>
         <div class="dropdown-menu dropdown-menu-right" style="margin-right: 15px;" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="/bp-user/">Mi Área Personal</a>
+          <a class="dropdown-item" href="/bp-user/miperfil.php">Mi Perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="/bp-user/logout.php">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
         </div>
       <?php } else { ?>
         <a href="/bp-user/" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>
