@@ -32,20 +32,19 @@ if ($sessionlogged == 1) {
 echo '
         <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#searchmodal" data-backdrop="false"><i class="fas fa-search"></i> Búsqueda</a>
-        </li>        
-';
-echo '
+        </li>
         </ul>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-    <li><a class="nav-link" href="/bp-user/">Hola, '; if ($sessionlogged == 1) {echo $sessionus;}; echo '<img class="pull-right" style="margin-left:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="/bp-include/avatar.png"></a></li>
-</ul>';
-if ($sessionlogged == 0) {
-  echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
-          Acceder
-        </button>';
-};
-echo '
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">';
+    if ($sessionlogged == 1) {
+      echo '<a class="nav-link" href="/bp-user/">Hola, ' . $sessionus . '<img class="pull-right" style="margin-left:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="/bp-include/avatar.png"></a>';
+    } else {
+      echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal" data-backdrop="false">
+              Acceder
+            </button>';}; echo '
+        </ul>
+    </div></li>
+</ul>
 <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
   <div class="modal-dialog modal-login">
       <div class="modal-content">
