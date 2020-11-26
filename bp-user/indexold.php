@@ -37,34 +37,36 @@ $qlector = mysqli_fetch_assoc($qlectorre);
             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
             </center><div class="row">
             <div class="bp-card card-body">
-            <h5>Sobre Mí</h5>
-                    <form id="form_1388"  method="post" action="/bp-admin/functions/actualizar.php">				
-                        <ul>
-                            
-                        <li id="li_1">
-                        <label class="description" for="element_1">Nombre </label>
-                        <div>
-                            <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/> 
-                        </div> 
-                        </li>		<li id="li_2">
-                        <label class="description" for="element_2">Apellido </label>
-                        <div>
-                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/> 
-                        </div> 
-                        </li>		<li id="li_2">
-                        <label class="description" for="element_5">Correo Electrónico </label>
-                        <div>
-                            <input id="element_5" name="element_5" class="form-control form-control-sm" type="email" maxlength="255" value="'.$sessionus.'"/> 
-                        </div> 
-                        </li>
-                        </ul>
-                        </form>
+            <h5>Préstamos Activos</h5>
+            <table>
+            <thead>
+            <tr>
+                <th>Titulo </th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            ';
+            while ($row = $result->fetch_assoc()) {
+                echo '<tr>
+                            <td>' . $row["TITULO"] . '</td>
+                        
+                        </tr>';
+            }
+            echo '
+            <tr>
+            </tr>
+            </tbody>
+            </table>
             </div>
             <div class="bp-card card-body">
-            <h5>Mi Avatar</h5><p>No te emociones, seguimos trabajando en ello</p></div>
+            <h5>En Lista de Espera</h5><p>No te emociones, seguimos trabajando en ello</p></div>
             <div class="bp-card card-body">
-            <h5>N</h5><p>No te emociones, seguimos trabajando en ello</p>
-            </div></div></section>';
+            <h5>Tus Últimas Lecturas</h5><p>No te emociones, seguimos trabajando en ello</p>
+            </div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del ' . $sname . '</p><p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p></div><div class="bp-card card-body"><h5>Este es tu código de barras para iniciar sesión</h5><p>Lo siento, los administradores no tienen un código de barras para iniciar sesión.</div>
+            </div></section>';
         } else {
             echo '<section class="bp-section flex-column"><center>
             <div class="btn-group" role="group">
@@ -73,34 +75,36 @@ $qlector = mysqli_fetch_assoc($qlectorre);
             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
             </center><div class="row">
             <div class="bp-card card-body">
-            <h5>Sobre Mí</h5>
-                    <form id="form_1388"  method="post" action="/bp-admin/functions/actualizar.php">				
-                        <ul>
-                            
-                        <li id="li_1">
-                        <label class="description" for="element_1">Nombre </label>
-                        <div>
-                            <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/> 
-                        </div> 
-                        </li>		<li id="li_2">
-                        <label class="description" for="element_2">Apellido </label>
-                        <div>
-                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/> 
-                        </div> 
-                        </li>		<li id="li_2">
-                        <label class="description" for="element_5">Correo Electrónico </label>
-                        <div>
-                            <input id="element_5" name="element_5" class="form-control form-control-sm" type="email" maxlength="255" value="'.$sessionus.'"/> 
-                        </div> 
-                        </li>
-                        </ul>
-                        </form>
+            <h5>Préstamos Activos</h5>
+            <table>
+            <thead>
+            <tr>
+                <th>Titulo </th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            ';
+            while ($row = $result->fetch_assoc()) {
+                echo '<tr>
+                            <td>' . $row["TITULO"] . '</td>
+                        
+                        </tr>';
+            }
+            echo '
+            <tr>
+            </tr>
+            </tbody>
+            </table>
             </div>
             <div class="bp-card card-body">
-            <h5>Mi Avatar</h5><p>No te emociones, seguimos trabajando en ello</p></div>
+            <h5>En Lista de Espera</h5><p>No te emociones, seguimos trabajando en ello</p></div>
             <div class="bp-card card-body">
-            <h5>N</h5><p>No te emociones, seguimos trabajando en ello</p>
-            </div></div></section>';
+            <h5>Tus Últimas Lecturas</h5><p>No te emociones, seguimos trabajando en ello</p>
+            </div>
+            <div class="bp-card card-body"><h5>Sobre la Biblioteca</h5><p>Biblioteca del ' . $sname . '</p><p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p></div><div class="bp-card card-body"><h5>Este es tu código de barras para iniciar sesión</h5><img src="/bp-include/cdgbra.php?codetype=Code39&text=' . $qlector['PIN'] . '"/></div>
+            </div></section>';
         }
     } else {
         echo "<section class='bp-section'><div class='row'><div class='bp-card card-body'><form name='loginform' id='loginform' method='post' action='logger.php'>

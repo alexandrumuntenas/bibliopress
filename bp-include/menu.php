@@ -1,7 +1,7 @@
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 ?>
 <div class="d-flex" id="wrapper">
-  <div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="bg-light border-right " id="sidebar-wrapper">
     <div class="sidebar-heading">Biblioteca</div>
     <div class="list-group list-group-flush">
       <a href="/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> Catálogo</a>

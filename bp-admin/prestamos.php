@@ -88,7 +88,7 @@ if ($sessionlogged == 1) {
                 </center>
             <?php } ?>
             <footer class="page-footer bg-primary">
-                <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
+                <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
                 </div>
             </footer>
             </body>

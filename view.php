@@ -60,7 +60,7 @@ if (empty($_POST['escaner'])) {
             <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>'; ?>
             <a class="btn btn-info" href="/">
                 < Volver</a> </div> </div> </div> <footer class="page-footer bg-primary">
-                    <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress
+                    <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress
             </a>
         </div>
         </footer>
@@ -100,7 +100,7 @@ if (empty($_POST['escaner'])) {
                 ?>
                 <a class="btn btn-info" href="/">
                     < Volver</a> </div> </div> </div> <footer class="page-footer bg-primary">
-                        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress
+                        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress
                 </a>
             </div>
             </footer>
@@ -162,7 +162,7 @@ if (empty($_POST['escaner'])) {
             <p><strong>Editorial</strong> <em>' . $row["EDITORIAL"] . '</em></p>'; ?>
                 <a class="btn btn-info" href="/">
                     < Volver</a> </div> </div> </div> <footer class="page-footer bg-primary">
-                        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress
+                        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress
                 </a>
             </div>
             </footer>
