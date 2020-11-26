@@ -17,11 +17,7 @@ echo "<head>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx' crossorigin='anonymous'></script>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
     <script type='text/javascript' src='/bp-include/lives.js'></script>
-    <script src=\"/bp-include/js/jquery.min.js\"></script>
-    <script src=\"/bp-include/bootstrap/js/bootstrap.min.js\"></script>
-    <script src=\"/bp-include/js/bs-init.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js\"></script>
-    <script src=\"/bp-include/js/theme.js\"></script>
     <link rel=\"stylesheet\" href=\"/bp-include/bootstrap/css/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"/bp-include/fonts/fontawesome-all.min.css \">
     <link rel=\"stylesheet\" href=\"/bp-include/fonts/font-awesome.min.css \">
