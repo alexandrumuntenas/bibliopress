@@ -19,7 +19,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
         <div>
             <header>
                 <div class="bp-header">
-                    <h2 class="bp-page-title">Mi Perfil</h2>
+                    <h2 class="bp-page-title">Mi Área Personal</h2>
                 </div>
             </header>
             <section class="bp-section">

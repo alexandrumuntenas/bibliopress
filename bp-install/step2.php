@@ -5,7 +5,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nueva instalación de Bibliopress 1.0</title>
+        <title>Nueva instalación de Bibliopress 0.5</title>
         <link rel="icon" type="image/png" href="bibliopress.png">
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
         <script type="text/javascript" src="view.js"></script>
@@ -17,7 +17,7 @@
         <img id="top" src="top.png" alt="">
         <div id="form_container">
 
-            <h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
+            <h1><a><strong>Nueva instalación de Bibliopress 0.5</strong></a></h1>
             <form id="form_4248" class="appnitro" method="post" action="step2.php">
                 <div class="form_description">
                     <h2><strong>Parece que Bibliopress ya está instalado...</h2>
@@ -37,7 +37,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nueva instalación de Bibliopress 1.0</title>
+        <title>Nueva instalación de Bibliopress 0.5</title>
         <link rel="icon" type="image/png" href="bibliopress.png">
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
         <script type="text/javascript" src="view.js"></script>
@@ -49,10 +49,10 @@
         <img id="top" src="top.png" alt="">
         <div id="form_container">
 
-            <h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
+            <h1><a><strong>Nueva instalación de Bibliopress 0.5</strong></a></h1>
             <form id="form_4248" class="appnitro" method="post" action="step2.php">
                 <div class="form_description">
-                    <h2><strong>Nueva instalación de Bibliopress 1.0</h2>
+                    <h2><strong>Nueva instalación de Bibliopress 0.5</h2>
                     <p>Una nueva aplicación web para la gestión de bibliotecas escolares! Una alternativa nueva e intuitiva a Abies, Abies Web, Biblioweb, ebiblio...</p>
                 </div>
                 <?php
@@ -79,16 +79,18 @@
                 };
 
                 $cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
-                $bpusuario = "CREATE TABLE `".$prefixtable."_usuarios` (
-                    `USUARIO` tinytext NOT NULL,
-                    `FULLNAME` longtext NOT NULL,
-                    `NOMBRE` text CHARACTER SET utf8mb4 NOT NULL,
-                    `APELLIDOS` mediumtext CHARACTER SET utf8mb4 NOT NULL,
-                    `CLASE` text CHARACTER SET utf8mb4 NOT NULL,
-                    `PIN` int(11) NOT NULL,
-                    `PERM` int(1) NOT NULL,
-                    PRIMARY KEY (`USUARIO`(64))
-                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+                $bpusuario = "CREATE TABLE `" . $prefixtable . "_usuarios` (
+                `USUARIO` tinytext NOT NULL,
+                `FULLNAME` longtext NOT NULL,
+                `NOMBRE` text CHARACTER SET utf8mb4 NOT NULL,
+                `APELLIDOS` mediumtext CHARACTER SET utf8mb4 NOT NULL,
+                `CLASE` text CHARACTER SET utf8mb4 NOT NULL,
+                `PIN` varchar(128) NOT NULL,
+                `PERM` int(1) NOT NULL,
+                `AVATAR` varchar(1024) NOT NULL,
+                `THEME` int(11) NOT NULL,
+                PRIMARY KEY (`USUARIO`(64))
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
 
                 $bpcatalogo = "CREATE TABLE `" . $prefixtable . "_catalogo` (
@@ -175,22 +177,22 @@
                 $ficheroconfig = fopen($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php", "wb") or die("Unable to open file!");
                 $txt = "<?php
 
-        // Valores MYSQL
-        \$serverMySQL = '$servername'; //Host de la base de datos
-        \$dbMySQL = '$dbname'; //Nombre de la base de datos
-        \$userMySQL = '$username'; //Usuario de la base de datos
-        \$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
-        \$prefix = '$prefixtable'; //Prefijo de tablas. No cambiar
+                // Valores MYSQL
+                \$serverMySQL = '$servername'; //Host de la base de datos
+                \$dbMySQL = '$dbname'; //Nombre de la base de datos
+                \$userMySQL = '$username'; //Usuario de la base de datos
+                \$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
+                \$prefix = '$prefixtable'; //Prefijo de tablas. No cambiar
 
-        // Otros parametros
-        \$sname = '$cname'; //Nombre de la biblioteca/institución
-        \$sitelink = '$sitelinkfrompost'; //Enlace del sitio web para cumplir con GDPR
+                // Otros parametros
+                \$sname = '$cname'; //Nombre de la biblioteca/institución
+                \$sitelink = '$sitelinkfrompost'; //Enlace del sitio web para cumplir con GDPR
 
-        \$databaseconnection = mysqli_connect(\$serverMySQL,\$userMySQL,\$pwdMySQL,\$dbMySQL);
-        
-        //Parámetro Lista
-        \$CantidadMostrar=9;
-        ";
+                \$databaseconnection = mysqli_connect(\$serverMySQL,\$userMySQL,\$pwdMySQL,\$dbMySQL);
+                
+                //Parámetro Lista
+                \$CantidadMostrar=9;
+                ";
                 fwrite($ficheroconfig, $txt);
                 ?>
                 <div id="footer">

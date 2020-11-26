@@ -5,7 +5,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Nueva instalación de Bibliopress 1.0</title>
+		<title>Nueva instalación de Bibliopress 0.5</title>
 		<link rel="icon" type="image/png" href="bibliopress.png">
 		<link rel="stylesheet" type="text/css" href="view.css" media="all">
 		<script type="text/javascript" src="view.js"></script>
@@ -17,7 +17,7 @@
 		<img id="top" src="top.png" alt="">
 		<div id="form_container">
 
-			<h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
+			<h1><a><strong>Nueva instalación de Bibliopress 0.5</strong></a></h1>
 			<form id="form_4248" class="appnitro" method="post" action="step2.php">
 				<div class="form_description">
 					<h2><strong>Parece que Bibliopress ya está instalado...</h2>
@@ -36,7 +36,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Nueva instalación de Bibliopress 1.0</title>
+		<title>Nueva instalación de Bibliopress 0.5</title>
 		<link rel="icon" type="image/png" href="bibliopress.png">
 		<link rel="stylesheet" type="text/css" href="view.css" media="all">
 		<script type="text/javascript" src="view.js"></script>
@@ -48,10 +48,10 @@
 		<img id="top" src="top.png" alt="">
 		<div id="form_container">
 
-			<h1><a><strong>Nueva instalación de Bibliopress 1.0</strong></a></h1>
+			<h1><a><strong>Nueva instalación de Bibliopress 0.5</strong></a></h1>
 			<form id="form_4248" class="appnitro" method="post" action="step2.php">
 				<div class="form_description">
-					<h2><strong>Nueva instalación de Bibliopress 1.0</h2>
+					<h2><strong>Nueva instalación de Bibliopress 0.5</h2>
 					<p>Una nueva aplicación web para la gestión de bibliotecas escolares! Una alternativa nueva e intuitiva a Abies, Abies Web, Biblioweb, ebiblio...</p>
 				</div>
 				<ul>
