@@ -9,7 +9,6 @@ $sql = "SELECT TITULO, AUTOR, ISBN, EDITORIAL, UBICACION, ANOPUB, EJEMPLAR, ID, 
 $resultado = $databaseconnection->query($sql);
 $lectorsql = "SELECT * FROM `$bbddusuarios`";
 $lectorresultado = $databaseconnection->query($lectorsql);
-$dformat = date($formatofecha);
 $numerolibros = mysqli_num_rows($resultado);
 $qtyprestadosql = "SELECT *  FROM `$bbddcatalogo` WHERE `DISPONIBILIDAD` = 0";
 $qtyprestadoquery = $databaseconnection->query($qtyprestadosql);
