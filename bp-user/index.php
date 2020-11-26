@@ -24,8 +24,6 @@ $qlector = mysqli_fetch_assoc($qlectorre);
             </header>
             <section class="bp-section">
                 <div>
-                    <?php if ($sessionlogged == 1) { ?>
-                        <section class="bp-section flex-column">
                             <center>
                                 <div class="btn-group" role="group">
                                     <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
@@ -74,7 +72,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                             ';
                                 } ?>
                             </div>
-                        </section> <?php } ?>
+                        </section>
                 </div>
             </section>
         </div>
@@ -82,75 +80,21 @@ $qlector = mysqli_fetch_assoc($qlectorre);
         </div>
         </div>
     <?php } else { ?>
-        <?php require '../bp-include/menu.php'; ?>
-        <div>
-            <header>
-                <div class="bp-header">
-                    <h2 class="bp-page-title">Mi Perfil</h2>
-                </div>
-            </header>
-            <section class="bp-section">
-                <div>
-                    <?php if ($sessionlogged == 1) { ?>
-                        <section class="bp-section flex-column">
-                            <center>
-                                <div class="btn-group" role="group">
-                                    <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                                    <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
-                                    <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-                            </center>
-                            <div class="row">
-                                <div class="bp-card card-body">
-                                    <h5>Préstamos Activos</h5>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Titulo </th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo '<tr>
-                                        <td>' . $row["TITULO"] . '</td>
-
-                                    </tr>';
-                                            }
-                                            ?>
-                                            <tr>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="bp-card card-body">
-                                    <h5>En Lista de Espera</h5>
-                                    <p>No te emociones, seguimos trabajando en ello</p>
-                                </div>
-                                <div class="bp-card card-body">
-                                    <h5>Tus Últimas Lecturas</h5>
-                                    <p>No te emociones, seguimos trabajando en ello</p>
-                                </div>
-                                <?php if ($sessionclass == 1) {
-                                    echo '
-                            <div class="bp-card card-body">
-                                <h5>Sobre la Biblioteca</h5>
-                                <p>Biblioteca del ' . $sname . '</p>
-                                <p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p>
-                            </div>
-                            ';
-                                } ?>
-                            </div>
-                        </section> <?php } ?>
-                </div>
+        <body class="err403">
+            <section class="error-container">
+                <span><span>4</span></span>
+                <span>0</span>
+                <span><span>3</span></span>
             </section>
-        </div>
-        </div>
-        </div> <?php } ?>
-    <footer class="page-footer bg-primary">
-        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
-        </div>
-    </footer>
-</body>
+            <center>
+                <h2 style="color:#FFF; margin-bottom:15px;">No tienes permiso para acceder a esta página... :/</h2>
+                <a class="btn btn-light" href="/">Llévame de vuelta</a>
+            </center><?php } ?>
+        <footer class="page-footer bg-primary">
+            <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
+            </div>
+        </footer>
+        </body>
 
 </html>
