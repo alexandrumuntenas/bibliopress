@@ -1,6 +1,4 @@
-<?php
-//Importación de datos
-require 'bp-config.php';
+<?php require 'bp-config.php';
 ?>
 <html>
 <title>
@@ -9,32 +7,30 @@ require 'bp-config.php';
 <?php require 'bp-include/head.php'; ?>
 
 <body>
-
-    <header>
-        <div class="wrapper">
-            <?php require 'bp-include/menu.php'; ?>
-
+    <?php require 'bp-include/menu.php'; ?>
+    <div>
+        <header>
             <div class="bp-header">
                 <h2 class="bp-page-title">Catálogo</h2>
             </div>
-    </header>
-    <section class="bp-section">
-        <br>
-        <br>
-        <?php
-        $result = mysqli_query($databaseconnection, "SELECT * FROM `$bbddcatalogo`");
-        $qty = mysqli_num_rows($result);
-        $qtya = $qty / $CantidadMostrar;
-        $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
-        echo '<p class="badge badge-success">' . $qty . ' Registros</p>                 ';
-        echo '<p class="badge badge-danger">' . $qtyp . ' Páginas totales</p>';
-        if ($sessionlogged == 1) {
-            if ($sessionclass == 1) {
-                echo '<br>
+        </header>
+        <section class="bp-section">
+            <br>
+            <br>
+            <?php
+            $result = mysqli_query($databaseconnection, "SELECT * FROM `$bbddcatalogo`");
+            $qty = mysqli_num_rows($result);
+            $qtya = $qty / $CantidadMostrar;
+            $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
+            echo '<p class="badge badge-success">' . $qty . ' Registros</p>                 ';
+            echo '<p class="badge badge-danger">' . $qtyp . ' Páginas totales</p>';
+            if ($sessionlogged == 1) {
+                if ($sessionclass == 1) {
+                    echo '<br>
                 
                 <div class="btn-toolbar" role="toolbar">
                 <div class="btn-group mr-2" role="group">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">Añadir nuevo registro</button>
+                    <button onclick="myBlurFunction(1);" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">Añadir nuevo registro</button>
                     <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/abies.php\';" />Subir desde Abies</button>
                 </div>
                 <div class="btn-group mr-2" role="group">
@@ -45,11 +41,11 @@ require 'bp-config.php';
                 Búsqueda por Código de Barras
                 </button>
                 </div>';
+                }
             }
-        }
 
 
-        echo '<div class="modal-dialog modal-dialog-scrollable">
+            echo '<div class="modal-dialog modal-dialog-scrollable">
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -247,29 +243,29 @@ require 'bp-config.php';
                 </div>
             </div>
             </div>';
-        ?>
-        <div class="row">
-            <?php
-            if ($databaseconnection->connect_errno) {
-                echo "Fallo al conectar a MySQL: (" . $databaseconnection->connect_errno . ") " . $databaseconnection->connect_error;
-            } else {
-                // Validado de la variable GET
-                $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
-                $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddcatalogo`");
-                //Se divide la cantidad de registro de la BD con la cantidad a mostrar 
-                $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
-                //Consulta SQL
-                $consultavistas = "SELECT * FROM `$bbddcatalogo`
+            ?>
+            <div class="row">
+                <?php
+                if ($databaseconnection->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $databaseconnection->connect_errno . ") " . $databaseconnection->connect_error;
+                } else {
+                    // Validado de la variable GET
+                    $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
+                    $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddcatalogo`");
+                    //Se divide la cantidad de registro de la BD con la cantidad a mostrar 
+                    $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
+                    //Consulta SQL
+                    $consultavistas = "SELECT * FROM `$bbddcatalogo`
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
-                $consulta = $databaseconnection->query($consultavistas);
+                    $consulta = $databaseconnection->query($consultavistas);
 
-                echo '';
-                while ($row = $consulta->fetch_row()) {
-                    $long = 250;
-                    $desc = substr($row[12], 0, $long);
-                    echo '
+                    echo '';
+                    while ($row = $consulta->fetch_row()) {
+                        $long = 250;
+                        $desc = substr($row[12], 0, $long);
+                        echo '
                     
                     <!-- Modal -->
                     <div class="modal fade" id="libro' . $row[10] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -294,88 +290,89 @@ require 'bp-config.php';
                           </div>
                           <div class="modal-footer">
                           ';
-                    if ($sessionlogged == 1) {
-                        if ($sessionclass == 1) {
-                            if ($row[13] == 1) {
-                                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+                        if ($sessionlogged == 1) {
+                            if ($sessionclass == 1) {
+                                if ($row[13] == 1) {
+                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+                                } else {
+                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+                                }
                             } else {
-                                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+                                if ($row[13] == 1) {
+                                    echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id=' . $row[10] . '">Solicitar</a>';
+                                } else {
+                                    echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id=' . $row[10] . '">Avísame cuando esté disponible</a>';
+                                }
+                                echo '';
                             }
-                        } else {
-                            if ($row[13] == 1) {
-                                echo '<a style="margin-left: 10px;color: green;" href="bp-admin/acciones/solicitar.php?id=' . $row[10] . '">Solicitar</a>';
-                            } else {
-                                echo '<a style="margin-left: 10px;color: gray;" href="bp-admin/acciones/notify.php?id=' . $row[10] . '">Avísame cuando esté disponible</a>';
-                            }
-                            echo '';
                         }
-                    }
-                    echo '
+                        echo '
                           </div>
                         </div>
                       </div>
                     </div>';
 
-                    echo '<div class="bp-card card-body">
+                        echo '<div class="bp-card card-body">
                     <h5><strong>' . $row[6] . '</strong>                    </h5>';
-                    echo '
+                        echo '
                     <p><em>' . $row[1] . '</em></p>
                     <p>' . $desc . '...</p>';
-                    if ($row[13] == 1) {
-                        echo '<p class="badge badge-success">Disponibilidad ✓</p><br>';
-                    } else {
-                        echo '<p class="badge badge-danger">Disponibilidad ✗</p><br>';
-                    }
-                    if ($sessionlogged == 1) {
-                        if ($sessionclass == 1) {
-                            echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">Ver más</button><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
+                        if ($row[13] == 1) {
+                            echo '<p class="badge badge-success">Disponibilidad ✓</p><br>';
                         } else {
-                            echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';
+                            echo '<p class="badge badge-danger">Disponibilidad ✗</p><br>';
                         }
-                    } else {
-                        echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">
+                        if ($sessionlogged == 1) {
+                            if ($sessionclass == 1) {
+                                echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">Ver más</button><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
+                            } else {
+                                echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';
+                            }
+                        } else {
+                            echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">
                         Ver más
                       </button>';
-                    }
-                    echo '</div>';
-                };
-            ?>
-        </div>
-        <footer class="page-footer" style="overflow-x:scroll;margin-top: 50px;">
-        <?php
-                /*Sector de Paginacion */
+                        }
+                        echo '</div>';
+                    };
+                ?>
+            </div>
+            <footer class="page-footer" style="overflow-x:scroll;margin-top: 50px;">
+            <?php
+                    /*Sector de Paginacion */
 
-                //Operacion matematica para botón siguiente y atrás 
-                $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
-                $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
+                    //Operacion matematica para botón siguiente y atrás 
+                    $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
+                    $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
 
-                echo "<ul class='pagination'><li class=\"page-item\"><a class='page-link' href=\"?pag=" . $DecrementNum . "\">&laquo;</a></li>";
-                //Se resta y suma con el numero de pag actual con el cantidad de 
-                //números  a mostrar
-                $Desde = $compag - (ceil($CantidadMostrar / 2) - 1);
-                $Hasta = $compag + (ceil($CantidadMostrar / 2) - 1);
+                    echo "<ul class='pagination'><li class=\"page-item\"><a class='page-link' href=\"?pag=" . $DecrementNum . "\">&laquo;</a></li>";
+                    //Se resta y suma con el numero de pag actual con el cantidad de 
+                    //números  a mostrar
+                    $Desde = $compag - (ceil($CantidadMostrar / 2) - 1);
+                    $Hasta = $compag + (ceil($CantidadMostrar / 2) - 1);
 
-                //Se valida
-                $Desde = ($Desde < 1) ? 1 : $Desde;
-                $Hasta = ($Hasta < $CantidadMostrar) ? $CantidadMostrar : $Hasta;
-                //Se muestra los números de paginas
-                for ($i = $Desde; $i <= $Hasta; $i++) {
-                    //Se valida la paginacion total
-                    //de registros
-                    if ($i <= $TotalRegistro) {
-                        //Validamos la pag activo
-                        if ($i == $compag) {
-                            echo "<li class=\"page-item active\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
-                        } else {
-                            echo "<li><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                    //Se valida
+                    $Desde = ($Desde < 1) ? 1 : $Desde;
+                    $Hasta = ($Hasta < $CantidadMostrar) ? $CantidadMostrar : $Hasta;
+                    //Se muestra los números de paginas
+                    for ($i = $Desde; $i <= $Hasta; $i++) {
+                        //Se valida la paginacion total
+                        //de registros
+                        if ($i <= $TotalRegistro) {
+                            //Validamos la pag activo
+                            if ($i == $compag) {
+                                echo "<li class=\"page-item active\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                            } else {
+                                echo "<li><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                            }
                         }
                     }
+                    echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
                 }
-                echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
-            }
-        ?>
-        </footer>
-    </section>
+            ?>
+            </footer>
+        </section>
+    </div></div>
     <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . $dformat . " " . $sname; ?> | Powered by Bibliopress</a>
         </div>
