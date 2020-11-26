@@ -14,7 +14,7 @@ p {
     background-image: url(/bp-include/header.jpg);
     background-size: cover;
     position: relative;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
 }
 
 .bp-page-title {
@@ -31,7 +31,7 @@ p {
     position: relative;
     width: 70%;
     margin: 0 auto;
-    margin-top: 20px
+    margin-top: 20px;
 }
 
 .bp-card {
@@ -843,7 +843,7 @@ div.calendar {
     font-weight: 700
 }
 
-.err404 {
+.err403 {
     background-image: url(/bp-include/404.bg.jpg);
     background-size: cover;
     position: relative;
@@ -1298,4 +1298,9 @@ a {
     position: absolute;
     bottom: 0;
     width: 100%;
-}   
+}
+
+.blur {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
