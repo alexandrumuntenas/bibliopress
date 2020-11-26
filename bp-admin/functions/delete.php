@@ -8,10 +8,10 @@ if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '<body>';
     } else {
-        echo '<body class="err404">';
+        echo '<body class="err403">';
     }
 } else {
-    echo '<body class="err404">';
+    echo '<body class="err403">';
 }
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
@@ -32,7 +32,7 @@ if ($sessionlogged == 1) {
                             <span><span>4</span></span>
                           </section>
                           <center>
-                            <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+                            <h2 style="color:#FFF; margin-bottom:15px;">No tienes permiso para acceder a esta página... :/</h2>
                             <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
     }
 } else {
@@ -42,7 +42,7 @@ if ($sessionlogged == 1) {
                         <span><span>3</span></span>
                       </section>
                       <center>
-                      <h2 style="color:#FFF; margin-bottom:15px;">Parece que te has perdido</h2>
+                      <h2 style="color:#FFF; margin-bottom:15px;">No tienes permiso para acceder a esta página... :/</h2>
                       <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
 };
 ?>
