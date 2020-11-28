@@ -37,8 +37,8 @@ Estas son las funciones que incluye e incluirá Bibliopress
 ##### Interfaces
 - [x] Interfaz del Estudiante
 - [x] Interfaz de Administración
-- [ ] Interfaz de gestión de lectores
-- [ ] Interfaz de gestión de préstamos
+- [x] Interfaz de gestión de lectores
+- [x] Interfaz de gestión de préstamos
 - [x] Interfaz de gestión de libros
 - [x] Interfaz de inicio de sesión
 
@@ -50,5 +50,6 @@ Estas son las funciones que incluye e incluirá Bibliopress
 - [ ] Sistema de impresión de etiquetas de cada libro
 - [x] Integración de uso de la Web Cam para escanear Códigos de Barras
 - [x] Integración con Lector de Códigos de Barras
+
 
 Proyecto realizado por duoestudios
