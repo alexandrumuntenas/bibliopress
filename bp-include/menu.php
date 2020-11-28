@@ -29,7 +29,7 @@
       ?>
     </div>
   </div>
-  
+
   <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
     <div class="modal-dialog modal-login">
       <div class="modal-content">

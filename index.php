@@ -225,7 +225,12 @@
                 if ($sessionclass == 1) {
                     echo  '<center><div class="btn-group" role="group">
                 <div class="btn-group mr-2" role="group">
+                    <p class="material-icons floating-btn">add</p>
+                </div>
+                <div class="btn-group mr-2" role="group">
                     <button onclick="myBlurFunction(1);" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">Añadir nuevo registro</button>
+                </div>
+                <div class="btn-group mr-2" role="group">
                     <button type="button" class="btn btn-secondary" onclick="location.href=\'bp-admin/functions/abies.php\';" />Subir desde Abies</button>
                 </div>
                 <div class="btn-group mr-2" role="group">
@@ -304,6 +309,7 @@
                                 }
                             }
                             echo '
+                            
                           </div>
                         </div>
                       </div>

@@ -29,6 +29,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                             <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
                             <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
                             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+                        </div>
                     </center>
                     <div class="row">
                         <div class="bp-card card-body">
