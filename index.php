@@ -18,12 +18,7 @@
             <br>
             <br>
             <?php
-            $result = mysqli_query($databaseconnection, "SELECT * FROM `$bbddcatalogo`");
-            $qty = mysqli_num_rows($result);
-            $qtya = $qty / $CantidadMostrar;
-            $qtyp = round($qtya, 0, PHP_ROUND_HALF_UP);
-            echo '<p class="badge badge-success">' . $qty . ' Registros</p>                 ';
-            echo '<p class="badge badge-danger">' . $qtyp . ' Páginas totales</p>';
+        
             if ($sessionlogged == 1) {
                 if ($sessionclass == 1) {
                     echo '<br>
@@ -312,17 +307,29 @@
                       </div>
                     </div>';
 
-                        echo '<div class="bp-card card-body">
-                    <h5><strong>' . $row[6] . '</strong>                    </h5>';
-                        echo '
-                    <p><em>' . $row[1] . '</em></p>
-                    <p>' . $desc . '...</p>';
-                        if ($row[13] == 1) {
-                            echo '<p class="badge badge-success">Disponibilidad ✓</p><br>';
-                        } else {
-                            echo '<p class="badge badge-danger">Disponibilidad ✗</p><br>';
-                        }
-                        if ($sessionlogged == 1) {
+                        echo '<div class="card">
+
+                        <!-- Card image -->
+                        <div class="view overlay">
+                          <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+                            alt="Card image cap">
+                          <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                          </a>
+                        </div>
+                      
+                        <!-- Card content -->
+                        <div class="card-body">
+                      
+                          <!-- Title -->
+                          <h4 class="card-title">' . $row[6] . '</h4>
+                          ';
+
+                          echo '
+                          <!-- Text -->
+                          <p class="card-text">' . $desc . '...</p>
+                          <!-- Button --> ';
+                          if ($sessionlogged == 1) {
                             if ($sessionclass == 1) {
                                 echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">Ver más</button><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
                             } else {
@@ -333,7 +340,7 @@
                         Ver más
                       </button>';
                         }
-                        echo '</div>';
+                        echo '</div></div>';
                     };
                 ?>
             </div>
