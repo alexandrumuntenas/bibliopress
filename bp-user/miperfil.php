@@ -2,6 +2,25 @@
 $querylector = "SELECT *  FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $sessionus . "'";
 $qlectorre = mysqli_query($databaseconnection, $querylector);
 $qlector = mysqli_fetch_assoc($qlectorre);
+
+if (isset($_POST['submit'])) {
+    $celectronicoold = mysqli_real_escape_string($databaseconnection, $_POST['element_5']);
+    $celectronico = mysqli_real_escape_string($databaseconnection, $_POST['element_6']);
+    $pinantiguo = mysqli_real_escape_string($databaseconnection, $_POST['element_7']);
+    $pinsolicitante = mysqli_real_escape_string($databaseconnection, $_POST['element_8']);
+    $pintohasher = password_hash($pinsolicitante, PASSWORD_BCRYPT);
+
+    if ($celectronico != null) {
+        $sqlquerrycchange = "UPDATE `$bbddusuarios` SET `USUARIO` = '$celectronico' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
+        $databaseconnection->query($sqlquerrycchange);
+    }
+
+    if ($pintohasher == password_verify($pinantiguo, $qlector['PIN'])) {
+        $sqlquerrypinchange = "UPDATE `$bbddusuarios` SET `PIN` = '$pintohasher' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
+        $databaseconnection->query($sqlquerrypinchange);
+    }
+}
+
 ?>
 <html>
 <title>
@@ -29,7 +48,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                     <div class="row">
                         <div class="bp-card card-body">
                             <h5>Sobre Mí</h5>
-                            <form id="form_1388" method="post" action="/bp-admin/functions/actualizar.php">
+                            <form id="form_1388" method="post" action="">
                                 <ul>
 
                                     <li id="li_1">
@@ -45,12 +64,17 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                                         </div>
                                     </li>
                                     <li id="li_2">
-                                        <label class="description" for="element_5">Correo Electrónico </label>
+                                        <label class="description" for="element_5">Cambiar Correo Electrónico</label><small>Correo Actual</small>
                                         <div>
                                             <input id="element_5" name="element_5" class="form-control form-control-sm" type="email" maxlength="255" value="<?php echo $sessionus; ?>" />
                                         </div>
+                                        <small>Correo Nuevo</small>
+                                        <div>
+                                            <input id="element_6" name="element_6" class="form-control form-control-sm" type="email" maxlength="255" value="" />
+                                        </div>
                                     </li>
                                 </ul>
+                                <input type="submit">
                             </form>
                         </div>
                         <div class="bp-card card-body">
