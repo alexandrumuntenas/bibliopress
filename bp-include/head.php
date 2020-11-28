@@ -5,6 +5,7 @@ echo "<head>
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
     <link rel='icon' type='image/png' href='/bibliopress.png'>
     <link rel='stylesheet' href='/bp-include/style.min.css'>
+    <script type='text/javascript' src='/bp-include/lives.js'></script>
     <!-- Font Awesome -->
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css'>
     <!-- Google Fonts -->
