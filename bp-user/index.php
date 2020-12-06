@@ -33,8 +33,8 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                     <div class="row">
                         <div class="bp-card card-body">
                             <h5>Préstamos Activos</h5>
-                            <table>
-                                <thead>
+                             <div class="table-responsive"><table class="table table-hover"   >
+                                <thead class="thead-dark" >
                                     <tr>
                                         <th>Titulo </th>
 
@@ -52,7 +52,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                                     <tr>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table></div>
                         </div>
                         <div class="bp-card card-body">
                             <h5>En Lista de Espera</h5>
