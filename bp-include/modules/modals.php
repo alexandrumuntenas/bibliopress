@@ -45,6 +45,33 @@ elseif(isset($_POST['promocioncurso'])){
     echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha realizado la promoción de grupo correctamente</div>';
 }
 
+elseif (isset($_POST['abiesupload'])) {
+    if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
+    }
+    ini_set("auto_detect_line_endings", true);
+    $handle = fopen($_FILES['filename']['tmp_name'], "r");
+    $fila = -5;
+    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+        $fila++;
+        if ($fila > 0) {
+            $data[0] = $databaseconnection->real_escape_string($data[0]);
+            $data[1] = $databaseconnection->real_escape_string($data[1]);
+            $data[3] = $databaseconnection->real_escape_string($data[3]);
+            $data[9] = $databaseconnection->real_escape_string($data[9]);
+            $data[18] = $databaseconnection->real_escape_string($data[18]);
+            $data[32] = $databaseconnection->real_escape_string($data[32]);
+            $data[43] = $databaseconnection->real_escape_string($data[43]);
+            $data[45] = $databaseconnection->real_escape_string($data[45]);
+            $data[47] = $databaseconnection->real_escape_string($data[47]);
+            $data[49] = $databaseconnection->real_escape_string($data[49]);
+            $import = "INSERT INTO `$bbddcatalogo` (ANOPUB,AUTOR,EJEMPLAR,EDITORIAL,CIUDAD, SIGNATURA,TIPOEJEMPLAR,TITULO,UBICACION,ISBN) values('$data[0]','$data[1]','$data[3]','$data[9]','$data[32]','$data[43]','$data[45]','$data[47]','$data[49]','$data[18]')";
+            $rs = mysqli_query($databaseconnection, $import);
+        }
+    }
+    fclose($handle);
+    echo "<div id=\"snackbar\" class=\"show\"><i class=\"fas fa-upload\"></i> Se han procesado <b>$fila ejemplares</b>. Importación Finalizada</div>";
+}
+
 echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
@@ -311,3 +338,24 @@ echo '
       </div>
     </div>
   </div>';
+
+echo '<div class="modal fade" id="subirabies" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirabies" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title" id="subirabies"><i class="fas fa-upload"></i> Subir desde Abies</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form enctype="multipart/form-data" action="" method="post">Nombre de archivo *.TXT a subir:<br /><br /><input size="50" type="file" name="filename">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                <input id="saveForm" class="btn btn-primary" type="submit" name="abiesupload" value="Subir"/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';

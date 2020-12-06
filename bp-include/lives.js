@@ -63,6 +63,6 @@ function uslibro() {
 window.onload = function () {
     var x = document.getElementById("snackbar");
     x.className = "show";
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 2500);
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 5500);
 } 
 

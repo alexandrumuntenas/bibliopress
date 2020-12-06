@@ -1,4 +1,4 @@
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php'; 
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 ?>
 <div class="d-flex" id="wrapper">
   <div class="bg-light border-right " id="sidebar-wrapper">
@@ -75,7 +75,7 @@
         <li>
           <span class="fab-label">Subir desde Abies</span>
           <div class="fab-icon-holder">
-            <a href="bp-admin/functions/abies.php"><i class="fas fa-upload"></i></a>
+            <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
           </div>
         </li>
       </ul>
