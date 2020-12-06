@@ -59,20 +59,32 @@
               </div>
             </li>
             <li>
-              <span class="fab-label">Subir desde Abies</span>
+              <span class="fab-label">Subir libros desde Abies</span>
               <div class="fab-icon-holder">
                 <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Subir usuarios desde CSV</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#subirusuarios"><i class="fas fa-upload"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Subir grupos desde CSV</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#subirgrupos"><i class="fas fa-upload"></i></a>
               </div>
             </li>
           </ul>
         </div> <?php }
             } ?>
     <div class="sdb-collapse"><button class="menu-collapser waves-effect" id="menu-toggle"><i class="fas fa-chevron-right"></i></button>
-      </div>
-      <script>
-        $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-        });
-      </script>
-      <?php require 'modules/modals.php'; ?>
+    </div>
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+    <?php require 'modules/modals.php'; ?>
