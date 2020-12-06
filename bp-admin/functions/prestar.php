@@ -42,9 +42,7 @@ if ($sessionlogged == 1) {
             </div>
         </header>';
             echo '<section class="bp-section">
-            <div>
-                <h2 class="stitle"></h2>
-            </div>
+
             <div class="bp-card card-body"><h5>Parece que ' . $apellido . ', ' . $nombre . ' tiene ya 5 préstamos activos</em><strong></strong></h5></div>
                         <div class="btn-group" role="group">
                             <a class="btn btn-primary" href="/">Volver</a>
@@ -68,9 +66,7 @@ if ($sessionlogged == 1) {
             </div>
         </header>
         <section class="bp-section">
-            <div>
-                <h2 class="stitle"></h2>
-            </div>
+
             <div class="bp-card card-body">
                        <h5>Se ha prestado el libro <em>' . $row['TITULO'] . '</em> a <strong>' . $apellido . ', ' . $nombre . '</strong></h5></th></div>
                         <div class="btn-group" role="group">

@@ -30,9 +30,7 @@ if ($sessionlogged == 1) {
             </div>
         </header>
         <section class="bp-section">
-            <div>
-                <h2 class="stitle"></h2>
-            </div>
+
             <div class="bp-card card-body">
                        <table><h5><strong>Los usuarios del grupo ' . $cursoinicial . ' han sido promocionados al grupo ' . $cursofinal . '</strong></h5></div>
                         <div class="btn-group" role="group">

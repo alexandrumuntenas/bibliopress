@@ -33,9 +33,7 @@ if ($sessionlogged == 1) {
             </div>
         </header>
         <section class="bp-section">
-            <div>
-                <h2 class="stitle"></h2>
-            </div>
+
             <div class="bp-card card-body"><h5>Se ha atrasado la devolución del libro <em>' . $row['TITULO'] . '</em></h5></div>
                         <div class="btn-group" role="group">
                             <a class="btn btn-primary" href="/bp-admin/prestamos.php">Volver</a>
