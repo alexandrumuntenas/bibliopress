@@ -11,7 +11,7 @@ $(document).ready(function () {
         else {
             $.ajax({
                 type: "POST",
-                url: "./bp-include/ajax.php",
+                url: "../bp-include/ajax.php",
                 data: {
                     search: name
                 },
@@ -60,4 +60,3 @@ function uslibro() {
         }
     }
 }
-
