@@ -6,9 +6,16 @@ p {
     text-align: justify;
 }
 
+.menu-collapser {
+    border: 0;
+    padding: 10;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .card {
     width: 30%;
-    max-width: 400px;
+    max-width: 300px;
     margin: 10px;
 }
 
@@ -35,7 +42,7 @@ p {
 
 .bp-section {
     position: relative;
-    width: 70%;
+    width: 94%;
     margin: 0 auto;
     margin-top: 20px;
 }
@@ -1304,23 +1311,6 @@ a {
     width: 100%;
 }
 
-.floating-btn {
-    width: 50px;
-    height: 50px;
-    background: #d32f2f;
-    display: flex !important;
-    border-radius: 50%;
-    color: white;
-    font-size: 25px !important;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-}
-
 .fab-container {
     position: fixed;
     bottom: 50px;
@@ -1392,8 +1382,6 @@ a {
     margin-right: 10px;
 }
 
-/* The snackbar - position it at the bottom and in the middle of the screen */
-
 #snackbar {
     visibility: hidden;
     min-width: 250px;
@@ -1414,7 +1402,6 @@ a {
     -webkit-animation: fadein 0.5s, fadeout 0.5s 5.5s;
     animation: fadein 0.5s, fadeout 0.5s 5.5s;
 }
-
 
 @-webkit-keyframes fadein {
     from {

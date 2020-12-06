@@ -112,7 +112,7 @@
                           <!-- Button --> ';
                             if ($sessionlogged == 1) {
                                 if ($sessionclass == 1) {
-                                    echo '<button type="button" class="btn btn-light" data-toggle="modal" data-target="#libro' . $row[10] . '">Ver más</button><a style="margin-left:10px;" class="btn btn-success" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
+                                    echo '<a type="button" style="color:grey;" data-toggle="modal" data-target="#libro' . $row[10] . '">Ver más</a><a style="margin-left:10px; color:green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
                                 } else {
                                     echo '<a class="btn btn-light" href="view.php?id=' . $row[10] . '">Ver más</a>';
                                 }

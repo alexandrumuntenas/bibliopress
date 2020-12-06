@@ -31,8 +31,8 @@
   </div>
   <div id="page-content-wrapper">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom ">
-      <button class="btn btn-outline-success waves-effect" id="menu-toggle"><i class="navbar-toggler-icon"></i></button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="menu-collapser waves-effect" id="menu-toggle"><i class="navbar-toggler-icon"></i></button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -49,37 +49,38 @@
       });
     </script>
     <?php if ($sessionlogged == 1) {
-    if ($sessionclass == 1) { ?>
-    <div class="fab-container">
-      <div class="fab fab-icon-holder">
-        <i class="fas fa-plus"></i>
-      </div>
+      if ($sessionclass == 1) { ?>
+        <div class="fab-container">
+          <div class="fab fab-icon-holder">
+            <i class="fas fa-plus"></i>
+          </div>
 
-      <ul class="fab-options">
-        <li>
-          <span class="fab-label">Añadir nuevo libro</span>
-          <div class="fab-icon-holder">
-            <a type="link" data-toggle="modal" data-target="#addbook"><i class="fas fa-book-medical"></i></a>
-          </div>
-        </li>
-        <li>
-          <span class="fab-label">Añadir nuevo usuario</span>
-          <div class="fab-icon-holder">
-            <a type="link" data-toggle="modal" data-target="#adduser"><i class="fas fa-user-plus"></i></a>
-          </div>
-        </li>
-        <li>
-          <span class="fab-label">Añadir nuevo grupo</span>
-          <div class="fab-icon-holder">
-            <a type="link" data-toggle="modal" data-target="#addgroup"><i class="fas fa-users"></i></a>
-          </div>
-        </li>
-        <li>
-          <span class="fab-label">Subir desde Abies</span>
-          <div class="fab-icon-holder">
-            <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
-          </div>
-        </li>
-      </ul>
-    </div> <?php }} ?>
+          <ul class="fab-options">
+            <li>
+              <span class="fab-label">Añadir nuevo libro</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#addbook"><i class="fas fa-book-medical"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Añadir nuevo usuario</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#adduser"><i class="fas fa-user-plus"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Añadir nuevo grupo</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#addgroup"><i class="fas fa-users"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Subir desde Abies</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
+              </div>
+            </li>
+          </ul>
+        </div> <?php }
+            } ?>
     <?php require 'modules/modals.php'; ?>
