@@ -68,9 +68,10 @@
                             if ($sessionlogged == 1) {
                                 if ($sessionclass == 1) {
                                     if ($row[13] == 1) {
-                                        echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+
+                                        echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><form method="POST" action=""><input type="hidden" name="librodel" value="' . $row[10] . '" /><input name="delbk" type="submit" value="Eliminar"/></form>';
                                     } else {
-                                        echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><a style="margin-left: 10px;color: red;" href="bp-admin/functions/delete.php?id=' . $row[10] . '">Eliminar</a>';
+                                        echo '<a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=' . $row[10] . '">Editar</a><form method="POST" action=""><input type="hidden" name="librodel" value="' . $row[10] . '" /><input name="delbk" type="submit" value="Eliminar"/></form>';
                                     }
                                 } else {
                                     if ($row[13] == 1) {
