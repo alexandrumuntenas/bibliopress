@@ -26,9 +26,9 @@ if ($sessionlogged == 1) {
                         echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
                         ?>
                         <div class="lectores">
-                            <table id="tb-pres">
+                             <div class="table-responsive"><table class="table table-hover"    id="tb-pres">
                                 <div class="row"><input class="inputbusqueda" type="text" id="titulolibro" onkeyup="ttlibro()" placeholder="Busca por título del libro..." title="Escribe el título del libro"></div>
-                                <thead>
+                                <thead class="thead-dark" >
 
                                     <tr>
                                         <th>Título del Libro</th>
@@ -53,7 +53,7 @@ if ($sessionlogged == 1) {
                                         }
                                     } ?>
                                 </tbody>
-                            </table>
+                            </table></div>
                         </div>
                     </div>
                 </section>

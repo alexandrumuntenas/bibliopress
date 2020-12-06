@@ -81,7 +81,7 @@ if ($sessionlogged == 1) {
                         $fnamecheck = mysqli_fetch_assoc($fnamedata);
                         echo '<div class="bp-card card-body">
                 <h5><strong>Gestionar Préstamo Activo</strong></h5>
-                <table>
+                 <div class="table-responsive"><table class="table table-hover"   >
                 <tbody>
                 <tr>
                 <th>
@@ -100,7 +100,7 @@ if ($sessionlogged == 1) {
                 </td>
                 </tr>
                 </tbody>
-                </table>
+                </table></div>
                 <div class="modal-footer">
                             <a class="btn btn-primary" href="prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a class="btn btn-danger" style="margin-left: 10px;" href="devolver.php?id=' . $row["ID"] . '">Devolver</a>
                         </div>

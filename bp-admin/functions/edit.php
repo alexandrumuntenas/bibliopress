@@ -43,8 +43,8 @@ if ($sessionlogged == 1) {
                 <form name="form" method="post" action="">
                     <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Actualizar" />
         
-                        <table style="overflow-x: scroll;">
-                            <thead>
+                         <div class="table-responsive"><table class="table table-hover"    style="overflow-x: scroll;">
+                            <thead class="thead-dark" >
                                 <tr>
                                     <th><p><strong>TÍTULO <input class="form-control" type="text" name="titulo" placeholder="Escribe el título" required value="' . $row['TITULO'] . '" /></strong></hp></th>
                                     <th><input type="hidden" name="new" value="1" /></th>
@@ -68,7 +68,7 @@ if ($sessionlogged == 1) {
                                     <td><p><strong></strong></td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table></div>
                         <strong>SIPNÓSIS</strong>
                         <textarea class="form-control" style="width:100%; height:30%;"name="descripcion" placeholder="Escribe un resumen del libro">' . $row["DESCRIPCION"] . '</textarea>
                     </form>

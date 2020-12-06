@@ -40,8 +40,8 @@ if ($sessionlogged == 1) {
                 <form name="form" method="post" action="">
                     <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Actualizar" />
         
-                        <table style="overflow-x: scroll;">
-                            <thead>
+                         <div class="table-responsive"><table class="table table-hover"    style="overflow-x: scroll;">
+                            <thead class="thead-dark" >
                                 <tr>
                                     <th><input type="hidden" name="new" value="1" /><input name="USUARIO" type="hidden" value="' . $row['USUARIO'] . '" /><p><strong>Nombre <input class="form-control" type="text" name="nombre" placeholder="Escribe el nombre del lector" required value="' . $row['NOMBRE'] . '" /></p></th>
                                     <th><p>Apellidos <input class="form-control" type="text" name="APELLIDOS" placeholder="Escribe los apellidos del lector" required value="' . $row['APELLIDOS'] .
@@ -64,7 +64,7 @@ if ($sessionlogged == 1) {
                                     <td></td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table></div>
                     </form>
                 </div>';
         };

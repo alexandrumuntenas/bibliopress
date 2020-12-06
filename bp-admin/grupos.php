@@ -8,12 +8,6 @@
 
 require '../bp-include/head.php';
 
-if (isset($_POST['submit'])) {
-    $nombre = $_POST["element_1"];
-    $insert = "INSERT INTO `$bbddgrupos` (`NOMBRE`) VALUES ('$nombre')";
-    $databaseconnection->query($insert);
-    echo mysqli_error($databaseconnection);
-}
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
 ?>
@@ -28,89 +22,15 @@ if ($sessionlogged == 1) {
                 </header>
                 <section class="bp-section">
                     <?php echo '
-            <div class="modal fade" id="promotemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Promocionar curso</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" action="functions/promote.php">
-                                <select class="form-control form-control-sm" id="inicial" name="inicial">
-                                    <option value="No asignado">Selecciona el grupo</option>';
-                    if ($gruposql->num_rows > 0) {
-                        //datos de cada columna
-                        while ($row = $gruposql->fetch_assoc()) {
-                            echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-                        }
-                    }
-                    mysqli_data_seek($gruposql, 0);
-                    echo
-                        '
-                                </select>
-                                <p>a</p>
-                                <select class="form-control form-control-sm" id="final" name="final">
-                                    <option value="No asignado">Selecciona el grupo</option>';
-                    if ($gruposql->num_rows > 0) {
-                        //datos de cada columna
-                        while ($row = $gruposql->fetch_assoc()) {
-                            echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-                        }
-                    }
-                    echo '
-                                </select>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit">Promocionar</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header ">
-                                <h5 class="modal-title" id="staticBackdropLabel">Añadir nuevo grupo</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="form_1388" class="appnitro" method="post" action="">
-                                    <ul>
-
-                                        <li id="li_1">
-                                            <label class="description" for="element_1">Nombre del grupo</label>
-                                            <div>
-                                                <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="" />
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                        <input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Añadir" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             '; ?>
-                    <button type="button" style="margin-bottom:10px;" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                    <button type="button" style="margin-bottom:10px;" class="btn btn-primary" data-toggle="modal" data-target="#addgroup">
                         Añadir nuevo registro
                     </button>
-                    <button type="button" style="margin-bottom:10px;" class="btn btn-success" data-toggle="modal" data-target="#promotemodal">
+                    <button type="button" style="margin-bottom:10px;" class="btn btn-success" data-toggle="modal" data-target="#promogrupo">
                         Promocionar
                     </button>
-                    <table>
-                        <thead>
+                     <div class="table-responsive"><table class="table table-hover"   >
+                        <thead class="thead-dark" >
                             <tr>
                                 <th>Nombre</th>
                                 <th>Usuarios</th>
@@ -122,15 +42,15 @@ if ($sessionlogged == 1) {
                             if ($gruposql->num_rows > 0) {
                                 //datos de cada columna
                                 while ($gr = $gruposql->fetch_assoc()) {
-                                    echo '<tr>
+                                    echo '<tr><form method="POST" action="">
                         <td data-label="Nombre"><br>' . $gr["NOMBRE"] . '</td>
                         <td data-label="Usuarios"><br><button type="button" class="btn btn-light" disabled />Ver usuarios</button></td>
-                        <td data-label="Acciones disponibles"><br><a style="color:red;" href="functions/delgrupo.php?GRUPO=' . $gr["ID"] . '">Eliminar</a></td>
-                        </tr>';
+                        <td data-label="Acciones disponibles"><br><form method="POST" action=""><input type="hidden" name="grupodel" value="' . $gr['ID'] . '" /><input name="delgr" type="submit" value="Eliminar"/></form></td>
+                        </form></tr>';
                                 }
                             }; ?>
                         </tbody>
-                    </table>
+                    </table></div>
                 </section>
             </div>
             </div>

@@ -27,11 +27,8 @@ if ($sessionlogged == 1) {
                     echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
                     ?>
                     <div class="lectores">
-                        <button type="button" style="margin-bottom:10px;" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                            <i class="fas fa-user-plus"></i> Añadir nuevo registro
-                        </button>
-                        <table>
-                            <thead>
+                         <div class="table-responsive"><table class="table table-hover"   >
+                            <thead class="thead-dark" >
                                 <tr>
                                     <th>Correo Electrónico</th>
                                     <th>Nombre</th>
@@ -50,12 +47,12 @@ if ($sessionlogged == 1) {
                     <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
                     <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
                     <td data-label="Grupo"><br>' . $row["CLASE"] . '</td>
-                    <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <a style="color:red;" href="functions/delusuarios.php?USUARIO=' . $row["USUARIO"] . '">Eliminar</a></td>
+                    <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
                         </tr>';
                                     }
                                 } ?>
                             </tbody>
-                        </table>
+                        </table></div>
                     </div>
             </div>
             </div>
