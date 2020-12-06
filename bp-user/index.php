@@ -25,7 +25,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
             <section class="bp-section">
                 <div>
                     <center>
-                        <div class="btn-group" role="group">
+                            <div id="snackbar">Some text some message..</div>
                             <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
                             <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
                             <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>

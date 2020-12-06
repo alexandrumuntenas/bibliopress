@@ -1,10 +1,48 @@
 <?php
 
-if (isset($_POST['submit'])) {
-    $nombre = $_POST["element_1"];
+if (isset($_POST['publishgroup'])) {
+    $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombregrupo"]);
     $insert = "INSERT INTO `$bbddgrupos` (`NOMBRE`) VALUES ('$nombre')";
     $databaseconnection->query($insert);
     echo mysqli_error($databaseconnection);
+    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el grupo correctamente</div>';
+}
+
+elseif (isset($_POST['publishbook'])) {
+    $titulo = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
+    $autor = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
+    $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["ISBN"]);
+    $editorial = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
+    $anopub = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
+    $ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
+    $ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
+    $descripcion = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
+    $insert = "INSERT INTO `$bbddcatalogo`(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
+    $databaseconnection->query($insert);
+    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el libro correctamente</div>';
+} 
+
+elseif (isset($_POST['publishuser'])) {
+    $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombreusuario"]);
+    $apellido = mysqli_real_escape_string($databaseconnection, $_POST["apellidousuario"]);
+    $curso = mysqli_real_escape_string($databaseconnection, $_POST["grupousuario"]);
+    $permiso = mysqli_real_escape_string($databaseconnection, $_POST["permisousuario"]);
+    $celectronico = mysqli_real_escape_string($databaseconnection, $_POST["correousuario"]);
+    $random = rand();
+    $pin = password_hash($random, PASSWORD_BCRYPT);
+    $FNAME = "$nombre $apellido";
+    $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
+    $databaseconnection->query($insert);
+    #mail('bibliopress@localhost.com','Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random",'bibliopress@localhost.com');
+    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el usuario correctamente</div>';
+} 
+
+elseif(isset($_POST['promocioncurso'])){
+    $cursoinicial = mysqli_real_escape_string($databaseconnection, $_POST["inicial"]);
+    $cursofinal =     mysqli_real_escape_string($databaseconnection, $_POST["final"]);
+    $insert = "UPDATE `$bbddusuarios` SET `CLASE` = REPLACE(`CLASE`, '$cursoinicial', '$cursofinal') WHERE `CLASE` LIKE '$cursoinicial' COLLATE utf8mb4_bin";
+    $databaseconnection->query($insert);
+    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha realizado la promoción de grupo correctamente</div>';
 }
 
 echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
@@ -17,61 +55,61 @@ echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard=
                     </button>
                 </div> 
                 <div class="modal-body">
-                    <form id="form_1388" class="appnitro" method="post" action="/bp-admin/functions/add.php">
+                    <form id="form_1388" class="appnitro" method="post" action="">
                         <ul>
 
                             <li id="li_1">
-                                <label class="description" for="element_1">Título del libro </label>
+                                <label class="description" for="titulo">Título del libro </label>
                                 <div>
-                                    <input id="element_1" name="element_1" class="element text large" type="text" maxlength="255" value="" />
+                                    <input id="titulo" name="titulo" class="element text large" type="text" maxlength="255" value="" />
                                 </div>
                             </li>
                             <li id="li_2">
-                                <label class="description" for="element_2">Autor </label>
+                                <label class="description" for="autor">Autor </label>
                                 <div>
-                                    <input id="element_2" name="element_2" class="element text large" type="text" maxlength="255" value="" />
+                                    <input id="autor" name="autor" class="element text large" type="text" maxlength="255" value="" />
                                 </div>
                             </li>
                             <li id="li_3">
-                                <label class="description" for="element_3">ISBN </label>
+                                <label class="description" for="ISBN">ISBN </label>
                                 <div>
-                                    <input id="element_3" name="element_3" class="element text large" type="text" maxlength="255" value="" />
+                                    <input id="ISBN" name="ISBN" class="element text large" type="text" maxlength="255" value="" />
                                 </div>
                             </li>
                             <li id="li_4">
-                                <label class="description" for="element_4">Editorial </label>
+                                <label class="description" for="editorial">Editorial </label>
                                 <div>
-                                    <input id="element_4" name="element_4" class="element text large" type="text" maxlength="255" value="" />
+                                    <input id="editorial" name="editorial" class="element text large" type="text" maxlength="255" value="" />
                                 </div>
                             </li>
                             <li id="li_5">
-                                <label class="description" for="element_5">Año de Publicación </label>
+                                <label class="description" for="anopub">Año de Publicación </label>
                                 <div>
-                                    <input id="element_5" name="element_5" class="element text large" type="text" maxlength="255" value="" />
+                                    <input id="anopub" name="anopub" class="element text large" type="text" maxlength="255" value="" />
                                 </div>
                             </li>
                             <li id="li_6">
-                                <label class="description" for="element_6">Ejemplar </label>
+                                <label class="description" for="ejemplar">Ejemplar </label>
                                 <div>
-                                    <input id="element_6" name="element_6" class="element text large" type="text" maxlength="255" value="" />
+                                    <input id="ejemplar" name="ejemplar" class="element text large" type="text" maxlength="255" value="" />
                                 </div>
                             </li>
                             <li id="li_7">
-                                <label class="description" for="element_7">Ubicación </label>
+                                <label class="description" for="ubicacion">Ubicación </label>
                                 <div>
-                                    <input id="element_7" name="element_7" class="element text large" type="text" maxlength="255" value="" />
+                                    <input id="ubicacion" name="ubicacion" class="element text large" type="text" maxlength="255" value="" />
                                 </div>
                             </li>
                             <li id="li_7">
-                                <label class="description" for="element_8">Descripción </label>
+                                <label class="description" for="descripcion">Descripción </label>
                                 <div>
-                                    <input type="text" id="element_8" name="element_8" class="element text large" maxlength="512" value="" />
+                                    <input type="text" id="descripcion" name="descripcion" class="element text large" maxlength="512" value="" />
                                 </div>
                             </li>
                         </ul>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Publicar" />
+                            <input id="saveForm" class="btn btn-primary" type="submit" name="publishbook" value="Publicar" />
                         </div>
                     </form>
                 </div>
@@ -89,46 +127,46 @@ echo '<div class="modal fade" id="adduser" data-backdrop="static" data-keyboard=
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="form_1388" class="appnitro" method="post" action="functions/addusuario.php">
+                                        <form id="form_1388" class="appnitro" method="post" action="">
                                             <ul>
 
                                                 <li id="li_1">
-                                                    <label class="description" for="element_1">Nombre </label>
+                                                    <label class="description" for="nombreusuario">Nombre </label>
                                                     <div>
-                                                        <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                        <input id="nombreusuario" name="nombreusuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                                     </div>
                                                 </li>
                                                 <li id="li_2">
-                                                    <label class="description" for="element_2">Apellido </label>
+                                                    <label class="description" for="apellidousuario">Apellido </label>
                                                     <div>
-                                                        <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                        <input id="apellidousuario" name="apellidousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                                     </div>
                                                 </li>
                                                 <li id="li_2">
-                                                    <label class="description" for="element_5">Correo Electrónico </label>
+                                                    <label class="description" for="correousuario">Correo Electrónico </label>
                                                     <div>
-                                                        <input id="element_5" name="element_5" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                        <input id="correousuario" name="correousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                                     </div>
                                                 </li>
                                                 <li id="li_3">
-                                                    <label class="description" for="element_3">Grupo </label>
+                                                    <label class="description" for="grupousuario">Grupo </label>
                                                     <div>
-                                                        <select class="form-control form-control-sm" id="element_3" name="element_3">
+                                                        <select class="form-control form-control-sm" id="grupousuario" name="grupousuario">
                                                             <option value="No asignado">Selecciona el grupo</option>';
 
-if ($gruposql->num_rows > 0) {
-    while ($grupos = $gruposql->fetch_assoc()) {
-        echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
-    }
-}
-echo '
+                                                            if ($gruposql->num_rows > 0) {
+                                                                while ($grupos = $gruposql->fetch_assoc()) {
+                                                                    echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
+                                                                }
+                                                            }
+                                                            echo '
                                                         </select>
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <label class="description" for="element_4">Tipo de usuario</label>
+                                                    <label class="description" for="permisousuario">Tipo de usuario</label>
                                                     <div>
-                                                        <select class="form-control form-control-sm" id="element_4" name="element_4" required>
+                                                        <select class="form-control form-control-sm" id="permisousuario" name="permisousuario" required>
                                                             <option value="0">Lector</option>
                                                             <option value="1" disabled>Bibliotecario</option>
                                                             <option value="1">Administrador</option>
@@ -138,7 +176,7 @@ echo '
                                             </ul>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                                <input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Añadir" />
+                                                <input id="saveForm" class="btn btn-primary" type="submit" name="publishuser" value="Añadir" />
                                             </div>
                                         </form>
                                     </div>
@@ -157,34 +195,36 @@ echo '
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="functions/promote.php">
+                            <form method="post" action="">
                                 <select class="form-control form-control-sm" id="inicial" name="inicial">
                                     <option value="No asignado">Selecciona el grupo</option>';
-if ($gruposql->num_rows > 0) {
-    //datos de cada columna
-    while ($row = $gruposql->fetch_assoc()) {
-        echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-    }
-}
-mysqli_data_seek($gruposql, 0);
-echo
-    '
+                                mysqli_data_seek($gruposql, 0);
+
+                                if ($gruposql->num_rows > 0) {
+                                    //datos de cada columna
+                                    while ($row = $gruposql->fetch_assoc()) {
+                                        echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+                                    }
+                                }
+                                mysqli_data_seek($gruposql, 0);
+                                echo
+                                    '
                                 </select>
                                 <p>a</p>
                                 <select class="form-control form-control-sm" id="final" name="final">
                                     <option value="No asignado">Selecciona el grupo</option>';
-if ($gruposql->num_rows > 0) {
-    //datos de cada columna
-    while ($row = $gruposql->fetch_assoc()) {
-        echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-    }
-}
-echo '
+                                if ($gruposql->num_rows > 0) {
+                                    //datos de cada columna
+                                    while ($row = $gruposql->fetch_assoc()) {
+                                        echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+                                    }
+                                }
+                                echo '
                                 </select>
 
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit">Promocionar</button>
+                            <button class="btn btn-primary" type="submit" name="promocioncurso">Promocionar</button>
                         </div>
                         </form>
                     </div>
@@ -205,15 +245,15 @@ echo '<div class="modal fade" id="addgroup" data-backdrop="static" data-keyboard
                                     <ul>
 
                                         <li id="li_1">
-                                            <label class="description" for="element_1">Nombre del grupo</label>
+                                            <label class="description" for="nombregrupo">Nombre del grupo</label>
                                             <div>
-                                                <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                <input id="nombregrupo" name="nombregrupo" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                             </div>
                                         </li>
                                     </ul>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                        <input id="saveForm" class="btn btn-primary" type="submit" name="submit" value="Añadir" />
+                                        <input id="saveForm" class="btn btn-primary" type="submit" name="publishgroup" value="Añadir" />
                                     </div>
                                 </form>
                             </div>

@@ -24,4 +24,5 @@ echo "<head>
     <!-- MDB core JavaScript -->
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js'></script>
     <script type='text/javascript' src='/bp-include/lives.js'></script>
+    <script src=\"https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js\" ></script>
 </head>";
