@@ -77,54 +77,37 @@ if ($sessionlogged == 1) {
                 </div> 
                 <div class="modal-body">
                     <form id="form_1388" class="form-group" method="post" action="">
-                        <ul>
-
-                            <li id="li_1">
-                                <label class="description" for="titulo">Título del libro </label>
-                                <div>
-                                    <input id="titulo" name="titulo" class="element text large" type="text" maxlength="255" value="" />
+                    <div class="form-group">
+                                <p>Título del libro</p>
+                                    <input id="titulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                 </div>
-                            </li>
-                            <li id="li_2">
-                                <label class="description" for="autor">Autor </label>
-                                <div>
-                                    <input id="autor" name="autor" class="element text large" type="text" maxlength="255" value="" />
+                                <div class="form-group">
+                                <p>Autor</p>
+                                    <input id="autor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                 </div>
-                            </li>
-                            <li id="li_3">
-                                <label class="description" for="ISBN">ISBN </label>
-                                <div>
-                                    <input id="ISBN" name="ISBN" class="element text large" type="text" maxlength="255" value="" />
+                                <div class="form-group">
+                                    <p>ISBN</p>
+                                    <input id="ISBN" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                 </div>
-                            </li>
-                            <li id="li_4">
-                                <label class="description" for="editorial">Editorial </label>
-                                <div>
-                                    <input id="editorial" name="editorial" class="element text large" type="text" maxlength="255" value="" />
+                                <div class="form-group">
+                                <p>Editorial</p>
+                                    <input id="editorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                 </div>
-                            </li>
-                            <li id="li_5">
-                                <label class="description" for="anopub">Año de Publicación </label>
-                                <div>
-                                    <input id="anopub" name="anopub" class="element text large" type="text" maxlength="255" value="" />
+                                <div class="form-group">
+                                    <p>Año de Publicación</p>
+                                    <input id="anopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                 </div>
-                            </li>
-                            <li id="li_6">
-                                <label class="description" for="ejemplar">Ejemplar </label>
-                                <div>
-                                    <input id="ejemplar" name="ejemplar" class="element text large" type="text" maxlength="255" value="" />
+                                <div class="form-group">
+                                <p>Ejemplar</p>
+                                    <input id="ejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                 </div>
-                            </li>
-                            <li id="li_7">
-                                <label class="description" for="ubicacion">Ubicación </label>
-                                <div>
-                                    <input id="ubicacion" name="ubicacion" class="element text large" type="text" maxlength="255" value="" />
+                                <div class="form-group">
+                                <p>Ubicación</p>
+                                    <input id="ubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                 </div>
-                            </li>
-                            <li id="li_7">
-                                <label class="description" for="descripcion">Descripción </label>
-                                <div>
-                                    <input type="text" id="descripcion" name="descripcion" class="element text large" maxlength="512" value="" />
+                                <div class="form-group">
+                                    <p>Descripción</p>
+                                    <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" maxlength="512" value=""></textarea>
                                 </div>
                             </li>
                         </ul>
@@ -149,29 +132,20 @@ if ($sessionlogged == 1) {
                                     </div>
                                     <div class="modal-body">
                                         <form id="form_1388" class="appnitro" method="post" action="">
-                                            <ul>
-
-                                                <li id="li_1">
-                                                    <label class="description" for="nombreusuario">Nombre </label>
-                                                    <div>
+                                                    <div class="form-group">
+                                                    <p>Nombre</p>
                                                         <input id="nombreusuario" name="nombreusuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                                     </div>
-                                                </li>
-                                                <li id="li_2">
-                                                    <label class="description" for="apellidousuario">Apellido </label>
-                                                    <div>
+                                                    <div class="form-group">
+                                                    <p>Apellidos</p>
                                                         <input id="apellidousuario" name="apellidousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                                     </div>
-                                                </li>
-                                                <li id="li_2">
-                                                    <label class="description" for="correousuario">Correo Electrónico </label>
-                                                    <div>
+                                                    <div class="form-group">
+                                                    <p>Correo Electrónico</p>
                                                         <input id="correousuario" name="correousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
                                                     </div>
-                                                </li>
-                                                <li id="li_3">
-                                                    <label class="description" for="grupousuario">Grupo </label>
-                                                    <div>
+                                                    <div class="form-group">
+                                                    <p>Grupo</p>
                                                         <select class="form-control form-control-sm" id="grupousuario" name="grupousuario">
                                                             <option value="No asignado">Selecciona el grupo</option>';
 
@@ -183,18 +157,14 @@ if ($sessionlogged == 1) {
         echo '
                                                         </select>
                                                     </div>
-                                                </li>
-                                                <li>
-                                                    <label class="description" for="permisousuario">Tipo de usuario</label>
-                                                    <div>
+                                                    <div class="form-group">
+                                                    <p>Tipo de Usuario</p>
                                                         <select class="form-control form-control-sm" id="permisousuario" name="permisousuario" required>
                                                             <option value="0">Lector</option>
                                                             <option value="1" disabled>Bibliotecario</option>
                                                             <option value="1">Administrador</option>
                                                         </select>
                                                     </div>
-                                                </li>
-                                            </ul>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                                 <input id="saveForm" class="btn btn-primary" type="submit" name="publishuser" value="Añadir" />
@@ -307,7 +277,7 @@ if ($sessionlogged == 1) {
 
 if ($sessionlogged == null) {
 
-echo '<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+    echo '<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
     <div class="modal-dialog modal-login">
       <div class="modal-content">
         <form action="bp-user/logger.php" method="post">
@@ -336,7 +306,8 @@ echo '<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="log
         </form>
       </div>
     </div>
-  </div>'; }
+  </div>';
+}
 
 echo '
   <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true" style="background-color: rgba(0,0,0,.30)">
@@ -356,4 +327,4 @@ echo '
         </div>
       </div>
     </div>
-  </div>'; 
+  </div>';
