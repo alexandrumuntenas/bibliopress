@@ -1,4 +1,4 @@
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php'; 
 ?>
 <div class="d-flex" id="wrapper">
   <div class="bg-light border-right " id="sidebar-wrapper">
@@ -29,55 +29,6 @@
       ?>
     </div>
   </div>
-
-  <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
-    <div class="modal-dialog modal-login">
-      <div class="modal-content">
-        <form action="bp-user/logger.php" method="post">
-          <div class="modal-header">
-            <h4 class="modal-title">Acceder</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label>Usuario</label>
-              <input type="email" class="form-control" required="required" name="usuario">
-            </div>
-            <div class="form-group">
-              <div class="clearfix">
-                <label>Contraseña</label>
-                <button disabled><small>¿Contraseña Olvidada? (Función en Desarrollo)</small></a>
-              </div>
-
-              <input type="password" class="form-control" required="required" name="contrasena">
-            </div>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <label class="form-check-label"><input type="checkbox" checked disabled> Remember me (Función en Desarrollo)</label>
-            <input type="submit" class="btn btn-primary" value="Login">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <input class="buscador-ajax" type="text" id="search" placeholder="Introduce el título del libro a buscar" />
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row"></div>
-          <div class"row">
-            <div id="display"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div id="page-content-wrapper">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom ">
@@ -97,3 +48,36 @@
         $("#wrapper").toggleClass("toggled");
       });
     </script>
+    <div class="fab-container">
+      <div class="fab fab-icon-holder">
+        <i class="fas fa-plus"></i>
+      </div>
+
+      <ul class="fab-options">
+        <li>
+          <span class="fab-label">Añadir nuevo libro</span>
+          <div class="fab-icon-holder">
+            <a type="link" data-toggle="modal" data-target="#addbook"><i class="fas fa-book-medical"></i></a>
+          </div>
+        </li>
+        <li>
+          <span class="fab-label">Añadir nuevo usuario</span>
+          <div class="fab-icon-holder">
+            <a type="link" data-toggle="modal" data-target="#adduser"><i class="fas fa-user-plus"></i></a>
+          </div>
+        </li>
+        <li>
+          <span class="fab-label">Añadir nuevo grupo</span>
+          <div class="fab-icon-holder">
+            <a type="link" data-toggle="modal" data-target="#addgroup"><i class="fas fa-users"></i></a>
+          </div>
+        </li>
+        <li>
+          <span class="fab-label">Subir desde Abies</span>
+          <div class="fab-icon-holder">
+            <a href="bp-admin/functions/abies.php"><i class="fas fa-upload"></i></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <?php require 'modules/modals.php'; ?>
