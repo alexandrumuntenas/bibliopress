@@ -1,78 +1,72 @@
 <?php
+if ($sessionlogged == 1) {
+    if ($sessionclass == 1) {
 
-if (isset($_POST['publishgroup'])) {
-    $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombregrupo"]);
-    $insert = "INSERT INTO `$bbddgrupos` (`NOMBRE`) VALUES ('$nombre')";
-    $databaseconnection->query($insert);
-    echo mysqli_error($databaseconnection);
-    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el grupo correctamente</div>';
-}
-
-elseif (isset($_POST['publishbook'])) {
-    $titulo = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
-    $autor = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
-    $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["ISBN"]);
-    $editorial = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
-    $anopub = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
-    $ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
-    $ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
-    $descripcion = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
-    $insert = "INSERT INTO `$bbddcatalogo`(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
-    $databaseconnection->query($insert);
-    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el libro correctamente</div>';
-} 
-
-elseif (isset($_POST['publishuser'])) {
-    $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombreusuario"]);
-    $apellido = mysqli_real_escape_string($databaseconnection, $_POST["apellidousuario"]);
-    $curso = mysqli_real_escape_string($databaseconnection, $_POST["grupousuario"]);
-    $permiso = mysqli_real_escape_string($databaseconnection, $_POST["permisousuario"]);
-    $celectronico = mysqli_real_escape_string($databaseconnection, $_POST["correousuario"]);
-    $random = rand();
-    $pin = password_hash($random, PASSWORD_BCRYPT);
-    $FNAME = "$nombre $apellido";
-    $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
-    $databaseconnection->query($insert);
-    #mail('bibliopress@localhost.com','Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random",'bibliopress@localhost.com');
-    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el usuario correctamente</div>';
-} 
-
-elseif(isset($_POST['promocioncurso'])){
-    $cursoinicial = mysqli_real_escape_string($databaseconnection, $_POST["inicial"]);
-    $cursofinal =     mysqli_real_escape_string($databaseconnection, $_POST["final"]);
-    $insert = "UPDATE `$bbddusuarios` SET `CLASE` = REPLACE(`CLASE`, '$cursoinicial', '$cursofinal') WHERE `CLASE` LIKE '$cursoinicial' COLLATE utf8mb4_bin";
-    $databaseconnection->query($insert);
-    echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha realizado la promoción de grupo correctamente</div>';
-}
-
-elseif (isset($_POST['abiesupload'])) {
-    if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
-    }
-    ini_set("auto_detect_line_endings", true);
-    $handle = fopen($_FILES['filename']['tmp_name'], "r");
-    $fila = -5;
-    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-        $fila++;
-        if ($fila > 0) {
-            $data[0] = $databaseconnection->real_escape_string($data[0]);
-            $data[1] = $databaseconnection->real_escape_string($data[1]);
-            $data[3] = $databaseconnection->real_escape_string($data[3]);
-            $data[9] = $databaseconnection->real_escape_string($data[9]);
-            $data[18] = $databaseconnection->real_escape_string($data[18]);
-            $data[32] = $databaseconnection->real_escape_string($data[32]);
-            $data[43] = $databaseconnection->real_escape_string($data[43]);
-            $data[45] = $databaseconnection->real_escape_string($data[45]);
-            $data[47] = $databaseconnection->real_escape_string($data[47]);
-            $data[49] = $databaseconnection->real_escape_string($data[49]);
-            $import = "INSERT INTO `$bbddcatalogo` (ANOPUB,AUTOR,EJEMPLAR,EDITORIAL,CIUDAD, SIGNATURA,TIPOEJEMPLAR,TITULO,UBICACION,ISBN) values('$data[0]','$data[1]','$data[3]','$data[9]','$data[32]','$data[43]','$data[45]','$data[47]','$data[49]','$data[18]')";
-            $rs = mysqli_query($databaseconnection, $import);
+        if (isset($_POST['publishgroup'])) {
+            $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombregrupo"]);
+            $insert = "INSERT INTO `$bbddgrupos` (`NOMBRE`) VALUES ('$nombre')";
+            $databaseconnection->query($insert);
+            echo mysqli_error($databaseconnection);
+            echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el grupo correctamente</div>';
+        } elseif (isset($_POST['publishbook'])) {
+            $titulo = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
+            $autor = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
+            $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["ISBN"]);
+            $editorial = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
+            $anopub = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
+            $ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
+            $ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
+            $descripcion = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
+            $insert = "INSERT INTO `$bbddcatalogo`(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
+            $databaseconnection->query($insert);
+            echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el libro correctamente</div>';
+        } elseif (isset($_POST['publishuser'])) {
+            $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombreusuario"]);
+            $apellido = mysqli_real_escape_string($databaseconnection, $_POST["apellidousuario"]);
+            $curso = mysqli_real_escape_string($databaseconnection, $_POST["grupousuario"]);
+            $permiso = mysqli_real_escape_string($databaseconnection, $_POST["permisousuario"]);
+            $celectronico = mysqli_real_escape_string($databaseconnection, $_POST["correousuario"]);
+            $random = rand();
+            $pin = password_hash($random, PASSWORD_BCRYPT);
+            $FNAME = "$nombre $apellido";
+            $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
+            $databaseconnection->query($insert);
+            #mail('bibliopress@localhost.com','Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random",'bibliopress@localhost.com');
+            echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha añadido el usuario correctamente</div>';
+        } elseif (isset($_POST['promocioncurso'])) {
+            $cursoinicial = mysqli_real_escape_string($databaseconnection, $_POST["inicial"]);
+            $cursofinal =     mysqli_real_escape_string($databaseconnection, $_POST["final"]);
+            $insert = "UPDATE `$bbddusuarios` SET `CLASE` = REPLACE(`CLASE`, '$cursoinicial', '$cursofinal') WHERE `CLASE` LIKE '$cursoinicial' COLLATE utf8mb4_bin";
+            $databaseconnection->query($insert);
+            echo '<div id="snackbar" class="show"><i class="fas fa-check"></i> Se ha realizado la promoción de grupo correctamente</div>';
+        } elseif (isset($_POST['abiesupload'])) {
+            if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
+            }
+            ini_set("auto_detect_line_endings", true);
+            $handle = fopen($_FILES['filename']['tmp_name'], "r");
+            $fila = -5;
+            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                $fila++;
+                if ($fila > 0) {
+                    $data[0] = $databaseconnection->real_escape_string($data[0]);
+                    $data[1] = $databaseconnection->real_escape_string($data[1]);
+                    $data[3] = $databaseconnection->real_escape_string($data[3]);
+                    $data[9] = $databaseconnection->real_escape_string($data[9]);
+                    $data[18] = $databaseconnection->real_escape_string($data[18]);
+                    $data[32] = $databaseconnection->real_escape_string($data[32]);
+                    $data[43] = $databaseconnection->real_escape_string($data[43]);
+                    $data[45] = $databaseconnection->real_escape_string($data[45]);
+                    $data[47] = $databaseconnection->real_escape_string($data[47]);
+                    $data[49] = $databaseconnection->real_escape_string($data[49]);
+                    $import = "INSERT INTO `$bbddcatalogo` (ANOPUB,AUTOR,EJEMPLAR,EDITORIAL,CIUDAD, SIGNATURA,TIPOEJEMPLAR,TITULO,UBICACION,ISBN) values('$data[0]','$data[1]','$data[3]','$data[9]','$data[32]','$data[43]','$data[45]','$data[47]','$data[49]','$data[18]')";
+                    $rs = mysqli_query($databaseconnection, $import);
+                }
+            }
+            fclose($handle);
+            echo "<div id=\"snackbar\" class=\"show\"><i class=\"fas fa-upload\"></i> Se han procesado <b>$fila ejemplares</b>. Importación Finalizada</div>";
         }
-    }
-    fclose($handle);
-    echo "<div id=\"snackbar\" class=\"show\"><i class=\"fas fa-upload\"></i> Se han procesado <b>$fila ejemplares</b>. Importación Finalizada</div>";
-}
 
-echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
+        echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header ">
@@ -144,7 +138,7 @@ echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard=
         </div>
     </div>';
 
-echo '<div class="modal fade" id="adduser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="adduser" aria-hidden="true">
+        echo '<div class="modal fade" id="adduser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="adduser" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header ">
@@ -181,12 +175,12 @@ echo '<div class="modal fade" id="adduser" data-backdrop="static" data-keyboard=
                                                         <select class="form-control form-control-sm" id="grupousuario" name="grupousuario">
                                                             <option value="No asignado">Selecciona el grupo</option>';
 
-                                                            if ($gruposql->num_rows > 0) {
-                                                                while ($grupos = $gruposql->fetch_assoc()) {
-                                                                    echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
-                                                                }
-                                                            }
-                                                            echo '
+        if ($gruposql->num_rows > 0) {
+            while ($grupos = $gruposql->fetch_assoc()) {
+                echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
+            }
+        }
+        echo '
                                                         </select>
                                                     </div>
                                                 </li>
@@ -211,7 +205,7 @@ echo '<div class="modal fade" id="adduser" data-backdrop="static" data-keyboard=
                             </div>
                         </div>';
 
-echo '
+        echo '
             <div class="modal fade" id="promogrupo" tabindex="-1" aria-labelledby="promogrupo" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -225,28 +219,28 @@ echo '
                             <form method="post" action="">
                                 <select class="form-control form-control-sm" id="inicial" name="inicial">
                                     <option value="No asignado">Selecciona el grupo</option>';
-                                mysqli_data_seek($gruposql, 0);
+        mysqli_data_seek($gruposql, 0);
 
-                                if ($gruposql->num_rows > 0) {
-                                    //datos de cada columna
-                                    while ($row = $gruposql->fetch_assoc()) {
-                                        echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-                                    }
-                                }
-                                mysqli_data_seek($gruposql, 0);
-                                echo
-                                    '
+        if ($gruposql->num_rows > 0) {
+            //datos de cada columna
+            while ($row = $gruposql->fetch_assoc()) {
+                echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+            }
+        }
+        mysqli_data_seek($gruposql, 0);
+        echo
+            '
                                 </select>
                                 <p>a</p>
                                 <select class="form-control form-control-sm" id="final" name="final">
                                     <option value="No asignado">Selecciona el grupo</option>';
-                                if ($gruposql->num_rows > 0) {
-                                    //datos de cada columna
-                                    while ($row = $gruposql->fetch_assoc()) {
-                                        echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-                                    }
-                                }
-                                echo '
+        if ($gruposql->num_rows > 0) {
+            //datos de cada columna
+            while ($row = $gruposql->fetch_assoc()) {
+                echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+            }
+        }
+        echo '
                                 </select>
 
                         </div>
@@ -258,7 +252,7 @@ echo '
                 </div>
             </div>';
 
-echo '<div class="modal fade" id="addgroup" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addgroup" aria-hidden="true">
+        echo '<div class="modal fade" id="addgroup" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addgroup" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header ">
@@ -287,6 +281,31 @@ echo '<div class="modal fade" id="addgroup" data-backdrop="static" data-keyboard
                         </div>
                     </div>
                 </div>';
+
+        echo '<div class="modal fade" id="subirabies" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirabies" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title" id="subirabies"><i class="fas fa-upload"></i> Subir desde Abies</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form enctype="multipart/form-data" action="" method="post">Nombre de archivo *.TXT a subir:<br /><br /><input size="50" type="file" name="filename">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                <input id="saveForm" class="btn btn-primary" type="submit" name="abiesupload" value="Subir"/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+    }
+}
+
+if ($sessionlogged == null) {
 
 echo '<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
     <div class="modal-dialog modal-login">
@@ -317,7 +336,7 @@ echo '<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="log
         </form>
       </div>
     </div>
-  </div>';
+  </div>'; }
 
 echo '
   <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true">
@@ -337,25 +356,4 @@ echo '
         </div>
       </div>
     </div>
-  </div>';
-
-echo '<div class="modal fade" id="subirabies" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirabies" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-                                        <h5 class="modal-title" id="subirabies"><i class="fas fa-upload"></i> Subir desde Abies</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form enctype="multipart/form-data" action="" method="post">Nombre de archivo *.TXT a subir:<br /><br /><input size="50" type="file" name="filename">
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                                <input id="saveForm" class="btn btn-primary" type="submit" name="abiesupload" value="Subir"/>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>';
+  </div>'; 

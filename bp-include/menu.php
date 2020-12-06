@@ -48,6 +48,8 @@
         $("#wrapper").toggleClass("toggled");
       });
     </script>
+    <?php if ($sessionlogged == 1) {
+    if ($sessionclass == 1) { ?>
     <div class="fab-container">
       <div class="fab fab-icon-holder">
         <i class="fas fa-plus"></i>
@@ -79,5 +81,5 @@
           </div>
         </li>
       </ul>
-    </div>
+    </div> <?php }} ?>
     <?php require 'modules/modals.php'; ?>
