@@ -76,7 +76,7 @@ if ($sessionlogged == 1) {
                     </button>
                 </div> 
                 <div class="modal-body">
-                    <form id="form_1388" class="appnitro" method="post" action="">
+                    <form id="form_1388" class="form-group" method="post" action="">
                         <ul>
 
                             <li id="li_1">
@@ -262,7 +262,7 @@ if ($sessionlogged == 1) {
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form_1388" class="appnitro" method="post" action="">
+                                <form class="form-group" method="post" action="">
                                     <ul>
 
                                         <li id="li_1">
@@ -339,7 +339,7 @@ echo '<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="log
   </div>'; }
 
 echo '
-  <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true">
+  <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true" style="background-color: rgba(0,0,0,.30)">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
