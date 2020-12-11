@@ -8,7 +8,8 @@ if ($sessionlogged == 1) {
             $databaseconnection->query($insert);
             echo mysqli_error($databaseconnection);
             echo '<div id="snackbar" class="show"> Se ha añadido el grupo correctamente</div>';
-        } if (isset($_POST['publishbook'])) {
+        }
+        if (isset($_POST['publishbook'])) {
             $titulo = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
             $autor = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
             $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["ISBN"]);
@@ -20,7 +21,8 @@ if ($sessionlogged == 1) {
             $insert = "INSERT INTO `$bbddcatalogo`(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
             $databaseconnection->query($insert);
             echo '<div id="snackbar" class="show"> Se ha añadido el libro correctamente</div>';
-        } if (isset($_POST['publishuser'])) {
+        }
+        if (isset($_POST['publishuser'])) {
             $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombreusuario"]);
             $apellido = mysqli_real_escape_string($databaseconnection, $_POST["apellidousuario"]);
             $curso = mysqli_real_escape_string($databaseconnection, $_POST["grupousuario"]);
@@ -33,13 +35,15 @@ if ($sessionlogged == 1) {
             $databaseconnection->query($insert);
             #mail('bibliopress@localhost.com','Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random",'bibliopress@localhost.com');
             echo '<div id="snackbar" class="show"> Se ha añadido el usuario correctamente</div>';
-        } if (isset($_POST['promocioncurso'])) {
+        }
+        if (isset($_POST['promocioncurso'])) {
             $cursoinicial = mysqli_real_escape_string($databaseconnection, $_POST["inicial"]);
             $cursofinal =     mysqli_real_escape_string($databaseconnection, $_POST["final"]);
             $insert = "UPDATE `$bbddusuarios` SET `CLASE` = REPLACE(`CLASE`, '$cursoinicial', '$cursofinal') WHERE `CLASE` LIKE '$cursoinicial' COLLATE utf8mb4_bin";
             $databaseconnection->query($insert);
             echo '<div id="snackbar" class="show"> Se ha realizado la promoción de grupo correctamente</div>';
-        } if (isset($_POST['abiesupload'])) {
+        }
+        if (isset($_POST['abiesupload'])) {
             if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
             }
             ini_set("auto_detect_line_endings", true);
@@ -64,29 +68,33 @@ if ($sessionlogged == 1) {
             }
             fclose($handle);
             echo "<div id=\"snackbar\" class=\"show\"><i class=\"fas fa-upload\"></i> Se han procesado <b>$fila ejemplares</b>. Importación Finalizada</div>";
-        } if (isset($_POST['delgr'])) {
+        }
+        if (isset($_POST['delgr'])) {
             $GRUPO = mysqli_real_escape_string($databaseconnection, $_POST['grupodel']);
             $query = "DELETE FROM `$bbddgrupos` WHERE `ID` = '" . $GRUPO . "' ";
             $result = mysqli_query($databaseconnection, $query);
             echo '<div id="snackbar" class="show">Se ha eliminado el grupo correctamente</div>';
-        } if (isset($_POST['delus'])) {
-            $USUARIO = mysqli_real_escape_string($databaseconnection,$_POST['usuariodel']);
+        }
+        if (isset($_POST['delus'])) {
+            $USUARIO = mysqli_real_escape_string($databaseconnection, $_POST['usuariodel']);
             #$devolucionlibros = "UPDATE FROM `$bbddcatalogo` WHERE ";
             $query = "DELETE FROM `$bbddusuarios` WHERE `USUARIO` = '" . $USUARIO . "' ";
             $result = mysqli_query($databaseconnection, $query);
             echo '<div id="snackbar" class="show">Se ha eliminado el usuario correctamente</div>';
-        } if (isset($_POST['delbk'])) {
+        }
+        if (isset($_POST['delbk'])) {
             $id = mysqli_real_escape_string($databaseconnection, $_POST['librodel']);
             $query = "DELETE FROM `$bbddcatalogo` WHERE id='$id'";
             $result = mysqli_query($databaseconnection, $query);
             echo '<div id="snackbar" class="show">Se ha eliminado el libro correctamente</div>';
-        } if (isset($_POST['userupload'])) {
+        }
+        if (isset($_POST['userupload'])) {
             print_r($_FILES);
-            if($_FILES['file']['name']){
+            if ($_FILES['file']['name']) {
                 $filename = explode(".", S_FILES['file']['name']);
-                if($filename[1] == 'csv'){
+                if ($filename[1] == 'csv') {
                     $handle = fopen($_FILES['files']['tmp_name'], "r");
-                    while($data = fgetcsv($handle)){
+                    while ($data = fgetcsv($handle)) {
                         $iteml = mysqli_real_escape_string($databaseconnection, $data[0]);
                         $item2 = mysqli_real_escape_string($databaseconnection, $data[1]);
                         $item3 = mysqli_real_escape_string($databaseconnection, $data[2]);
@@ -145,6 +153,62 @@ if ($sessionlogged == 1) {
                                 <div class="form-group">
                                     <p>Descripción</p>
                                     <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" maxlength="512" value=""></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <input id="saveForm" class="btn btn-primary" type="submit" name="publishbook" value="Publicar" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>';
+
+        echo '<div class="modal fade" id="addbookgapis" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbookgapis" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="addbookgapis"><i class="fas fa-book-medical"></i> Añadir nuevo libro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> 
+                <div class="modal-body">
+                <p><strong>Novedad!</strong> Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos.</p>
+                    <form id="form_1388" class="form-group" method="post" action="">
+                    <div class="form-group">
+                                <p>Título del libro</p>
+                                    <input id="gtitulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                </div>
+                                <div class="form-group">
+                                <p>Autor</p>
+                                    <input id="gautor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <p>ISBN</p>
+                                    <input id="gbook" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                </div>
+                                <div class="form-group">
+                                <p>Editorial</p>
+                                    <input id="geditorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <p>Año de Publicación</p>
+                                    <input id="ganopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                </div>
+                                <div class="form-group">
+                                <p>Ejemplar</p>
+                                    <input id="gejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                </div>
+                                <div class="form-group">
+                                <p>Ubicación</p>
+                                    <input id="gubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <p>Descripción</p>
+                                    <textarea type="text" id="gdescripcion" name="descripcion" class="form-control form-control-sm" maxlength="512" value="" readonly></textarea>
                                 </div>
                             </li>
                         </ul>

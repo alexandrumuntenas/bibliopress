@@ -7,7 +7,7 @@
 <?php require 'bp-include/head.php'; ?>
 
 <body>
-    <?php require 'bp-include/menu.php';?>
+    <?php require 'bp-include/menu.php'; ?>
     <div>
         <header>
             <div class="bp-header">
@@ -16,7 +16,7 @@
         </header>
         <section class="bp-section">
             <br>
-
+            
             <br>
             <center>
                 <div class="row d-flex justify-content-center">

@@ -21,6 +21,28 @@ $(document).ready(function () {
             });
         }
     });
+
+});
+
+$(document).ready(function () {
+    $("#gbook").keyup(function () {
+        var isbn = $('#gbook').val();
+        if (isbn == "") {
+            $("#gapisresult").html("");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "../bp-include/gapis.php",
+                data: {
+                    gbook: isbn
+                },
+                success: function (html) {
+                    $("#gapisresult").html(html).show();
+                }
+            });
+        }
+    });
 });
 
 function ttlibro() {
@@ -64,5 +86,4 @@ window.onload = function () {
     var x = document.getElementById("snackbar");
     x.className = "show";
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 5500);
-} 
-
+}
