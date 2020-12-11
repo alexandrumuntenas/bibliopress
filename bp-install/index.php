@@ -111,10 +111,9 @@
 						$bpgrupos = "CREATE TABLE `" . $prefixtable . "_grupo` (
 						`ID` int(11) NOT NULL AUTO_INCREMENT,
 						`NOMBRE` text NOT NULL,
-						`USUARIOS` mediumtext NOT NULL,
 						PRIMARY KEY (`ID`)
-						) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
-                ";
+						) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
+                		";
 
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1')";
 
