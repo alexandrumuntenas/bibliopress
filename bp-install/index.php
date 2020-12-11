@@ -94,11 +94,11 @@
 						`FECHA` date DEFAULT NULL,
 						`DESCRIPCION` longtext NOT NULL,
 						`DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
-						`PRESTADOA` varchar(25) NOT NULL,
+						`PRESTADOA` varchar(25) DEFAULT NULL,
 						`FECHADEV` date DEFAULT NULL,
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
-						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
+						) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4";
 
 						$bpsesiones = "CREATE TABLE `" . $prefixtable . "_sesiones` (
 						`PHPSESSID` text DEFAULT NULL,
