@@ -27,9 +27,9 @@ if ($sessionlogged == 1) {
             $permiso = mysqli_real_escape_string($databaseconnection, $_POST["permisousuario"]);
             $celectronico = mysqli_real_escape_string($databaseconnection, $_POST["correousuario"]);
             $random = rand();
-            $pin = password_hash($random, PASSWORD_BCRYPT);
+            $PASSWD = password_hash($random, PASSWORD_BCRYPT);
             $FNAME = "$nombre $apellido";
-            $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$pin', '$permiso')";
+            $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$PASSWD', '$permiso')";
             $databaseconnection->query($insert);
             #mail('bibliopress@localhost.com','Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random",'bibliopress@localhost.com');
             echo '<div id="snackbar" class="show"> Se ha añadido el usuario correctamente</div>';
@@ -94,7 +94,7 @@ if ($sessionlogged == 1) {
                         $item5 = mysqli_real_escape_string($databaseconnection, $data[4]);
                         $item6 = rand();
                         $item7 = mysqli_real_escape_string($databaseconnection, $data[6]);
-                        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`,`PERM`) VALUES ('$iteml','$item2','$item3','$item4','$item5', '$item6', '$item7')";
+                        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`) VALUES ('$iteml','$item2','$item3','$item4','$item5', '$item6', '$item7')";
                         $databaseconnection->query($insert);
                     }
                     fclose($handle);

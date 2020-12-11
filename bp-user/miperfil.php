@@ -6,18 +6,18 @@ $qlector = mysqli_fetch_assoc($qlectorre);
 if (isset($_POST['submit'])) {
     $celectronicoold = mysqli_real_escape_string($databaseconnection, $_POST['element_5']);
     $celectronico = mysqli_real_escape_string($databaseconnection, $_POST['element_6']);
-    $pinantiguo = mysqli_real_escape_string($databaseconnection, $_POST['element_7']);
-    $pinsolicitante = mysqli_real_escape_string($databaseconnection, $_POST['element_8']);
-    $pintohasher = password_hash($pinsolicitante, PASSWORD_BCRYPT);
+    $PASSWDantiguo = mysqli_real_escape_string($databaseconnection, $_POST['element_7']);
+    $PASSWDsolicitante = mysqli_real_escape_string($databaseconnection, $_POST['element_8']);
+    $PASSWDtohasher = password_hash($PASSWDsolicitante, PASSWORD_BCRYPT);
 
     if ($celectronico != null) {
         $sqlquerrycchange = "UPDATE `$bbddusuarios` SET `USUARIO` = '$celectronico' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
         $databaseconnection->query($sqlquerrycchange);
     }
 
-    if ($pintohasher == password_verify($pinantiguo, $qlector['PIN'])) {
-        $sqlquerrypinchange = "UPDATE `$bbddusuarios` SET `PIN` = '$pintohasher' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
-        $databaseconnection->query($sqlquerrypinchange);
+    if ($PASSWDtohasher == password_verify($PASSWDantiguo, $qlector['PASSWD'])) {
+        $sqlquerryPASSWDchange = "UPDATE `$bbddusuarios` SET `PASSWD` = '$PASSWDtohasher' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
+        $databaseconnection->query($sqlquerryPASSWDchange);
     }
 }
 

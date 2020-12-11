@@ -33,6 +33,6 @@ Estas son las funciones que incluye e incluirá Bibliopress
 - [x] Sistemas dinámicos, acceso a secciones por permisos
 - [ ] Sistema de notificación
 - [ ] Sistema de creación de etiqueta de cada estudiante
-- [ ] Sistema de Comentarios en cada libro (Añadir comentario para indicar la opinión sobre un libro)
+- [ ] Sistema de Comentarios en cada libro (Añadir comentario para indicar la oPASSWDión sobre un libro)
 
 Proyecto realizado por duoestudios
