@@ -32,7 +32,7 @@
 						$usuario = mysqli_real_escape_string($conn, $_POST["element_7"]);
 						$nombre = mysqli_real_escape_string($conn, $_POST["element_8"]);
 						$apellidos = mysqli_real_escape_string($conn, $_POST["element_9"]);
-						$pin = mysqli_real_escape_string($conn, $_POST["element_10"]);
+						$PASSWD = mysqli_real_escape_string($conn, password_hash($_POST['element_10'], PASSWORD_BCRYPT));
 						$fullname = "$nombre $apellidos";
 						$sitelinkfrompost = mysqli_real_escape_string($conn, $_POST['element_13']);
 						$cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
@@ -40,22 +40,22 @@
 						$ficheroconfig = fopen($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php", "w") or die("Unable to open file!");
 						$txt = "<?php
 
-                // Valores MYSQL
-                \$serverMySQL = '$servername'; //Host de la base de datos
-                \$dbMySQL = '$dbname'; //Nombre de la base de datos
-                \$userMySQL = '$username'; //Usuario de la base de datos
-                \$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
-                \$prefix = '$prefixtable'; //Prefijo de tablas. No cambiar
+						// Valores MYSQL
+						\$serverMySQL = '$servername'; //Host de la base de datos
+						\$dbMySQL = '$dbname'; //Nombre de la base de datos
+						\$userMySQL = '$username'; //Usuario de la base de datos
+						\$pwdMySQL = '$password'; //Contraseña del usuario de la base de datos
+						\$prefix = '$prefixtable'; //Prefijo de tablas. No cambiar
 
-                // Otros parametros
-                \$sname = '$cname'; //Nombre de la biblioteca/institución
-                \$sitelink = '$sitelinkfrompost'; //Enlace del sitio web para cumplir con GDPR
+						// Otros parametros
+						\$sname = '$cname'; //Nombre de la biblioteca/institución
+						\$sitelink = '$sitelinkfrompost'; //Enlace del sitio web para cumplir con GDPR
 
-                \$databaseconnection = mysqli_connect(\$serverMySQL,\$userMySQL,\$pwdMySQL,\$dbMySQL);
-                
-                //Parámetro Lista
-                \$CantidadMostrar=9;
-                ";
+						\$databaseconnection = mysqli_connect(\$serverMySQL,\$userMySQL,\$pwdMySQL,\$dbMySQL);
+						
+						//Parámetro Lista
+						\$CantidadMostrar=9;
+						";
 						fwrite($ficheroconfig, $txt);
 						echo '<p>Conexión a la BBDD: ';
 						if (!$conn) {
@@ -71,7 +71,7 @@
 						`NOMBRE` text CHARACTER SET utf8mb4 NOT NULL,
 						`APELLIDOS` mediumtext CHARACTER SET utf8mb4 NOT NULL,
 						`CLASE` text CHARACTER SET utf8mb4 NOT NULL,
-						`PIN` varchar(128) NOT NULL,
+						`PASSWD` varchar(128) NOT NULL,
 						`PERM` int(1) NOT NULL,
 						`AVATAR` varchar(1024) NOT NULL DEFAULT 'https://i.imgur.com/i3bYpLi.png',
 						`THEME` int(11) NOT NULL DEFAULT 0,
@@ -116,7 +116,7 @@
 						) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
                 ";
 
-						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PIN`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$pin', '1')";
+						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1')";
 
 						echo '</span></p>';
 						echo '<p>Creación de tabla "Usuarios": ';
