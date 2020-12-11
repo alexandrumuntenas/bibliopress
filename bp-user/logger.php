@@ -16,6 +16,6 @@ if ($logger == 1) {
       if($sloginresult == true){
         echo "<meta http-equiv='refresh' content='5;url=index.php' /><br><strong>Se ha iniciado sesión correctamente <em>$usuario</em>, accediendo al panel...</strong>";
       } else{echo "Error de servidor, vuelve a intentarlo más tarde";      }
-    } else {echo mysqli_error($databaseconnection); echo "<strong>Usuario o contraseña incorrecta. <em>Volviendo al inicio...</em></strong>";}
+    } else {echo mysqli_error($databaseconnection); echo "<strong>Usuario o contraseña incorrecta. <em>Volviendo al inicio...</em></strong><meta http-equiv='refresh' content='2;url=/index.php' />";}
   };
 };
