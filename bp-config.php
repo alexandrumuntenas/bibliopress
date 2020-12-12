@@ -1,27 +1,28 @@
 <?php
 require('bp-settings.php');
-# Querry Libros
+#Query Libros
 $bbddcatalogo = $prefix . "_catalogo";
 $librosql = "SELECT * FROM $bbddcatalogo";
-$libroquerry = mysqli_query($databaseconnection,$librosql);
-$libroresultado = mysqli_fetch_assoc($libroquerry);
-# Querry Lectores
+$libroquery = mysqli_query($databaseconnection,$librosql);
+$libroresultado = mysqli_fetch_assoc($libroquery);
+#Query Lectores
 $bbddusuarios = $prefix . "_usuarios";
 $usuariosql = "SELECT * FROM `$bbddusuarios`";
-$usuarioquerry = mysqli_query($databaseconnection,$usuariosql);
-$usuarioresultado = mysqli_fetch_assoc($usuarioquerry);
-# Querry Grupos
+$usuarioquery = mysqli_query($databaseconnection,$usuariosql);
+$usuarioresultado = mysqli_fetch_assoc($usuarioquery);
+#Query Grupos
 $bbddgrupos = $prefix . "_grupo";
 $gruposql = "SELECT * FROM `$bbddgrupos`";
-$grupoquerry = mysqli_query($databaseconnection, $gruposql);
-$gruporesultado = mysqli_fetch_assoc($grupoquerry);
-# Querry Sesiones
+$grupoquery = mysqli_query($databaseconnection, $gruposql);
+$gruporesultado = mysqli_fetch_assoc($grupoquery);
+#Query Sesiones
 $bbddsesiones = $prefix . "_sesiones";
 $sesionessql = "SELECT * FROM `$bbddsesiones`";
-$sesionesquerry = mysqli_fetch_assoc($databaseconnection);
-$sessionlogged = $sesionesquerry['LOGGEDIN'];
-$sessionclass = $sesionesquerry['PERM'];
-$sessionus = $sesionesquerry['USUARIO'];
+$sesionesquery = mysqli_query($databaseconnection,$sesionessql);
+$sesionesresultado = mysqli_fetch_assoc($sesionesquery);
+$sessionlogged = $sesionesresultado['LOGGEDIN'];
+$sessionclass = $sesionesresultado['PERM'];
+$sessionus = $sesionesresultado['USUARIO'];
 $phpsessid = session_id();
 if ($phpsessid == null) {
     session_start();
