@@ -3,20 +3,10 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $id = $_REQUEST['id'];
-$query = "SELECT * FROM `$bbddcatalogo` WHERE `ID` = '" . $id . "'";
-$result = mysqli_query($databaseconnection, $query);
-$row = mysqli_fetch_assoc($result);
+$editsql = 'SELECT *  FROM bp_catalogo WHERE ID = ' . $id;
+$editquery = $databaseconnection->query($editsql);
+$editresult = mysqli_fetch_assoc($editquery);
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
-
-if ($sessionlogged == 1) {
-    if ($sessionclass == 1) {
-        echo '<body>';
-    } else {
-        echo '<body class="err403">';
-    }
-} else {
-    echo '<body class="err403">';
-}
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         echo '<div class="form">';
@@ -37,43 +27,59 @@ if ($sessionlogged == 1) {
             mysqli_query($databaseconnection, $update);
             $status = "<div class='bp-card-info'><p class='btn btn-success'>Se ha actualizado el registro $id</p><br><br><a class='btn btn-link' href='/'>Volver al panel</a></div>";
             echo '<p style="color:#FF0000;">' . $status . '</p>';
-        } else {
-            echo '
-            <div class="bp-card-info card-body">
-                <form name="form" method="post" action="">
-                    <input style="float:right;" class="btn btn-danger" name="submit" type="submit" value="Actualizar" />
-        
-                         <div class="table-responsive"><table class="table table-hover"    style="overflow-x: scroll;">
-                            <thead class="thead-dark" >
-                                <tr>
-                                    <th><p><strong>TÍTULO <input class="form-control" type="text" name="titulo" placeholder="Escribe el título" required value="' . $row['TITULO'] . '" /></strong></hp></th>
-                                    <th><input type="hidden" name="new" value="1" /></th>
-                                    <th><input name="id" type="hidden" value="' . $row['ID'] . '" /></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><p><strong>AUTOR <input class="form-control" type="text" name="autor" placeholder="Escribe el Autor" required value="' . $row["AUTOR"] . '" /></strong></p></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><p><strong>ISBN</strong> <em><input class="form-control" type="text" name="isbn" placeholder="Escribe el ISBN" required value="' . $row["ISBN"] . '" /></em></p></td>
-                                    <td><p><strong>UBICACIÓN</strong> <em><input class="form-control" type="text" name="ubicacion" placeholder="Escribe dónde se sitúa este libro" required value="' . $row["UBICACION"] . '" /></em></td>
-                                    <td><p><strong>EJEMPLAR</strong> <em><input class="form-control" type="text" name="ejemplar" placeholder="Escribe el identificador de Ejemplar" required value="' . $row["EJEMPLAR"] . '" /> </em></td>
-                                </tr>
-                                <tr>
-                                    <td><p><strong>EDITORIAL</strong> <em><input class="form-control" type="text" name="editorial" placeholder="Escribe la Editorial" required value="' . $row["EDITORIAL"] . '" /></em></p></td>
-                                    <td><p><strong>AÑO DE PUBLICACIÓN</strong> <em><input class="form-control" type="text" name="anopub" placeholder="Escribe el Año de Publicación" required value="' . $row["ANOPUB"] . '" /></td>
-                                    <td><p><strong></strong></td>
-                                </tr>
-                            </tbody>
-                        </table></div>
-                        <strong>SIPNÓSIS</strong>
-                        <textarea class="form-control" style="width:100%; height:30%;"name="descripcion" placeholder="Escribe un resumen del libro">' . $row["DESCRIPCION"] . '</textarea>
-                    </form>
-                </div>';
-        }
+        } else { ?>
+            <section class="bp-section">
+                <div class="row d-flex justify-content">
+                    <h2 class="editor">Editar libro <?php echo $editresult['TITULO']; ?></h2>
+                </div>
+                <form class="md-form" action="" method="POST">
+                    <div class="md-form">
+                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['TITULO']; ?>" required>
+                        <label for="form1">Título del libro</label>
+                    </div>
+
+                    <div class="md-form">
+                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['AUTOR']; ?>" required>
+                        <label for="form1">Autor</label>
+                    </div>
+
+                    <div class="md-form">
+                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['ISBN']; ?>" required>
+                        <label for="form1">ISBN</label>
+                    </div>
+
+                    <div class="md-form">
+                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['EDITORIAL']; ?>" required>
+                        <label for="form1">Editorial</label>
+                    </div>
+
+                    <div class="md-form">
+                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['ANOPUB']; ?>" required>
+                        <label for="form1">Año de Publicación</label>
+                    </div>
+
+                    <div class="md-form">
+                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['EJEMPLAR']; ?>" required>
+                        <label for="form1">Ejemplar</label>
+                    </div>
+
+                    <div class="md-form">
+                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['UBICACION']; ?>" required>
+                        <label for="form1">Ubicación</label>
+                    </div>
+
+
+                    <div class="md-form">
+                        <textarea id="form7" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                        <label for="form7">Descripción</label>
+                    </div>
+
+
+                    <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Save</button>
+
+                </form>
+            </section>
+<?php   }
     } else {
 
         echo '<section class="error-container">
