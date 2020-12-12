@@ -24,26 +24,19 @@ $(document).ready(function () {
 
 });
 
-$(document).ready(function () {
-    $("#ISBN").keyup(function () {
-        var isbn = $('#ISBN').val();
-        if (isbn == "") {
-            $("#gapisresult").html("");
-        }
-        else {
-            $.ajax({
-                type: "POST",
-                url: "../bp-include/gbook.php",
-                data: {
-                    gbook: isbn
-                },
-                success: function (html) {
-                    $("#gapisresult").html(html).show();
-                }
-            });
-        }
-    });
-});
+function gbooks() {
+            var isbn = $('#ISBN').val();
+                $.ajax({
+                    type: "POST",
+                    url: "../bp-include/gbook.php",
+                    data: {
+                        gbook: isbn
+                    },
+                    success: function (html) {
+                        $("#gapisresult").html(html).show();
+                    }
+                });
+            };
 
 function ttlibro() {
     var input, filter, table, tr, td, i, txtValue;

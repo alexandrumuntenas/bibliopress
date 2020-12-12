@@ -129,27 +129,27 @@ if ($sessionlogged == 1) {
                 </div> 
                 <div class="modal-body">
                     <form id="form_1388" class="form-group" method="post" action="">
-                    <p>✨ Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos.</p>
+                    <p>✨ Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos. <mark>Ten en cuenta de que esta tecnología no es precisa al 100%, pero generalmente si dará buenos resultados.</mark></p>
                     <div class="form-group">
                                 <div id="gapisresult"></div>
-                                <p>Título del libro</p>
-                                    <input id="titulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                <p><strong>Título del libro</strong></p>
+                                    <input id="titulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
-                                <p>Autor</p>
-                                    <input id="autor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                <p><strong>Autor</strong></p>
+                                    <input id="autor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
-                                    <p>ISBN</p>
-                                    <input id="ISBN" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <p><strong>ISBN</strong> <a onclick="gbooks()">Completar con Google Books</a></p>
+                                    <input id="ISBN" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                 <p>Editorial</p>
-                                    <input id="editorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="editorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                     <p>Año de Publicación</p>
-                                    <input id="anopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                    <input id="anopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                 <p>Ejemplar</p>
@@ -157,7 +157,7 @@ if ($sessionlogged == 1) {
                                 </div>
                                 <div class="form-group">
                                 <p>Ubicación</p>
-                                    <input id="ubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
+                                    <input id="ubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="12" value="" required/>
                                 </div>
                                 <div class="form-group">
                                     <p>Descripción</p>
