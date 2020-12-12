@@ -11,13 +11,13 @@ if (isset($_POST['submit'])) {
     $PASSWDtohasher = password_hash($PASSWDsolicitante, PASSWORD_BCRYPT);
 
     if ($celectronico != null) {
-        $sqlquerrycchange = "UPDATE `$bbddusuarios` SET `USUARIO` = '$celectronico' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
-        $databaseconnection->query($sqlquerrycchange);
+        $sqlquerycchange = "UPDATE `$bbddusuarios` SET `USUARIO` = '$celectronico' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
+        $databaseconnection->query($sqlquerycchange);
     }
 
     if ($PASSWDtohasher == password_verify($PASSWDantiguo, $qlector['PASSWD'])) {
-        $sqlquerryPASSWDchange = "UPDATE `$bbddusuarios` SET `PASSWD` = '$PASSWDtohasher' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
-        $databaseconnection->query($sqlquerryPASSWDchange);
+        $sqlqueryPASSWDchange = "UPDATE `$bbddusuarios` SET `PASSWD` = '$PASSWDtohasher' WHERE `$databaseconnection`.`USUARIO` = '$celectronicoold'; ";
+        $databaseconnection->query($sqlqueryPASSWDchange);
     }
 }
 
