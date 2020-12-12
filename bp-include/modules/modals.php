@@ -14,27 +14,19 @@ if ($sessionlogged == 1) {
             $autor = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
             $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["ISBN"]);
             $editorial = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
-            $anopub = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
-            $ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
-            $ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
-            $descripcion = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
-            $insert = "INSERT INTO `$bbddcatalogo`(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
-            $databaseconnection->query($insert);
-            echo '<div id="snackbar" class="show"> Se ha añadido el libro correctamente</div>';
-        }
+            $fechacompleta = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
+            $anopub = substr($fechacompleta, 0, 4);
 
-        if (isset($_POST['publishgbook'])) {
-            $titulo = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
-            $autor = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
-            $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["ISBN"]);
-            $editorial = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
-            $anopub = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
             $ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
             $ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
             $descripcion = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
             $insert = "INSERT INTO `$bbddcatalogo`(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
             $databaseconnection->query($insert);
-            echo '<div id="snackbar" class="show"> Se ha añadido el libro correctamente</div>';
+            if (mysqli_error($databaseconnection)) {
+                echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+            } else {
+                echo '<div id="snackbar" class="show"> Se ha añadido el libro correctamente</div>';
+            }
         }
 
         if (isset($_POST['publishuser'])) {
@@ -137,13 +129,15 @@ if ($sessionlogged == 1) {
                 </div> 
                 <div class="modal-body">
                     <form id="form_1388" class="form-group" method="post" action="">
+                    <p>✨ Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos.</p>
                     <div class="form-group">
+                                <div id="gapisresult"></div>
                                 <p>Título del libro</p>
-                                    <input id="titulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="titulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
                                 </div>
                                 <div class="form-group">
                                 <p>Autor</p>
-                                    <input id="autor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="autor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
                                 </div>
                                 <div class="form-group">
                                     <p>ISBN</p>
@@ -155,82 +149,25 @@ if ($sessionlogged == 1) {
                                 </div>
                                 <div class="form-group">
                                     <p>Año de Publicación</p>
-                                    <input id="anopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="anopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
                                 </div>
                                 <div class="form-group">
                                 <p>Ejemplar</p>
-                                    <input id="ejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="ejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                 <p>Ubicación</p>
-                                    <input id="ubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="ubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                     <p>Descripción</p>
-                                    <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" maxlength="512" value=""></textarea>
+                                    <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" maxlength="512" value="" readonly></textarea>
                                 </div>
                             </li>
                         </ul>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <input id="saveForm" class="btn btn-primary" type="submit" name="publishbook" value="Publicar" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>';
-
-        echo '<div class="modal fade" id="addbookgapis" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbookgapis" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header ">
-                    <h5 class="modal-title" id="addbookgapis"><i class="fas fa-book-medical"></i> Añadir nuevo libro</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div> 
-                <div class="modal-body">
-                <p><strong>Novedad!</strong> Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos.</p>
-                    <form id="form_1388" class="form-group" method="post" action="">
-                    <div class="form-group">
-                                <div id="gapisresult"></div>
-                                <p>Título del libro</p>
-                                    <input id="gtitulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
-                                </div>
-                                <div class="form-group">
-                                <p>Autor</p>
-                                    <input id="gautor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
-                                </div>
-                                <div class="form-group">
-                                    <p>ISBN</p>
-                                    <input id="gbook" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                </div>
-                                <div class="form-group">
-                                <p>Editorial</p>
-                                    <input id="geditorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                </div>
-                                <div class="form-group">
-                                    <p>Año de Publicación</p>
-                                    <input id="ganopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
-                                </div>
-                                <div class="form-group">
-                                <p>Ejemplar</p>
-                                    <input id="gejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                </div>
-                                <div class="form-group">
-                                <p>Ubicación</p>
-                                    <input id="gubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                </div>
-                                <div class="form-group">
-                                    <p>Descripción</p>
-                                    <textarea type="text" id="gdescripcion" name="descripcion" class="form-control form-control-sm" maxlength="512" value="" readonly></textarea>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <input id="saveForm" class="btn btn-primary" type="submit" name="publishgbook" value="Publicar" />
+                            <button type="button" class="btn btn-danger sm" data-dismiss="modal">Cancelar</button>
+                            <input id="saveForm" class="btn btn-primary sm" type="submit" name="publishbook" value="Publicar" />
                         </div>
                     </form>
                 </div>

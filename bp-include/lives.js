@@ -25,8 +25,8 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $("#gbook").keyup(function () {
-        var isbn = $('#gbook').val();
+    $("#ISBN").keyup(function () {
+        var isbn = $('#ISBN').val();
         if (isbn == "") {
             $("#gapisresult").html("");
         }
@@ -85,5 +85,5 @@ function uslibro() {
 window.onload = function () {
     var x = document.getElementById("snackbar");
     x.className = "show";
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 5500);
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 4900);
 }

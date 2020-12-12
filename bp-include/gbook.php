@@ -3,12 +3,12 @@
             for (var i = 0; i < response.items.length; i++) {
                 var item = response.items[i];
                 // in production code, item.text should have the HTML entities escaped.
-                document.getElementById("gtitulo").value = item.volumeInfo.title;
-                document.getElementById("gautor").value = item.volumeInfo.authors;
-                document.getElementById("geditorial").value = item.publisher;
-                document.getElementById("ganopub").value = item.volumeInfo.publishedDate;
-                document.getElementById("gdescripcion").value = item.volumeInfo.description;
-                document.getElementById("gapisresult").innerHTML += "<div id='snackbar' class='show'> Operación realizada de forma satisfactoria</div>";
+                document.getElementById("titulo").value = item.volumeInfo.title;
+                document.getElementById("autor").value = item.volumeInfo.authors;
+                document.getElementById("editorial").value = item.publisher;
+                document.getElementById("anopub").value = item.volumeInfo.publishedDate;
+                document.getElementById("descripcion").value = item.volumeInfo.description;
+                document.getElementById("apisresult").innerHTML += "<div id='snackbar' class='show'> Operación realizada de forma satisfactoria</div>";
             }
         }
     </script>

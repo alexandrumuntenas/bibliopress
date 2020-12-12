@@ -40,17 +40,11 @@
           </div>
           <ul class="fab-options">
             <li>
-              <span class="fab-label">Añadir nuevo libro</span>
+              <span class="fab-label">Añadir nuevo libro (Beta)</span>
               <div class="fab-icon-holder">
-                <a type="link" data-toggle="modal" data-target="#addbookgapis"><i class="fas fa-book-medical"></i></a>
+                <a type="link" data-toggle="modal" data-target="#addbook"><i class="fas fa-book-medical"></i></a>
               </div>
             </li>
-              <li>
-                <span class="fab-label">Añadir nuevo libro</span>
-                <div class="fab-icon-holder">
-                  <a type="link" data-toggle="modal" data-target="#addbook"><i class="fas fa-book-medical"></i></a>
-                </div>
-              </li>
               <li>
                 <span class="fab-label">Añadir nuevo usuario</span>
                 <div class="fab-icon-holder">
