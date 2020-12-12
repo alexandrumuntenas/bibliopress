@@ -153,7 +153,7 @@ if ($sessionlogged == 1) {
                                 </div>
                                 <div class="form-group">
                                 <p>Ejemplar</p>
-                                    <input id="ejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
+                                    <input id="ejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="8" value="" required/>
                                 </div>
                                 <div class="form-group">
                                 <p>Ubicación</p>
