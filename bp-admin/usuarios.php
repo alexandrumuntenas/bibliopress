@@ -19,7 +19,7 @@ if ($sessionlogged == 1) {
                 </header>
                 <section class="bp-section">
                     <div>
-                        
+
                     </div>
                     <?php
                     $resulta = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios`");
@@ -27,32 +27,34 @@ if ($sessionlogged == 1) {
                     echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
                     ?>
                     <div class="lectores">
-                         <div class="table-responsive"><table class="table table-hover"   >
-                            <thead class="thead-dark" >
-                                <tr>
-                                    <th>Correo Electrónico</th>
-                                    <th>Nombre</th>
-                                    <th>Apellidos</th>
-                                    <th>Grupo</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                if ($lectorresultado->num_rows > 0) {
-                                    //datos de cada columna
-                                    while ($row = $lectorresultado->fetch_assoc()) {
-                                        echo '<tr>
-                    <td data-label="Usuario"><br>' . $row["USUARIO"] . '</td>
-                    <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
-                    <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
-                    <td data-label="Grupo"><br>' . $row["CLASE"] . '</td>
-                    <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
-                        </tr>';
-                                    }
-                                } ?>
-                            </tbody>
-                        </table></div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Correo Electrónico</th>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Grupo</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if ($resulta->num_rows > 0) {
+                                        //datos de cada columna
+                                        while ($row = $resulta->fetch_assoc()) {
+                                            echo '<tr>
+                                            <td data-label="Usuario"><br>' . $row["USUARIO"] . '</td>
+                                            <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
+                                            <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
+                                            <td data-label="Grupo"><br>' . $row["CLASE"] . '</td>
+                                            <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/editusuarios.php?USUARIO=' . $row["USUARIO"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
+                                                </tr>';
+                                        }
+                                    } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
             </div>
             </div>
