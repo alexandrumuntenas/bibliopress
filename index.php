@@ -90,13 +90,12 @@
 
                         <!-- Card image -->
                         <div class="view overlay">
-                          <img class="card-img-top" src="/bp-include/404.bg.jpg"
+                          <img class="card-img-top" src="http://books.google.com/books/content?id=unXHDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
                             alt="Card image cap">
                           <a href="#!">
                             <div class="mask rgba-white-slight"></div>
                           </a>
                         </div>
-                      
                         <!-- Card content -->
                         <div class="card-body">
                       
@@ -108,6 +107,8 @@
                           <!-- Text -->
                           <p class="card-text">' . $desc . '...</p>
                           <!-- Button --> ';
+
+                            echo '</div>    <div class="card-footer text-muted text-center mt-4">';
                             if ($sessionlogged == 1) {
                                 if ($sessionclass == 1) {
                                     echo '<a type="button" style="color:grey;" data-toggle="modal" data-target="#libro' . $row[10] . '">Ver más</a><a style="margin-left:10px; color:green;" href="bp-admin/functions/prestamo.php?id=' . $row[10] . '">Préstamo</a>';
@@ -119,7 +120,8 @@
                         Ver más
                       </button>';
                             }
-                            echo '</div></div>';
+                            echo '
+                          </div></div>';
                         };
                     ?>
                 </div>
