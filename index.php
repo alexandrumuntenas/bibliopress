@@ -15,9 +15,6 @@
             </div>
         </header>
         <section class="bp-section">
-            <br>
-            
-            <br>
             <center>
                 <div class="row d-flex justify-content-center">
                     <?php
