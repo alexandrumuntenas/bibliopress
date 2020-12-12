@@ -33,7 +33,7 @@ $(document).ready(function () {
         else {
             $.ajax({
                 type: "POST",
-                url: "../bp-include/gapis.php",
+                url: "../bp-include/gbook.php",
                 data: {
                     gbook: isbn
                 },

@@ -22,6 +22,21 @@ if ($sessionlogged == 1) {
             $databaseconnection->query($insert);
             echo '<div id="snackbar" class="show"> Se ha añadido el libro correctamente</div>';
         }
+
+        if (isset($_POST['publishgbook'])) {
+            $titulo = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
+            $autor = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
+            $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["ISBN"]);
+            $editorial = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
+            $anopub = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
+            $ejemplar = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
+            $ubicacion = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
+            $descripcion = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
+            $insert = "INSERT INTO `$bbddcatalogo`(ANOPUB, AUTOR, EJEMPLAR, EDITORIAL,TITULO, UBICACION, ISBN, DESCRIPCION) VALUES ('$anopub','$autor','$ejemplar','$editorial','$titulo','$ubicacion','$ISBN','$descripcion')";
+            $databaseconnection->query($insert);
+            echo '<div id="snackbar" class="show"> Se ha añadido el libro correctamente</div>';
+        }
+
         if (isset($_POST['publishuser'])) {
             $nombre = mysqli_real_escape_string($databaseconnection, $_POST["nombreusuario"]);
             $apellido = mysqli_real_escape_string($databaseconnection, $_POST["apellidousuario"]);
@@ -179,6 +194,7 @@ if ($sessionlogged == 1) {
                 <p><strong>Novedad!</strong> Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos.</p>
                     <form id="form_1388" class="form-group" method="post" action="">
                     <div class="form-group">
+                                <div id="gapisresult"></div>
                                 <p>Título del libro</p>
                                     <input id="gtitulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
                                 </div>
@@ -188,11 +204,11 @@ if ($sessionlogged == 1) {
                                 </div>
                                 <div class="form-group">
                                     <p>ISBN</p>
-                                    <input id="gbook" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="gbook" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                 <p>Editorial</p>
-                                    <input id="geditorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" readonly/>
+                                    <input id="geditorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                     <p>Año de Publicación</p>
@@ -200,11 +216,11 @@ if ($sessionlogged == 1) {
                                 </div>
                                 <div class="form-group">
                                 <p>Ejemplar</p>
-                                    <input id="gejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="gejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                 <p>Ubicación</p>
-                                    <input id="gubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                    <input id="gubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                 </div>
                                 <div class="form-group">
                                     <p>Descripción</p>
@@ -214,7 +230,7 @@ if ($sessionlogged == 1) {
                         </ul>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <input id="saveForm" class="btn btn-primary" type="submit" name="publishbook" value="Publicar" />
+                            <input id="saveForm" class="btn btn-primary" type="submit" name="publishgbook" value="Publicar" />
                         </div>
                     </form>
                 </div>
