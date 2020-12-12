@@ -1,5 +1,5 @@
 body {
-    background-image: url(/bp-include/bg.png)
+    background-color: #f4f4f4;
 }
 
 p {
@@ -425,4 +425,8 @@ form ul {
 
 .table{
     background-color: #FFF !important;
+}
+
+.editor{
+    border-bottom: solid 1px #333;
 }
