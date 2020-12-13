@@ -70,7 +70,11 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><?php echo $row[6]; ?></h4>
+                                        <h4 class="card-title"> <?php if ($row[13] == 1) {
+                                                                    echo '<span class="badge badge-success">✓</span>';
+                                                                } else {
+                                                                    echo '<span class="badge badge-danger">✕</span>';
+                                                                } ?> <?php echo $row[6]; ?> </h4>
                                         <p class="card-text"><?php echo $desc; ?></p>
                                     </div>
                                     <div class="card-footer text-muted text-center mt-4">
