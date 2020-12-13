@@ -8,6 +8,7 @@
                 document.getElementById("editorial").value = item.publisher;
                 document.getElementById("anopub").value = item.volumeInfo.publishedDate;
                 document.getElementById("descripcion").value = item.volumeInfo.description;
+                document.getElementById("portada").value = item.volumeInfo.imageLinks.thumbnail;
                 document.getElementById("apisresult").innerHTML += "<div id='snackbar' class='show'> Operación realizada de forma satisfactoria</div>";
             }
         }
