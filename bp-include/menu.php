@@ -21,8 +21,6 @@
           <div class="dropdown-menu dropdown-menu-right" style="margin-right: 15px;" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/bp-user/">Mi Área Personal</a>
             <a class="dropdown-item" href="/bp-user/miperfil.php">Mi Perfil</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/bp-user/logout.php">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
           </div>
         <?php } else { ?>
           <a href="" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>
@@ -45,37 +43,37 @@
                 <a type="link" data-toggle="modal" data-target="#addbook"><i class="fas fa-book-medical"></i></a>
               </div>
             </li>
-              <li>
-                <span class="fab-label">Añadir nuevo usuario</span>
-                <div class="fab-icon-holder">
-                  <a type="link" data-toggle="modal" data-target="#adduser"><i class="fas fa-user-plus"></i></a>
-                </div>
-              </li>
-              <li>
-                <span class="fab-label">Añadir nuevo grupo</span>
-                <div class="fab-icon-holder">
-                  <a type="link" data-toggle="modal" data-target="#addgroup"><i class="fas fa-users"></i></a>
-                </div>
-              </li>
-              <li>
-                <span class="fab-label">Subir libros desde Abies</span>
-                <div class="fab-icon-holder">
-                  <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
-                </div>
-              </li>
-              <li>
-                <span class="fab-label">Subir usuarios desde CSV</span>
-                <div class="fab-icon-holder">
-                  <a type="link" data-toggle="modal" data-target="#subirusuarios"><i class="fas fa-upload"></i></a>
-                </div>
-              </li>
-              <li>
-                <span class="fab-label">Subir grupos desde CSV</span>
-                <div class="fab-icon-holder">
-                  <a type="link" data-toggle="modal" data-target="#subirgrupos"><i class="fas fa-upload"></i></a>
-                </div>
-              </li>
-            </ul>
+            <li>
+              <span class="fab-label">Añadir nuevo usuario</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#adduser"><i class="fas fa-user-plus"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Añadir nuevo grupo</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#addgroup"><i class="fas fa-users"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Subir libros desde Abies</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Subir usuarios desde CSV</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#subirusuarios"><i class="fas fa-upload"></i></a>
+              </div>
+            </li>
+            <li>
+              <span class="fab-label">Subir grupos desde CSV</span>
+              <div class="fab-icon-holder">
+                <a type="link" data-toggle="modal" data-target="#subirgrupos"><i class="fas fa-upload"></i></a>
+              </div>
+            </li>
+          </ul>
         </div> <?php }
             } ?>
     <div class="sdb-collapse"><button class="menu-collapser waves-effect" id="menu-toggle"><i class="fas fa-chevron-right"></i></button>
