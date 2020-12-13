@@ -3,7 +3,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 $id = $_REQUEST['id'];
-$editsql = 'SELECT *  FROM bp_catalogo WHERE ID = ' . $id;
+$editsql = "SELECT *  FROM $bbddcatalogo WHERE ID = " . $id;
 $editquery = $databaseconnection->query($editsql);
 $editresult = mysqli_fetch_assoc($editquery);
 require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/head.php';
@@ -85,25 +85,10 @@ if ($sessionlogged == 1) {
             </section>
 <?php   }
     } else {
-
-        echo '<section class="error-container">
-                            <span><span>4</span></span>
-                            <span>0</span>
-                            <span><span>4</span></span>
-                          </section>
-                          <center>
-                            <h2 style="color:#FFF; margin-bottom:15px;">No tienes permiso para acceder a esta página... :/</h2>
-                            <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
+        echo "<meta http-equiv='refresh' content='0;url=/' />";
     }
 } else {
-    echo '<section class="error-container">
-                        <span><span>4</span></span>
-                        <span>0</span>
-                        <span><span>3</span></span>
-                      </section>
-                      <center>
-                      <h2 style="color:#FFF; margin-bottom:15px;">No tienes permiso para acceder a esta página... :/</h2>
-                      <a class="btn btn-light" href="/">Llévame de vuelta</a></center>';
+    echo "<meta http-equiv='refresh' content='0;url=/' />";
 };
 ?>
 
