@@ -210,13 +210,13 @@ if ($sessionlogged == 1) {
                                                     <p>Grupo</p>
                                                         <select class="form-control form-control-sm" id="grupousuario" name="grupousuario">
                                                             <option value="No asignado">Selecciona el grupo</option>';
-
-        if ($gruposql->num_rows > 0) {
-            while ($grupos = $gruposql->fetch_assoc()) {
+        mysqli_data_seek($grupoquery, 0);
+        if ($grupoquery->num_rows > 0) {
+            while ($grupos = $grupoquery->fetch_assoc()) {
                 echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
             }
         }
-        mysqli_data_seek($gruposql, 0);
+        mysqli_data_seek($grupoquery, 0);
         echo '
                                                         </select>
                                                     </div>
@@ -380,7 +380,7 @@ if ($sessionlogged == 1) {
             $phpsessid = session_id();
             $logoutsql = "DELETE FROM `$bbddsesiones` WHERE `$bbddsesiones`.`PHPSESSID` = '$phpsessid'";
             $logoutquery = $databaseconnection->query($logoutsql);
-            echo mysqli_error($databaseconnection) . "<meta http-equiv='refresh' content='0;url=/' />";
+            echo "<meta http-equiv='refresh' content='0;url=/' />";
             session_destroy();
             session_write_close();
             setcookie(session_name(), '', 0, '/');
