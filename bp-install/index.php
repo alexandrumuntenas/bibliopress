@@ -96,9 +96,10 @@
 						`DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
 						`PRESTADOA` varchar(25) DEFAULT NULL,
 						`FECHADEV` date DEFAULT NULL,
+						`PORTADA` longtext NOT NULL DEFAULT 'https://i.imgur.com/IF19cU5.jpg',
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
-						) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4";
+						) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4";
 
 						$bpsesiones = "CREATE TABLE `" . $prefixtable . "_sesiones` (
 						`PHPSESSID` text DEFAULT NULL,
@@ -112,8 +113,7 @@
 						`ID` int(11) NOT NULL AUTO_INCREMENT,
 						`NOMBRE` text NOT NULL,
 						PRIMARY KEY (`ID`)
-						) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
-                		";
+						) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8";
 
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1')";
 
