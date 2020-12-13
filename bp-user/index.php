@@ -23,18 +23,17 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                 </div>
             </header>
             <section class="bp-section">
-                <div>
-                    <center>
-                            <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                            <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
-                            <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-                        </div>
-                    </center>
-                    <div class="row">
-                        <div class="bp-card card-body">
-                            <h5>Préstamos Activos</h5>
-                             <div class="table-responsive"><table class="table table-hover"   >
-                                <thead class="thead-dark" >
+                <center>
+                    <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
+                    <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
+                    <form method="POST"><input class="btn btn-danger" name="logout" type="submit" value="Cerrar Sesión" /></form>
+                </center>
+                <div class="row">
+                    <div class="bp-card card-body">
+                        <h5>Préstamos Activos</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>Titulo </th>
 
@@ -52,26 +51,27 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                                     <tr>
                                     </tr>
                                 </tbody>
-                            </table></div>
+                            </table>
                         </div>
-                        <div class="bp-card card-body">
-                            <h5>En Lista de Espera</h5>
-                            <p>No te emociones, seguimos trabajando en ello</p>
-                        </div>
-                        <div class="bp-card card-body">
-                            <h5>Tus Últimas Lecturas</h5>
-                            <p>No te emociones, seguimos trabajando en ello</p>
-                        </div>
-                        <?php if ($sessionclass == 1) {
-                            echo '
+                    </div>
+                    <div class="bp-card card-body">
+                        <h5>En Lista de Espera</h5>
+                        <p>No te emociones, seguimos trabajando en ello</p>
+                    </div>
+                    <div class="bp-card card-body">
+                        <h5>Tus Últimas Lecturas</h5>
+                        <p>No te emociones, seguimos trabajando en ello</p>
+                    </div>
+                    <?php if ($sessionclass == 1) {
+                        echo '
                             <div class="bp-card card-body">
                                 <h5>Sobre la Biblioteca</h5>
                                 <p>Biblioteca del ' . $sname . '</p>
                                 <p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p>
                             </div>
                             ';
-                        } ?>
-                    </div>
+                    } ?>
+                </div>
             </section>
         </div>
         </section>
