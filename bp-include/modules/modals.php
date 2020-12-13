@@ -173,13 +173,12 @@ if ($sessionlogged == 1) {
                                     <input id="portada" name="portada" type="text" value="" hidden/>
                                 </div>
                             </li>
-                        </ul>
+                        </ul></div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger sm" data-dismiss="modal">Cancelar</button>
                             <input id="saveForm" class="btn btn-primary sm" type="submit" name="publishbook" value="Publicar" />
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>';
@@ -300,9 +299,7 @@ if ($sessionlogged == 1) {
 
                                         <li id="li_1">
                                             <label class="description" for="nombregrupo">Nombre del grupo</label>
-                                            <div>
                                                 <input id="nombregrupo" name="nombregrupo" class="form-control form-control-sm" type="text" maxlength="255" value="" />
-                                            </div>
                                         </li>
                                     </ul>
                                     <div class="modal-footer">
@@ -430,12 +427,8 @@ if ($sessionlogged == null) {
               <input type="email" class="form-control" required="required" name="usuario">
             </div>
             <div class="md-form">
-              <div class="clearfix">
                 <label>Contraseña</label>
-                <button disabled><small>¿Contraseña Olvidada? (Función en Desarrollo)</small></a>
-              </div>
-
-              <input type="password" class="form-control" required="required" name="contrasena">
+                <input type="password" class="form-control" required="required" name="contrasena">
             </div>
           </div>
           <div class="modal-footer justify-content-between">
