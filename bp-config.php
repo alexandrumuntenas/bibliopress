@@ -3,12 +3,12 @@ require('bp-settings.php');
 #Query Libros
 $bbddcatalogo = $prefix . "_catalogo";
 $librosql = "SELECT * FROM $bbddcatalogo";
-$libroquery = mysqli_query($databaseconnection,$librosql);
+$libroquery = mysqli_query($databaseconnection, $librosql);
 $libroresultado = mysqli_fetch_assoc($libroquery);
 #Query Lectores
 $bbddusuarios = $prefix . "_usuarios";
 $usuariosql = "SELECT * FROM `$bbddusuarios`";
-$usuarioquery = mysqli_query($databaseconnection,$usuariosql);
+$usuarioquery = mysqli_query($databaseconnection, $usuariosql);
 $usuarioresultado = mysqli_fetch_assoc($usuarioquery);
 #Query Grupos
 $bbddgrupos = $prefix . "_grupo";
@@ -18,7 +18,7 @@ $gruporesultado = mysqli_fetch_assoc($grupoquery);
 #Query Sesiones
 $bbddsesiones = $prefix . "_sesiones";
 $sesionessql = "SELECT * FROM `$bbddsesiones`";
-$sesionesquery = mysqli_query($databaseconnection,$sesionessql);
+$sesionesquery = mysqli_query($databaseconnection, $sesionessql);
 $sesionesresultado = mysqli_fetch_assoc($sesionesquery);
 $sessionlogged = $sesionesresultado['LOGGEDIN'];
 $sessionclass = $sesionesresultado['PERM'];
@@ -28,6 +28,9 @@ if ($phpsessid == null) {
     session_start();
     $phpsessid = session_id();
 }
+$sesavatarsql = "SELECT * FROM `$bbddusuarios` WHERE USUARIO LIKE '$sessionus'";
+$sesavatarquery = mysqli_query($databaseconnection, $sesavatarsql);
+$sesavatarresultado = mysqli_fetch_assoc($sesavatarquery);
 #Other PHP Resources
 echo mysqli_error($databaseconnection);
 $fecha_actual = date('m/d/Y');

@@ -17,7 +17,7 @@
           };
         }; ?>
         <?php if ($sessionlogged == 1) { ?>
-          <a class="nav-link dropdown-toggle list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $usuarioresultado['AVATAR']; ?>"> Mi Perfil</a>
+          <a class="nav-link dropdown-toggle list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>"> Mi Perfil</a>
           <div class="dropdown-menu dropdown-menu-right" style="margin-right: 15px;" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/bp-user/">Mi Área Personal</a>
             <a class="dropdown-item" href="/bp-user/miperfil.php">Mi Perfil</a>
