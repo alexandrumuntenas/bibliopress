@@ -12,7 +12,7 @@ if ($sessionlogged == 1) {
         echo '<div class="form">';
         require $_SERVER["DOCUMENT_ROOT"] . '/bp-include/menu.php';
         $status = "";
-        if (isset($_POST['new']) && $_POST['new'] == 1) {
+        if (isset($_POST['edit'])) {
             $id = $_REQUEST['id'];
             $ANOPUB = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
             $AUTOR = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
@@ -33,49 +33,53 @@ if ($sessionlogged == 1) {
                     <h2 class="editor">Editar libro <?php echo $editresult['TITULO']; ?></h2>
                 </div>
                 <form class="md-form" action="" method="POST">
-                    <div class="md-form">
-                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['TITULO']; ?>" required>
-                        <label for="form1">Título del libro</label>
-                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="md-form">
+                                    <input type="text" name="titulo" id="form1" class="form-control" value="<?php echo $editresult['TITULO']; ?>" required>
+                                    <label for="form1">Título del libro</label>
+                                </div>
 
-                    <div class="md-form">
-                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['AUTOR']; ?>" required>
-                        <label for="form1">Autor</label>
-                    </div>
+                                <div class="md-form">
+                                    <input type="text" name="autor" id="form1" class="form-control" value="<?php echo $editresult['AUTOR']; ?>" required>
+                                    <label for="form1">Autor</label>
+                                </div>
 
-                    <div class="md-form">
-                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['ISBN']; ?>" required>
-                        <label for="form1">ISBN</label>
-                    </div>
+                                <div class="md-form">
+                                    <input type="text" name="isbn" id="form1" class="form-control" value="<?php echo $editresult['ISBN']; ?>" required>
+                                    <label for="form1">ISBN</label>
+                                </div>
 
-                    <div class="md-form">
-                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['EDITORIAL']; ?>" required>
-                        <label for="form1">Editorial</label>
-                    </div>
+                                <div class="md-form">
+                                    <input type="text" name="editorial" id="form1" class="form-control" value="<?php echo $editresult['EDITORIAL']; ?>" required>
+                                    <label for="form1">Editorial</label>
+                                </div>
 
-                    <div class="md-form">
-                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['ANOPUB']; ?>" required>
-                        <label for="form1">Año de Publicación</label>
-                    </div>
+                                <div class="md-form">
+                                    <input type="text" name="anopub" id="form1" class="form-control" value="<?php echo $editresult['ANOPUB']; ?>" required>
+                                    <label for="form1">Año de Publicación</label>
+                                </div>
 
-                    <div class="md-form">
-                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['EJEMPLAR']; ?>" required>
-                        <label for="form1">Ejemplar</label>
-                    </div>
+                                <div class="md-form">
+                                    <input type="text" name="ejemplar" id="form1" class="form-control" value="<?php echo $editresult['EJEMPLAR']; ?>" required>
+                                    <label for="form1">Ejemplar</label>
+                                </div>
 
-                    <div class="md-form">
-                        <input type="text" id="form1" class="form-control" value="<?php echo $editresult['UBICACION']; ?>" required>
-                        <label for="form1">Ubicación</label>
-                    </div>
+                                <div class="md-form">
+                                    <input type="text" name="ubicacion" id="form1" class="form-control" value="<?php echo $editresult['UBICACION']; ?>" required>
+                                    <label for="form1">Ubicación</label>
+                                </div>
+                            </div>
+                            <div class="col-sm">
 
+                                <div class="md-form">
+                                    <textarea id="form7" name="descripcion" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                                    <label for="form7">Descripción</label>
+                                </div>
+                            </div>
 
-                    <div class="md-form">
-                        <textarea id="form7" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
-                        <label for="form7">Descripción</label>
-                    </div>
-
-
-                    <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Save</button>
+                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="edit" type="submit">Save</button>
 
                 </form>
             </section>
