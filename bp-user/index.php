@@ -26,7 +26,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                 <center>
                     <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
                     <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
-                    <form method="POST"><input class="btn btn-danger" name="logout" type="submit" value="Cerrar Sesión" /></form>
+                    <form method="POST" action=""><input class="btn btn-danger" name="logout" type="submit" value="Cerrar Sesión" /></form>
                 </center>
                 <div class="row">
                     <div class="bp-card card-body">
