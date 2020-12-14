@@ -13,7 +13,6 @@
 
 	<body id="main_body">
 
-		<img id="top" src="top.png" alt="">
 		<div id="form_container">
 
 			<h1><a><strong>Nueva instalación de Bibliopress 0.5</strong></a></h1>
@@ -117,6 +116,11 @@
 
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1')";
 
+						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS '2020-12-14 00:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
+						SELECT * FROM bp_catalogo WHERE DISPONIBILIDAD = 2 AND FECHADEV = CURRENT_DATE;
+						UPDATE bp_catalogo SET DISPONIBILIDAD = 1, PRESTADOA = NULL, FECHADEV = NULL;
+						END";
+
 						echo '</span></p>';
 						echo '<p>Creación de tabla "Usuarios": ';
 						if (!mysqli_query($conn, $bpusuario)) {
@@ -157,13 +161,19 @@
 							echo ("<span style='color: green'>OK!</span>");
 						}
 						echo '</span></p>';
+						echo '<p>Creación de Evento "Covid19" ';
+						if (!mysqli_query($conn, $bpcovidevent)) {
+							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
+						echo '</span></p>';
 						echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="5;url=/" />
         ';
 						?>
 				<div id="footer">
 				</div>
 		</div>
-		<img id="bottom" src="bottom.png" alt="">
 	</body> <?php exit();
 		}
 		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php")) {
@@ -182,7 +192,6 @@
 
 	<body id="main_body">
 
-		<img id="top" src="top.png" alt="">
 		<div id="form_container">
 
 			<h1><a><strong>Nueva instalación de Bibliopress 0.5</strong></a></h1>
@@ -319,7 +328,6 @@
 			<div id="footer">
 			</div>
 		</div>
-		<img id="bottom" src="bottom.png" alt="">
 	</body>
 <?php
 		} ?>
