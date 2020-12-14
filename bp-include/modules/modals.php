@@ -76,6 +76,7 @@ if ($sessionlogged == 1) {
                     $data[49] = $databaseconnection->real_escape_string($data[49]);
                     $import = "INSERT INTO `$bbddcatalogo` (ANOPUB,AUTOR,EJEMPLAR,EDITORIAL,CIUDAD, SIGNATURA,TIPOEJEMPLAR,TITULO,UBICACION,ISBN) values('$data[0]','$data[1]','$data[3]','$data[9]','$data[32]','$data[43]','$data[45]','$data[47]','$data[49]','$data[18]')";
                     $rs = mysqli_query($databaseconnection, $import);
+                    echo mysqli_error($databaseconnection);
                 }
             }
             fclose($handle);
@@ -100,28 +101,95 @@ if ($sessionlogged == 1) {
             $result = mysqli_query($databaseconnection, $query);
             echo '<div id="snackbar" class="show">Se ha eliminado el libro correctamente</div>';
         }
-        if (isset($_POST['userupload'])) {
-            print_r($_FILES);
-            if ($_FILES['file']['name']) {
-                $filename = explode(".", S_FILES['file']['name']);
-                if ($filename[1] == 'csv') {
-                    $handle = fopen($_FILES['files']['tmp_name'], "r");
-                    while ($data = fgetcsv($handle)) {
-                        $iteml = mysqli_real_escape_string($databaseconnection, $data[0]);
-                        $item2 = mysqli_real_escape_string($databaseconnection, $data[1]);
-                        $item3 = mysqli_real_escape_string($databaseconnection, $data[2]);
-                        $item4 = mysqli_real_escape_string($databaseconnection, $data[3]);
-                        $item5 = mysqli_real_escape_string($databaseconnection, $data[4]);
-                        $item6 = rand();
-                        $item7 = mysqli_real_escape_string($databaseconnection, $data[6]);
-                        $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`) VALUES ('$iteml','$item2','$item3','$item4','$item5', '$item6', '$item7')";
-                        $databaseconnection->query($insert);
-                    }
-                    fclose($handle);
-                    echo '<div id="snackbar" class="show"> Se han importado los datos correctamente</div>';
-                }
-            }
+        if (isset($_GET['edit'])) {
+            $id = $_REQUEST['id'];
+            $editsql = "SELECT *  FROM $bbddcatalogo WHERE ID = " . $id;
+            $editquery = $databaseconnection->query($editsql);
+            $editresult = mysqli_fetch_assoc($editquery);
+
+?>
+            <div class="modal fade" id="editor-<?php echo $id; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <h5 class="modal-title heading lead" id="addbook">Editar Libro <em><?php echo $editresult['TITULO']; ?></em></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="md-form" action="" method="POST">
+                                <div class="md-form">
+                                    <input type="text" name="titulo" id="form1" class="form-control" value="<?php echo $editresult['TITULO']; ?>" required>
+                                    <label for="form1">Título del libro</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <input type="text" name="autor" id="form1" class="form-control" value="<?php echo $editresult['AUTOR']; ?>" required>
+                                    <label for="form1">Autor</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <input type="text" name="isbn" id="form1" class="form-control" value="<?php echo $editresult['ISBN']; ?>" required>
+                                    <label for="form1">ISBN</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <input type="text" name="editorial" id="form1" class="form-control" value="<?php echo $editresult['EDITORIAL']; ?>" required>
+                                    <label for="form1">Editorial</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <input type="text" name="anopub" id="form1" class="form-control" value="<?php echo $editresult['ANOPUB']; ?>" required>
+                                    <label for="form1">Año de Publicación</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <input type="text" name="ejemplar" id="form1" class="form-control" value="<?php echo $editresult['EJEMPLAR']; ?>" required>
+                                    <label for="form1">Ejemplar</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <input type="text" name="ubicacion" id="form1" class="form-control" value="<?php echo $editresult['UBICACION']; ?>" required>
+                                    <label for="form1">Ubicación</label>
+                                </div>
+                                <div class="md-form">
+                                    <textarea id="form7" name="descripcion" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                                    <label for="form7">Descripción</label>
+                                </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-outline-success btn-rounded btn-block z-depth-0 my-4 waves-effect" name="editbook" type="submit">Actualizar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                    $('#editor-<?php echo $id; ?>').modal('show');
+                });
+            </script>
+<?php
         }
+
+        if (isset($_POST['editbook'])) {
+            $id = $_REQUEST['id'];
+            $ANOPUB = mysqli_real_escape_string($databaseconnection, $_POST["anopub"]);
+            $AUTOR = mysqli_real_escape_string($databaseconnection, $_POST["autor"]);
+            $EJEMPLAR = mysqli_real_escape_string($databaseconnection, $_POST["ejemplar"]);
+            $EDITORIAL = mysqli_real_escape_string($databaseconnection, $_POST["editorial"]);
+            $TITULO = mysqli_real_escape_string($databaseconnection, $_POST["titulo"]);
+            $UBICACION = mysqli_real_escape_string($databaseconnection, $_POST["ubicacion"]);
+            $ISBN = mysqli_real_escape_string($databaseconnection, $_POST["isbn"]);
+            $DESCRIPCION = mysqli_real_escape_string($databaseconnection, $_POST["descripcion"]);
+
+            $update = "UPDATE `$bbddcatalogo` set ANOPUB='" . $ANOPUB . "', AUTOR='" . $AUTOR . "', EJEMPLAR='" . $EJEMPLAR . "', EDITORIAL='" . $EDITORIAL . "', TITULO='" . $TITULO . "', UBICACION='" . $UBICACION . "', ISBN='" . $ISBN . "', DESCRIPCION='" . $DESCRIPCION . "' where id='" . $id . "'";
+            mysqli_query($databaseconnection, $update);
+            echo "<meta http-equiv='refresh' content='0;url=/' />";
+        }
+
 
         echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">

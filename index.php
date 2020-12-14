@@ -55,7 +55,7 @@
                                                 <p><strong>Editorial</strong> <?php echo $row[3]; ?></p>
                                             </div>
                                             <div class="modal-footer">
-                                                <a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=<?php echo $row[10]; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="bp-admin/functions/edit.php?id=<?php echo $row[10]; ?>">Editar</a>
+                                                <a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=<?php echo $row[10]; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
                                                 <form method="POST" action=""><input type="hidden" name="librodel" value="<?php echo $row[10]; ?>" /><input name="delbk" type="submit" value="Eliminar" /></form>
 
                                             </div>
@@ -76,7 +76,7 @@
                                                                     echo '<span class="badge badge-warning">😷</span>';
                                                                 } else {
                                                                     echo '<span class="badge badge-danger">✕</span>';
-                                                                } ?> </h4>
+                                                                } ?> <?php echo $row[6]; ?> </h4>
                                         <p class="card-text"><?php echo $desc; ?></p>
                                     </div>
                                     <div class="card-footer text-muted text-center mt-4">
@@ -156,7 +156,7 @@
                                                         echo '<span class="badge badge-warning">😷</span>';
                                                     } else {
                                                         echo '<span class="badge badge-danger">✕</span>';
-                                                    } ?> </h4>
+                                                    } ?> <?php echo $row[6]; ?> </h4>
                             <p class="card-text"><?php echo $desc; ?></p>
                         </div>
                         <div class="card-footer text-muted text-center mt-4">
