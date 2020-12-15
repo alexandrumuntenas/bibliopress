@@ -212,7 +212,7 @@ if ($sessionlogged == 1) {
                                         </select>
                                         <img style="margin-right:10px;  vertical-align: middle;  width: 55px;  height: 55px;  border-radius: 50%;" src="<?php echo $getoldresult['AVATAR']; ?>"> </a>
                                         <div class="modal-footer">
-                                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="update" type="submit">Save</button>
+                                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="edituser" type="submit">Save</button>
                                         </div>
                                     </div>
                                 </form>
