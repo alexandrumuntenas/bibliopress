@@ -36,7 +36,7 @@ echo mysqli_error($databaseconnection);
 $fecha_actual = date('m/d/Y');
 $formatofecha = "Y";
 $timestamp = date("Y-m-d", strtotime($fecha_actual . "+ 15 days"));
-$prorrogafecha = date("Y-m-d", strtotime($aq112['FECHADEV'] . "+ 15 days"));
+$prorrogafecha = date("Y-m-d", strtotime($libroresultado['FECHADEV'] . "+ 15 days"));
 #Default Settings
 date_default_timezone_set('Europe/Berlin');
 #ini_set('display_errors', 0);
