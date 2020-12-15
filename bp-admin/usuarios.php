@@ -48,7 +48,7 @@ if ($sessionlogged == 1) {
                                             <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
                                             <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
                                             <td data-label="Grupo"><br>' . $row["CLASE"] . '</td>
-                                            <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/editusuarios.php?usuario=' . $row["USUARIO"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
+                                            <td data-label="Acciones disponibles"><br><a style="color:blue;" href="?edit=usuario&id=' . $row["USUARIO"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
                                                 </tr>';
                                         }
                                     } ?>
