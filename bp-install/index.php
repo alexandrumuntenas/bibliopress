@@ -91,14 +91,14 @@
 						`CIUDAD` varchar(18) DEFAULT NULL,
 						`ID` int(11) NOT NULL AUTO_INCREMENT,
 						`FECHA` date DEFAULT NULL,
-						`DESCRIPCION` longtext NOT NULL,
+						`DESCRIPCION` longtext DEFAULT NULL,
 						`DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
 						`PRESTADOA` varchar(25) DEFAULT NULL,
 						`FECHADEV` date DEFAULT NULL,
 						`PORTADA` longtext NOT NULL DEFAULT 'https://i.imgur.com/IF19cU5.jpg',
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
-						) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4";
+						) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4";
 
 						$bpsesiones = "CREATE TABLE `" . $prefixtable . "_sesiones` (
 						`PHPSESSID` text DEFAULT NULL,
