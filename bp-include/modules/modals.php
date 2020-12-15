@@ -177,7 +177,7 @@ if ($sessionlogged == 1) {
                 $getoldsql = "SELECT *  FROM $bbddusuarios WHERE `USUARIO` LIKE '$userrequest'";
                 $getoldquery = mysqli_query($databaseconnection, $getoldsql);
                 $getoldresult = mysqli_fetch_assoc($getoldquery); ?>
-                <div class="modal fade" id="editor-usuario-<?php echo $userrequest; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
+                <div class="modal fade" id="editor-usuario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
                         <div class="modal-content">
                             <div class="modal-header ">
@@ -222,7 +222,7 @@ if ($sessionlogged == 1) {
                 </div>
                 <script type="text/javascript">
                     $(window).on('load', function() {
-                        $('#editor-usuario-<?php echo $userrequest; ?>').modal('show');
+                        $('#editor-usuario').modal('show');
                     });
                 </script>
 <?php
