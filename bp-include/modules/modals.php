@@ -102,76 +102,131 @@ if ($sessionlogged == 1) {
             echo '<div id="snackbar" class="show">Se ha eliminado el libro correctamente</div>';
         }
         if (isset($_GET['edit'])) {
-            $id = $_REQUEST['id'];
-            $editsql = "SELECT *  FROM $bbddcatalogo WHERE ID = " . $id;
-            $editquery = $databaseconnection->query($editsql);
-            $editresult = mysqli_fetch_assoc($editquery);
-
+            if ($_REQUEST['edit'] == 'book') {
+                $id = $_REQUEST['id'];
+                $editsql = "SELECT *  FROM $bbddcatalogo WHERE ID = " . $id;
+                $editquery = $databaseconnection->query($editsql);
+                $editresult = mysqli_fetch_assoc($editquery);
 ?>
-            <div class="modal fade" id="editor-<?php echo $id; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
-                    <div class="modal-content">
-                        <div class="modal-header ">
-                            <h5 class="modal-title heading lead" id="addbook">Editar Libro <em><?php echo $editresult['TITULO']; ?></em></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                <div class="modal fade" id="editor-<?php echo $id; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
+                        <div class="modal-content">
+                            <div class="modal-header ">
+                                <h5 class="modal-title heading lead" id="addbook">Editar Libro <em><?php echo $editresult['TITULO']; ?></em></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="md-form" action="" method="POST">
+                                    <div class="md-form">
+                                        <input type="text" name="titulo" id="form1" class="form-control" value="<?php echo $editresult['TITULO']; ?>" required>
+                                        <label for="form1">Título del libro</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <input type="text" name="autor" id="form1" class="form-control" value="<?php echo $editresult['AUTOR']; ?>" required>
+                                        <label for="form1">Autor</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <input type="text" name="isbn" id="form1" class="form-control" value="<?php echo $editresult['ISBN']; ?>" required>
+                                        <label for="form1">ISBN</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <input type="text" name="editorial" id="form1" class="form-control" value="<?php echo $editresult['EDITORIAL']; ?>" required>
+                                        <label for="form1">Editorial</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <input type="text" name="anopub" id="form1" class="form-control" value="<?php echo $editresult['ANOPUB']; ?>" required>
+                                        <label for="form1">Año de Publicación</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <input type="text" name="ejemplar" id="form1" class="form-control" value="<?php echo $editresult['EJEMPLAR']; ?>" required>
+                                        <label for="form1">Ejemplar</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <input type="text" name="ubicacion" id="form1" class="form-control" value="<?php echo $editresult['UBICACION']; ?>" required>
+                                        <label for="form1">Ubicación</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <textarea id="form7" name="descripcion" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                                        <label for="form7">Descripción</label>
+                                    </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-outline-success btn-rounded btn-block z-depth-0 my-4 waves-effect" name="editbook" type="submit">Actualizar</button>
+                            </div>
+                            </form>
                         </div>
-                        <div class="modal-body">
-                            <form class="md-form" action="" method="POST">
-                                <div class="md-form">
-                                    <input type="text" name="titulo" id="form1" class="form-control" value="<?php echo $editresult['TITULO']; ?>" required>
-                                    <label for="form1">Título del libro</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <input type="text" name="autor" id="form1" class="form-control" value="<?php echo $editresult['AUTOR']; ?>" required>
-                                    <label for="form1">Autor</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <input type="text" name="isbn" id="form1" class="form-control" value="<?php echo $editresult['ISBN']; ?>" required>
-                                    <label for="form1">ISBN</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <input type="text" name="editorial" id="form1" class="form-control" value="<?php echo $editresult['EDITORIAL']; ?>" required>
-                                    <label for="form1">Editorial</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <input type="text" name="anopub" id="form1" class="form-control" value="<?php echo $editresult['ANOPUB']; ?>" required>
-                                    <label for="form1">Año de Publicación</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <input type="text" name="ejemplar" id="form1" class="form-control" value="<?php echo $editresult['EJEMPLAR']; ?>" required>
-                                    <label for="form1">Ejemplar</label>
-                                </div>
-
-                                <div class="md-form">
-                                    <input type="text" name="ubicacion" id="form1" class="form-control" value="<?php echo $editresult['UBICACION']; ?>" required>
-                                    <label for="form1">Ubicación</label>
-                                </div>
-                                <div class="md-form">
-                                    <textarea id="form7" name="descripcion" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
-                                    <label for="form7">Descripción</label>
-                                </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-success btn-rounded btn-block z-depth-0 my-4 waves-effect" name="editbook" type="submit">Actualizar</button>
-                        </div>
-                        </form>
                     </div>
                 </div>
-            </div>
-            <script type="text/javascript">
-                $(window).on('load', function() {
-                    $('#editor-<?php echo $id; ?>').modal('show');
-                });
-            </script>
+                <script type="text/javascript">
+                    $(window).on('load', function() {
+                        $('#editor-<?php echo $id; ?>').modal('show');
+                    });
+                </script>
+            <?php
+            } else if ($_REQUEST['edit'] == 'usuario') {
+                $userrequest = $_REQUEST['id'];
+                $getoldsql = "SELECT *  FROM $bbddusuarios WHERE `USUARIO` LIKE '$userrequest'";
+                $getoldquery = mysqli_query($databaseconnection, $getoldsql);
+                $getoldresult = mysqli_fetch_assoc($getoldquery); ?>
+                <div class="modal fade" id="editor-usuario-<?php echo $userrequest; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
+                        <div class="modal-content">
+                            <div class="modal-header ">
+                                <h5 class="modal-title heading lead" id="addbook">Editar lector "<em><?php echo $getoldresult['NOMBRE']; ?></em>"</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="md-form" action="" method="POST">
+                                    <div class="md-form">
+                                        <div class="md-form">
+                                            <input type="text" name="nombre" id="form1" class="form-control" value="<?php echo $getoldresult['NOMBRE']; ?>" required>
+                                            <label for="form1">Nombre</label>
+                                        </div>
+
+                                        <div class="md-form">
+                                            <input type="text" name="apellidos" id="form1" class="form-control" value="<?php echo $getoldresult['APELLIDOS']; ?>" required>
+                                            <label for="form1">Apellidos</label>
+                                        </div>
+
+                                        <div class="md-form">
+                                            <input type="text" name="celectronico" id="form1" class="form-control" value="<?php echo $getoldresult['USUARIO']; ?>" required>
+                                            <label for="form1">Correo Electrónico</label>
+                                        </div>
+                                        <select selected="<?php echo $getoldresult['USUARIO']; ?>" class="form-control form-control-sm" id="grupo" name="grupo">
+                                            <option value="No asignado"> No Asignado</option>';
+                                            <?php
+                                            while ($grupos = $grupoquery->fetch_assoc()) {
+                                                echo '<option value="' . $gruporesultado['NOMBRE'] . '">' . $gruporesultado['NOMBRE'] . '</option>';
+                                            } ?>
+                                        </select>
+                                        <img style="margin-right:10px;  vertical-align: middle;  width: 55px;  height: 55px;  border-radius: 50%;" src="<?php echo $getoldresult['AVATAR']; ?>"> </a>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="update" type="submit">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(window).on('load', function() {
+                        $('#editor-usuario-<?php echo $userrequest; ?>').modal('show');
+                    });
+                </script>
 <?php
+            }
         }
 
         if (isset($_POST['editbook'])) {
@@ -190,6 +245,18 @@ if ($sessionlogged == 1) {
             echo "<meta http-equiv='refresh' content='0;url=/' />";
         }
 
+        if (isset($_POST['edituser'])) {
+            $usuario = $_POST['celectronico'];
+            $nombre = $_POST["nombre"];
+            $apellidos = $_POST["apellidos"];
+            $grupo = $_POST["grupo"];
+            $newdatasql = "UPDATE `$bbddusuarios` set `USUARIO` = '" . $usuario . "', `NOMBRE`='" . $nombre . "', `APELLIDOS`='" . $apellidos . "', `CLASE`='" . $grupo . "' where `USUARIO`='" . $userrequest . "'";
+            mysqli_query($databaseconnection, $newdatasql);
+            echo "<meta http-equiv='refresh' content='0;url=/bp-admin/usuarios.php' />";
+        }
+
+        if (isset($_GET['view'])) {
+        }
 
         echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
@@ -321,24 +388,21 @@ if ($sessionlogged == 1) {
                                 <select class="form-control form-control-sm" id="inicial" name="inicial">
                                     <option value="No asignado">Selecciona el grupo</option>';
 
-        if ($gruposql->num_rows > 0) {
+        if ($grupoquery->num_rows > 0) {
             //datos de cada columna
-            while ($row = $gruposql->fetch_assoc()) {
+            while ($row = mysqli_fetch_assoc($grupoquery)) {
                 echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
             }
         }
-        mysqli_data_seek($gruposql, 0);
+        mysqli_data_seek($grupoquery, 0);
         echo
             '
                                 </select>
                                 <p>a</p>
                                 <select class="form-control form-control-sm" id="final" name="final">
                                     <option value="No asignado">Selecciona el grupo</option>';
-        if ($gruposql->num_rows > 0) {
-            //datos de cada columna
-            while ($row = $gruposql->fetch_assoc()) {
-                echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-            }
+        while ($row = mysqli_fetch_assoc($grupoquery)) {
+            echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
         }
         echo '
                                 </select>
