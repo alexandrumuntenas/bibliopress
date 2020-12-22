@@ -29,8 +29,6 @@
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
                             $consulta = $databaseconnection->query($consultavistas);
-
-                            echo '';
                             while ($row = $consulta->fetch_row()) {
                                 $long = 250;
                                 $desc = substr($row[12], 0, $long) . '...';
