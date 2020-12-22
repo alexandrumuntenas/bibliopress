@@ -72,7 +72,7 @@
 						`CLASE` text CHARACTER SET utf8mb4 NOT NULL,
 						`PASSWD` varchar(128) NOT NULL,
 						`PERM` int(1) NOT NULL,
-						`AVATAR` varchar(1024) NOT NULL DEFAULT 'https://i.imgur.com/i3bYpLi.png',
+						`AVATAR` varchar(1024) NOT NULL,
 						`THEME` int(11) NOT NULL DEFAULT 0,
 						PRIMARY KEY (`USUARIO`(64))
 						) ENGINE=InnoDB DEFAULT CHARSET=utf8";
