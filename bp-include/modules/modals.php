@@ -175,7 +175,7 @@ if ($sessionlogged == 1) {
             <?php
             } else if ($_REQUEST['edit'] == 'usuario') {
                 $userrequest = $_REQUEST['id'];
-                $getoldsql = "SELECT *  FROM $bbddusuarios WHERE `USUARIO` LIKE '$userrequest'";
+                $getoldsql = "SELECT *  FROM $bbddusuarios WHERE `ID` LIKE '$userrequest'";
                 $getoldquery = mysqli_query($databaseconnection, $getoldsql);
                 $getoldresult = mysqli_fetch_assoc($getoldquery); ?>
                 <div class="modal fade" id="editor-usuario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
@@ -251,7 +251,7 @@ if ($sessionlogged == 1) {
             $nombre = $_POST["nombre"];
             $apellidos = $_POST["apellidos"];
             $grupo = $_POST["grupo"];
-            $newdatasql = "UPDATE `$bbddusuarios` set `USUARIO` = '" . $usuario . "', `NOMBRE`='" . $nombre . "', `APELLIDOS`='" . $apellidos . "', `CLASE`='" . $grupo . "' where `USUARIO`='" . $userrequest . "'";
+            $newdatasql = "UPDATE `$bbddusuarios` set `USUARIO` = '" . $usuario . "', `NOMBRE`='" . $nombre . "', `APELLIDOS`='" . $apellidos . "', `CLASE`='" . $grupo . "' where `ID`='" . $userrequest . "'";
             mysqli_query($databaseconnection, $newdatasql);
             echo "<meta http-equiv='refresh' content='0;url=/bp-admin/usuarios.php' />";
         }
