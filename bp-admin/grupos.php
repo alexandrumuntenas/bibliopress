@@ -29,31 +29,65 @@ if ($sessionlogged == 1) {
                     <button type="button" style="margin-bottom:10px;" class="btn btn-success" data-toggle="modal" data-target="#promogrupo">
                         Promocionar
                     </button>
-                     <div class="table-responsive"><table class="table table-hover"   >
-                        <thead class="thead-dark" >
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Usuarios</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            mysqli_data_seek($gruposql, 0);
-                            if ($gruposql->num_rows > 0) {
-                                //datos de cada columna
-                                while ($gr = $gruposql->fetch_assoc()) {
-                                    echo '<tr><form method="POST" action="">
-                        <td data-label="Nombre"><br>' . $gr["NOMBRE"] . '</td>
-                        <td data-label="Usuarios"><br><button type="button" class="btn btn-light" disabled />Ver usuarios</button></td>
-                        <td data-label="Acciones disponibles"><br><form method="POST" action=""><input type="hidden" name="grupodel" value="' . $gr['ID'] . '" /><input name="delgr" type="submit" value="Eliminar"/></form></td>
-                        </form></tr>';
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Usuarios</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
+                                $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddgrupos`");
+                                $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
+                                $consultavistas = "SELECT * FROM `$bbddgrupos`
+                                    ORDER BY
+                                    id ASC
+                                    LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                                $consulta = $databaseconnection->query($consultavistas);
+                                if ($consulta->num_rows > 0) {
+                                    //datos de cada columna
+                                    while ($gr = $consulta->fetch_assoc()) {
+                                        echo '<tr>
+                                    <form method="POST" action="">
+                                        <td data-label="Nombre"><br>' . $gr["NOMBRE"] . '</td>
+                                        <td data-label="Usuarios"><br><button type="button" class="btn btn-light" disabled />Ver usuarios</button></td>
+                                        <td data-label="Acciones disponibles"><br>
+                                            <form method="POST" action=""><input type="hidden" name="grupodel" value="' . $gr['ID'] . '" /><input name="delgr" type="submit" value="Eliminar" /></form>
+                                        </td>
+                                    </form>
+                                </tr>';
+                                    }
+                                }; ?>
+                            </tbody>
+                        </table>
+                        <?php
+                        $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
+                        $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
+                        echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?pag=" . $DecrementNum . "\">&laquo;</a></li>";
+                        $Desde = $compag - (ceil($CantidadMostrar / 2) - 1);
+                        $Hasta = $compag + (ceil($CantidadMostrar / 2) - 1);
+                        $Desde = ($Desde < 1) ? 1 : $Desde;
+                        $Hasta = ($Hasta < $CantidadMostrar) ? $CantidadMostrar : $Hasta;
+                        for ($i = $Desde; $i <= $Hasta; $i++) {
+                            if ($i <= $TotalRegistro) {
+                                if ($i == $compag) {
+                                    echo "<li class=\"page-item active\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                                } else {
+                                    echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
                                 }
-                            }; ?>
-                        </tbody>
-                    </table></div>
+                            }
+                        }
+                        echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
+                        ?>
+                    </div>
                 </section>
             </div>
             </div>
+
             </div>
         <?php } else { ?>
 

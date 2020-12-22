@@ -22,9 +22,14 @@ if ($sessionlogged == 1) {
 
                     </div>
                     <?php
-                    $resulta = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios`");
-                    $qty = mysqli_num_rows($resulta);
-                    echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
+                    $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
+                    $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddusuarios`");
+                    $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
+                    $consultavistas = "SELECT * FROM `$bbddusuarios`
+                                    ORDER BY
+                                    id ASC
+                                    LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                    $consulta = $databaseconnection->query($consultavistas);
                     ?>
                     <div class="lectores">
                         <div class="table-responsive">
@@ -40,9 +45,9 @@ if ($sessionlogged == 1) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($resulta->num_rows > 0) {
+                                    if ($consulta->num_rows > 0) {
                                         //datos de cada columna
-                                        while ($row = $resulta->fetch_assoc()) {
+                                        while ($row = $consulta->fetch_assoc()) {
                                             echo '<tr>
                                             <td data-label="Usuario"><br>' . $row["USUARIO"] . '</td>
                                             <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
@@ -56,6 +61,25 @@ if ($sessionlogged == 1) {
                             </table>
                         </div>
                     </div>
+                    <?php
+                    $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
+                    $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
+                    echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?pag=" . $DecrementNum . "\">&laquo;</a></li>";
+                    $Desde = $compag - (ceil($CantidadMostrar / 2) - 1);
+                    $Hasta = $compag + (ceil($CantidadMostrar / 2) - 1);
+                    $Desde = ($Desde < 1) ? 1 : $Desde;
+                    $Hasta = ($Hasta < $CantidadMostrar) ? $CantidadMostrar : $Hasta;
+                    for ($i = $Desde; $i <= $Hasta; $i++) {
+                        if ($i <= $TotalRegistro) {
+                            if ($i == $compag) {
+                                echo "<li class=\"page-item active\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                            } else {
+                                echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                            }
+                        }
+                    }
+                    echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
+                    ?>
             </div>
             </div>
             </div>
