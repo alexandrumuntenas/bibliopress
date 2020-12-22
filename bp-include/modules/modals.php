@@ -43,7 +43,8 @@ if ($sessionlogged == 1) {
             $random = rand();
             $PASSWD = password_hash($random, PASSWORD_BCRYPT);
             $FNAME = "$nombre $apellido";
-            $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$PASSWD', '$permiso')";
+            $avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
+            $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`, `AVATAR`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$PASSWD', '$permiso', '$avatar')";
             $databaseconnection->query($insert);
             #mail('bibliopress@localhost.com','Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random",'bibliopress@localhost.com');
             echo '<div id="snackbar" class="show"> Se ha añadido el usuario correctamente</div>';
@@ -207,7 +208,7 @@ if ($sessionlogged == 1) {
                                             <option value="No asignado"> No Asignado</option>';
                                             <?php
                                             while ($grupos = $grupoquery->fetch_assoc()) {
-                                                echo '<option value="' . $gruporesultado['NOMBRE'] . '">' . $gruporesultado['NOMBRE'] . '</option>';
+                                                echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
                                             } ?>
                                         </select>
                                         <img style="margin-right:10px;  vertical-align: middle;  width: 55px;  height: 55px;  border-radius: 50%;" src="<?php echo $getoldresult['AVATAR']; ?>"> </a>
