@@ -18,19 +18,42 @@ if ($sessionlogged == 1) {
                     </div>
                 </header>
                 <section class="bp-section">
-                    <div>
-
-                    </div>
                     <?php
                     $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
-                    $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddusuarios`");
-                    $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
-                    $consultavistas = "SELECT * FROM `$bbddusuarios`
+                    if (isset($_GET['grupo'])) {
+                        $gr = $_GET['grupo'];
+                        $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddusuarios` WHERE `CLASE` LIKE '$gr'");
+                        $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
+                        $consultavistas = "SELECT * FROM `$bbddusuarios` WHERE `CLASE` LIKE '$gr'
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                    } else {
+                        $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddusuarios`");
+                        $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
+                        $consultavistas = "SELECT * FROM `$bbddusuarios`
+                                    ORDER BY
+                                    id ASC
+                                    LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                    }
                     $consulta = $databaseconnection->query($consultavistas);
                     ?>
+                    <form class="form-inline" action="" method="GET">
+                        Búsqueda de usuarios por grupo > &nbsp
+                        </br>
+                        <select class="form-control form-control-sm" name="grupo" id="">
+                            <?php
+                            mysqli_data_seek($grupoquery, 0);
+                            if ($grupoquery->num_rows > 0) {
+                                //datos de cada columna
+                                while ($row = mysqli_fetch_assoc($grupoquery)) {
+                                    echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+                                }
+                            } ?>
+                        </select>
+                        <button class="btn btn-primary btn-sm" type="submit">Filtrar</button>
+                        <a href="/bp-admin/usuarios.php" class="btn btn-success btn-sm" type="submit">Limpiar Filtro</a>
+                    </form>
                     <div class="lectores">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -53,7 +76,7 @@ if ($sessionlogged == 1) {
                                             <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
                                             <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
                                             <td data-label="Grupo"><br>' . $row["CLASE"] . '</td>
-                                            <td data-label="Acciones disponibles"><br><a style="color:blue;" href="?edit=usuario&id=' . $row["USUARIO"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
+                                            <td data-label="Acciones disponibles"><br><a style="color:blue;" href="?edit=usuario&id=' . $row["ID"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
                                                 </tr>';
                                         }
                                     } ?>
