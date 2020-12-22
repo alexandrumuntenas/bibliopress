@@ -95,7 +95,7 @@
 						`DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
 						`PRESTADOA` varchar(25) DEFAULT NULL,
 						`FECHADEV` date DEFAULT NULL,
-						`PORTADA` longtext NOT NULL DEFAULT 'https://i.imgur.com/IF19cU5.jpg',
+						`PORTADA` longtext NOT NULL DEFAULT '/bp-include/portada.jpg',
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
 						) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4";
@@ -113,8 +113,8 @@
 						`NOMBRE` text NOT NULL,
 						PRIMARY KEY (`ID`)
 						) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8";
-
-						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1')";
+						$avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
+						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`, `AVATAR`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1', '$avatar')";
 
 						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS '2020-12-14 00:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
 						SELECT * FROM bp_catalogo WHERE DISPONIBILIDAD = 2 AND FECHADEV = CURRENT_DATE;
@@ -168,7 +168,7 @@
 							echo ("<span style='color: green'>OK!</span>");
 						}
 						echo '</span></p>';
-						echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="5;url=/" />
+						echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="20;url=/" />
         ';
 						?>
 				<div id="footer">
