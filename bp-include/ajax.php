@@ -19,7 +19,7 @@ if (isset($_POST['search'])) {
          } else {
             echo '<p class="badge badge-danger">Disponibilidad ✗</p><br>';
          } ?>
-         <a class="btn btn-light" href="view.php?id=<?php echo $Result['ID']; ?>">Ver más</a>
+         <a class="btn btn-light" href="/?view=<?php echo $Result['ID']; ?>">Ver más</a>
       </div>
 <?php
    }
