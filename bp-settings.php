@@ -5,7 +5,7 @@
 						$dbMySQL = 'bibliopress'; //Nombre de la base de datos
 						$userMySQL = 'bibliopress'; //Usuario de la base de datos
 						$pwdMySQL = 'YIK0Y8rNsgk1THZp'; //Contraseña del usuario de la base de datos
-						$prefix = 'bp'; //Prefijo de tablas. No cambiar
+						$prefix = 'bpg'; //Prefijo de tablas. No cambiar
 
 						// Otros parametros
 						$sname = 'Centro Centro'; //Nombre de la biblioteca/institución
