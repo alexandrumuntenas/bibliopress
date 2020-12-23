@@ -20,40 +20,38 @@ if ($sessionlogged == 1) {
                 </header>
                 <section class="bp-section">
                     <div>
-                        <?php
-                        $resulta = mysqli_query($databaseconnection, "SELECT * FROM `$bbddcatalogo` WHERE `DISPONIBILIDAD` = 0");
-                        $qty = mysqli_num_rows($resulta);
-                        echo '<p class="badge badge-success badge-pill">' . $qty . ' Registros</p>';
-                        ?>
+                        <input class="inputbusqueda" type="text" id="titulolibro" onkeyup="ttlibro()" placeholder="Busca por título del libro..." title="Escribe el título del libro">
                         <div class="lectores">
-                             <div class="table-responsive"><table class="table table-hover"    id="tb-pres">
-                                <div class="row"><input class="inputbusqueda" type="text" id="titulolibro" onkeyup="ttlibro()" placeholder="Busca por título del libro..." title="Escribe el título del libro"></div>
-                                <thead class="thead-dark" >
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="tb-pres">
+                                    <div class="row"></div>
+                                    <thead class="thead-dark">
 
-                                    <tr>
-                                        <th>Título del Libro</th>
-                                        <th>Fecha de devolución</th>
-                                        <th>Usuario</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if ($resulta->num_rows > 0) {
-                                        //datos de cada columna
-                                        while ($row = $resulta->fetch_assoc()) {
-                                            $nombre = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $row["PRESTADOA"] . "'");
-                                            $data = $nombre->fetch_assoc();
-                                            echo '<tr>
+                                        <tr>
+                                            <th>Título del Libro</th>
+                                            <th>Fecha de devolución</th>
+                                            <th>Usuario</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if ($resulta->num_rows > 0) {
+                                            //datos de cada columna
+                                            while ($row = $resulta->fetch_assoc()) {
+                                                $nombre = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $row["PRESTADOA"] . "'");
+                                                $data = $nombre->fetch_assoc();
+                                                echo '<tr>
                                 <td data-label="Título del libro"><br>' . $row["TITULO"] . '</td>
                                 <td data-label="Fecha de devolución"><br>' . $row["FECHADEV"] . '</td>
                                 <td data-label="Título prestado al usuario "><br>' . $data[1] . '</td>
                                 <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
                         </tr>';
-                                        }
-                                    } ?>
-                                </tbody>
-                            </table></div>
+                                            }
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </section>
