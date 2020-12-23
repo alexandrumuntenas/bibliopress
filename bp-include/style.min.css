@@ -443,4 +443,5 @@ div.comentario {
   border-radius: 0.5rem;
   padding: 10px;
   margin: 10px;
+  width: 100% !important;
 }

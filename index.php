@@ -49,8 +49,19 @@
                                         <p><strong>Año de Publicación</strong> <?php echo $row[0]; ?></p>
                                         <p><strong>Editorial</strong> <?php echo $row[3]; ?></p>
                                         <h6>Comentarios</h6>
-                                        <a type=" button" class="btn btn-sm btn-primary">Añadir nueva reseña</a>
+                                        Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
                                         <div class="comentarios row">
+                                            <div class="comentario">
+                                                <form style="width:100%" class="md-form" method="post" action="">
+                                                    <input name="idlibro" value="<?php echo $row[10]; ?>" hidden />
+                                                    <input name="idusuario" value="<?php echo $sessionus; ?>" hidden />
+                                                    <div class="md-form">
+                                                        <textarea id="form10" name="comentario" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                                                        <label for="form10">Comentario</label>
+                                                    </div>
+                                                    <input type="submit" name="publishcomment" class="btn btn-sm btn-primary" value="Añadir Comentario" />
+                                                </form>
+                                            </div>
                                             <?php $comentariosql = "SELECT * FROM $bbddcomentarios WHERE `idlibro` LIKE '$row[10]' LIMIT 6";
                                             $comentariosconsulta = mysqli_query($databaseconnection, $comentariosql);
                                             while ($comentariofila = mysqli_fetch_row($comentariosconsulta)) {

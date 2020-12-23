@@ -588,6 +588,17 @@ if ($sessionlogged == 1) {
                         </div>';
     }
     if (isset($_POST['publishcomment'])) {
+        $comentario = mysqli_real_escape_string($databaseconnection, $_POST['comentario']);
+        $idlibro = mysqli_real_escape_string($databaseconnection, $_POST['idlibro']);
+        $idusuario = mysqli_real_escape_string($databaseconnection, $_POST['idusuario']);
+        $publishcommentsql = "INSERT INTO `bp_comentarios` (`id`, `idlibro`, `idpadre`, `usuario`, `contenido`, `fecha`) VALUES (NULL, '$idlibro', '-1', '$idusuario', '$comentario', CURRENT_DATE)";
+        $publishcommentquery = mysqli_query($databaseconnection, $publishcommentsql);
+        if (mysqli_error($databaseconnection)) {
+            echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+        } else {
+            echo '<div id="snackbar" class="show"> Se ha publicado correctamente tu comentario!</div>';
+        }
+        
     }
     if (isset($_POST['editcomment'])) {
     }
