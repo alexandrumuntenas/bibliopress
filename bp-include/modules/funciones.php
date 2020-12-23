@@ -226,6 +226,59 @@ if ($sessionlogged == 1) {
                         $('#editor-usuario').modal('show');
                     });
                 </script>
+            <?php
+            } else if ($_REQUEST['edit'] == 'gprestamo') {
+                $id = $_REQUEST['id'];
+                $prestamosql = "SELECT * FROM `$bbddcatalogo` WHERE `ID` LIKE '" . $id . "'";
+                $prestamoquery = mysqli_query($databaseconnection, $prestamosql);
+                $prestamoresultado = mysqli_fetch_assoc($prestamoquery);
+                $fecha_actual = date('m/d/Y'); ?>
+                <div class="modal fade" id="prestar-<?php echo $id; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="prestamo" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
+                        <div class="modal-content">
+                            <div class="modal-header ">
+                                <h5 class="modal-title heading lead" id="prestamo">Realizar préstamo de <em><?php echo $prestamoresultado["TITULO"]; ?></em></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="form_1388" method="post" action="">
+
+                                <div class="modal-body">
+                                    <ul>
+
+                                        <li id="li_1">
+                                            <label class="description" for="element_1">Nombre </label>
+                                            <div>
+                                                <input id="element_1" name="prestar_nombre" class="form-control mb-4" type="text" maxlength="255" value="" />
+                                            </div>
+                                        </li>
+                                        <li id="li_2">
+                                            <label class="description" for="element_2">Apellido </label>
+                                            <div>
+                                                <input id="element_2" name="prestar_apellido" class="form-control mb-4" type="text" maxlength="255" value="" />
+                                            </div>
+                                        </li>
+                                        <li id="li_3">
+                                            <label class="description" for="element_3">Fecha de devolución </label>
+                                            <div>
+                                                <input class="form-control mb-4" value="<?php echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days")); ?>" readonly />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <input id="saveForm" class="btn btn-success" type="submit" name="prestar" value="Prestar" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(window).on('load', function() {
+                        $('#prestar-<?php echo $id; ?>').modal('show');
+                    });
+                </script>
 <?php
             }
         }
@@ -259,6 +312,33 @@ if ($sessionlogged == 1) {
         if (isset($_GET['view'])) {
         }
 
+        if (isset($_POST['prestar'])) {
+            $id = $_REQUEST['id'];
+            $nombre = $_REQUEST["prestar_nombre"];
+            $apellido = $_REQUEST["prestar_apellido"];
+            $FNAME = "$nombre $apellido";
+            $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `FULLNAME` = '" . $FNAME . "'";
+            $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
+            $fnamecheck = mysqli_fetch_assoc($fnamedata);
+            $usuariocompleto = $fnamecheck['USUARIO'];
+            $query = "SELECT * FROM `$bbddcatalogo` WHERE `ID` = '" . $id . "'";
+            $result = mysqli_query($databaseconnection, $query);
+            $row = mysqli_fetch_assoc($result);
+            $comprobadorsql = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $usuariocompleto . "'";
+            $comprobadordata = mysqli_query($databaseconnection, $comprobadorsql);
+            $cantidadprestada = mysqli_num_rows($comprobadordata);
+            if ($cantidadprestada >= 5) {
+                echo '<div id="snackbar" class="show"> Error! Parece que este usuario tiene más de 5 préstamos activos</div>';
+            } else {
+                if ($fnamecheck['FULLNAME'] == $FNAME) {
+                    $sql = "UPDATE `$bbddcatalogo` SET `DISPONIBILIDAD` = '0', `PRESTADOA` = '" . $fnamecheck['USUARIO'] . "', `FECHADEV` = '" . $timestamp . "' WHERE `$bbddcatalogo`.`ID` = " . $id;
+                    $databaseconnection->query($sql);
+                }
+                echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente</div>';
+                echo "<meta http-equiv='refresh' content='0;url=/' />";
+
+            }
+        }
         echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
             <div class="modal-content">
@@ -508,13 +588,12 @@ if ($sessionlogged == 1) {
                         </div>';
     }
     if (isset($_POST['publishcomment'])) {
-
     }
     if (isset($_POST['editcomment'])) {
     }
     if (isset($_POST['delcomment'])) {
     }
-    
+
     if (isset($_POST['logout'])) {
         if ($sessionlogged == 1) {
             $phpsessid = session_id();
