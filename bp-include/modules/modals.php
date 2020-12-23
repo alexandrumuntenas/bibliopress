@@ -213,7 +213,7 @@ if ($sessionlogged == 1) {
                                         </select>
                                         <img style="margin-right:10px;  vertical-align: middle;  width: 55px;  height: 55px;  border-radius: 50%;" src="<?php echo $getoldresult['AVATAR']; ?>"> </a>
                                         <div class="modal-footer">
-                                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="edituser" type="submit">Save</button>
+                                            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="edituser" type="submit">Guardar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -268,8 +268,8 @@ if ($sessionlogged == 1) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div> 
-                <div class="modal-body">
-                    <form id="form_1388" class="md-form" method="post" action="">
+
+                <form id="form_1388" class="md-form modal-body" method="post" action="">
                     <p>✨ Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos. <mark>Ten en cuenta de que esta tecnología no es precisa al 100%, pero generalmente si dará buenos resultados.</mark></p>
                                 <div id="gapisresult"></div>
                                 <div class="md-form">
@@ -308,8 +308,6 @@ if ($sessionlogged == 1) {
                                 <div class="md-form">
                                     <input id="portada" name="portada" type="text" value="" hidden/>
                                 </div>
-                            </li>
-                        </ul></div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger sm" data-dismiss="modal">Cancelar</button>
                             <input id="saveForm" class="btn btn-primary sm" type="submit" name="publishbook" value="Publicar" />
@@ -332,19 +330,19 @@ if ($sessionlogged == 1) {
                                         <form id="form_1388" class="appnitro" method="post" action="">
                                                     <div class="md-form">
                                                     <p>Nombre</p>
-                                                        <input id="nombreusuario" name="nombreusuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                        <input id="nombreusuario" name="nombreusuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                                     </div>
                                                     <div class="md-form">
                                                     <p>Apellidos</p>
-                                                        <input id="apellidousuario" name="apellidousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                        <input id="apellidousuario" name="apellidousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                                     </div>
                                                     <div class="md-form">
                                                     <p>Correo Electrónico</p>
-                                                        <input id="correousuario" name="correousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                        <input id="correousuario" name="correousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                                     </div>
                                                     <div class="md-form">
                                                     <p>Grupo</p>
-                                                        <select class="form-control form-control-sm" id="grupousuario" name="grupousuario">
+                                                        <select class="form-control form-control-sm" id="grupousuario" name="grupousuario" required>
                                                             <option value="No asignado">Selecciona el grupo</option>';
         mysqli_data_seek($grupoquery, 0);
         if ($grupoquery->num_rows > 0) {
@@ -432,7 +430,7 @@ if ($sessionlogged == 1) {
 
                                         <li id="li_1">
                                             <label class="description" for="nombregrupo">Nombre del grupo</label>
-                                                <input id="nombregrupo" name="nombregrupo" class="form-control form-control-sm" type="text" maxlength="255" value="" />
+                                                <input id="nombregrupo" name="nombregrupo" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
                                         </li>
                                     </ul>
                                     <div class="modal-footer">
