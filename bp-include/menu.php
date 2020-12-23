@@ -84,4 +84,4 @@
         $("#wrapper").toggleClass("toggled");
       });
     </script>
-    <?php require 'modules/modals.php'; ?>
+    <?php require 'modules/funciones.php'; ?>
