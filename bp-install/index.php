@@ -65,6 +65,7 @@
 
 						$cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
 						$bpusuario = "CREATE TABLE `" . $prefixtable . "_usuarios` (
+						`ID` int(11) NOT NULL AUTO_INCREMENT,
 						`USUARIO` tinytext NOT NULL,
 						`FULLNAME` longtext NOT NULL,
 						`NOMBRE` text CHARACTER SET utf8mb4 NOT NULL,
@@ -74,8 +75,8 @@
 						`PERM` int(1) NOT NULL,
 						`AVATAR` varchar(1024) NOT NULL DEFAULT '',
 						`THEME` int(11) NOT NULL DEFAULT 0,
-						PRIMARY KEY (`USUARIO`(64))
-						) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+						PRIMARY KEY (`ID`)
+						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 
 
 						$bpcatalogo = "CREATE TABLE `" . $prefixtable . "_catalogo` (
@@ -98,7 +99,7 @@
 						`PORTADA` longtext NOT NULL DEFAULT '/bp-include/portada.jpg',
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
-						) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4";
+						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
 
 						$bpsesiones = "CREATE TABLE `" . $prefixtable . "_sesiones` (
 						`PHPSESSID` text DEFAULT NULL,
