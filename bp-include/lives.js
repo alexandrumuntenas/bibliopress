@@ -10,7 +10,7 @@ $(document).ready(function () {
     } else {
       $.ajax({
         type: "POST",
-        url: "../bp-include/ajax.php",
+        url: "../bp-include/modules/ajax-calls/busqueda.php",
         data: {
           search: name,
         },
