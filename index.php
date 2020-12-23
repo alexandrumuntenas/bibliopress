@@ -82,7 +82,7 @@
 
                                     <div class="modal-footer"> <?php if ($sessionlogged == 1) {
                                                                     if ($sessionclass == 1) { ?>
-                                                <a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=<?php echo $row[10]; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                                <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=<?php echo $row[10]; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
                                                 <form method="POST" action=""><input type="hidden" name="librodel" value="<?php echo $row[10]; ?>" /><input name="delbk" type="submit" value="Eliminar" /></form>
                                             <?php } else { ?>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

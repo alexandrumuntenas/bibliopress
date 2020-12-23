@@ -332,8 +332,10 @@ if ($sessionlogged == 1) {
                             <p><strong>Ejemplar</strong> <?php echo $viewresult[2]; ?></p>
                             <p><strong>Año de Publicación</strong> <?php echo $viewresult[0]; ?></p>
                             <p><strong>Editorial</strong> <?php echo $viewresult[3]; ?></p>
-                            <h6>Comentarios</h6>
-                            Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
+                            <center>
+                                <h6>Comentarios</h6>
+                                Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
+                            </center>
                             <div class="comentarios row">
                                 <div class="comentario">
                                     <form style="width:100%" class="md-form" method="post" action="">
@@ -366,8 +368,8 @@ if ($sessionlogged == 1) {
 
                         <div class="modal-footer"> <?php if ($sessionlogged == 1) {
                                                         if ($sessionclass == 1) { ?>
-                                    <a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=<?php echo $row[10]; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                    <form method="POST" action=""><input type="hidden" name="librodel" value="<?php echo $viewresult[10]; ?>" /><input name="delbk" type="submit" value="Eliminar" /></form>
+                                    <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=?id=<?php echo $id; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $id; ?>">Editar</a>
+                                    <form method="POST" action=""><input type="hidden" name="librodel" value="<?php echo $id; ?>" /><input name="delbk" type="submit" value="Eliminar" /></form>
                                 <?php } else { ?>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
