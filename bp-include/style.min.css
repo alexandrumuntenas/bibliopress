@@ -431,3 +431,16 @@ form ul {
 .editor {
   border-bottom: solid 1px #333;
 }
+
+hr.rounded {
+  border-top: 3px solid #ddd;
+  border-radius: 5px;
+  width: 95%;
+  height: 3px;
+}
+div.comentario {
+  border: solid 1px #ddd;
+  border-radius: 0.5rem;
+  padding: 10px;
+  margin: 10px;
+}
