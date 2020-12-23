@@ -114,8 +114,21 @@
 						`NOMBRE` text NOT NULL,
 						PRIMARY KEY (`ID`)
 						) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8";
+
+						$bpcomentarios = "CREATE TABLE IF NOT EXISTS `" . $prefixtable . "_comentarios` (
+						`id` int(11) NOT NULL AUTO_INCREMENT,
+						`idlibro` int(11) NOT NULL,
+						`idpadre` int(11) NOT NULL DEFAULT '-1',
+						`usuario` varchar(255) NOT NULL,
+						`contenido` text NOT NULL,
+						`fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+						PRIMARY KEY (`id`)
+						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
+
 						$avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`, `AVATAR`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1', '$avatar')";
+
+						$bpadmingroup = "INSERT INTO `" . $prefixtable . "grupo` (`NOMBRE`) VALUES ('Administrativo')";
 
 						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS '2020-12-14 00:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
 						SELECT * FROM bp_catalogo WHERE DISPONIBILIDAD = 2 AND FECHADEV = CURRENT_DATE;
@@ -153,10 +166,22 @@
 						} else {
 							echo ("<span style='color: green'>OK!</span>");
 						}
-
+						echo '</span></p>';
+						echo '<p>Creación de tabla "Comentarios": ';
+						if (!mysqli_query($conn, $bpcomentarios)) {
+							echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
 						echo '</span></p>';
 						echo '<p>Creación de "Usuario Administrativo" ';
 						if (!mysqli_query($conn, $bpadminuser)) {
+							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
+						echo '<p>Creación de "Grupo Administrativo" ';
+						if (!mysqli_query($conn, $bpadmingroup)) {
 							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
 						} else {
 							echo ("<span style='color: green'>OK!</span>");
@@ -169,7 +194,7 @@
 							echo ("<span style='color: green'>OK!</span>");
 						}
 						echo '</span></p>';
-						echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="20;url=/" />
+						echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="5;url=/" />
         ';
 						?>
 				<div id="footer">
