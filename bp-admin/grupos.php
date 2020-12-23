@@ -21,21 +21,22 @@ if ($sessionlogged == 1) {
                     </div>
                 </header>
                 <section class="bp-section">
-                    <?php echo '
-            '; ?>
-                    <button type="button" style="margin-bottom:10px;" class="btn btn-primary" data-toggle="modal" data-target="#addgroup">
-                        Añadir nuevo registro
-                    </button>
-                    <button type="button" style="margin-bottom:10px;" class="btn btn-success" data-toggle="modal" data-target="#promogrupo">
-                        Promocionar
-                    </button>
+                    <div class="form-inline">
+                        <button type="button" style="margin-bottom:10px; margin-left: 0px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addgroup">
+                            Añadir nuevo registro
+                        </button>
+                        <button type="button" style="margin-bottom:10px;" class="btn btn-success btn-sm" data-toggle="modal" data-target="#promogrupo">
+                            Promocionar
+                        </button>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Usuarios</th>
-                                    <th></th>
+                                    <th>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,7 +55,7 @@ if ($sessionlogged == 1) {
                                         echo '<tr>
                                     <form method="POST" action="">
                                         <td data-label="Nombre"><br>' . $gr["NOMBRE"] . '</td>
-                                        <td data-label="Usuarios"><br><a href="usuarios.php?grupo='.$gr["NOMBRE"].'" type="button" class="btn btn-light"/>Ver usuarios</a></td>
+                                        <td data-label="Usuarios"><br><a href="usuarios.php?grupo=' . $gr["NOMBRE"] . '" type="button" class="btn btn-light btn-sm"/>Ver usuarios</a></td>
                                         <td data-label="Acciones disponibles"><br>
                                             <form method="POST" action=""><input type="hidden" name="grupodel" value="' . $gr['ID'] . '" /><input name="delgr" type="submit" value="Eliminar" /></form>
                                         </td>
