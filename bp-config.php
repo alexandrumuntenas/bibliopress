@@ -31,6 +31,8 @@ if ($phpsessid == null) {
 $sesavatarsql = "SELECT * FROM `$bbddusuarios` WHERE USUARIO LIKE '$sessionus'";
 $sesavatarquery = mysqli_query($databaseconnection, $sesavatarsql);
 $sesavatarresultado = mysqli_fetch_assoc($sesavatarquery);
+#Query Comentarios
+$bbddcomentarios = $prefix - "_comentarios";
 #Other PHP Resources
 echo mysqli_error($databaseconnection);
 $fecha_actual = date('m/d/Y');
