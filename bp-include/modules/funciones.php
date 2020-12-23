@@ -279,7 +279,7 @@ if ($sessionlogged == 1) {
                         $('#prestar-<?php echo $id; ?>').modal('show');
                     });
                 </script>
-<?php
+            <?php
             }
         }
 
@@ -310,6 +310,82 @@ if ($sessionlogged == 1) {
         }
 
         if (isset($_GET['view'])) {
+            $id = $_REQUEST['view'];
+            $viewsql = "SELECT * FROM `$bbddcatalogo` WHERE `ID` = '" . $id . "'";
+            $viewquery = mysqli_query($databaseconnection, $viewsql);
+            $viewresult = mysqli_fetch_row($viewquery); ?>
+            <div class="modal fade" id="view-<?php echo $id; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title heading lead" id="staticBackdropLabel">
+                                <?php echo $viewresult[6]; ?> de <em><?php echo $viewresult[1]; ?>
+                                </em></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Sipnósis</strong><br><?php echo $viewresult[12]; ?></p>
+                            <p><strong>ISBN</strong> <?php echo $viewresult[8]; ?></p>
+                            <p><strong>Ubicación</strong> <?php echo $viewresult[7]; ?> </p>
+                            <p><strong>Ejemplar</strong> <?php echo $viewresult[2]; ?></p>
+                            <p><strong>Año de Publicación</strong> <?php echo $viewresult[0]; ?></p>
+                            <p><strong>Editorial</strong> <?php echo $viewresult[3]; ?></p>
+                            <h6>Comentarios</h6>
+                            Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
+                            <div class="comentarios row">
+                                <div class="comentario">
+                                    <form style="width:100%" class="md-form" method="post" action="">
+                                        <input name="idlibro" value="<?php echo $viewresult[10]; ?>" hidden />
+                                        <input name="idusuario" value="<?php echo $sessionus; ?>" hidden />
+                                        <div class="md-form">
+                                            <textarea id="form10" name="comentario" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                                            <label for="form10">Comentario</label>
+                                        </div>
+                                        <input type="submit" name="publishcomment" class="btn btn-sm btn-primary" value="Añadir Comentario" />
+                                    </form>
+                                </div>
+                                <?php $comentariosql = "SELECT * FROM $bbddcomentarios WHERE `idlibro` LIKE '$viewresult[10]' LIMIT 6";
+                                $comentariosconsulta = mysqli_query($databaseconnection, $comentariosql);
+                                while ($comentariofila = mysqli_fetch_row($comentariosconsulta)) {
+                                    $profilesql = "SELECT * FROM $bbddusuarios WHERE `USUARIO` LIKE '$comentariofila[3]'";
+                                    $profilequery = mysqli_query($databaseconnection, $profilesql);
+                                    $profileimage = mysqli_fetch_row($profilequery);
+                                ?>
+                                    <div class="comentario">
+                                        <img class="float-left" style="margin-right:10px; width: 50px;  height: 50px; " src="<?php echo $profileimage[8]; ?>">
+                                        <p>
+                                            <?php echo $comentariofila[4]; ?>
+                                        </p>
+                                    </div>
+                                <?php
+                                } ?>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer"> <?php if ($sessionlogged == 1) {
+                                                        if ($sessionclass == 1) { ?>
+                                    <a style="margin-left: 10px;color: green;" href="bp-admin/functions/prestamo.php?id=<?php echo $row[10]; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                    <form method="POST" action=""><input type="hidden" name="librodel" value="<?php echo $viewresult[10]; ?>" /><input name="delbk" type="submit" value="Eliminar" /></form>
+                                <?php } else { ?>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                                <?php }
+                                                    } else { ?>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                    $('#view-<?php echo $id; ?>').modal('show');
+                });
+            </script>
+<?php
         }
 
         if (isset($_POST['prestar'])) {
@@ -336,7 +412,6 @@ if ($sessionlogged == 1) {
                 }
                 echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente</div>';
                 echo "<meta http-equiv='refresh' content='0;url=/' />";
-
             }
         }
         echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
@@ -598,7 +673,6 @@ if ($sessionlogged == 1) {
         } else {
             echo '<div id="snackbar" class="show"> Se ha publicado correctamente tu comentario!</div>';
         }
-        
     }
     if (isset($_POST['editcomment'])) {
     }
