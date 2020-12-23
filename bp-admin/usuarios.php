@@ -28,15 +28,18 @@ if ($sessionlogged == 1) {
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                        $consulta = $databaseconnection->query($consultavistas);
                     } else {
-                        $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddusuarios`");
+                        $TotalReg       = mysqli_query($databaseconnection,"SELECT * FROM `$bbddusuarios`");
                         $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
                         $consultavistas = "SELECT * FROM `$bbddusuarios`
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                        $consulta = mysqli_query($databaseconnection,$consultavistas);
+
                     }
-                    $consulta = $databaseconnection->query($consultavistas);
+
                     ?>
                     <form class="form-inline" action="" method="GET">
                         Búsqueda de usuarios por grupo > &nbsp
