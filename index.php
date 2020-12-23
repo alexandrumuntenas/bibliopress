@@ -54,11 +54,15 @@
                                             <?php $comentariosql = "SELECT * FROM $bbddcomentarios WHERE `idlibro` LIKE '$row[10]' LIMIT 6";
                                             $comentariosconsulta = mysqli_query($databaseconnection, $comentariosql);
                                             while ($comentariofila = mysqli_fetch_row($comentariosconsulta)) {
+                                                $profilesql = "SELECT * FROM $bbddusuarios WHERE `USUARIO` LIKE '$comentariofila[3]'";
+                                                $profilequery = mysqli_query($databaseconnection, $profilesql);
+                                                $profileimage = mysqli_fetch_row($profilequery);
                                             ?>
                                                 <div class="comentario">
+                                                    <img class="float-left" style="margin-right:10px; width: 50px;  height: 50px; " src="<?php echo $profileimage[8]; ?>">
                                                     <p>
-                                                            <?php echo $comentariofila[4]; ?>
-                                                        </p>
+                                                        <?php echo $comentariofila[4]; ?>
+                                                    </p>
                                                 </div>
                                             <?php
                                             } ?>
