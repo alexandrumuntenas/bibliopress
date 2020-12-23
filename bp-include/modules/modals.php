@@ -269,7 +269,9 @@ if ($sessionlogged == 1) {
                     </button>
                 </div> 
 
-                <form id="form_1388" class="md-form modal-body" method="post" action="">
+                <div class="modal-body">
+                <form id="form_1388" class="md-form" method="post" action="">
+
                     <p>✨ Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos. <mark>Ten en cuenta de que esta tecnología no es precisa al 100%, pero generalmente si dará buenos resultados.</mark></p>
                                 <div id="gapisresult"></div>
                                 <div class="md-form">
@@ -307,6 +309,7 @@ if ($sessionlogged == 1) {
                                 </div>
                                 <div class="md-form">
                                     <input id="portada" name="portada" type="text" value="" hidden/>
+                                </div>
                                 </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger sm" data-dismiss="modal">Cancelar</button>
