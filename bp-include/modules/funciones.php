@@ -668,17 +668,54 @@ if ($sessionlogged == 1) {
         $comentario = mysqli_real_escape_string($databaseconnection, $_POST['comentario']);
         $idlibro = mysqli_real_escape_string($databaseconnection, $_POST['idlibro']);
         $idusuario = mysqli_real_escape_string($databaseconnection, $_POST['idusuario']);
-        $publishcommentsql = "INSERT INTO `bp_comentarios` (`id`, `idlibro`, `idpadre`, `usuario`, `contenido`, `fecha`) VALUES (NULL, '$idlibro', '-1', '$idusuario', '$comentario', CURRENT_DATE)";
-        $publishcommentquery = mysqli_query($databaseconnection, $publishcommentsql);
-        if (mysqli_error($databaseconnection)) {
-            echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+        if ($idusuario == $sessionus) {
+            $publishcommentsql = "INSERT INTO `$bbddcomentarios` (`id`, `idlibro`, `idpadre`, `usuario`, `contenido`, `fecha`) VALUES (NULL, '$idlibro', '-1', '$idusuario', '$comentario', CURRENT_DATE)";
+            $publishcommentquery = mysqli_query($databaseconnection, $publishcommentsql);
+            if (mysqli_error($databaseconnection)) {
+                echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+                echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$idlibro').modal('show');
+                    });
+                </script>";
+            } else {
+                echo '<div id="snackbar" class="show"> Se ha publicado correctamente tu comentario!</div>';
+                echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$idlibro').modal('show');
+                    });
+                </script>";
+            }
         } else {
-            echo '<div id="snackbar" class="show"> Se ha publicado correctamente tu comentario!</div>';
+            echo '<div id="snackbar" class="show"> Buen intento >:C</div>';
+            echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$idlibro').modal('show');
+                    });
+                </script>";
         }
     }
-    if (isset($_POST['editcomment'])) {
-    }
     if (isset($_POST['delcomment'])) {
+        $idcomentario = mysqli_real_escape_String($databaseconnection, $_POST['idcomentario']);
+        $usuariodemandante = mysqli_real_escape_string($databaseconnection, $_POST['usuariodemandante']);
+        $delidlibro = mysqli_real_escape_string($databaseconnection, $_POST['delidlibro']);
+        if ($usuariodemandante == $sessionus) {
+            $delcommentsql = "DELETE FROM `$bbddcomentarios` WHERE `$bbddcomentarios`.`id` = $idcomentario";
+            $delcommentquery = mysqli_query($databaseconnection, $delcommentsql);
+            echo '<div id="snackbar" class="show"> Se ha eliminado el comentario correctamente</div>';
+            echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$delidlibro').modal('show');
+                    });
+                </script>";
+        } else {
+            echo '<div id="snackbar" class="show"> Buen intento >:C</div>';
+            echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$delidlibro').modal('show');
+                    });
+                </script>";
+        }
     }
 
     if (isset($_POST['logout'])) {

@@ -49,20 +49,27 @@
                                         <p><strong>Año de Publicación</strong> <?php echo $row[0]; ?></p>
                                         <p><strong>Editorial</strong> <?php echo $row[3]; ?></p>
                                         <h6>Comentarios</h6>
-                                        Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
+                                        <?php if ($sessionlogged == 1) { ?>
+                                            Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
+                                        <?php } ?>
+
                                         <div class="comentarios row">
-                                            <div class="comentario">
-                                                <form style="width:100%" class="md-form" method="post" action="">
-                                                    <input name="idlibro" value="<?php echo $row[10]; ?>" hidden />
-                                                    <input name="idusuario" value="<?php echo $sessionus; ?>" hidden />
-                                                    <div class="md-form">
-                                                        <textarea id="form10" name="comentario" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
-                                                        <label for="form10">Comentario</label>
-                                                    </div>
-                                                    <input type="submit" name="publishcomment" class="btn btn-sm btn-primary" value="Añadir Comentario" />
-                                                </form>
-                                            </div>
-                                            <?php $comentariosql = "SELECT * FROM $bbddcomentarios WHERE `idlibro` LIKE '$row[10]' LIMIT 6";
+                                            <?php if ($sessionlogged == 1) { ?>
+
+                                                <div class="comentario">
+                                                    <form style="width:100%" class="md-form" method="post" action="">
+                                                        <input name="idlibro" value="<?php echo $row[10]; ?>" hidden />
+                                                        <input name="idusuario" value="<?php echo $sessionus; ?>" hidden />
+                                                        <div class="md-form">
+                                                            <textarea id="form10" name="comentario" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                                                            <label for="form10">Comentario</label>
+                                                        </div>
+                                                        <input type="submit" name="publishcomment" class="btn btn-sm btn-primary" value="Añadir Comentario" />
+                                                    </form>
+                                                </div>
+                                            <?php } ?>
+
+                                            <?php $comentariosql = "SELECT * FROM $bbddcomentarios WHERE `idlibro` LIKE '$row[10]' ORDER BY id DESC LIMIT 6";
                                             $comentariosconsulta = mysqli_query($databaseconnection, $comentariosql);
                                             while ($comentariofila = mysqli_fetch_row($comentariosconsulta)) {
                                                 $profilesql = "SELECT * FROM $bbddusuarios WHERE `USUARIO` LIKE '$comentariofila[3]'";
@@ -72,7 +79,13 @@
                                                 <div class="comentario">
                                                     <img class="float-left" style="margin-right:10px; width: 50px;  height: 50px; " src="<?php echo $profileimage[8]; ?>">
                                                     <p>
+                                                        <strong><?php echo $profileimage[3]; ?> dice...</strong></p>
+                                                    </p>
+                                                    <p>
                                                         <?php echo $comentariofila[4]; ?>
+                                                    </p>
+                                                    <p>
+                                                        <?php if ($profileimage[1] == $sessionus) { ?> <form class="float-right" action="" method="post"><input name="delidlibro" type="text" value="<?php echo $row[10]; ?>" hidden/> <input name="usuariodemandante" type="text" value="<?php echo $sessionus; ?>" hidden /><input name="idcomentario" type="text" value="<?php echo $comentariofila[0]; ?>" hidden /> <input type="submit" name="delcomment" value="Eliminar" /></form><?php } ?>
                                                     </p>
                                                 </div>
                                             <?php
