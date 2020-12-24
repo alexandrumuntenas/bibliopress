@@ -39,6 +39,6 @@ Estas son las funciones que incluye e incluirá Bibliopress
 - [x] Sistema de inicio de sesión
 - [x] Sistemas dinámicos, acceso a secciones por permisos
 - [ ] Sistema de notificación
-- [ ] Sistema de comentarios
+- [x] Sistema de comentarios
 
 Proyecto realizado por duoestudios
