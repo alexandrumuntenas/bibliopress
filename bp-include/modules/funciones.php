@@ -666,7 +666,7 @@ if ($sessionlogged == 1) {
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
                                 <div class="modal-content">
                                     <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirusuarios">Subir usuarios desde CSV (Working)</h5>
+                                        <h5 class="modal-title heading lead" id="subirusuarios">Subir usuarios desde CSV (No disponible)</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -687,7 +687,7 @@ if ($sessionlogged == 1) {
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
                                 <div class="modal-content">
                                     <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirgrupos">Subir grupos desde CSV</h5>
+                                        <h5 class="modal-title heading lead" id="subirgrupos">Subir grupos desde CSV (No disponible)</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
