@@ -121,6 +121,8 @@
                                                             echo '<span class="badge badge-success">✓</span>';
                                                         } else if ($row[13] == 2) {
                                                             echo '<span class="badge badge-warning">😷</span>';
+                                                        } else if ($row[13] == 3) {
+                                                            echo '<span class="badge badge-danger">📥</span>';
                                                         } else {
                                                             echo '<span class="badge badge-danger">✕</span>';
                                                         } ?> <?php echo $row[6]; ?> </h4>
