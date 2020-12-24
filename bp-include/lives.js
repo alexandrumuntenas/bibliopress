@@ -26,7 +26,7 @@ function gbooks() {
   var isbn = $("#ISBN").val();
   $.ajax({
     type: "POST",
-    url: "../bp-include/gbook.php",
+    url: "../bp-include/modules/ajax-calls/gbook.php",
     data: {
       gbook: isbn,
     },
