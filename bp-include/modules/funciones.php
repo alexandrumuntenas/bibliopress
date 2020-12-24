@@ -758,7 +758,7 @@ if ($sessionlogged == 1) {
         }
     }
 
-    if (isset($_POST['logout'])) {
+    if (isset($_GET['logout'])) {
         if ($sessionlogged == 1) {
             $phpsessid = session_id();
             $logoutsql = "DELETE FROM `$bbddsesiones` WHERE `$bbddsesiones`.`PHPSESSID` = '$phpsessid'";

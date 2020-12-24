@@ -21,6 +21,7 @@
           <div class="dropdown-menu dropdown-menu-right" style="margin-right: 15px;" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/bp-user/">Mi Área Personal</a>
             <a class="dropdown-item" href="/bp-user/miperfil.php">Mi Perfil</a>
+            <a class="dropdown-item" href="?logout">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
           </div>
         <?php } else { ?>
           <a href="" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>

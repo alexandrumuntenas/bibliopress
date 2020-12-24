@@ -28,7 +28,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                 <center>
                     <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
                     <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
-                    <form method="POST" action=""><input class="btn btn-danger" name="logout" type="submit" value="Cerrar Sesión" /></form>
+                    <a href="?logout" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
                 </center>
                 <div class="row">
                     <div class="bp-card card-body">
@@ -56,7 +56,7 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                     </div>
                     <div class="bp-card card-body">
                         <h5>Préstamos a devolver</h5>
-                          <div class="table-responsive">
+                        <div class="table-responsive">
                             <table class="table table-hover">
                                 <tbody>
                                     <?php
@@ -75,23 +75,23 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
                     </div>
-                </div>
-                <div class="bp-card card-body">
-                    <h5>Tus Últimas Lecturas</h5>
-                    <p>No te emociones, seguimos trabajando en ello</p>
-                </div>
-                <?php if ($sessionclass == 1) {
-                    echo '
+                    <div class="bp-card card-body">
+                        <h5>Tus Últimas Lecturas</h5>
+                        <p>No te emociones, seguimos trabajando en ello</p>
+                    </div>
+                    <?php if ($sessionclass == 1) {
+                        echo '
                             <div class="bp-card card-body">
                                 <h5>Sobre la Biblioteca</h5>
                                 <p>Biblioteca del ' . $sname . '</p>
                                 <p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p>
                             </div>
                             ';
-                } ?>
-        </div>
-        </section>
+                    } ?>
+                </div>
+            </section>
         </div>
         </section>
         </div>
