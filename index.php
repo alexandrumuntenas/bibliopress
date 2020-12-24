@@ -85,7 +85,7 @@
                                                         <?php echo $comentariofila[4]; ?>
                                                     </p>
                                                     <p>
-                                                        <?php if ($profileimage[1] == $sessionus) { ?> <form class="float-right" action="" method="post"><input name="delidlibro" type="text" value="<?php echo $row[10]; ?>" hidden/> <input name="usuariodemandante" type="text" value="<?php echo $sessionus; ?>" hidden /><input name="idcomentario" type="text" value="<?php echo $comentariofila[0]; ?>" hidden /> <input type="submit" name="delcomment" value="Eliminar" /></form><?php } ?>
+                                                        <?php if ($profileimage[1] == $sessionus) { ?> <form class="float-right" action="" method="post"><input name="delidlibro" type="text" value="<?php echo $row[10]; ?>" hidden /> <input name="usuariodemandante" type="text" value="<?php echo $sessionus; ?>" hidden /><input name="idcomentario" type="text" value="<?php echo $comentariofila[0]; ?>" hidden /> <input type="submit" name="delcomment" value="Eliminar" /></form><?php } ?>
                                                     </p>
                                                 </div>
                                             <?php
@@ -95,8 +95,8 @@
 
                                     <div class="modal-footer"> <?php if ($sessionlogged == 1) {
                                                                     if ($sessionclass == 1) { ?>
-                                                <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=<?php echo $row[10]; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                                <form method="POST" action=""><input type="hidden" name="librodel" value="<?php echo $row[10]; ?>" /><input name="delbk" type="submit" value="Eliminar" /></form>
+                                                <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                                <a style="margin-left: 10px;color: red;" href="?delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                             <?php } else { ?>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
@@ -129,7 +129,14 @@
                                 <p class="card-text"><?php echo $desc; ?></p>
                             </div>
                             <div class="card-footer text-muted text-center mt-4">
-                                <a type="button" style="color:grey;" data-toggle="modal" data-target="#libro-<?php echo $row[10]; ?>">Ver más</a><a style="margin-left:10px; color:green;" href="bp-admin/functions/prestamo.php?id=<?php echo $row[10]; ?>">Préstamo</a>
+                                <a type="button" style="color:grey;" data-toggle="modal" data-target="#libro-<?php echo $row[10]; ?>">Ver más</a><?php if ($sessionlogged == 1) {
+                                                                                                                                                        if ($sessionclass == 1) { ?>
+                                        <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                        <a style="margin-left: 10px;color: red;" href="?delbk=<?php echo $row[10]; ?>">Eliminar</a>
+                                    <?php }
+                                                                                                                                                    } else { ?>
+
+                                <?php } ?>
                             </div>
                         </div> <?php } ?>
         </section>

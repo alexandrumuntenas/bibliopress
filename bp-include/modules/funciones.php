@@ -96,8 +96,8 @@ if ($sessionlogged == 1) {
             $result = mysqli_query($databaseconnection, $query);
             echo '<div id="snackbar" class="show">Se ha eliminado el usuario correctamente</div>';
         }
-        if (isset($_POST['delbk'])) {
-            $id = mysqli_real_escape_string($databaseconnection, $_POST['librodel']);
+        if (isset($_GET['delbk'])) {
+            $id = mysqli_real_escape_string($databaseconnection, $_REQUEST['delbk']);
             $query = "DELETE FROM `$bbddcatalogo` WHERE id='$id'";
             $result = mysqli_query($databaseconnection, $query);
             echo '<div id="snackbar" class="show">Se ha eliminado el libro correctamente</div>';
@@ -237,40 +237,53 @@ if ($sessionlogged == 1) {
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
                         <div class="modal-content">
                             <div class="modal-header ">
-                                <h5 class="modal-title heading lead" id="prestamo">Realizar préstamo de <em><?php echo $prestamoresultado["TITULO"]; ?></em></h5>
+                                <h5 class="modal-title heading lead" id="prestamo">
+                                    <?php if ($prestamoresultado['DISPONIBILIDAD'] == 1) { ?>
+                                        Realizar préstamo de <em><?php echo $prestamoresultado["TITULO"]; ?></em><?php } else { ?> Gestionar préstamo de <em><?php echo $prestamoresultado["TITULO"]; ?></em><?php } ?> </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form id="form_1388" method="post" action="">
+                            <?php if ($prestamoresultado['DISPONIBILIDAD'] == 1) { ?>
+                                <form method="post" action="">
 
-                                <div class="modal-body">
-                                    <ul>
-
-                                        <li id="li_1">
+                                    <div class="modal-body">
+                                        <div class="md-form">
                                             <label class="description" for="element_1">Nombre </label>
-                                            <div>
-                                                <input id="element_1" name="prestar_nombre" class="form-control mb-4" type="text" maxlength="255" value="" />
-                                            </div>
-                                        </li>
-                                        <li id="li_2">
+                                            <input id="element_1" name="prestar_nombre" class="form-control mb-4" type="text" maxlength="255" value="" />
+                                        </div>
+                                        <div class="md-form">
                                             <label class="description" for="element_2">Apellido </label>
-                                            <div>
-                                                <input id="element_2" name="prestar_apellido" class="form-control mb-4" type="text" maxlength="255" value="" />
-                                            </div>
-                                        </li>
-                                        <li id="li_3">
-                                            <label class="description" for="element_3">Fecha de devolución </label>
-                                            <div>
-                                                <input class="form-control mb-4" value="<?php echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days")); ?>" readonly />
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            <input id="element_2" name="prestar_apellido" class="form-control mb-4" type="text" maxlength="255" value="" />
+                                        </div>
+                                        <div>
+                                            <p>Fecha de devolución</p>
+                                            <input class="form-control mb-4" value="<?php echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days")); ?>" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input id="saveForm" class="btn btn-success" type="submit" name="prestar" value="Prestar" />
+                                    </div>
+                                </form>
+                            <?php } else {
+                                $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` = '" . $prestamoresultado['PRESTADOA'] . "'";
+                                $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
+                                $fnamecheck = mysqli_fetch_assoc($fnamedata);
+                            ?>
+                                <div class="modal-body">
+                                    <div class="md-form">
+                                        <label class="description" for="element_1">Usuario </label>
+                                        <input id="element_1" name="prestar_nombre" class="form-control mb-4" type="text" maxlength="255" value="<?php echo $fnamecheck['FULLNAME']; ?>" readonly />
+                                    </div>
+                                    <div>
+                                        <p>Fecha de devolución</p>
+                                        <input class="form-control mb-4" value="<?php echo $prestamoresultado['FECHADEV'] ?>" disabled />
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <input id="saveForm" class="btn btn-success" type="submit" name="prestar" value="Prestar" />
                                 </div>
-                            </form>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -366,10 +379,10 @@ if ($sessionlogged == 1) {
                             </div>
                         </div>
 
-                        <div class="modal-footer"> <?php if ($sessionlogged == 1) {
+                        <div class="modal-footer"><?php if ($sessionlogged == 1) {
                                                         if ($sessionclass == 1) { ?>
-                                    <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=?id=<?php echo $id; ?>">Gestionar préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $id; ?>">Editar</a>
-                                    <form method="POST" action=""><input type="hidden" name="librodel" value="<?php echo $id; ?>" /><input name="delbk" type="submit" value="Eliminar" /></form>
+                                    <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                    <a style="margin-left: 10px;color: red;" href="?delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                 <?php } else { ?>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
@@ -414,6 +427,18 @@ if ($sessionlogged == 1) {
                 }
                 echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente</div>';
                 echo "<meta http-equiv='refresh' content='0;url=/' />";
+            }
+        }
+
+        if (isset($_POST['devolver'])) {
+            $id = $_POST['devolverid'];
+            $fechanueva = date("d-m-Y", strtotime($fecha_actual . "+ 15 days"));
+            $update = "UPDATE `$bbddcatalogo` SET DISPONIBILIDAD='2', FECHADEV='$fechanueva', PRESTADOA=NULL WHERE id='" . $id . "'";
+            mysqli_query($databaseconnection, $update);
+            if (mysqli_error($databaseconnection)) {
+                echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+            } else {
+                echo '<div id="snackbar" class="show"> Se ha realizado la devolución correctamente. Comienza el período de confinamiento</div>';
             }
         }
         echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
