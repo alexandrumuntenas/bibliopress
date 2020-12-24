@@ -16,6 +16,10 @@ if (isset($_POST['search'])) {
          <?php
          if ($Result['DISPONIBILIDAD'] == 1) {
             echo '<p class="badge badge-success">Disponibilidad ✓</p><br>';
+         } else if ($Result['DISPONIBILIDAD'] == 2) {
+            echo '<p class="badge badge-warning">Disponibilidad 😷</p><br>';
+         } else if ($Result['DISPONIBILIDAD'] == 3) {
+            echo '<p class="badge badge-warning">Disponibilidad 📥</p><br>';
          } else {
             echo '<p class="badge badge-danger">Disponibilidad ✗</p><br>';
          } ?>
