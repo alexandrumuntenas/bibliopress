@@ -6,8 +6,10 @@
 </title>
 <?php
 require '../bp-include/head.php';
-$query = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' LIMIT 5";
-$result = mysqli_query($databaseconnection, $query);
+$practivos = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' AND `DISPONIBILIDAD` = 0 LIMIT 5";
+$prquery = mysqli_query($databaseconnection, $practivos);
+$prpte = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' AND `DISPONIBILIDAD` = 3 LIMIT 5";
+$prptequery = mysqli_query($databaseconnection, $prpte);
 $querylector = "SELECT *  FROM `bp_usuarios` WHERE `USUARIO` LIKE '" . $sessionus . "'";
 $qlectorre = mysqli_query($databaseconnection, $querylector);
 $qlector = mysqli_fetch_assoc($qlectorre);
@@ -33,19 +35,17 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                         <h5>Préstamos Activos</h5>
                         <div class="table-responsive">
                             <table class="table table-hover">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>Titulo </th>
-
-                                    </tr>
-                                </thead>
                                 <tbody>
                                     <?php
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo '<tr>
-                                        <td>' . $row["TITULO"] . '</td>
+                                    if ($prquery->num_rows > 0) {
+                                        while ($practrow = $prquery->fetch_assoc()) {
+                                            echo '<tr>
+                                        <td>' . $practrow["TITULO"] . '</td>
 
                                     </tr>';
+                                        }
+                                    } else {
+                                        echo "<tr><td>No tienes préstamos activos</td></tr>";
                                     }
                                     ?>
                                     <tr>
@@ -55,24 +55,43 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                         </div>
                     </div>
                     <div class="bp-card card-body">
-                        <h5>En Lista de Espera</h5>
-                        <p>No te emociones, seguimos trabajando en ello</p>
+                        <h5>Préstamos a devolver</h5>
+                          <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <?php
+                                    if ($prptequery->num_rows > 0) {
+                                        while ($prpterow = $prptequery->fetch_assoc()) {
+                                            echo '<tr>
+                                        <td>' . $prpterow["TITULO"] . '</td>
+
+                                    </tr>';
+                                        }
+                                    } else {
+                                        echo "<tr><td>No tienes préstamos pendiente de devolución</td></tr>";
+                                    }
+                                    ?>
+                                    <tr>
+                                    </tr>
+                                </tbody>
+                            </table>
                     </div>
-                    <div class="bp-card card-body">
-                        <h5>Tus Últimas Lecturas</h5>
-                        <p>No te emociones, seguimos trabajando en ello</p>
-                    </div>
-                    <?php if ($sessionclass == 1) {
-                        echo '
+                </div>
+                <div class="bp-card card-body">
+                    <h5>Tus Últimas Lecturas</h5>
+                    <p>No te emociones, seguimos trabajando en ello</p>
+                </div>
+                <?php if ($sessionclass == 1) {
+                    echo '
                             <div class="bp-card card-body">
                                 <h5>Sobre la Biblioteca</h5>
                                 <p>Biblioteca del ' . $sname . '</p>
                                 <p>Hay un total de ' . $numerolibros . ' libros en todo el catálogo, de los cuales, ' . $qtyprestados . ' están prestados</p>
                             </div>
                             ';
-                    } ?>
-                </div>
-            </section>
+                } ?>
+        </div>
+        </section>
         </div>
         </section>
         </div>
