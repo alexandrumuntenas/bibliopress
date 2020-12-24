@@ -782,7 +782,7 @@ if ($sessionlogged == null) {
             $loginquery = $databaseconnection->query($loginsql);
             $loginresultado = mysqli_fetch_assoc($loginquery);
             if (password_verify($contrasena, $loginresultado['PASSWD'])) {
-                $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$usuario', '1', '" . $loginresultado['PERM'] . "');";
+                $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "');";
                 $loginresult = $databaseconnection->query($iniciarsesionsql);
                 if ($loginresult == true) {
                     echo "<meta http-equiv='refresh' content='0;url=/' />";

@@ -1,5 +1,14 @@
 <?php
 require('bp-settings.php');
+#Parámetros
+$uagent = mysqli_real_escape_string($databaseconnection, $_SERVER['HTTP_USER_AGENT']);
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip_address = $_SERVER['REMOTE_ADDR'];
+}
 #Query Libros
 $bbddcatalogo = $prefix . "_catalogo";
 $librosql = "SELECT * FROM $bbddcatalogo";
@@ -16,14 +25,14 @@ $gruposql = "SELECT * FROM `$bbddgrupos`";
 $grupoquery = mysqli_query($databaseconnection, $gruposql);
 $gruporesultado = mysqli_fetch_assoc($grupoquery);
 #Query Sesiones
+$phpsessid = session_id();
 $bbddsesiones = $prefix . "_sesiones";
-$sesionessql = "SELECT * FROM `$bbddsesiones`";
+$sesionessql = "SELECT * FROM `$bbddsesiones` WHERE `PHPSESSID` LIKE '$phpsessid' AND `IP` LIKE '$ip_address' AND `USER_AGENT` LIKE '$uagent'";
 $sesionesquery = mysqli_query($databaseconnection, $sesionessql);
 $sesionesresultado = mysqli_fetch_assoc($sesionesquery);
 $sessionlogged = $sesionesresultado['LOGGEDIN'];
 $sessionclass = $sesionesresultado['PERM'];
 $sessionus = $sesionesresultado['USUARIO'];
-$phpsessid = session_id();
 if ($phpsessid == null) {
     session_start();
     $phpsessid = session_id();
