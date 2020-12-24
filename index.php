@@ -51,8 +51,9 @@
                                         <h6>Comentarios</h6>
                                         <?php if ($sessionlogged == 1) { ?>
                                             Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
+                                        <?php } else { ?>
+                                            Inicia sesión para comentar! <a href="" style="color:blue" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
                                         <?php } ?>
-
                                         <div class="comentarios row">
                                             <?php if ($sessionlogged == 1) { ?>
 

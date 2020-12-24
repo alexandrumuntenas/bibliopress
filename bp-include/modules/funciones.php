@@ -796,7 +796,7 @@ if ($sessionlogged == null) {
         };
     }
 
-    echo '<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+    echo '<div style="z-index:9999" class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
       <div class="modal-content">
         <form action="" method="post">
