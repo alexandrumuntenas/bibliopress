@@ -96,7 +96,7 @@
 						`DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
 						`PRESTADOA` varchar(25) DEFAULT NULL,
 						`FECHADEV` date DEFAULT NULL,
-						`PORTADA` varchar(256) NOT NULL DEFAULT '''/bp-include/portada.jpg''',
+						`PORTADA` varchar(256) NOT NULL DEFAULT '/bp-include/portada.jpg',
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
 						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
