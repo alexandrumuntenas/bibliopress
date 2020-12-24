@@ -96,7 +96,7 @@
 						`DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
 						`PRESTADOA` varchar(25) DEFAULT NULL,
 						`FECHADEV` date DEFAULT NULL,
-						`PORTADA` longtext NOT NULL DEFAULT '/bp-include/portada.jpg',
+						`PORTADA` varchar(256) NOT NULL DEFAULT '''/bp-include/portada.jpg''',
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
 						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
@@ -130,14 +130,14 @@
 						$avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`, `AVATAR`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1', '$avatar')";
 
-						$bpadmingroup = "INSERT INTO `" . $prefixtable . "grupo` (`NOMBRE`) VALUES ('Administrativo')";
+						$bpadmingroup = "INSERT INTO `" . $prefixtable . "_grupo` (`NOMBRE`) VALUES ('Administrativo')";
 
-						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS '2020-01-00 00:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
+						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS NOW() ON COMPLETION PRESERVE ENABLE DO BEGIN
 						SELECT * FROM `" . $prefixtable . "_catalogo` WHERE DISPONIBILIDAD = 2 AND FECHADEV = CURRENT_DATE AND `ENBIBLIO` = 1;
 						UPDATE `" . $prefixtable . "_catalogo` SET DISPONIBILIDAD = 1, PRESTADOA = NULL, FECHADEV = NULL;
 						END";
 
-						$bpdevolevent = "CREATE DEFINER=`$username`@`%` EVENT `Devolucion` ON SCHEDULE EVERY 1 DAY STARTS '2020-01-00 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+						$bpdevolevent = "CREATE DEFINER=`$username`@`%` EVENT `Devolucion` ON SCHEDULE EVERY 1 DAY STARTS NOW() ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
 						SELECT * FROM `" . $prefixtable . "_catalogo` WHERE DISPONIBILIDAD = 0 AND FECHADEV = CURRENT_DATE;
 						UPDATE `" . $prefixtable . "_catalogo` SET DISPONIBILIDAD = 3;
 						END";
