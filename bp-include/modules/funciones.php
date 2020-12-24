@@ -265,6 +265,10 @@ if ($sessionlogged == 1) {
                                         <input id="saveForm" class="btn btn-success" type="submit" name="prestar" value="Prestar" />
                                     </div>
                                 </form>
+                            <?php } else if ($prestamoresultado['DISPONIBILIDAD'] == 2) { ?>
+                                <div class="modal-body">
+                                    <p>Libro no disponible para préstamo. Este libro se encuentra en confinamiento hasta <?php echo $prestamoresultado['FECHADEV']; ?></p>
+                                </div>
                             <?php } else {
                                 $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` = '" . $prestamoresultado['PRESTADOA'] . "'";
                                 $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
@@ -281,9 +285,8 @@ if ($sessionlogged == 1) {
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input id="saveForm" class="btn btn-success" type="submit" name="prestar" value="Prestar" />
-                                </div>
-                            <?php } ?>
+                                    <a href="/?prorroga=<?php echo $id ?>" class="btn btn-success">Prorroga</a>
+                                    <a href="/?devolver=<?php echo $id ?>" class="btn btn-danger">Devolver</a> </div> <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -430,15 +433,27 @@ if ($sessionlogged == 1) {
             }
         }
 
-        if (isset($_POST['devolver'])) {
-            $id = $_POST['devolverid'];
-            $fechanueva = date("d-m-Y", strtotime($fecha_actual . "+ 15 days"));
+        if (isset($_GET['devolver'])) {
+            $id = $_REQUEST['devolver'];
+            $fechanueva = date("Y-m-d", strtotime($fecha_actual . "+ 15 days"));
             $update = "UPDATE `$bbddcatalogo` SET DISPONIBILIDAD='2', FECHADEV='$fechanueva', PRESTADOA=NULL WHERE id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
             if (mysqli_error($databaseconnection)) {
                 echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
             } else {
                 echo '<div id="snackbar" class="show"> Se ha realizado la devolución correctamente. Comienza el período de confinamiento</div>';
+            }
+        }
+
+        if (isset($_GET['prorroga'])) {
+            $id = $_REQUEST['prorroga'];
+            $fechanueva = date("Y-m-d", strtotime($fecha_actual . "+ 15 days"));
+            $update = "UPDATE `$bbddcatalogo` SET FECHADEV='$fechanueva' WHERE id='" . $id . "'";
+            mysqli_query($databaseconnection, $update);
+            if (mysqli_error($databaseconnection)) {
+                echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+            } else {
+                echo '<div id="snackbar" class="show"> Se ha realizado la prórroga correctamente</div>';
             }
         }
         echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
