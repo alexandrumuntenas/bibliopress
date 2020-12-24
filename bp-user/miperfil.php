@@ -40,10 +40,9 @@ if (isset($_POST['submit'])) {
             <section class="bp-section">
                 <div>
                     <center>
-                        <div class="btn-group" role="group">
-                            <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                            <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
-                            <a href="logout.php" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+                        <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
+                        <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
+                        <a href="?logout" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
                     </center>
                     <div class="row">
                         <div class="bp-card card-body">
