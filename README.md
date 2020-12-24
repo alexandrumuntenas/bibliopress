@@ -24,14 +24,12 @@ Estas son las funciones que incluye e incluirá Bibliopress
 - [x] Añadir lectores directamente desde el panel
 - [x] Editar lectores directamente desde el panel
 - [x] Eliminar lectores directamente desde el panel
-- [ ] Creación de carnés de estudiante con código de barras
 - [x] Promocionar curso de los Lectores
 - [x] Realizar préstamo
 - [x] Gestionar préstamo
 - [x] Cancelar préstamo
 - [x] Prórroga del préstamo
 - [ ] Creación de etiquetas para los libros
-- [ ] Creación de etiquetas de carnés de estudiante
 - [x] Interfaz del Estudiante
 - [x] Interfaz de Administración
 - [x] Interfaz de gestión de lectores
@@ -41,7 +39,6 @@ Estas son las funciones que incluye e incluirá Bibliopress
 - [x] Sistema de inicio de sesión
 - [x] Sistemas dinámicos, acceso a secciones por permisos
 - [ ] Sistema de notificación
-- [ ] Sistema de creación de etiqueta de cada estudiante
-- [ ] Sistema de Comentarios en cada libro (Añadir comentario para indicar la oPASSWDión sobre un libro)
+- [ ] Sistema de comentarios
 
 Proyecto realizado por duoestudios
