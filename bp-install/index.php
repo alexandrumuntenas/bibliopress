@@ -130,9 +130,14 @@
 
 						$bpadmingroup = "INSERT INTO `" . $prefixtable . "grupo` (`NOMBRE`) VALUES ('Administrativo')";
 
-						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS '2020-12-14 00:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
-						SELECT * FROM bp_catalogo WHERE DISPONIBILIDAD = 2 AND FECHADEV = CURRENT_DATE;
-						UPDATE bp_catalogo SET DISPONIBILIDAD = 1, PRESTADOA = NULL, FECHADEV = NULL;
+						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS '2020-01-00 00:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
+						SELECT * FROM `" . $prefixtable . "_catalogo` WHERE DISPONIBILIDAD = 2 AND FECHADEV = CURRENT_DATE AND `ENBIBLIO` = 1;
+						UPDATE `" . $prefixtable . "_catalogo` SET DISPONIBILIDAD = 1, PRESTADOA = NULL, FECHADEV = NULL;
+						END";
+
+						$bpdevolevent = "CREATE DEFINER=`$username`@`%` EVENT `Devolucion` ON SCHEDULE EVERY 1 DAY STARTS '2020-01-00 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+						SELECT * FROM `" . $prefixtable . "_catalogo` WHERE DISPONIBILIDAD = 0 AND FECHADEV = CURRENT_DATE;
+						UPDATE `" . $prefixtable . "_catalogo` SET DISPONIBILIDAD = 3;
 						END";
 
 						echo '</span></p>';
@@ -193,6 +198,15 @@
 						} else {
 							echo ("<span style='color: green'>OK!</span>");
 						}
+
+						echo '</span></p>';
+						echo '<p>Creación de Evento "Devolución" ';
+						if (!mysqli_query($conn, $bpdevolevent)) {
+							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
+
 						echo '</span></p>';
 						echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="5;url=/" />
         ';
