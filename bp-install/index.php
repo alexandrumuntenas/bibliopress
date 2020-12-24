@@ -103,6 +103,8 @@
 
 						$bpsesiones = "CREATE TABLE `" . $prefixtable . "_sesiones` (
 						`PHPSESSID` text DEFAULT NULL,
+						`IP` varchar(256) NOT NULL,
+						`USER_AGENT` longtext NOT NULL,
 						`USUARIO` text NOT NULL,
 						`LOGGEDIN` int(11) NOT NULL,
 						`PERM` int(11) NOT NULL,
