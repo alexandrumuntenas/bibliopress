@@ -1,4 +1,6 @@
 <?php require '../bp-include/head.php';
+$prestamosql = "SELECT * FROM $bbddcatalogo WHERE `DISPONIBILIDAD` LIKE 0";
+$prestamoquery = mysqli_query($databaseconnection, $prestamosql);
 ?>
 
 <body>
@@ -32,16 +34,16 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        if ($resulta->num_rows > 0) {
+                                        if ($prestamoquery->num_rows > 0) {
                                             //datos de cada columna
-                                            while ($row = $resulta->fetch_assoc()) {
-                                                $nombre = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $row["PRESTADOA"] . "'");
-                                                $data = $nombre->fetch_assoc();
+                                            while ($prestamorow = $prestamoquery->fetch_assoc()) {
+                                                $tomarnombresql = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $prestamorow["PRESTADOA"] . "'");
+                                                $tomarnombrerow = $tomarnombresql->fetch_assoc();
                                                 echo '<tr>
-                                <td data-label="Título del libro"><br>' . $row["TITULO"] . '</td>
-                                <td data-label="Fecha de devolución"><br>' . $row["FECHADEV"] . '</td>
-                                <td data-label="Título prestado al usuario "><br>' . $data[1] . '</td>
-                                <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/prorroga.php?id=' . $row["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="functions/devolver.php?id=' . $row["ID"] . '">Devolver</a></td>
+                                <td data-label="Título del libro"><br>' . $prestamorow["TITULO"] . '</td>
+                                <td data-label="Fecha de devolución"><br>' . $prestamorow["FECHADEV"] . '</td>
+                                <td data-label="Título prestado al usuario "><br>' . $tomarnombrerow['FULLNAME'] . '</td>
+                                <td data-label="Acciones disponibles"><br><a style="color:blue;" href="functions/prorroga.php?id=' . $prestamorow["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="functions/devolver.php?id=' . $prestamorow["ID"] . '">Devolver</a></td>
                         </tr>';
                                             }
                                         } ?>
