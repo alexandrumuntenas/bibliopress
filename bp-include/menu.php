@@ -9,19 +9,16 @@
           echo '<a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#solicitar" data-backdrop="false"><i class="fas fa-paper-plane"></i> Solicitar libro</a>';
           if ($sessionclass == 1) {
             echo '
+      <a href="/bp-admin/solicitudes.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-inbox"></i> Libros solicitados</a>
       <a href="/bp-admin/usuarios.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book-reader"></i> Usuarios</a>
       <a href="/bp-admin/grupos.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-users"></i> Grupos</a>
       <a href="/bp-admin/prestamos.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-people-carry"></i> Préstamos</a>
+      <a href="/bp-admin/configuracion.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-cogs"></i> Configuración</a>
       ';
           };
         }; ?>
         <?php if ($sessionlogged == 1) { ?>
-          <a class="nav-link dropdown-toggle list-group-item list-group-item-action bg-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>"> Mi Perfil</a>
-          <div class="dropdown-menu dropdown-menu-right" style="margin-right: 15px;" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/bp-user/">Mi Área Personal</a>
-            <a class="dropdown-item" href="/bp-user/miperfil.php">Mi Perfil</a>
-            <a class="dropdown-item" href="?logout">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-          </div>
+          <a class="nav-link list-group-item list-group-item-action bg-light" href="/bp-user/"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>"> Mi área personal</a> 
         <?php } else { ?>
           <a href="" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>
         <?php };
