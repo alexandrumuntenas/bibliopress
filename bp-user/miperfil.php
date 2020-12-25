@@ -40,34 +40,18 @@ if (isset($_POST['submit'])) {
             <div class="row">
                 <div class="bp-card card-body">
                     <h5>Sobre Mí</h5>
-                    <form id="form_1388" method="post" action="">
-                        <ul>
-
-                            <li id="li_1">
-                                <label class="description" for="element_1">Nombre </label>
-                                <div>
-                                    <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['NOMBRE']; ?>" readonly />
-                                </div>
-                            </li>
-                            <li id="li_2">
-                                <label class="description" for="element_2">Apellido </label>
-                                <div>
-                                    <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['APELLIDOS']; ?>" readonly />
-                                </div>
-                            </li>
-                            <li id="li_2">
-                                <label class="description" for="element_5">Cambiar Correo Electrónico</label><small>Correo Actual</small>
-                                <div>
-                                    <input id="element_5" name="element_5" class="form-control form-control-sm" type="email" maxlength="255" value="<?php echo $sessionus; ?>" />
-                                </div>
-                                <small>Correo Nuevo</small>
-                                <div>
-                                    <input id="element_6" name="element_6" class="form-control form-control-sm" type="email" maxlength="255" value="" />
-                                </div>
-                            </li>
-                        </ul>
-                        <input type="submit">
-                    </form>
+                        <div class="md-form">
+                            <label class="description" for="element_1">Nombre </label>
+                            <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['NOMBRE']; ?>" readonly />
+                        </div>
+                        <div class="md-form">
+                            <label class="description" for="element_2">Apellido </label>
+                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['APELLIDOS']; ?>" readonly />
+                        </div>
+                        <div class="md-form">
+                            <label class="description" for="element_2">Identificador</label>
+                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['ID']; ?>" readonly />
+                        </div>
                 </div>
                 <div class="bp-card card-body">
                     <h5>Mi Avatar</h5>
