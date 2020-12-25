@@ -137,7 +137,16 @@
 						PRIMARY KEY (`ID`)
 						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
 
+						$bpregistro = "CREATE TABLE `" . $prefixtable . "_registro` (
+						`ID` int(11) NOT NULL AUTO_INCREMENT,
+						`FECHA` date NOT NULL,
+						`TTY` text NOT NULL,
+						`USUARIO` text NOT NULL,
+						PRIMARY KEY (`ID`)
+						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
+
 						$avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
+
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`, `AVATAR`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1', '$avatar')";
 
 						$bpadmingroup = "INSERT INTO `" . $prefixtable . "_grupo` (`NOMBRE`) VALUES ('Administrativo')";
@@ -151,6 +160,8 @@
 						SELECT * FROM `" . $prefixtable . "_catalogo` WHERE DISPONIBILIDAD = 0 AND FECHADEV = CURRENT_DATE;
 						UPDATE `" . $prefixtable . "_catalogo` SET DISPONIBILIDAD = 3;
 						END";
+
+						$eventlog = "INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Comienzo de instalación de Bibliopress','$usuario'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear archivo de configuración','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla usuarios','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla catálogo','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla sesiones','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla grupos','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla comentarios','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla solicitudes','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla registros','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear usuario administrativo','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear grupo \'Administrativo\'','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear evento Covid19','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear evento Devolver','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Finalizar instalación de Bibliopress','Instalador (verificado)');";
 
 						echo '</span></p>';
 						echo '<p>Creación de tabla "Usuarios": ';
@@ -198,12 +209,20 @@
 							echo ("<span style='color: green'>OK!</span>");
 						}
 						echo '</span></p>';
+						echo '<p>Creación de tabla "Registros": ';
+						if (!mysqli_query($conn, $bpregistro)) {
+							echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
+						echo '</span></p>';
 						echo '<p>Creación de "Usuario Administrativo" ';
 						if (!mysqli_query($conn, $bpadminuser)) {
 							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
 						} else {
 							echo ("<span style='color: green'>OK!</span>");
 						}
+						echo '</span></p>';
 						echo '<p>Creación de "Grupo Administrativo" ';
 						if (!mysqli_query($conn, $bpadmingroup)) {
 							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
@@ -225,7 +244,13 @@
 						} else {
 							echo ("<span style='color: green'>OK!</span>");
 						}
-
+						echo '</span></p>';
+						echo '<p>Registrando eventos... ';
+						if (!mysqli_multi_query($conn, $eventlog)) {
+							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
 						echo '</span></p>';
 						echo '<p>Redireccionandote a la página principal en 5 segundos...</p><meta http-equiv="refresh" content="5;url=/" />
         ';

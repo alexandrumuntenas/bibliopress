@@ -16,6 +16,7 @@ $bbddgrupos = $prefix . "_grupo";
 $bbddsesiones = $prefix . "_sesiones";
 $bbddcomentarios = $prefix . "_comentarios";
 $bbddsolicitudes = $prefix . "_solicitudes";
+$bbddlog = $prefix . "_registro";
 #Libros
 $librosql = "SELECT * FROM $bbddcatalogo";
 $libroquery = mysqli_query($databaseconnection, $librosql);
