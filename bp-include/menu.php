@@ -6,6 +6,7 @@
         <a href="/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> Catálogo</a>
         <a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#searchmodal" data-backdrop="false"><i class="fas fa-search"></i> Búsqueda</a>
         <?php if ($sessionlogged == 1) {
+          echo '<a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#solicitar" data-backdrop="false"><i class="fas fa-paper-plane"></i> Solicitar libro</a>';
           if ($sessionclass == 1) {
             echo '
       <a href="/bp-admin/usuarios.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book-reader"></i> Usuarios</a>
