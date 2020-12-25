@@ -20,10 +20,6 @@ $bbddsolicitudes = $prefix . "_solicitudes";
 $librosql = "SELECT * FROM $bbddcatalogo";
 $libroquery = mysqli_query($databaseconnection, $librosql);
 $libroresultado = mysqli_fetch_assoc($libroquery);
-#Lectores
-$usuariosql = "SELECT * FROM `$bbddusuarios`";
-$usuarioquery = mysqli_query($databaseconnection, $usuariosql);
-$usuarioresultado = mysqli_fetch_assoc($usuarioquery);
 #Grupos
 $gruposql = "SELECT * FROM `$bbddgrupos`";
 $grupoquery = mysqli_query($databaseconnection, $gruposql);
@@ -44,6 +40,13 @@ if ($phpsessid == null) {
 $sesavatarsql = "SELECT * FROM `$bbddusuarios` WHERE USUARIO LIKE '$sessionus'";
 $sesavatarquery = mysqli_query($databaseconnection, $sesavatarsql);
 $sesavatarresultado = mysqli_fetch_assoc($sesavatarquery);
+#Lectores
+$usuariosql = "SELECT * FROM `$bbddusuarios`";
+$usuarioquery = mysqli_query($databaseconnection, $usuariosql);
+$usuarioresultado = mysqli_fetch_assoc($usuarioquery);
+$usuarioidsql = "SELECT * FROM $bbddusuarios WHERE USUARIO LIKE '$sessionus'";
+$usuarioidquery = mysqli_query($databaseconnection, $usuarioidsql);
+$usuariodata = mysqli_fetch_row($usuarioidquery);
 #Comentarios
 #Solicitudes
 #Other PHP Resources
