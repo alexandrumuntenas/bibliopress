@@ -56,7 +56,7 @@
                                                         <input name="idlibro" value="<?php echo $row[10]; ?>" hidden />
                                                         <input name="idusuario" value="<?php echo $sessionus; ?>" hidden />
                                                         <div class="md-form">
-                                                            <textarea id="form10" name="comentario" class="md-textarea form-control" rows="3" required><?php echo $editresult['DESCRIPCION']; ?></textarea>
+                                                            <textarea id="form10" name="comentario" class="md-textarea form-control" rows="3" required></textarea>
                                                             <label for="form10">Comentario</label>
                                                         </div>
                                                         <input type="submit" name="publishcomment" class="btn btn-sm btn-primary" value="Añadir Comentario" />
