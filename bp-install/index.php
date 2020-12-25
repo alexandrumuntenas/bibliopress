@@ -127,6 +127,15 @@
 						PRIMARY KEY (`id`)
 						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
 
+						$bpsolicitudes = "CREATE TABLE `" . $prefixtable . "_solicitudes` (
+						`ID` int(11) NOT NULL AUTO_INCREMENT,
+						`ISBN` text NOT NULL,
+						`TITULO` text NOT NULL,
+						`AUTOR` text NOT NULL,
+						`EDITORIAL` text NOT NULL,
+						PRIMARY KEY (`ID`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+
 						$avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`, `AVATAR`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1', '$avatar')";
 
@@ -176,6 +185,13 @@
 						echo '</span></p>';
 						echo '<p>Creación de tabla "Comentarios": ';
 						if (!mysqli_query($conn, $bpcomentarios)) {
+							echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
+						echo '</span></p>';
+						echo '<p>Creación de tabla "Solicitudes": ';
+						if (!mysqli_query($conn, $bpsolicitudes)) {
 							echo ("<span style='color:red'>Error! Conexión fallida: " . mysqli_error($conn));
 						} else {
 							echo ("<span style='color: green'>OK!</span>");
