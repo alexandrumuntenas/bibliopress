@@ -1,13 +1,9 @@
-<?php require 'bp-config.php';
-?>
 <html>
 <title>
     <?php echo 'Biblioteca del ' . $sname; ?>
 </title>
 <?php require 'bp-include/head.php'; ?>
-
 <body>
-    <?php require 'bp-include/menu.php'; ?>
     <div>
         <header>
             <div class="bp-header">

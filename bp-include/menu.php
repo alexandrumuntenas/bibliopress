@@ -85,4 +85,3 @@
         $("#wrapper").toggleClass("toggled");
       });
     </script>
-    <?php require 'modules/funciones.php'; ?>

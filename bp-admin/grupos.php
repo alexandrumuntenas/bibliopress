@@ -1,5 +1,4 @@
-<?php require '../bp-config.php';
-?>
+<?php ?>
 <html>
 <title>
     <?php echo 'Gestionar Grupos > Biblioteca del ' . $sname; ?>
@@ -7,7 +6,6 @@
 <?php
 
 require '../bp-include/head.php';
-require '../bp-include/menu.php';
 ?>
 
 <body>
