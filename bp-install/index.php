@@ -115,7 +115,7 @@
 						`ID` int(11) NOT NULL AUTO_INCREMENT,
 						`NOMBRE` text NOT NULL,
 						PRIMARY KEY (`ID`)
-						) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8";
+						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 
 						$bpcomentarios = "CREATE TABLE IF NOT EXISTS `" . $prefixtable . "_comentarios` (
 						`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -128,13 +128,14 @@
 						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
 
 						$bpsolicitudes = "CREATE TABLE `" . $prefixtable . "_solicitudes` (
-						`ID` int(11) NOT NULL AUTO_INCREMENT,
+						 `ID` int(11) NOT NULL AUTO_INCREMENT,
 						`ISBN` text NOT NULL,
 						`TITULO` text NOT NULL,
 						`AUTOR` text NOT NULL,
 						`EDITORIAL` text NOT NULL,
+						`IDSOLICITANTE` int(11) NOT NULL,
 						PRIMARY KEY (`ID`)
-						) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
 
 						$avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
 						$bpadminuser = "INSERT INTO `" . $prefixtable . "_usuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`, `PERM`, `AVATAR`) VALUES ('$usuario','$fullname','$nombre','$apellidos','Administrativo', '$PASSWD', '1', '$avatar')";
