@@ -113,7 +113,7 @@ if ($sessionlogged == 1) {
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
                         <div class="modal-content">
                             <div class="modal-header ">
-                                <h5 class="modal-title heading lead" id="addbook">Editar Libro <em><?php echo $editresult['TITULO']; ?></em></h5>
+                                <h5 class="modal-title heading lead" id="addbook"><i class="fas fa-pen" style="color:#FFF"></i> Editar Libro <em><?php echo $editresult['TITULO']; ?></em></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -182,7 +182,7 @@ if ($sessionlogged == 1) {
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
                         <div class="modal-content">
                             <div class="modal-header ">
-                                <h5 class="modal-title heading lead" id="addbook">Editar lector "<em><?php echo $getoldresult['NOMBRE']; ?></em>"</h5>
+                                <h5 class="modal-title heading lead" id="addbook"><i class="fas fa-user-edit" style="color:#FFF;"></i> Editar lector "<em><?php echo $getoldresult['NOMBRE']; ?></em>"</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -460,7 +460,7 @@ if ($sessionlogged == 1) {
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
             <div class="modal-content">
                 <div class="modal-header ">
-                    <h5 class="modal-title heading lead" id="addbook">Añadir nuevo libro</h5>
+                    <h5 class="modal-title heading lead" id="addbook"><i style="color:#FFF;" class="fas fa-book-medical"></i> Añadir nuevo libro</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -519,7 +519,7 @@ if ($sessionlogged == 1) {
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
                                 <div class="modal-content">
                                     <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="adduser">Añadir nuevo usuario</h5>
+                                        <h5 class="modal-title heading lead" id="adduser"><i class="fas fa-user-plus" style="color: #FFF;"></i></a> Añadir nuevo usuario</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -617,7 +617,7 @@ if ($sessionlogged == 1) {
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
                         <div class="modal-content">
                             <div class="modal-header ">
-                                <h5 class="modal-title heading lead" id="addgroup">Añadir nuevo grupo</h5>
+                                <h5 class="modal-title heading lead" id="addgroup"><i class="fas fa-users" style="color:#FFF;"></i></a> Añadir nuevo grupo</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -645,7 +645,7 @@ if ($sessionlogged == 1) {
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
                                 <div class="modal-content">
                                     <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirabies">Subir desde Abies</h5>
+                                        <h5 class="modal-title heading lead" id="subirabies"><i class="fas fa-upload" style="color:#FFF"></i> Subir desde Abies</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -666,7 +666,7 @@ if ($sessionlogged == 1) {
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
                                 <div class="modal-content">
                                     <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirusuarios">Subir usuarios desde CSV (No disponible)</h5>
+                                        <h5 class="modal-title heading lead" id="subirusuarios"><i class="fas fa-upload" style="color:#FFF"></i> Subir usuarios desde CSV (No disponible)</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -687,7 +687,7 @@ if ($sessionlogged == 1) {
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
                                 <div class="modal-content">
                                     <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirgrupos">Subir grupos desde CSV (No disponible)</h5>
+                                        <h5 class="modal-title heading lead" id="subirgrupos"><i class="fas fa-upload" style="color:#FFF"></i> Subir grupos desde CSV (No disponible)</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -772,6 +772,24 @@ if ($sessionlogged == 1) {
             echo '<div id="snackbar" class="show"> Se ha producido un error</div>';
         };
     }
+    echo '
+    <div class="modal fade" id="solicitar" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true" style="background-color: rgba(0,0,0,.30)">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div class="row"></div>
+            <div class"row">
+                <div id="display"></div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>';
 }
 if ($sessionlogged == null) {
     if (isset($_POST['login'])) {
@@ -801,7 +819,7 @@ if ($sessionlogged == null) {
       <div class="modal-content">
         <form action="" method="post">
           <div class="modal-header">
-            <h5 class="modal-title heading lead">Acceder</h5>
+            <h5 class="modal-title heading lead"><i class="fas fa-sign-in-alt" style="color:#FFF;"></i> Acceder</h5>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           </div>
           <div class="modal-body">
