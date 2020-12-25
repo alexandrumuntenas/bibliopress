@@ -1,5 +1,5 @@
 <?php
-require('bp-settings.php');
+require $_SERVER['DOCUMENT_ROOT'] . '/bp-settings.php';
 #Parámetros
 $uagent = mysqli_real_escape_string($databaseconnection, $_SERVER['HTTP_USER_AGENT']);
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
