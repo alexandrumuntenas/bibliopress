@@ -1,6 +1,3 @@
-<?php ?>
-<html>
-
 <?php
 require '../bp-include/head.php';
 $practivos = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' AND `DISPONIBILIDAD` = 0 LIMIT 5";

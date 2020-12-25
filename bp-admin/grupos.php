@@ -1,12 +1,4 @@
-<?php ?>
-<html>
-<title>
-    <?php echo 'Gestionar Grupos > Biblioteca del ' . $sname; ?>
-</title>
-<?php
-
-require '../bp-include/head.php';
-?>
+<?php require '../bp-include/head.php'; ?>
 
 <body>
     <div>

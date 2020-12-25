@@ -1,4 +1,5 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 echo "<head>
     <title>Biblioteca del " . $sname . "</title>
     <meta charset='utf8mb4'/>
@@ -26,6 +27,5 @@ echo "<head>
     <script type='text/javascript' src='/bp-include/lives.js'></script>
     <script src=\"https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js\" ></script>
 </head>";
-require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-include/menu.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/bp-include/modules/funciones.php';

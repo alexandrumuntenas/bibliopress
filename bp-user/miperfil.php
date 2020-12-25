@@ -1,4 +1,5 @@
-<?php $querylector = "SELECT *  FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $sessionus . "'";
+<?php require '../bp-include/head.php';
+$querylector = "SELECT *  FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $sessionus . "'";
 $qlectorre = mysqli_query($databaseconnection, $querylector);
 $qlector = mysqli_fetch_assoc($qlectorre);
 
@@ -23,8 +24,6 @@ if (isset($_POST['submit'])) {
 ?>
 <html>
 
-<?php require '../bp-include/head.php';
-?>
 <body>
     <header>
         <div class="bp-header">
