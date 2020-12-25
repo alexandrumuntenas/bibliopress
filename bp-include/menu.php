@@ -18,7 +18,7 @@
           };
         }; ?>
         <?php if ($sessionlogged == 1) { ?>
-          <a class="nav-link list-group-item list-group-item-action bg-light" href="/bp-user/"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>"> Mi área personal</a> 
+          <a class="nav-link list-group-item list-group-item-action bg-light" href="/bp-user/"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>"> Mi área personal</a>
         <?php } else { ?>
           <a href="" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>
         <?php };
@@ -73,11 +73,12 @@
           </ul>
         </div> <?php }
             } ?>
-    <div class="sdb-collapse"><button class="menu-collapser waves-effect" id="menu-toggle"><i class="fas fa-chevron-right"></i></button>
+    <div class="sdb-collapse"><button class="menu-collapser waves-effect" id="menu-toggle"><i id="iconsidebartoggle" class="fas fa-chevron-right"></i></button>
     </div>
     <script>
       $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+        $("#iconsidebartoggle").toggleClass("iconsidebartoggle-activated");
       });
     </script>
