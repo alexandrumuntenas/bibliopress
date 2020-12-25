@@ -18,12 +18,6 @@ $qlector = mysqli_fetch_assoc($qlectorre);
         </header>
         <section class="bp-section">
             <?php if ($sessionlogged == 1) { ?>
-
-                <center>
-                    <a href="index.php" type="button" class="btn btn-primary">Inicio</a>
-                    <a href="miperfil.php" type="button" class="btn btn-secondary">Mi Perfil <i class="fas fa-id-card-alt"></i></a>
-                    <a href="?logout" type="button" class="btn btn-danger">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-                </center>
                 <div class="row">
                     <div class="bp-card card-body">
                         <h5>Préstamos Activos</h5>
@@ -73,6 +67,29 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                     </div>
                     <div class="bp-card card-body">
                         <h5>Tus Últimas Lecturas</h5>
+                        <p>No te emociones, seguimos trabajando en ello</p>
+                    </div>
+                    <div class="bp-card card-body">
+                        <h5>Sobre Mí</h5>
+                        <div class="md-form">
+                            <label class="description" for="element_1">Nombre </label>
+                            <input id="element_1" name="element_1" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['NOMBRE']; ?>" readonly />
+                        </div>
+                        <div class="md-form">
+                            <label class="description" for="element_2">Apellido </label>
+                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['APELLIDOS']; ?>" readonly />
+                        </div>
+                        <div class="md-form">
+                            <label class="description" for="element_2">Identificador</label>
+                            <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['ID']; ?>" readonly />
+                        </div>
+                    </div>
+                    <div class="bp-card card-body">
+                        <h5>Mi Avatar</h5>
+                        <p>No te emociones, seguimos trabajando en ello</p>
+                    </div>
+                    <div class="bp-card card-body">
+                        <h5>Notificaciones</h5>
                         <p>No te emociones, seguimos trabajando en ello</p>
                     </div>
                 </div> <?php } else { ?> <p>No tienes permiso para acceder a esta página</p><?php } ?>
