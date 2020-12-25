@@ -25,14 +25,20 @@ $gruposql = "SELECT * FROM `$bbddgrupos`";
 $grupoquery = mysqli_query($databaseconnection, $gruposql);
 $gruporesultado = mysqli_fetch_assoc($grupoquery);
 #Query Sesiones
-$phpsessid = session_id();
+$phpsessid = mysqli_real_escape_string($databaseconnection, $_COOKIE['PHPSESSID']);
 $bbddsesiones = $prefix . "_sesiones";
 $sesionessql = "SELECT * FROM `$bbddsesiones` WHERE `PHPSESSID` LIKE '$phpsessid' AND `IP` LIKE '$ip_address' AND `USER_AGENT` LIKE '$uagent'";
 $sesionesquery = mysqli_query($databaseconnection, $sesionessql);
 $sesionesresultado = mysqli_fetch_assoc($sesionesquery);
+echo mysqli_error($databaseconnection);
 $sessionlogged = $sesionesresultado['LOGGEDIN'];
 $sessionclass = $sesionesresultado['PERM'];
 $sessionus = $sesionesresultado['USUARIO'];
+echo $sesionessql;
+echo $phpsessid;
+echo $sessionus;
+echo $sessionclass;
+echo $sessionlogged;
 if ($phpsessid == null) {
     session_start();
     $phpsessid = session_id();
