@@ -34,11 +34,6 @@ echo mysqli_error($databaseconnection);
 $sessionlogged = $sesionesresultado['LOGGEDIN'];
 $sessionclass = $sesionesresultado['PERM'];
 $sessionus = $sesionesresultado['USUARIO'];
-echo $sesionessql;
-echo $phpsessid;
-echo $sessionus;
-echo $sessionclass;
-echo $sessionlogged;
 if ($phpsessid == null) {
     session_start();
     $phpsessid = session_id();
