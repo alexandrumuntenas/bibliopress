@@ -1,5 +1,3 @@
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
-?>
 <div class="d-flex" id="wrapper">
   <div class="bg-light border-right " id="sidebar-wrapper">
     <div class="sidebar-fixed-top">
