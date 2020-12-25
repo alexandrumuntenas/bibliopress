@@ -760,7 +760,7 @@ if ($sessionlogged == 1) {
 
     if (isset($_GET['logout'])) {
         if ($sessionlogged == 1) {
-            $phpsessid = session_id();
+            $phpsessid = mysqli_real_escape_string($databaseconnection, $_COOKIE['PHPSESSID']);
             $logoutsql = "DELETE FROM `$bbddsesiones` WHERE `$bbddsesiones`.`PHPSESSID` = '$phpsessid'";
             $logoutquery = $databaseconnection->query($logoutsql);
             echo "<meta http-equiv='refresh' content='0;url=/' />";
