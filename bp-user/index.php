@@ -1,8 +1,6 @@
 <?php ?>
 <html>
-<title>
-    <?php echo 'Biblioteca del ' . $sname; ?>
-</title>
+
 <?php
 require '../bp-include/head.php';
 $practivos = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' AND `DISPONIBILIDAD` = 0 LIMIT 5";

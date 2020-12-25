@@ -1,7 +1,5 @@
 <html>
-<title>
-    <?php echo 'Biblioteca del ' . $sname; ?>
-</title>
+
 <?php require 'bp-include/head.php'; ?>
 <body>
     <div>
