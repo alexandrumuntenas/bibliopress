@@ -787,10 +787,10 @@ if ($sessionlogged == null) {
                 if ($loginresult == true) {
                     echo "<meta http-equiv='refresh' content='0;url=/' />";
                 } else {
-                    echo '<div id="snackbar" class="show"> Se ha producido un error</div>';
+                    echo '<div id="snackbar" class="show"> Se ha producido un error. La base de datos ha reportado '
+                        . mysqli_error($databaseconnection) . '</div>';
                 }
             } else {
-                echo mysqli_error($databaseconnection);
                 echo '<div id="snackbar" class="show"> Usuario o contraseña incorrecta</div>';
             }
         };
