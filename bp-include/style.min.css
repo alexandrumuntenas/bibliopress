@@ -134,6 +134,36 @@ p {
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+  .sdb-collapse i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 25px;
+  color: #000000;
+  transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+}
+
+.sdb-collapse i:hover {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+
+.iconsidebartoggle-activated{
+  transform: rotate(180deg) !important;
+  -moz-transform: rotate(180deg) !important;
+  -o-transform: rotate(180deg) !important;
+  -ms-transform: rotate(180deg) !important;
+}
 }
 
 .lives:hover {
@@ -455,4 +485,8 @@ div.comentario {
   padding: 10px;
   margin: 10px;
   width: 100% !important;
+}
+
+.sidebar-spacer {
+  height: 15px;
 }

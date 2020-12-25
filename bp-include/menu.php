@@ -3,17 +3,25 @@
     <div class="sidebar-fixed-top">
       <div class="sidebar-heading">Biblioteca</div>
       <div class="list-group list-group-flush">
-        <a href="/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> Catálogo</a>
+        <a href="/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> <?php if($sessionclass == 1){echo 'Catálogo';} else{echo 'Inicio';} ?></a>
         <a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#searchmodal" data-backdrop="false"><i class="fas fa-search"></i> Búsqueda</a>
-        <?php if ($sessionlogged == 1) {
-          echo '<a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#solicitar" data-backdrop="false"><i class="fas fa-paper-plane"></i> Solicitar libro</a>';
-          if ($sessionclass == 1) {
+
+        <?php 
+        if ($sessionlogged == 1) {
+          if ($sessionclass == 0){
+            echo '<a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#solicitar" data-backdrop="false"><i class="fas fa-paper-plane"></i> Solicitar libro</a>';  
+          }
+      if ($sessionclass == 1) {
             echo '
+      <div class="sidebar-spacer"></div>
+      <a href="/bp-admin/prestamos.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-people-carry"></i> Préstamos</a>
       <a href="/bp-admin/solicitudes.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-inbox"></i> Libros solicitados</a>
+      <div class="sidebar-spacer"></div>
       <a href="/bp-admin/usuarios.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book-reader"></i> Usuarios</a>
       <a href="/bp-admin/grupos.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-users"></i> Grupos</a>
-      <a href="/bp-admin/prestamos.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-people-carry"></i> Préstamos</a>
+      <div class="sidebar-spacer"></div>
       <a href="/bp-admin/configuracion.php" class="list-group-item list-group-item-action bg-light"><i class="fas fa-cogs"></i> Configuración</a>
+      <div class="sidebar-spacer"></div>
       ';
           };
         }; ?>

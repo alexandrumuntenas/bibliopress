@@ -403,7 +403,7 @@ if ($sessionlogged == 1) {
                     $('#view-<?php echo $id; ?>').modal('show');
                 });
             </script>
-<?php
+        <?php
         }
 
         if (isset($_POST['prestar'])) {
@@ -455,341 +455,386 @@ if ($sessionlogged == 1) {
             } else {
                 echo '<div id="snackbar" class="show"> Se ha realizado la prórroga correctamente</div>';
             }
-        }
-        echo '<div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-            <div class="modal-content">
-                <div class="modal-header ">
-                    <h5 class="modal-title heading lead" id="addbook"><i style="color:#FFF;" class="fas fa-book-medical"></i> Añadir nuevo libro</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div> 
-                <form id="form_1388" class="modal-body md-form" method="post" action="">
+        } ?><div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title heading lead" id="addbook"><i style="color:#FFF;" class="fas fa-book-medical"></i> Añadir nuevo libro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="form_1388" class="modal-body md-form" method="post" action="">
 
 
-                    <p>✨ Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos. <mark>Ten en cuenta de que esta tecnología no es precisa al 100%, pero generalmente si dará buenos resultados.</mark></p>
-                                <div id="gapisresult"></div>
-                                <div class="md-form">
-                                    <input id="titulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                    <label for="form1">Título del libro</label>
-                                </div>
-                                <div class="md-form">
-                                    <input id="autor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                    <label for="form1">Autor</label>
-                                </div>
-                                <div class="md-form">
-                                        <input id="ISBN" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                        <label for="form1">ISBN</label>
-                                        <a class="btn btn-info btn-sm" onclick="gbooks()">Completar con Google Books</a>
-                                </div>
-                                <div class="md-form">
-                                    <input id="editorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                    <label for="form1">Editorial</label>
-                                </div>
-                                <div class="md-form">
-                                    <input id="anopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                    <label for="form1">Año de Publicación</label>
-                                </div>
-                                <div class="md-form">
-                                    <input id="ejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="8" value="" required/>
-                                    <label for="form1">Ejemplar</label>
-                                </div>
-                                <div class="md-form">
-                                    <input id="ubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="12" value="" required/>
-                                    <label for="form1">Ubicación</label>
-                                </div>
-                                <div class="md-form"> 
-                                    <textarea type="text" id="descripcion" name="descripcion" class="md-textarea form-control" maxlength="512" value="" required></textarea>
-                                    <label for="descripcion">Descripción</label>
-                                </div>
-                                <div class="md-form">
-                                    <input id="portada" name="portada" type="text" value="" hidden/>
-                                </div>
+                        <p>✨ Ahora puedes añadir libros más rápido! Solo escanea con el lector de código de barras el código de barras del libro que desees añadir. Utilizando la tecnología de Google y un poco de magia, completarás la información del libro en segundos. <mark>Ten en cuenta de que esta tecnología no es precisa al 100%, pero generalmente si dará buenos resultados.</mark></p>
+                        <div id="gapisresult"></div>
+                        <div class="md-form">
+                            <input id="titulo" name="titulo" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="titulo">Título del libro</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="autor" name="autor" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="autor">Autor</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="ISBN" name="ISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="ISBN">ISBN</label>
+                            <a class="btn btn-info btn-sm" onclick="gbooks()">Completar con Google Books</a>
+                        </div>
+                        <div class="md-form">
+                            <input id="editorial" name="editorial" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="editorial">Editorial</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="anopub" name="anopub" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="anopub">Año de Publicación</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="ejemplar" name="ejemplar" class="form-control form-control-sm" type="text" maxlength="8" value="" required />
+                            <label for="ejemplar">Ejemplar</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="ubicacion" name="ubicacion" class="form-control form-control-sm" type="text" maxlength="12" value="" required />
+                            <label for="ubicación">Ubicación</label>
+                        </div>
+                        <div class="md-form">
+                            <textarea type="text" id="descripcion" name="descripcion" class="md-textarea form-control" maxlength="512" value="" required></textarea>
+                            <label for="descripcion">Descripción</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="portada" name="portada" type="text" value="" hidden />
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger sm" data-dismiss="modal">Cancelar</button>
                             <input id="saveForm" class="btn btn-primary sm" type="submit" name="publishbook" value="Publicar" />
                         </div>
                     </form>
+                </div>
             </div>
         </div>
-    </div>';
 
-        echo '<div class="modal fade" id="adduser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="adduser" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="adduser"><i class="fas fa-user-plus" style="color: #FFF;"></i></a> Añadir nuevo usuario</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="form_1388" class="appnitro" method="post" action="">
-                                                    <div class="md-form">
-                                                    <p>Nombre</p>
-                                                        <input id="nombreusuario" name="nombreusuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                                    </div>
-                                                    <div class="md-form">
-                                                    <p>Apellidos</p>
-                                                        <input id="apellidousuario" name="apellidousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                                    </div>
-                                                    <div class="md-form">
-                                                    <p>Correo Electrónico</p>
-                                                        <input id="correousuario" name="correousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                                    </div>
-                                                    <div class="md-form">
-                                                    <p>Grupo</p>
-                                                        <select class="form-control form-control-sm" id="grupousuario" name="grupousuario" required>
-                                                            <option value="No asignado">Selecciona el grupo</option>';
-        mysqli_data_seek($grupoquery, 0);
-        if ($grupoquery->num_rows > 0) {
-            while ($grupos = $grupoquery->fetch_assoc()) {
-                echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
-            }
-        }
-        mysqli_data_seek($grupoquery, 0);
-        echo '
-                                                        </select>
-                                                    </div>
-                                                    <div class="md-form">
-                                                    <p>Tipo de Usuario</p>
-                                                        <select class="form-control form-control-sm" id="permisousuario" name="permisousuario" required>
-                                                            <option value="0">Lector</option>
-                                                            <option value="1" disabled>Bibliotecario</option>
-                                                            <option value="1">Administrador</option>
-                                                        </select>
-                                                    </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                                <input id="saveForm" class="btn btn-primary" type="submit" name="publishuser" value="Añadir" />
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+        <div class="modal fade" id="adduser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="adduser" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title heading lead" id="adduser"><i class="fas fa-user-plus" style="color: #FFF;"></i></a> Añadir nuevo usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form_1388" class="appnitro" method="post" action="">
+                            <div class="md-form">
+                                <p>Nombre</p>
+                                <input id="nombreusuario" name="nombreusuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
                             </div>
-                        </div>';
-
-        echo '
-            <div class="modal fade" id="promogrupo" tabindex="-1" aria-labelledby="promogrupo" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title heading lead" id="promogrupo">Promocionar curso</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" action="">
-                                <select class="form-control form-control-sm" id="inicial" name="inicial">
-                                    <option value="No asignado">Selecciona el grupo</option>';
-
-        if ($grupoquery->num_rows > 0) {
-            //datos de cada columna
-            while ($row = mysqli_fetch_assoc($grupoquery)) {
-                echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-            }
-        }
-        mysqli_data_seek($grupoquery, 0);
-        echo
-            '
+                            <div class="md-form">
+                                <p>Apellidos</p>
+                                <input id="apellidousuario" name="apellidousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            </div>
+                            <div class="md-form">
+                                <p>Correo Electrónico</p>
+                                <input id="correousuario" name="correousuario" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            </div>
+                            <div class="md-form">
+                                <p>Grupo</p>
+                                <select class="form-control form-control-sm" id="grupousuario" name="grupousuario" required>
+                                    <option value="No asignado">Selecciona el grupo</option>
+                                    <?php mysqli_data_seek($grupoquery, 0);
+                                    if ($grupoquery->num_rows > 0) {
+                                        while ($grupos = $grupoquery->fetch_assoc()) {
+                                            echo '<option value="' . $grupos['NOMBRE'] . '">' . $grupos['NOMBRE'] . '</option>';
+                                        }
+                                    }
+                                    mysqli_data_seek($grupoquery, 0); ?>
                                 </select>
-                                <p>a</p>
-                                <select class="form-control form-control-sm" id="final" name="final">
-                                    <option value="No asignado">Selecciona el grupo</option>';
-        while ($row = mysqli_fetch_assoc($grupoquery)) {
-            echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
-        }
-        echo '
+                            </div>
+                            <div class="md-form">
+                                <p>Tipo de Usuario</p>
+                                <select class="form-control form-control-sm" id="permisousuario" name="permisousuario" required>
+                                    <option value="0">Lector</option>
+                                    <option value="1" disabled>Bibliotecario</option>
+                                    <option value="1">Administrador</option>
                                 </select>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit" name="promocioncurso">Promocionar</button>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <input id="saveForm" class="btn btn-primary" type="submit" name="publishuser" value="Añadir" />
+                            </div>
                         </form>
                     </div>
                 </div>
-            </div>';
+            </div>
+        </div>
 
-        echo '<div class="modal fade" id="addgroup" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addgroup" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-                        <div class="modal-content">
-                            <div class="modal-header ">
-                                <h5 class="modal-title heading lead" id="addgroup"><i class="fas fa-users" style="color:#FFF;"></i></a> Añadir nuevo grupo</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="md-form" method="post" action="">
-                                    <ul>
-
-                                        <li id="li_1">
-                                            <label class="description" for="nombregrupo">Nombre del grupo</label>
-                                                <input id="nombregrupo" name="nombregrupo" class="form-control form-control-sm" type="text" maxlength="255" value="" required/>
-                                        </li>
-                                    </ul>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                        <input id="saveForm" class="btn btn-primary" type="submit" name="publishgroup" value="Añadir" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+        <div class="modal fade" id="promogrupo" tabindex="-1" aria-labelledby="promogrupo" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title heading lead" id="promogrupo">Promocionar curso</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>';
+                    <div class="modal-body">
+                        <form method="post" action="">
+                            <select class="form-control form-control-sm" id="inicial" name="inicial">
+                                <option value="No asignado">Selecciona el grupo</option>
+                                <?php
+                                if ($grupoquery->num_rows > 0) {
+                                    //datos de cada columna
+                                    while ($row = mysqli_fetch_assoc($grupoquery)) {
+                                        echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+                                    }
+                                }
+                                mysqli_data_seek($grupoquery, 0); ?>
+                            </select>
+                            <p>a</p>
+                            <select class="form-control form-control-sm" id="final" name="final">
+                                <option value="No asignado">Selecciona el grupo</option>
+                                <?php while ($row = mysqli_fetch_assoc($grupoquery)) {
+                                    echo '<option value="' . $row['NOMBRE'] . '">' . $row['NOMBRE'] . '</option>';
+                                } ?>
+                            </select>
 
-        echo '<div class="modal fade" id="subirabies" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirabies" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirabies"><i class="fas fa-upload" style="color:#FFF"></i> Subir desde Abies</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form enctype="multipart/form-data" action="" method="post" accept=".txt">Nombre de archivo *.TXT a subir:<br /><br /><input size="50" type="file" name="filename">
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                                <input id="saveForm" class="btn btn-primary" type="submit" name="abiesupload" value="Subir"/>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>';
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" name="promocioncurso">Promocionar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-        echo '<div class="modal fade" id="subirusuarios" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirusuarios" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirusuarios"><i class="fas fa-upload" style="color:#FFF"></i> Subir usuarios desde CSV (No disponible)</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form enctype="multipart/form-data" action="" method="post">Nombre de archivo *.CSV a subir:<br /><br /><input size="50" type="file" name="file">
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                                <input id="saveForm" class="btn btn-primary" type="submit" name="userupload" value="Subir"/>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>';
+        <div class="modal fade" id="addgroup" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addgroup" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title heading lead" id="addgroup"><i class="fas fa-users" style="color:#FFF;"></i></a> Añadir nuevo grupo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="md-form" method="post" action="">
+                            <ul>
 
-        echo '<div class="modal fade" id="subirgrupos" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirgrupos" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-                                        <h5 class="modal-title heading lead" id="subirgrupos"><i class="fas fa-upload" style="color:#FFF"></i> Subir grupos desde CSV (No disponible)</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form enctype="multipart/form-data" action="" method="post">Nombre de archivo *.CSV a subir:<br /><br /><input size="50" type="file" name="file">
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                                <input id="saveForm" class="btn btn-primary" type="submit" name="groupupload" value="Subir"/>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                <li id="li_1">
+                                    <label class="description" for="nombregrupo">Nombre del grupo</label>
+                                    <input id="nombregrupo" name="nombregrupo" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                                </li>
+                            </ul>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <input id="saveForm" class="btn btn-primary" type="submit" name="publishgroup" value="Añadir" />
                             </div>
-                        </div>';
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="subirabies" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirabies" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title heading lead" id="subirabies"><i class="fas fa-upload" style="color:#FFF"></i> Subir desde Abies</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form enctype="multipart/form-data" action="" method="post" accept=".txt">Nombre de archivo *.TXT a subir:<br /><br /><input size="50" type="file" name="filename">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <input id="saveForm" class="btn btn-primary" type="submit" name="abiesupload" value="Subir" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="subirusuarios" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirusuarios" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title heading lead" id="subirusuarios"><i class="fas fa-upload" style="color:#FFF"></i> Subir usuarios desde CSV (No disponible)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form enctype="multipart/form-data" action="" method="post">Nombre de archivo *.CSV a subir:<br /><br /><input size="50" type="file" name="file">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <input id="saveForm" class="btn btn-primary" type="submit" name="userupload" value="Subir" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="subirgrupos" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirgrupos" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title heading lead" id="subirgrupos"><i class="fas fa-upload" style="color:#FFF"></i> Subir grupos desde CSV (No disponible)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form enctype="multipart/form-data" action="" method="post">Nombre de archivo *.CSV a subir:<br /><br /><input size="50" type="file" name="file">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <input id="saveForm" class="btn btn-primary" type="submit" name="groupupload" value="Subir" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> <?php
+            }
+            if (isset($_POST['publishcomment'])) {
+                $comentario = mysqli_real_escape_string($databaseconnection, $_POST['comentario']);
+                $idlibro = mysqli_real_escape_string($databaseconnection, $_POST['idlibro']);
+                $idusuario = mysqli_real_escape_string($databaseconnection, $_POST['idusuario']);
+                if ($idusuario == $sessionus) {
+                    $publishcommentsql = "INSERT INTO `$bbddcomentarios` (`id`, `idlibro`, `idpadre`, `usuario`, `contenido`, `fecha`) VALUES (NULL, '$idlibro', '-1', '$idusuario', '$comentario', CURRENT_DATE)";
+                    $publishcommentquery = mysqli_query($databaseconnection, $publishcommentsql);
+                    if (mysqli_error($databaseconnection)) {
+                        echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+                        echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$idlibro').modal('show');
+                    });
+                </script>";
+                    } else {
+                        echo '<div id="snackbar" class="show"> Se ha publicado correctamente tu comentario!</div>';
+                        echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$idlibro').modal('show');
+                    });
+                </script>";
+                    }
+                } else {
+                    echo '<div id="snackbar" class="show"> Buen intento >:C</div>';
+                    echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$idlibro').modal('show');
+                    });
+                </script>";
+                }
+            }
+            if (isset($_POST['delcomment'])) {
+                $idcomentario = mysqli_real_escape_String($databaseconnection, $_POST['idcomentario']);
+                $usuariodemandante = mysqli_real_escape_string($databaseconnection, $_POST['usuariodemandante']);
+                $delidlibro = mysqli_real_escape_string($databaseconnection, $_POST['delidlibro']);
+                if ($usuariodemandante == $sessionus) {
+                    $delcommentsql = "DELETE FROM `$bbddcomentarios` WHERE `$bbddcomentarios`.`id` = $idcomentario";
+                    $delcommentquery = mysqli_query($databaseconnection, $delcommentsql);
+                    echo '<div id="snackbar" class="show"> Se ha eliminado el comentario correctamente</div>';
+                    echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$delidlibro').modal('show');
+                    });
+                </script>";
+                } else {
+                    echo '<div id="snackbar" class="show"> Buen intento >:C</div>';
+                    echo "<script type='text/javascript'>
+                    $(window).on('load', function() {
+                        $('#libro-$delidlibro').modal('show');
+                    });
+                </script>";
+                }
+            }
+
+            if (isset($_GET['logout'])) {
+                if ($sessionlogged == 1) {
+                    $phpsessid = mysqli_real_escape_string($databaseconnection, $_COOKIE['PHPSESSID']);
+                    $logoutsql = "DELETE FROM `$bbddsesiones` WHERE `$bbddsesiones`.`PHPSESSID` = '$phpsessid'";
+                    $logoutquery = $databaseconnection->query($logoutsql);
+                    echo "<meta http-equiv='refresh' content='0;url=/' />";
+                    session_destroy();
+                    session_write_close();
+                    setcookie(session_name(), '', 0, '/');
+                    session_start();
+                } else {
+                    echo '<div id="snackbar" class="show"> Se ha producido un error</div>';
+                };
+            } ?>
+    <div class="modal fade" id="solicitar" tabindex="-1" aria-labelledby="solicitar" aria-hidden="true" style="background-color: rgba(0,0,0,.30)">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title heading lead"><i class="fas fa-paper-plane" style="color:#FFF"></i> Solicitar libro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="md-form" action="" method="POST">
+                        <div class="md-form">
+                            <input id="titulo" name="soltitulo" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="titulo">Título del libro</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="autor" name="solautor" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="autor">Autor</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="ISBN" name="solISBN" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="ISBN">ISBN</label>
+                        </div>
+                        <div class="md-form">
+                            <input id="editorial" name="soleditorial" class="form-control form-control-sm" type="text" maxlength="255" value="" required />
+                            <label for="editorial">Editorial</label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <input id="saveForm" class="btn btn-primary" type="submit" name="solicitar" value="solicitar" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if (isset($_POST['solicitar'])) {
+        $titulo = mysqli_real_escape_string($databaseconnection, $_POST['soltitulo']);
+        $autor = mysqli_real_escape_string($databaseconnection, $_POST['solautor']);
+        $ISBN = mysqli_real_escape_string($databaseconnection, $_POST['solISBN']);
+        $editorial = mysqli_real_escape_string($databaseconnection, $_POST['soleditorial']);
+        $solicitarsql = "INSERT INTO `$bbddsolicitudes` (`ID`, `ISBN`, `TITULO`, `AUTOR`, `EDITORIAL`, `IDSOLICITANTE`) VALUES (NULL, '$ISBN', '$titulo', '$autor', '$editorial', '$usuariodata[0]')";
+        $solicitarquery = mysqli_query($databaseconnection, $solicitarsql);
+        if (mysqli_error($databaseconnection)) {
+            echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+        } else {
+            echo '<div id="snackbar" class="show"> Se ha enviado la solicitud correctamente. Puedes realizar un seguimiento de este en tu área personal!</div>';
+        }
     }
-    if (isset($_POST['publishcomment'])) {
-        $comentario = mysqli_real_escape_string($databaseconnection, $_POST['comentario']);
-        $idlibro = mysqli_real_escape_string($databaseconnection, $_POST['idlibro']);
-        $idusuario = mysqli_real_escape_string($databaseconnection, $_POST['idusuario']);
-        if ($idusuario == $sessionus) {
-            $publishcommentsql = "INSERT INTO `$bbddcomentarios` (`id`, `idlibro`, `idpadre`, `usuario`, `contenido`, `fecha`) VALUES (NULL, '$idlibro', '-1', '$idusuario', '$comentario', CURRENT_DATE)";
-            $publishcommentquery = mysqli_query($databaseconnection, $publishcommentsql);
+
+    if (isset($_GET['solicitar'])) {
+        $identificador = mysqli_real_escape_string($databaseconnection,$_REQUEST['id']);
+        if (mysqli_real_escape_string($databaseconnection, $_REQUEST['accion']) == 'aprobar') {
+            $aprobarsql = "UPDATE `$bbddsolicitudes` SET `ESTADO` = '1' WHERE `ID` = $identificador";
+            $aprobarquery = mysqli_query($databaseconnection,$aprobarsql);
             if (mysqli_error($databaseconnection)) {
                 echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
-                echo "<script type='text/javascript'>
-                    $(window).on('load', function() {
-                        $('#libro-$idlibro').modal('show');
-                    });
-                </script>";
             } else {
-                echo '<div id="snackbar" class="show"> Se ha publicado correctamente tu comentario!</div>';
-                echo "<script type='text/javascript'>
-                    $(window).on('load', function() {
-                        $('#libro-$idlibro').modal('show');
-                    });
-                </script>";
+                echo '<div id="snackbar" class="show"> Se ha aprobado la solicitud correctamente</div>';
             }
-        } else {
-            echo '<div id="snackbar" class="show"> Buen intento >:C</div>';
-            echo "<script type='text/javascript'>
-                    $(window).on('load', function() {
-                        $('#libro-$idlibro').modal('show');
-                    });
-                </script>";
+        } else if (mysqli_real_escape_string($databaseconnection, $_REQUEST['accion']) == 'rechazar') {
+            $aprobarsql = "UPDATE `$bbddsolicitudes` SET `ESTADO` = '2' WHERE `ID` = $identificador";
+            $aprobarquery = mysqli_query($databaseconnection, $aprobarsql);
+            if (mysqli_error($databaseconnection)) {
+                echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+            } else {
+                echo '<div id="snackbar" class="show"> Se ha rechazado la solicitud correctamente</div>';
+            }
         }
     }
-    if (isset($_POST['delcomment'])) {
-        $idcomentario = mysqli_real_escape_String($databaseconnection, $_POST['idcomentario']);
-        $usuariodemandante = mysqli_real_escape_string($databaseconnection, $_POST['usuariodemandante']);
-        $delidlibro = mysqli_real_escape_string($databaseconnection, $_POST['delidlibro']);
-        if ($usuariodemandante == $sessionus) {
-            $delcommentsql = "DELETE FROM `$bbddcomentarios` WHERE `$bbddcomentarios`.`id` = $idcomentario";
-            $delcommentquery = mysqli_query($databaseconnection, $delcommentsql);
-            echo '<div id="snackbar" class="show"> Se ha eliminado el comentario correctamente</div>';
-            echo "<script type='text/javascript'>
-                    $(window).on('load', function() {
-                        $('#libro-$delidlibro').modal('show');
-                    });
-                </script>";
-        } else {
-            echo '<div id="snackbar" class="show"> Buen intento >:C</div>';
-            echo "<script type='text/javascript'>
-                    $(window).on('load', function() {
-                        $('#libro-$delidlibro').modal('show');
-                    });
-                </script>";
-        }
-    }
-
-    if (isset($_GET['logout'])) {
-        if ($sessionlogged == 1) {
-            $phpsessid = mysqli_real_escape_string($databaseconnection, $_COOKIE['PHPSESSID']);
-            $logoutsql = "DELETE FROM `$bbddsesiones` WHERE `$bbddsesiones`.`PHPSESSID` = '$phpsessid'";
-            $logoutquery = $databaseconnection->query($logoutsql);
-            echo "<meta http-equiv='refresh' content='0;url=/' />";
-            session_destroy();
-            session_write_close();
-            setcookie(session_name(), '', 0, '/');
-            session_start();
-        } else {
-            echo '<div id="snackbar" class="show"> Se ha producido un error</div>';
-        };
-    }
-    echo '
-    <div class="modal fade" id="solicitar" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true" style="background-color: rgba(0,0,0,.30)">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            <div class="row"></div>
-            <div class"row">
-                <div id="display"></div>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>';
 }
 if ($sessionlogged == null) {
     if (isset($_POST['login'])) {
@@ -812,52 +857,48 @@ if ($sessionlogged == null) {
                 echo '<div id="snackbar" class="show"> Usuario o contraseña incorrecta</div>';
             }
         };
-    }
-
-    echo '<div style="z-index:9999" class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-      <div class="modal-content">
-        <form action="" method="post">
-          <div class="modal-header">
-            <h5 class="modal-title heading lead"><i class="fas fa-sign-in-alt" style="color:#FFF;"></i> Acceder</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          </div>
-          <div class="modal-body">
-            <div class="md-form">
-              <label>Usuario</label>
-              <input type="email" class="form-control" required="required" name="usuario">
+    } ?><div style="z-index:9999" class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+            <div class="modal-content">
+                <form action="" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title heading lead"><i class="fas fa-sign-in-alt" style="color:#FFF;"></i> Acceder</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="md-form">
+                            <label>Usuario</label>
+                            <input type="email" class="form-control" required="required" name="usuario">
+                        </div>
+                        <div class="md-form">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" required="required" name="contrasena">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <label class="form-check-label"><input type="checkbox" checked disabled> Remember me (Función en Desarrollo)</label>
+                        <input type="submit" class="btn btn-primary" name="login" value="Login">
+                    </div>
+                </form>
             </div>
-            <div class="md-form">
-                <label>Contraseña</label>
-                <input type="password" class="form-control" required="required" name="contrasena">
-            </div>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <label class="form-check-label"><input type="checkbox" checked disabled> Remember me (Función en Desarrollo)</label>
-            <input type="submit" class="btn btn-primary" name="login" value="Login">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>';
-}
-
-echo '
-  <div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true" style="background-color: rgba(0,0,0,.30)">
+        </div>
+    </div> <?php
+        } ?>
+<div class="modal fade" id="searchmodal" tabindex="-1" aria-labelledby="searchmodal" aria-hidden="true" style="background-color: rgba(0,0,0,.30)">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
-      <div class="modal-content">
-        <div class="modal-header">
-          <input class="buscador-ajax" type="text" id="search" placeholder="Introduce el título del libro a buscar" />
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <input class="buscador-ajax" type="text" id="search" placeholder="Introduce el título del libro a buscar" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row"></div>
+                <div class"row">
+                    <div id="display"></div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="row"></div>
-          <div class"row">
-            <div id="display"></div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>';
+</div>
