@@ -1,6 +1,13 @@
 <html>
 
-<?php require 'bp-include/head.php'; ?>
+<?php require 'bp-include/head.php';
+if(isset($_GET['pag'])){
+    if(mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']) == null){
+    $pir = 1;
+}else {
+    $pir = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
+}}
+?>
 
 <body>
     <div>
@@ -18,7 +25,7 @@
                     <option value="card">Vista de tarjetas</option>
                     <option value="table">Vista de tabla</option>
                 </select>
-                <button class="btn btn-primary btn-sm" type="submit">Actualizar</button>
+                <input name="pag" value="<?php echo $pir; ?>" hidden /><button class="btn btn-primary btn-sm" type="submit">Actualizar</button>
             </form>
             <?php if (isset($_GET['organizacion'])) {
                 if (mysqli_real_escape_string($databaseconnection, $_REQUEST['organizacion']) == 'card') {
