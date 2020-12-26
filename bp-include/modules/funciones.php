@@ -260,7 +260,8 @@ if ($sessionlogged == 1) {
                                             <p>Fecha de devolución</p>
                                             <input class="form-control mb-4" value="<?php echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days")); ?>" disabled />
                                         </div>
-                                    </div>
+                                       </div>
+                                    <input type="text" name="identificador" value="<?php echo $id; ?>" hidden/>
                                     <div class="modal-footer">
                                         <input id="saveForm" class="btn btn-success" type="submit" name="prestar" value="Prestar" />
                                     </div>
@@ -407,7 +408,7 @@ if ($sessionlogged == 1) {
         }
 
         if (isset($_POST['prestar'])) {
-            $id = $_REQUEST['id'];
+            $id = $_POST['identificador'];
             $nombre = $_REQUEST["prestar_nombre"];
             $apellido = $_REQUEST["prestar_apellido"];
             $FNAME = "$nombre $apellido";
@@ -428,8 +429,7 @@ if ($sessionlogged == 1) {
                     $sql = "UPDATE `$bbddcatalogo` SET `DISPONIBILIDAD` = '0', `PRESTADOA` = '" . $fnamecheck['USUARIO'] . "', `FECHADEV` = '" . $timestamp . "' WHERE `$bbddcatalogo`.`ID` = " . $id;
                     $databaseconnection->query($sql);
                 }
-                echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente</div>';
-                echo "<meta http-equiv='refresh' content='0;url=/' />";
+                echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente.</div>';
             }
         }
 

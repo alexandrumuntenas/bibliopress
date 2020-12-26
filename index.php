@@ -31,7 +31,7 @@ if (isset($_GET['resultados'])) {
         </header>
         <section class="bp-section">
             <form class="form-inline" action="" method="GET">
-                Búsqueda de usuarios por grupo > &nbsp
+                Tipo de vista > &nbsp
                 </br>
                 <select class="form-control form-control-sm" name="organizacion" id="">
                     <option value="card">Predeterminada</option>
