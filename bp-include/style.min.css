@@ -45,8 +45,8 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  text-shadow: 2px 2px 10px #111;
   font-size: 48px;
+  font-weight: bold;
 }
 
 .bp-section {
@@ -63,15 +63,6 @@ p {
   margin: 15px;
   width: 250px;
   background-color: #fff;
-}
-
-.bp-card-info {
-  border: solid 0 #111;
-  box-shadow: 0 0 10px #aaa;
-  background-color: #fff;
-  height: auto;
-  margin: 10%;
-  padding: 50px;
 }
 
 .bp-viewer {
@@ -385,7 +376,6 @@ a {
   background: #e0e0e0;
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
-  box-shadow: 1px 1px 3px #999;
 }
 
 .sdb-collapse button {
