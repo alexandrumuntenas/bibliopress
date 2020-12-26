@@ -850,7 +850,7 @@ if ($sessionlogged == null) {
                 $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "');";
                 $loginresult = $databaseconnection->query($iniciarsesionsql); } else {
                     $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`, `REMEMBERMEFOREVER`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "', '1');";
-                    $loginresult = $databaseconnection->query($iniciarsesionsql); } 
+                    $loginresult = $databaseconnection->query($iniciarsesionsql); }
                 if ($loginresult == true) {
                     echo "<meta http-equiv='refresh' content='0;url=/' />";
                 } else {
@@ -858,6 +858,7 @@ if ($sessionlogged == null) {
                         . mysqli_error($databaseconnection) . '</div>';
                 }
             } else {
+
                 echo '<div id="snackbar" class="show"> Usuario o contraseña incorrecta</div>';
             }
         };

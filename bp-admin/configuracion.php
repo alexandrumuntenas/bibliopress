@@ -1,6 +1,4 @@
 <?php require '../bp-include/head.php';
-$prpte = "SELECT * FROM `$bbddlog` ORDER BY ID DESC LIMIT 5";
-$prptequery = mysqli_query($databaseconnection, $prpte);
 ?>
 
 <body>
@@ -21,28 +19,6 @@ $prptequery = mysqli_query($databaseconnection, $prpte);
                         <h5>Configuración del catálogo</h5>
                         <p>Vista predeterminada</p>
                         <p>Cantidad de registros</p>
-                    </div>
-                    <div class="bp-card card-body">
-                        <h5>Registro</h5>
-                        <div class="table-responsive">
-                            <table class="table table-hover" style="filter:blur(1px)">
-                                <tbody>
-                                    <?php
-                                    if ($prptequery->num_rows > 0) {
-                                        while ($prpterow = $prptequery->fetch_assoc()) {
-                                            echo '<tr>  
-                                        <td>' . $prpterow["TTY"] . ' <em>activado por </em><strong>' . $prpterow["USUARIO"] . '</strong></td>
-
-                                    </tr>';
-                                        }
-                                    } else {
-                                        echo "<tr><td>No tienes préstamos pendiente de devolución</td></tr>";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <a href="registro.php" class="btn-primary btn btn-sm">Ver registro completo</a>
-                        </div>
                     </div>
                     <div class="bp-card card-body">
                         <h5>Actualizaciones</h5>
