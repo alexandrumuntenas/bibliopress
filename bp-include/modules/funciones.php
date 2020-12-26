@@ -249,12 +249,8 @@ if ($sessionlogged == 1) {
 
                                     <div class="modal-body">
                                         <div class="md-form">
-                                            <label class="description" for="element_1">Nombre </label>
-                                            <input id="element_1" name="prestar_nombre" class="form-control mb-4" type="text" maxlength="255" value="" />
-                                        </div>
-                                        <div class="md-form">
-                                            <label class="description" for="element_2">Apellido </label>
-                                            <input id="element_2" name="prestar_apellido" class="form-control mb-4" type="text" maxlength="255" value="" />
+                                            <label class="description" for="element_1">Id del usuario </label>
+                                            <input id="element_1" name="prestar_uid" class="form-control mb-4" type="text" maxlength="255" value="" />
                                         </div>
                                         <div>
                                             <p>Fecha de devolución</p>
@@ -409,10 +405,8 @@ if ($sessionlogged == 1) {
 
         if (isset($_POST['prestar'])) {
             $id = $_POST['identificador'];
-            $nombre = $_REQUEST["prestar_nombre"];
-            $apellido = $_REQUEST["prestar_apellido"];
-            $FNAME = "$nombre $apellido";
-            $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `FULLNAME` = '" . $FNAME . "'";
+            $uid = $_REQUEST["prestar_uid"];
+            $fnamechecksql = "SELECT * FROM `$bbddusuarios` WHERE `ID` LIKE '" . $uid . "'";
             $fnamedata = mysqli_query($databaseconnection, $fnamechecksql);
             $fnamecheck = mysqli_fetch_assoc($fnamedata);
             $usuariocompleto = $fnamecheck['USUARIO'];
@@ -425,11 +419,12 @@ if ($sessionlogged == 1) {
             if ($cantidadprestada >= 5) {
                 echo '<div id="snackbar" class="show"> Error! Parece que este usuario tiene más de 5 préstamos activos</div>';
             } else {
-                if ($fnamecheck['FULLNAME'] == $FNAME) {
+                if ($fnamecheck['ID'] == $uid) {
                     $sql = "UPDATE `$bbddcatalogo` SET `DISPONIBILIDAD` = '0', `PRESTADOA` = '" . $fnamecheck['USUARIO'] . "', `FECHADEV` = '" . $timestamp . "' WHERE `$bbddcatalogo`.`ID` = " . $id;
                     $databaseconnection->query($sql);
                 }
-                echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente.</div>';
+                echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente</div>';
+                echo "<meta http-equiv='refresh' content='0;url=/' />";
             }
         }
 
