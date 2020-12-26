@@ -151,15 +151,17 @@
 
 						$bpadmingroup = "INSERT INTO `" . $prefixtable . "_grupo` (`NOMBRE`) VALUES ('Administrativo')";
 
-						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS NOW() ON COMPLETION PRESERVE ENABLE DO BEGIN
+						$bpcovidevent = "CREATE DEFINER=`$username`@`%` EVENT `" . $prefixtable . "_Confinamiento` ON SCHEDULE EVERY 1 DAY STARTS NOW() ON COMPLETION PRESERVE ENABLE DO BEGIN
 						SELECT * FROM `" . $prefixtable . "_catalogo` WHERE DISPONIBILIDAD = 2 AND FECHADEV = CURRENT_DATE AND `ENBIBLIO` = 1;
 						UPDATE `" . $prefixtable . "_catalogo` SET DISPONIBILIDAD = 1, PRESTADOA = NULL, FECHADEV = NULL;
 						END";
 
-						$bpdevolevent = "CREATE DEFINER=`$username`@`%` EVENT `Devolucion` ON SCHEDULE EVERY 1 DAY STARTS NOW() ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+						$bpdevolevent = "CREATE DEFINER=`$username`@`%` EVENT `" . $prefixtable . "_Devolucion` ON SCHEDULE EVERY 1 DAY STARTS NOW() ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
 						SELECT * FROM `" . $prefixtable . "_catalogo` WHERE DISPONIBILIDAD = 0 AND FECHADEV = CURRENT_DATE;
 						UPDATE `" . $prefixtable . "_catalogo` SET DISPONIBILIDAD = 3;
 						END";
+
+						$bpdelogger = "CREATE DEFINER=`$username`@`%` EVENT `" . $prefixtable . "_Delogger` ON SCHEDULE EVERY 1 DAY STARTS NOW() ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM " . $prefixtable . "_sesiones";
 
 						$eventlog = "INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Comienzo de instalación de Bibliopress','$usuario'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear archivo de configuración','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla usuarios','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla catálogo','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla sesiones','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla grupos','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla comentarios','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla solicitudes','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear tabla registros','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear usuario administrativo','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear grupo \'Administrativo\'','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear evento Covid19','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Crear evento Devolver','Instalador (verificado)'); INSERT INTO `" . $prefixtable . "_registro` (`FECHA`,`TTY`,`USUARIO`) VALUES (CURRENT_TIMESTAMP,'Finalizar instalación de Bibliopress','Instalador (verificado)');";
 
@@ -240,6 +242,13 @@
 						echo '</span></p>';
 						echo '<p>Creación de Evento "Devolución" ';
 						if (!mysqli_query($conn, $bpdevolevent)) {
+							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
+						} else {
+							echo ("<span style='color: green'>OK!</span>");
+						}
+						echo '</span></p>';
+						echo '<p>Creación de Evento "Delogger" ';
+						if (!mysqli_query($conn, $bpdelogger)) {
 							echo ("<span style='color:red'>Error!" . mysqli_error($conn));
 						} else {
 							echo ("<span style='color: green'>OK!</span>");
