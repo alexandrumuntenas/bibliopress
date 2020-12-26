@@ -840,13 +840,17 @@ if ($sessionlogged == null) {
     if (isset($_POST['login'])) {
         $usuario = mysqli_real_escape_string($databaseconnection, $_POST["usuario"]);
         $contrasena = mysqli_real_escape_string($databaseconnection, $_POST["contrasena"]);
+        $rmf = mysqli_real_escape_string($databaseconnection, $_POST['rmf']);
         if ($usuario != null) {
             $loginsql = "SELECT * FROM `$bbddusuarios` WHERE `usuario` LIKE '" . $usuario . "'";
             $loginquery = $databaseconnection->query($loginsql);
             $loginresultado = mysqli_fetch_assoc($loginquery);
             if (password_verify($contrasena, $loginresultado['PASSWD'])) {
+                if($rmf == null){
                 $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "');";
-                $loginresult = $databaseconnection->query($iniciarsesionsql);
+                $loginresult = $databaseconnection->query($iniciarsesionsql); } else {
+                    $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`, `REMEMBERMEFOREVER`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "', '1');";
+                    $loginresult = $databaseconnection->query($iniciarsesionsql); } 
                 if ($loginresult == true) {
                     echo "<meta http-equiv='refresh' content='0;url=/' />";
                 } else {
@@ -876,7 +880,7 @@ if ($sessionlogged == null) {
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <label class="form-check-label"><input type="checkbox" checked disabled> Remember me (Función en Desarrollo)</label>
+                        <label class="form-check-label"><input type="checkbox" value="1" name="rmf"> Remember me (Función en Desarrollo)</label>
                         <input type="submit" class="btn btn-primary" name="login" value="Login">
                     </div>
                 </form>
