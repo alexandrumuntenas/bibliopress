@@ -66,18 +66,6 @@
                 <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
               </div>
             </li>
-            <li>
-              <span class="fab-label">Subir usuarios desde CSV</span>
-              <div class="fab-icon-holder">
-                <a type="link" data-toggle="modal" data-target="#subirusuarios"><i class="fas fa-upload"></i></a>
-              </div>
-            </li>
-            <li>
-              <span class="fab-label">Subir grupos desde CSV</span>
-              <div class="fab-icon-holder">
-                <a type="link" data-toggle="modal" data-target="#subirgrupos"><i class="fas fa-upload"></i></a>
-              </div>
-            </li>
           </ul>
         </div> <?php }
             } ?>
