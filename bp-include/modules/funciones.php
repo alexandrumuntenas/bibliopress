@@ -46,7 +46,8 @@ if ($sessionlogged == 1) {
             $avatar = "https://i2.wp.com/ui-avatars.com/api/" . $nombre . "/128?ssl=1";
             $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`, `AVATAR`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$PASSWD', '$permiso', '$avatar')";
             $databaseconnection->query($insert);
-            #mail('bibliopress@localhost.com','Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random",'bibliopress@localhost.com');
+            $dominio = $_SERVER['HTTP_HOST'];
+            mail("$celectronico",'Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random", "From: bibliopress@$dominio");
             echo '<div id="snackbar" class="show"> Se ha añadido el usuario correctamente</div>';
         }
         if (isset($_POST['promocioncurso'])) {
