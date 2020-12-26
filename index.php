@@ -25,6 +25,11 @@ if (isset($_GET['resultados'])) {
 <body>
     <div>
         <header>
+            <script>
+                $(function() {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
             <div class="bp-header">
                 <h2 class="bp-page-title">Catálogo</h2>
             </div>
@@ -178,13 +183,13 @@ if (isset($_GET['resultados'])) {
                                                             </div>
                                                             <div class="card-body">
                                                                 <h4 class="card-title"> <?php if ($row[13] == 1) {
-                                                                                            echo '<span class="badge badge-success">✓</span>';
+                                                                                            echo '<a class="badge badge-success" data-toggle="tooltip" data-placement="right" title="El libro está disponible">✓</a>';
                                                                                         } else if ($row[13] == 2) {
-                                                                                            echo '<span class="badge badge-warning">😷</span>';
+                                                                                            echo '<span class="badge badge-warning" data-toggle="tooltip" data-placement="right" title="El libro se encuentra en confinamiento">😷</span>';
                                                                                         } else if ($row[13] == 3) {
-                                                                                            echo '<span class="badge badge-danger">📥</span>';
+                                                                                            echo '<span class="badge badge-danger" data-toggle="tooltip" data-placement="right" title="El libro está pendiente de devolución">📥</span>';
                                                                                         } else {
-                                                                                            echo '<span class="badge badge-danger">✕</span>';
+                                                                                            echo '<span class="badge badge-danger" data-toggle="tooltip" data-placement="right" title="El libro no está disponible">✕</span>';
                                                                                         } ?> <?php echo $row[6]; ?> </h4>
                                                                 <p class="card-text"><?php echo $desc; ?></p>
                                                             </div>
@@ -201,15 +206,14 @@ if (isset($_GET['resultados'])) {
                                                         </div><?php } else { ?>
                                                         <tr>
                                                             <td>
-                                                                <?php
-                                                                if ($row[13] == 1) {
-                                                                    echo '<span class="badge badge-success">✓</span>';
+                                                                <?php if ($row[13] == 1) {
+                                                                    echo '<a class="badge badge-success" data-toggle="tooltip" data-placement="right" title="El libro está disponible">✓</a>';
                                                                 } else if ($row[13] == 2) {
-                                                                    echo '<span class="badge badge-warning">😷</span>';
+                                                                    echo '<span class="badge badge-warning" data-toggle="tooltip" data-placement="right" title="El libro se encuentra en confinamiento">😷</span>';
                                                                 } else if ($row[13] == 3) {
-                                                                    echo '<span class="badge badge-danger">📥</span>';
+                                                                    echo '<span class="badge badge-danger" data-toggle="tooltip" data-placement="right" title="El libro está pendiente de devolución">📥</span>';
                                                                 } else {
-                                                                    echo '<span class="badge badge-danger">✕</span>';
+                                                                    echo '<span class="badge badge-danger" data-toggle="tooltip" data-placement="right" title="El libro no está disponible">✕</span>';
                                                                 } ?>
 
                                                             <td><?php echo $row[6]; ?></td>
@@ -238,13 +242,13 @@ if (isset($_GET['resultados'])) {
                                                             </div>
                                                             <div class="card-body">
                                                                 <h4 class="card-title"> <?php if ($row[13] == 1) {
-                                                                                            echo '<span class="badge badge-success">✓</span>';
+                                                                                            echo '<a class="badge badge-success" data-toggle="tooltip" data-placement="right" title="El libro está disponible">✓</a>';
                                                                                         } else if ($row[13] == 2) {
-                                                                                            echo '<span class="badge badge-warning">😷</span>';
+                                                                                            echo '<span class="badge badge-warning" data-toggle="tooltip" data-placement="right" title="El libro se encuentra en confinamiento">😷</span>';
                                                                                         } else if ($row[13] == 3) {
-                                                                                            echo '<span class="badge badge-danger">📥</span>';
+                                                                                            echo '<span class="badge badge-danger" data-toggle="tooltip" data-placement="right" title="El libro está pendiente de devolución">📥</span>';
                                                                                         } else {
-                                                                                            echo '<span class="badge badge-danger">✕</span>';
+                                                                                            echo '<span class="badge badge-danger" data-toggle="tooltip" data-placement="right" title="El libro no está disponible">✕</span>';
                                                                                         } ?> <?php echo $row[6]; ?> </h4>
                                                                 <p class="card-text"><?php echo $desc; ?></p>
                                                             </div>
