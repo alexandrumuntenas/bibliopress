@@ -74,7 +74,6 @@
 						`PASSWD` varchar(128) NOT NULL,
 						`PERM` int(1) NOT NULL,
 						`AVATAR` varchar(1024) NOT NULL DEFAULT '',
-						`THEME` int(11) NOT NULL DEFAULT 0,
 						PRIMARY KEY (`ID`)
 						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 
