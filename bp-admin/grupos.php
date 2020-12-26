@@ -47,9 +47,9 @@
                             while ($gr = $consulta->fetch_assoc()) {
                                 echo '<tr>
                                     <form method="POST" action="">
-                                        <td data-label="Nombre"><br>' . $gr["NOMBRE"] . '</td>
-                                        <td data-label="Usuarios"><br><a href="usuarios.php?grupo=' . $gr["NOMBRE"] . '" type="button" class="btn btn-light btn-sm"/>Ver usuarios</a></td>
-                                        <td data-label="Acciones disponibles"><br>
+                                        <td data-label="Nombre">' . $gr["NOMBRE"] . '</td>
+                                        <td data-label="Usuarios"><a href="usuarios.php?grupo=' . $gr["NOMBRE"] . '" type="button" class="btn btn-light btn-sm"/>Ver usuarios</a></td>
+                                        <td data-label="Acciones disponibles">
                                             <form method="POST" action=""><input type="hidden" name="grupodel" value="' . $gr['ID'] . '" /><input name="delgr" type="submit" value="Eliminar" /></form>
                                         </td>
                                     </form>

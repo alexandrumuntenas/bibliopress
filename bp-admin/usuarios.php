@@ -79,11 +79,11 @@
                                     //datos de cada columna
                                     while ($row = $consulta->fetch_assoc()) {
                                         echo '<tr>
-                                            <td data-label="Usuario"><br>' . $row["USUARIO"] . '</td>
-                                            <td data-label="Nombre"><br>' . $row["NOMBRE"] . '</td>
-                                            <td data-label="Apellidos"><br>' . $row["APELLIDOS"] . '</td>
-                                            <td data-label="Grupo"><br>' . $row["CLASE"] . '</td>
-                                            <td data-label="Acciones disponibles"><br><a style="color:blue;" href="?edit=usuario&id=' . $row["ID"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
+                                            <td data-label="Usuario">' . $row["USUARIO"] . '</td>
+                                            <td data-label="Nombre">' . $row["NOMBRE"] . '</td>
+                                            <td data-label="Apellidos">' . $row["APELLIDOS"] . '</td>
+                                            <td data-label="Grupo">' . $row["CLASE"] . '</td>
+                                            <td data-label="Acciones disponibles"><a style="color:blue;" href="?edit=usuario&id=' . $row["ID"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
                                                 </tr>';
                                     }
                                 } ?>
