@@ -1,12 +1,25 @@
 <html>
 
 <?php require 'bp-include/head.php';
-if(isset($_GET['pag'])){
-    if(mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']) == null){
+if (isset($_GET['pag'])) {
+    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']) == null) {
+        $pir = 1;
+    } else {
+        $pir = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
+    }
+} else {
     $pir = 1;
-}else {
-    $pir = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
-}}
+}
+
+if (isset($_GET['resultados'])) {
+    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']) == null) {
+        $qtyresultado = $CantidadMostrar;
+    } else {
+        $qtyresultado = mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']);
+    }
+} else {
+    $qtyresultado = $CantidadMostrar;
+}
 ?>
 
 <body>
@@ -25,6 +38,15 @@ if(isset($_GET['pag'])){
                     <option value="card">Vista de tarjetas</option>
                     <option value="table">Vista de tabla</option>
                 </select>
+                &nbsp Cantidad de resultados por página > &nbsp
+                <select class="form-control form-control-sm" name="resultados" id="">
+                    <option value="9">Predeterminado</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="250">250</option>
+                    <option value="500">500</option>
+                </select>
                 <input name="pag" value="<?php echo $pir; ?>" hidden /><button class="btn btn-primary btn-sm" type="submit">Actualizar</button>
             </form>
             <?php if (isset($_GET['organizacion'])) {
@@ -32,8 +54,9 @@ if(isset($_GET['pag'])){
                     $org = "card" ?> <center>
                         <div class="row d-flex justify-content-center"><?php } else {
                                                                         $org = "table" ?> <div class="lectores">
+                                <input class="inputbusqueda" type="text" id="titulolibro" onkeyup="filtrocatalogo()" placeholder="Busca por título del libro..." title="Escribe el título del libro">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-hover">
+                                    <table class="table table-striped table-hover" id="tb-pres">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>Disponibilidad</th>
@@ -55,11 +78,11 @@ if(isset($_GET['pag'])){
                                             <?php
                                             $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
                                             $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddcatalogo`");
-                                            $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
+                                            $TotalRegistro  = ceil($TotalReg->num_rows / $qtyresultado);
                                             $consultavistas = "SELECT * FROM `$bbddcatalogo`
                                     ORDER BY
                                     id ASC
-                                    LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                                    LIMIT " . (($compag - 1) * $qtyresultado) . " , " . $qtyresultado;
                                             $consulta = $databaseconnection->query($consultavistas);
                                             while ($row = $consulta->fetch_row()) {
                                                 $long = 250;
@@ -248,21 +271,21 @@ if(isset($_GET['pag'])){
                     </center> <?php } ?>
                 <?php $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
                 $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
-                echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&pag=" . $DecrementNum . "\">&laquo;</a></li>";
-                $Desde = $compag - (ceil($CantidadMostrar / 2) - 1);
-                $Hasta = $compag + (ceil($CantidadMostrar / 2) - 1);
+                echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $DecrementNum . "\">&laquo;</a></li>";
+                $Desde = $compag - (ceil($qtyresultado / 2) - 1);
+                $Hasta = $compag + (ceil($qtyresultado / 2) - 1);
                 $Desde = ($Desde < 1) ? 1 : $Desde;
-                $Hasta = ($Hasta < $CantidadMostrar) ? $CantidadMostrar : $Hasta;
+                $Hasta = ($Hasta < $qtyresultado) ? $qtyresultado : $Hasta;
                 for ($i = $Desde; $i <= $Hasta; $i++) {
                     if ($i <= $TotalRegistro) {
                         if ($i == $compag) {
-                            echo "<li class=\"page-item active\"><a class='page-link' href=\"?organizacion=$org&pag=" . $i . "\">" . $i . "</a></li>";
+                            echo "<li class=\"page-item active\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $i . "\">" . $i . "</a></li>";
                         } else {
-                            echo "<li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&pag=" . $i . "\">" . $i . "</a></li>";
+                            echo "<li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $i . "\">" . $i . "</a></li>";
                         }
                     }
                 }
-                echo "<li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
+                echo "<li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
                 ?>
         </section>
     </div>
