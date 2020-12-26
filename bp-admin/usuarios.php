@@ -63,7 +63,7 @@
                 </form>
                 <div class="lectores">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        <table class="table  table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Correo Electrónico</th>
