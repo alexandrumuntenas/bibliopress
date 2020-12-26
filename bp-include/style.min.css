@@ -1,5 +1,5 @@
 body {
-  background-color: #f4f4f4;
+  background-color: #F1F1F1 !important;
 }
 
 p {
@@ -105,10 +105,10 @@ p {
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
 }
-
 #sidebar-wrapper .sidebar-heading {
   padding: 0.875rem 1.25rem;
   font-size: 1.2rem;
+  font-weight:bold;
 }
 
 #sidebar-wrapper .list-group {
@@ -177,39 +177,6 @@ a {
   text-decoration: none;
 }
 
-.active > a {
-  background: rgb(255, 116, 0);
-}
-
-.ulp {
-  margin-left: 0px;
-  padding: 0px;
-}
-
-.ulp > li {
-  list-style: none;
-  display: inline-block;
-  margin-right: 7px;
-}
-
-.ulp > li > a {
-  color: #ffffff;
-  text-decoration: none;
-  padding: 5px 10px 5px 10px;
-  display: block;
-  background: #1e5799;
-  /* Old browsers */
-  border-radius: 20px;
-}
-
-.btnp > a {
-  padding: 2px;
-  background: #1e5799;
-  /* Old browsers */
-  border-radius: 2px;
-  text-align: center;
-  width: 30px;
-}
 
 .buscador-ajax {
   border: none;
@@ -219,7 +186,7 @@ a {
   width: 500px;
   border: 1px solid #dfe1e5;
   outline: none;
-  border-radius: 0.25rem;
+  border-radius: .25rem;
 }
 
 .tarjetasbusqueda {
@@ -228,7 +195,7 @@ a {
   width: 50%;
   background-color: #fff;
   border: solid 1px #333;
-  border-radius: 5px;
+  border-radius: .25rem;
 }
 
 .tarjetasbusqueda:hover {
@@ -244,7 +211,7 @@ a {
 }
 
 .buscador-ajax[type="submit"] {
-  border-radius: 2px;
+  border-radius: .25rem;
   background: #f2f2f2;
   border: 1px solid #f2f2f2;
   color: #757575;
@@ -334,7 +301,7 @@ a {
   align-self: center;
   user-select: none;
   white-space: nowrap;
-  border-radius: 3px;
+  border-radius: .25rem;
   font-size: 16px;
   background: #666666;
   color: #ffffff;
@@ -349,7 +316,7 @@ a {
   background-color: #333;
   color: #fff;
   text-align: center;
-  border-radius: 2px;
+  border-radius: .25rem;
   padding: 16px;
   position: fixed;
   left: 50%;
@@ -475,13 +442,13 @@ form ul {
 
 hr.rounded {
   border-top: 3px solid #ddd;
-  border-radius: 5px;
+  border-radius: .25rem;
   width: 95%;
   height: 3px;
 }
 div.comentario {
   border: solid 1px #ddd;
-  border-radius: 0.5rem;
+  border-radius: .25rem;
   padding: 10px;
   margin: 10px;
   width: 100% !important;
