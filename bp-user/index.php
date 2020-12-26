@@ -65,10 +65,11 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                             </table>
                         </div>
                     </div>
-                    <div class="bp-card card-body">
+                    <div class="bp-card card-body" style="filter:blur(10px)">
                         <h5>Tus Últimas Lecturas</h5>
                         <p>No te emociones, seguimos trabajando en ello</p>
                     </div>
+                    <div class="w-100"></div>
                     <div class="bp-card card-body">
                         <h5>Sobre Mí</h5>
                         <div class="md-form">
@@ -84,11 +85,11 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                             <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['ID']; ?>" readonly />
                         </div>
                     </div>
-                    <div class="bp-card card-body">
+                    <div class="bp-card card-body" style="filter:blur(10px)">
                         <h5>Mi Avatar</h5>
                         <p>No te emociones, seguimos trabajando en ello</p>
                     </div>
-                    <div class="bp-card card-body">
+                    <div class="bp-card card-body" style="filter:blur(10px)">
                         <h5>Notificaciones</h5>
                         <p>No te emociones, seguimos trabajando en ello</p>
                     </div>
