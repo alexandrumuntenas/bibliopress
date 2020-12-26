@@ -2,7 +2,6 @@
         function handleResponse(response) {
             for (var i = 0; i < response.items.length; i++) {
                 var item = response.items[i];
-                // in production code, item.text should have the HTML entities escaped.
                 document.getElementById("titulo").value = item.volumeInfo.title;
                 document.getElementById("autor").value = item.volumeInfo.authors;
                 document.getElementById("editorial").value = item.publisher;
