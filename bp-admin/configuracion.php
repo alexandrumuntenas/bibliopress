@@ -16,9 +16,8 @@
         ?>
                 <div class="row">
                     <div class="bp-card card-body">
-                        <h5>Configuración del catálogo</h5>
-                        <p>Vista predeterminada</p>
-                        <p>Cantidad de registros</p>
+                        <h5>Configuración del sitio</h5>
+                        <p>Seguimos trabajando en ello</p>
                     </div>
                     <div class="bp-card card-body">
                         <h5>Actualizaciones</h5>
