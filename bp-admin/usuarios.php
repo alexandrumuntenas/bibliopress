@@ -16,15 +16,22 @@
                 $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
                 if (isset($_GET['grupo'])) {
                     $gr = $_GET['grupo'];
-                    if ($gr != NULL) {
+                    if ($gr == 'all') {
+                        $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddusuarios`");
+                        $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
+                        $consultavistas = "SELECT * FROM `$bbddusuarios`
+                                    ORDER BY
+                                    id ASC
+                                    LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
+                        $consulta = $databaseconnection->query($consultavistas);
+                    } else if ($gr != NULL) {
                         $TotalReg       = $databaseconnection->query("SELECT * FROM `$bbddusuarios` WHERE `CLASE` LIKE '$gr'");
                         $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
                         $consultavistas = "SELECT * FROM `$bbddusuarios` WHERE `CLASE` LIKE '$gr'
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
-                        $consulta = $databaseconnection->query($consultavistas);
-                    } else {
+                        $consulta = $databaseconnection->query($consultavistas);} else {
                         $TotalReg       = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios`");
                         $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
                         $consultavistas = "SELECT * FROM `$bbddusuarios`
@@ -48,6 +55,7 @@
                     Búsqueda de usuarios por grupo > &nbsp
                     </br>
                     <select class="form-control form-control-sm" name="grupo" id="">
+                        <option value="all" selected>Todos los grupos</option>
                         <option value="No asignado">No asignado</option>
                         <?php
                         mysqli_data_seek($grupoquery, 0);
