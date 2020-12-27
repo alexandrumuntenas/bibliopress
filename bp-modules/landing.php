@@ -84,13 +84,6 @@ if (isset($_GET['resultados'])) {
                             </span>
                         </center>
                     </a>
-                    <a class="bp-card card-body" href="?r=site/admin/notificaciones">
-                        <center><span class="landingicon"><i class="fas fa-bell"></i>
-                                </br>
-                                Gestionar Notificaciones
-                            </span>
-                        </center>
-                    </a>
                 <?php } ?>
             </div>
         </section>
