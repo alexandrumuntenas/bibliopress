@@ -14,8 +14,4 @@
 
 > Si se muestra algún error durante la instalación, copiar el error e indicarlo en el apartado de issues.
 
-### Primeros pasos
-1. Hacemos clic sobre Acceder e iniciamos sesión. Cómo administradores, nos saldrá un + en la parte inferior derecha. Al poner el ratón sobre este, nos mostrarán varias opciones. Si queremos elegir una, hacemos clic sobre esta.
-2. En la parte izquierda, se encuentra el menú.
-
 Proyecto realizado por duoestudios
