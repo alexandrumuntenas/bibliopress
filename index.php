@@ -6,7 +6,7 @@ require FS_ROOT . '/bp-include/head.php';
 $requestedpage = mysqli_real_escape_string($databaseconnection, $_REQUEST['r']);
 $pag = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
 
-if($pag == null){
+if ($pag == null) {
     $pag = 1;
 }
 

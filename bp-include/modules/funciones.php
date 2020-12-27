@@ -834,13 +834,13 @@ if ($sessionlogged == 1) {
 
     if (isset($_POST['actualizarpwd'])) {
         $cmailusuario = mysqli_real_escape_string($databaseconnection, $_POST['cmailusuario']);
-        if($cmailusuario == $sessionus) {
+        if ($cmailusuario == $sessionus) {
             $contrasenaantigua = mysqli_real_escape_string($databaseconnection, $_POST['antiguacontrasena']);
             $pwdold = mysqli_fetch_assoc(mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '$cmailusuario'"));
-            if(password_verify($contrasenaantigua, $pwdold['PASSWD']) == true){
+            if (password_verify($contrasenaantigua, $pwdold['PASSWD']) == true) {
                 $contrasenanueva = mysqli_real_escape_string($databaseconnection, $_POST['contrasenanueva']);
                 $contrasenanuevaverificado = mysqli_real_escape_string($databaseconnection, $_POST['contrasenanuevaverificado']);
-                if($contrasenanueva == $contrasenanuevaverificado){
+                if ($contrasenanueva == $contrasenanuevaverificado) {
                     $newpwd = password_hash($contrasenanueva, PASSWORD_BCRYPT);
                     mysqli_query($databaseconnection, "UPDATE `$bbddusuarios` SET `PASSWD` = '$newpwd' WHERE `bp_usuarios`.`USUARIO` = '$cmailusuario'");
                     if (mysqli_error($databaseconnection)) {
@@ -851,8 +851,6 @@ if ($sessionlogged == 1) {
                 } else {
                     echo '<div id="snackbar" class="show"> Las contraseñas no coinciden</div>';
                 }
-                
-
             } else {
                 echo '<div id="snackbar" class="show"> La contraseña actual no es correcta</div>';
             }
