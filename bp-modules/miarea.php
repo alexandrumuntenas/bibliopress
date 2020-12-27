@@ -84,20 +84,36 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                             <input id="element_2" name="element_2" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $qlector['ID']; ?>" readonly />
                         </div>
                     </div>
-                    <div class="bp-card card-body" style="filter:blur(10px)">
-                        <h5>Mi Avatar</h5>
-                        <p>No te emociones, seguimos trabajando en ello</p>
+                    <div class="bp-card card-body">
+                        <h5>Cambiar contraseña</h5>
+                        <form class="md-form" method="post" action="">
+                            <div class="md-form">
+                                <label class="description" for="element_2">Contaseña Antigua</label>
+                                <input id="element_2" name="antiguacontrasena" class="form-control form-control-sm" type="text" maxlength="255" />
+                            </div>
+                            <div class="md-form">
+                                <label class="description" for="element_2">Contreseña Nueva</label>
+                                <input id="element_2" name="nuevacontrasena" class="form-control form-control-sm" type="text" maxlength="255" />
+                            </div>
+                            <div class="md-form">
+                                <label class="description" for="element_2">Volver a escribir contraseña nueva</label>
+                                <input id="element_2" name="nuevacontrasenaverificado" class="form-control form-control-sm" type="text" maxlength="255" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="bp-card card-body">
+                        <h5>Mi avatar</h5>
+                        <center>
+                            <img style="margin-right:10px;  vertical-align: middle;  width: 128px;  height: 128px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>">
+                        </center>
+                        </br>
+                        <p>Seguimos trabajando para que puedas subir tu propia foto de perfil!</p>
                     </div>
                     <div class="bp-card card-body" style="filter:blur(10px)">
                         <h5>Notificaciones</h5>
-                        <p>No te emociones, seguimos trabajando en ello</p>
                     </div>
-                </div> <?php } else { ?> <p>No tienes permiso para acceder a esta página</p><?php } ?>
+                </div><?php } else { ?> <p>No tienes permiso para acceder a esta página</p><?php } ?>
         </section>
-        <footer class="page-footer bg-primary">
-            <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
-            </div>
-        </footer>
 </body>
 
 </html>
