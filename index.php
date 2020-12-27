@@ -31,7 +31,12 @@ if (isset($_GET['r'])) {
             break;
         default:
             require FS_ROOT . '/bp-modules/404.php';
-    }
+    } ?>
+    <footer class="page-footer bg-primary">
+        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
+        </div>
+    </footer>
+<?php
 } else {
     echo "<meta http-equiv='refresh' content='0;url=./?r=site/catalogo' />";
 }

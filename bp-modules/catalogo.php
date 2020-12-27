@@ -289,10 +289,6 @@ if (isset($_GET['resultados'])) {
                 ?>
         </section>
     </div>
-    <footer class="page-footer bg-primary">
-        <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bookpress</a>
-        </div>
-    </footer>
 </body>
 
 </html>
