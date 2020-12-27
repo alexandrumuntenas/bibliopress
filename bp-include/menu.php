@@ -62,12 +62,6 @@
                 <a type="link" data-toggle="modal" data-target="#addgroup"><i class="fas fa-users"></i></a>
               </div>
             </li>
-            <li>
-              <span class="fab-label">Subir libros desde Abies</span>
-              <div class="fab-icon-holder">
-                <a type="link" data-toggle="modal" data-target="#subirabies"><i class="fas fa-upload"></i></a>
-              </div>
-            </li>
           </ul>
         </div> <?php }
             } ?>

@@ -1,6 +1,7 @@
 <?php
-        $registro = mysqli_query($databaseconnection, "SELECT * FROM `$bbddlog` LIMIT 3");
+$registro = mysqli_query($databaseconnection, "SELECT * FROM `$bbddlog` LIMIT 3");
 ?>
+
 <body>
     <header>
         <div class="bp-header">
@@ -21,6 +22,11 @@
                         <p>Nombre del centro: <?php echo $sname; ?></p>
                         <p>Ruta del sitio: <?php echo $_SERVER['DOCUMENT_ROOT']; ?></p>
                         <p>Ruta de la instalación de Bibliopress: <?php echo FS_ROOT . '/'; ?>
+                    </div>
+                    <div class="bp-card card-body">
+                        <h5>Importar datos</h5>
+                        <a class="btn btn-primary btn-sm" type="link" data-toggle="modal" data-target="#subirabies">Importar catálogo desde Abies</a>
+                        <a class="btn btn-primary btn-sm" type="link" data-toggle="modal" data-target="#subirbiblioweb">Importar catálogo desde Biblioweb</a>
                     </div>
                     <div class="bp-card card-body">
                         <h5>Últimos movimientos</h5>

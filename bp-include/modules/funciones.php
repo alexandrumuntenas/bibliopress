@@ -1,4 +1,4 @@
-<?php
+<?php header('Content-Type: text/html; charset=UTF-8');
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         if (isset($_POST['publishgroup'])) {
@@ -84,6 +84,40 @@ if ($sessionlogged == 1) {
             fclose($handle);
             echo "<div id=\"snackbar\" class=\"show\"><i class=\"fas fa-upload\"></i> Se han procesado <b>$fila ejemplares</b>. Importación Finalizada</div>";
         }
+
+        if (isset($_POST['bibliowebupload'])) {
+            if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
+            }
+            ini_set("auto_detect_line_endings", true);
+            $handle = fopen($_FILES['filename']['tmp_name'], "r");
+            $fila = -5;
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                $fila++;
+                if ($fila > 0) {
+                    $encodigo = $databaseconnection->real_escape_string($data[1]);
+                    $enisbn = $databaseconnection->real_escape_string($data[2]);
+                    $entitulo = $databaseconnection->real_escape_string($data[3]);
+                    $enautor = $databaseconnection->real_escape_string($data[5]);
+                    $entipoejemplar = $databaseconnection->real_escape_string($data[8]);
+                    $enubicacion = $databaseconnection->real_escape_string($data[9]);
+                    $endisponibilidad = $databaseconnection->real_escape_string($data[11]);
+                    $codigo = utf8_encode($encodigo);
+                    $isbn = utf8_encode($enisbn);
+                    $titulo = utf8_encode($entitulo);
+                    $autor = utf8_encode($enautor);
+                    $tipoejemplar = utf8_encode($entipoejemplar);
+                    $ubicacion = utf8_encode($enubicacion);
+                    $disponibilidad = utf8_encode($endisponibilidad);
+                    $import = "INSERT INTO `$bbddcatalogo` (EJEMPLAR, ISBN, TITULO, AUTOR, TIPOEJEMPLAR, UBICACION, DISPONIBILIDAD) values('$codigo','$isbn','$titulo','$autor','$tipoejemplar','$ubicacion','$disponibilidad')";
+                    $rs = mysqli_query($databaseconnection, $import);
+                    echo mysqli_error($databaseconnection);
+                }
+            }
+            fclose($handle);
+            mysqli_query($databaseconnection,"INSERT INTO `$bbddlog` (FECHA,TTY,USUARIO,IP) VALUES ('$fecha_actual','El cargador Biblioweb ha cargado '.$fila.' ejemplares','$sessionus','$ip_address'");
+            echo "<div id=\"snackbar\" class=\"show\"><i class=\"fas fa-upload\"></i> Se han procesado <b>$fila ejemplares</b>. Importación Finalizada</div>";
+        }
+
         if (isset($_POST['delgr'])) {
             $GRUPO = mysqli_real_escape_string($databaseconnection, $_POST['grupodel']);
             $query = "DELETE FROM `$bbddgrupos` WHERE `ID` = '" . $GRUPO . "' ";
@@ -644,7 +678,28 @@ if ($sessionlogged == 1) {
                         <form enctype="multipart/form-data" action="" method="post" accept=".txt">Nombre de archivo *.TXT a subir:<br /><br /><input size="50" type="file" name="filename">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                <input id="saveForm" class="btn btn-primary" type="submit" name="abiesupload" value="Subir" />
+                                <input id="saveForm" class="btn btn-primary" type="submit" name="abiesupload" value="Importar" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="subirbiblioweb" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subirabies" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-title heading lead" id="subirbiblioweb"><i class="fas fa-upload" style="color:#FFF"></i> Subir desde Biblioweb (JDA)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form enctype="multipart/form-data" action="" method="post" accept=".csv">Nombre de archivo *.CSV a subir:<br /><br /><input size="50" type="file" name="filename">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <input id="saveForm" class="btn btn-primary" type="submit" name="bibliowebupload" value="Importar" />
                             </div>
                         </form>
                     </div>
