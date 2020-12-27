@@ -22,6 +22,12 @@ if (isset($_GET['r'])) {
         case 'site/user':
             require FS_ROOT . '/bp-modules/miarea.php';
             break;
+        case 'site/user/log':
+            require FS_ROOT . '/bp-modules/userlog.php';
+            break;
+        case 'site/admin/log':
+            require FS_ROOT . '/bp-modules/sitelog.php';
+            break;
         case 'site/admin/catalogo':
             require FS_ROOT . '/bp-modules/catalogo.php';
             break;

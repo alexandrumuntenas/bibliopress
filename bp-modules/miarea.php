@@ -6,6 +6,7 @@ $prptequery = mysqli_query($databaseconnection, $prpte);
 $querylector = "SELECT *  FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $sessionus . "'";
 $qlectorre = mysqli_query($databaseconnection, $querylector);
 $qlector = mysqli_fetch_assoc($qlectorre);
+$registro = mysqli_query($databaseconnection, "SELECT * FROM `$bbddlog` WHERE `USUARIO` LIKE '$sessionus' ORDER BY id DESC LIMIT 3");
 ?>
 
 <body>
@@ -64,9 +65,29 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                             </table>
                         </div>
                     </div>
-                    <div class="bp-card card-body" style="filter:blur(10px)">
-                        <h5>Tus Últimas Lecturas</h5>
-                        <p>No te emociones, seguimos trabajando en ello</p>
+                    <div class="bp-card card-body">
+                        <h5>Últimos movimientos</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <?php
+                                    if ($registro->num_rows > 0) {
+                                        while ($registrorow = $registro->fetch_assoc()) {
+                                            echo '<tr>
+                                        <td>' . $registrorow["TTY"] . ' ejecutado el ' . $registrorow["FECHA"] . ' ('.$registrorow["IP"].')</td>
+
+                                    </tr>';
+                                        }
+                                    } else {
+                                        echo "<tr><td>No hay registros disponibles</td></tr>";
+                                    }
+                                    ?>
+                                    <tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a class="btn btn-primary btn-sm" href="?r=site/user/log">Ver mis movimientos</a>
                     </div>
                     <div class="w-100"></div>
                     <div class="bp-card card-body">
