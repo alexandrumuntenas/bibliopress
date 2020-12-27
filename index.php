@@ -5,6 +5,7 @@ require FS_ROOT . '/bp-include/head.php';
 
 $requestedpage = mysqli_real_escape_string($databaseconnection, $_REQUEST['r']);
 $pag = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
+
 if($pag == null){
     $pag = 1;
 }
@@ -12,11 +13,17 @@ if($pag == null){
 if (isset($_GET['r'])) {
     switch ($requestedpage) {
             #Distintas páginas para distintos módulos
+        case 'site/home':
+            require FS_ROOT . '/bp-modules/landing.php';
+            break;
         case 'site/catalogo':
             require FS_ROOT . '/bp-modules/catalogo.php';
             break;
         case 'site/user':
             require FS_ROOT . '/bp-modules/miarea.php';
+            break;
+        case 'site/admin/catalogo':
+            require FS_ROOT . '/bp-modules/catalogo.php';
             break;
         case 'site/admin/prestamos':
             require FS_ROOT . '/bp-modules/prestamos.php';
@@ -42,5 +49,5 @@ if (isset($_GET['r'])) {
     </footer>
 <?php
 } else {
-    echo "<meta http-equiv='refresh' content='0;url=./?r=site/catalogo' />";
+    echo "<meta http-equiv='refresh' content='0;url=./?r=site/home' />";
 }

@@ -34,13 +34,16 @@ if (isset($_GET['resultados'])) {
         <section class="bp-section">
             <form class="form-inline" action="" method="GET">
                 <input name="r" value="<?php echo $requestedpage; ?>" hidden />
-                Tipo de vista > &nbsp
-                </br>
-                <select class="form-control form-control-sm" name="organizacion" id="">
-                    <option value="card">Predeterminada</option>
-                    <option value="card">Vista de tarjetas</option>
-                    <option value="table">Vista de tabla</option>
-                </select>
+
+                <?php if ($requestedpage != "site/admin/catalogo") { ?>
+                    Tipo de vista > &nbsp
+                    </br>
+                    <select class="form-control form-control-sm" name="organizacion" id="">
+                        <option value="card">Predeterminada</option>
+                        <option value="card">Vista de tarjetas</option>
+                        <option value="table">Vista de tabla</option>
+                    </select>
+                <?php } ?>
                 &nbsp Cantidad de resultados por página > &nbsp
                 <select class="form-control form-control-sm" name="resultados" id="">
                     <option value="9">Predeterminado</option>

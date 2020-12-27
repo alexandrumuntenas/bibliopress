@@ -3,11 +3,8 @@
     <div class="sidebar-fixed-top">
       <div class="sidebar-heading">Biblioteca</div>
       <div class="list-group list-group-flush">
-        <a href="?r=site/catalogo" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> <?php if ($sessionclass == 1) {
-                                                                                                                          echo 'Catálogo';
-                                                                                                                        } else {
-                                                                                                                          echo 'Inicio';
-                                                                                                                        } ?></a>
+        <a href="?r=site/home" class="list-group-item list-group-item-action bg-light"><i class="fas fa-home"></i> Inicio</a>
+        <a href="?r=site/catalogo" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> Catálogo</a>
         <a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#searchmodal" data-backdrop="false"><i class="fas fa-search"></i> Búsqueda</a>
 
         <?php

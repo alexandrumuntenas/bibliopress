@@ -752,7 +752,7 @@ if ($sessionlogged == 1) {
                     $phpsessid = mysqli_real_escape_string($databaseconnection, $_COOKIE['PHPSESSID']);
                     $logoutsql = "DELETE FROM `$bbddsesiones` WHERE `$bbddsesiones`.`PHPSESSID` = '$phpsessid'";
                     $logoutquery = $databaseconnection->query($logoutsql);
-                    echo "<meta http-equiv='refresh' content='0;url=?r=site/catalogo' />";
+                    echo "<meta http-equiv='refresh' content='0;url=?r=site/home' />";
                     session_destroy();
                     session_write_close();
                     setcookie(session_name(), '', 0, '/');
