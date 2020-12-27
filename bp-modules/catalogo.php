@@ -156,8 +156,8 @@ if (isset($_GET['resultados'])) {
 
                                                             <div class="modal-footer"> <?php if ($sessionlogged == 1) {
                                                                                             if ($sessionclass == 1) { ?>
-                                                                        <a style="margin-left: 10px;color: green;" href="/?r=<?php echo $requestedpage; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
+                                                                        <a style="margin-left: 10px;color: green;" href="/?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                                                     <?php } else { ?>
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
@@ -193,8 +193,8 @@ if (isset($_GET['resultados'])) {
                                                             <div class="card-footer text-muted text-center mt-4">
                                                                 <a type="button" style="color:grey;" data-toggle="modal" data-target="#libro-<?php echo $row[10]; ?>">Ver más</a><?php if ($sessionlogged == 1) {
                                                                                                                                                                                         if ($sessionclass == 1) { ?>
-                                                                        <a style="margin-left: 10px;color: green;" href="/?r=<?php echo $requestedpage; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
+                                                                        <a style="margin-left: 10px;color: green;" href="/?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                                                     <?php }
                                                                                                                                                                                     } else { ?>
 
@@ -221,8 +221,8 @@ if (isset($_GET['resultados'])) {
                                                             <td><?php echo $row[7]; ?></td>
                                                             <td><a type="button" style="color:grey;" data-toggle="modal" data-target="#libro-<?php echo $row[10]; ?>">Ver más</a><?php if ($sessionlogged == 1) {
                                                                                                                                                                                         if ($sessionclass == 1) { ?>
-                                                                        <a style="margin-left: 10px;color: green;" href="?r=<?php echo $requestedpage; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
+                                                                        <a style="margin-left: 10px;color: green;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                                                     <?php }
                                                                                                                                                                                     } else { ?>
 
@@ -251,8 +251,8 @@ if (isset($_GET['resultados'])) {
                                                             <div class="card-footer text-muted text-center mt-4">
                                                                 <a type="button" style="color:grey;" data-toggle="modal" data-target="#libro-<?php echo $row[10]; ?>">Ver más</a><?php if ($sessionlogged == 1) {
                                                                                                                                                                                         if ($sessionclass == 1) { ?>
-                                                                        <a style="margin-left: 10px;color: green;" href="?r=<?php echo $requestedpage; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
+                                                                        <a style="margin-left: 10px;color: green;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                                                        <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                                                     <?php }
                                                                                                                                                                                     } else { ?>
 

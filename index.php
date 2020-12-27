@@ -4,6 +4,10 @@ define("FS_ROOT", realpath(dirname(__FILE__)));
 require FS_ROOT . '/bp-include/head.php';
 
 $requestedpage = mysqli_real_escape_string($databaseconnection, $_REQUEST['r']);
+$pag = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
+if($pag == null){
+    $pag = 1;
+}
 
 if (isset($_GET['r'])) {
     switch ($requestedpage) {

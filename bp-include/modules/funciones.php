@@ -283,8 +283,8 @@ if ($sessionlogged == 1) {
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="?r=<?php echo $requestedpage; ?>&prorroga=<?php echo $id ?>" class="btn btn-success">Prorroga</a>
-                                    <a href="?r=<?php echo $requestedpage; ?>&devolver=<?php echo $id ?>" class="btn btn-danger">Devolver</a> </div> <?php } ?>
+                                    <a href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&prorroga=<?php echo $id ?>" class="btn btn-success">Prorroga</a>
+                                    <a href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&devolver=<?php echo $id ?>" class="btn btn-danger">Devolver</a> </div> <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -382,8 +382,8 @@ if ($sessionlogged == 1) {
 
                         <div class="modal-footer"><?php if ($sessionlogged == 1) {
                                                         if ($sessionclass == 1) { ?>
-                                    <a style="margin-left: 10px;color: green;" href="?r=<?php echo $requestedpage; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                    <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
+                                    <a style="margin-left: 10px;color: green;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                    <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&pag=<?php echo $pag; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                 <?php } else { ?>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 

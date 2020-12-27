@@ -83,7 +83,7 @@ if (isset($_GET['resultados'])) {
                                 <td data-label="Título del libro">' . $prestamorow["TITULO"] . '</td>
                                 <td data-label="Fecha de devolución">' . $prestamorow["FECHADEV"] . '</td>
                                 <td data-label="Título prestado al usuario ">' . $tomarnombrerow['FULLNAME'] . '</td>
-                                <td data-label="Acciones disponibles"><a style="color:blue;" href="?r=' . $requestedpage . '&prorroga=' . $prestamorow["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="?r=' . $requestedpage . '&devolver=' . $prestamorow["ID"] . '">Devolver</a></td>
+                                <td data-label="Acciones disponibles"><a style="color:blue;" href="?r=' . $requestedpage . '&pag='.$pag.'&prorroga=' . $prestamorow["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="?r=' . $requestedpage . '&pag=' . $pag . '&devolver=' . $prestamorow["ID"] . '">Devolver</a></td>
                         </tr>';
                                         }
                                     } else { ?>

@@ -107,7 +107,7 @@ if (isset($_GET['resultados'])) {
                                 <td><br>' . $tomarnombrerow['FULLNAME'] . '</td>
                                 ';
                                                 if ($status == 0) {
-                                                    echo '<td><br><a style="color:green;" href="?r='.$requestedpage.'&estado=' . $status . '&solicitar&accion=aprobar&id=' . $solicitudrow["ID"] . '">Aprobar</a>         <a style="color:red; margin-left:10px;" href="?r='.$requestedpage.'&estado=' . $status . '&solicitar&accion=rechazar&id=' . $solicitudrow["ID"] . '">Rechazar</a></td>';
+                                                    echo '<td><br><a style="color:green;" href="?r='.$requestedpage. '&pag=' . $pag . '&estado=' . $status . '&solicitar&accion=aprobar&id=' . $solicitudrow["ID"] . '">Aprobar</a>         <a style="color:red; margin-left:10px;" href="?r='.$requestedpage. '&pag=' . $pag . '&estado=' . $status . '&solicitar&accion=rechazar&id=' . $solicitudrow["ID"] . '">Rechazar</a></td>';
                                                 }
                                                 echo '</tr>';
                                             }

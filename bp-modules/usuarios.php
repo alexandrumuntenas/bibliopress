@@ -90,7 +90,7 @@
                                             <td data-label="Nombre">' . $row["NOMBRE"] . '</td>
                                             <td data-label="Apellidos">' . $row["APELLIDOS"] . '</td>
                                             <td data-label="Grupo">' . $row["CLASE"] . '</td>
-                                            <td data-label="Acciones disponibles"><a style="color:blue;" href="?r=' . $requestedpage . '&edit=usuario&id=' . $row["ID"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
+                                            <td data-label="Acciones disponibles"><a style="color:blue;" href="?r=' . $requestedpage . '&pag=' . $pag . '&edit=usuario&id=' . $row["ID"] . '">Editar</a>       <form method="POST" action=""><input type="hidden" name="usuariodel" value="' . $row['USUARIO'] . '" /><input name="delus" type="submit" value="Eliminar"/></form></td>
                                                 </tr>';
                                     }
                                 } ?>
