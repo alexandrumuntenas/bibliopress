@@ -29,7 +29,9 @@ if (isset($_GET['r'])) {
         case 'site/admin/config':
             require FS_ROOT . '/bp-modules/configuracion.php';
             break;
-    } 
+        default:
+            require FS_ROOT . '/bp-modules/404.php';
+    }
 } else {
     echo "<meta http-equiv='refresh' content='0;url=./?r=site/catalogo' />";
 }
