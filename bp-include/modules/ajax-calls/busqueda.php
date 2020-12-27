@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/bp-config.php';
+require FS_ROOT . '/bp-config.php';
 if (isset($_POST['search'])) {
     $busqueda = $_POST['search'];
     $Queray = "SELECT TITULO, ID, DESCRIPCION, AUTOR, DISPONIBILIDAD FROM `$bbddcatalogo` WHERE TITULO LIKE '%$busqueda%'LIMIT 5";

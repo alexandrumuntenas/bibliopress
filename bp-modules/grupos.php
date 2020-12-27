@@ -1,5 +1,3 @@
-<?php require '../bp-include/head.php'; ?>
-
 <body>
     <div>
         <header>

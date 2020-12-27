@@ -1,5 +1,4 @@
-<?php require '../bp-include/head.php';
-if (isset($_GET['pag'])) {
+<?php if (isset($_GET['pag'])) {
     if (mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']) == null) {
         $pir = 1;
     } else {

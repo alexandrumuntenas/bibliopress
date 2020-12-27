@@ -36,7 +36,7 @@
 						$sitelinkfrompost = mysqli_real_escape_string($conn, $_POST['element_13']);
 						$cname = mysqli_real_escape_string($conn, $_POST["element_12"]);
 						$prefixtable = mysqli_real_escape_string($conn, $_POST["element_14"]);
-						$ficheroconfig = fopen($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php", "w") or die("Unable to open file!");
+						$ficheroconfig = fopen(FS_ROOT . "/bp-settings.php", "w") or die("Unable to open file!");
 						$txt = "<?php
 
 						// Valores MYSQL
@@ -95,7 +95,7 @@
 						`DISPONIBILIDAD` int(11) NOT NULL DEFAULT 1,
 						`PRESTADOA` varchar(256) DEFAULT NULL,
 						`FECHADEV` date DEFAULT NULL,
-						`PORTADA` varchar(256) NOT NULL DEFAULT '/bp-include/portada.jpg',
+						`PORTADA` varchar(256) NOT NULL DEFAULT './bp-include/portada.jpg',
 						PRIMARY KEY (`ID`),
 						UNIQUE KEY `EJEMPLAR` (`EJEMPLAR`)
 						) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4";
@@ -245,7 +245,7 @@
 		</div>
 	</body> <?php exit();
 		}
-		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/bp-settings.php")) {
+		if (file_exists(FS_ROOT . "/bp-settings.php")) {
 			?>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml">

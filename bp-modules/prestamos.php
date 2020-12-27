@@ -1,4 +1,4 @@
-<?php require '../bp-include/head.php';
+<?php
 $prestamosql = "SELECT * FROM $bbddcatalogo WHERE `DISPONIBILIDAD` LIKE 0 OR `DISPONIBILIDAD` LIKE 3";
 $prestamoquery = mysqli_query($databaseconnection, $prestamosql);
 if (isset($_GET['pag'])) {
