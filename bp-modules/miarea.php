@@ -88,17 +88,19 @@ $qlector = mysqli_fetch_assoc($qlectorre);
                         <h5>Cambiar contraseña</h5>
                         <form class="md-form" method="post" action="">
                             <div class="md-form">
-                                <label class="description" for="element_2">Contaseña Antigua</label>
-                                <input id="element_2" name="antiguacontrasena" class="form-control form-control-sm" type="text" maxlength="255" />
+                                <label class="description" for="element_2">Contaseña Actual</label>
+                                <input id="element_2" name="antiguacontrasena" class="form-control form-control-sm" type="password" maxlength="255" />
                             </div>
                             <div class="md-form">
                                 <label class="description" for="element_2">Contreseña Nueva</label>
-                                <input id="element_2" name="nuevacontrasena" class="form-control form-control-sm" type="text" maxlength="255" />
+                                <input id="element_2" name="contrasenanueva" class="form-control form-control-sm" type="password" maxlength="255" />
                             </div>
                             <div class="md-form">
                                 <label class="description" for="element_2">Volver a escribir contraseña nueva</label>
-                                <input id="element_2" name="nuevacontrasenaverificado" class="form-control form-control-sm" type="text" maxlength="255" />
+                                <input id="element_2" name="contrasenanuevaverificado" class="form-control form-control-sm" type="password" maxlength="255" />
                             </div>
+                            <input id="element_2" name="cmailusuario" class="form-control form-control-sm" type="text" maxlength="255" value="<?php echo $sessionus; ?>" hidden />
+                            <input type="submit" class="btn btn-primary btn-sm" name="actualizarpwd" value="Actualizar Contraseña" />
                         </form>
                     </div>
                     <div class="bp-card card-body">

@@ -68,7 +68,6 @@ p {
 
 .bp-card:hover {
   border: solid 3px #016fb9;
-  box-shadow: inset 0 0 10px #aaa;
   -webkit-transition: 100ms ease-in;
   transition: 100ms ease-in;
 }

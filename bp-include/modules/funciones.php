@@ -831,6 +831,35 @@ if ($sessionlogged == 1) {
             }
         }
     }
+
+    if (isset($_POST['actualizarpwd'])) {
+        $cmailusuario = mysqli_real_escape_string($databaseconnection, $_POST['cmailusuario']);
+        if($cmailusuario == $sessionus) {
+            $contrasenaantigua = mysqli_real_escape_string($databaseconnection, $_POST['antiguacontrasena']);
+            $pwdold = mysqli_fetch_assoc(mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '$cmailusuario'"));
+            if(password_verify($contrasenaantigua, $pwdold['PASSWD']) == true){
+                $contrasenanueva = mysqli_real_escape_string($databaseconnection, $_POST['contrasenanueva']);
+                $contrasenanuevaverificado = mysqli_real_escape_string($databaseconnection, $_POST['contrasenanuevaverificado']);
+                if($contrasenanueva == $contrasenanuevaverificado){
+                    $newpwd = password_hash($contrasenanueva, PASSWORD_BCRYPT);
+                    mysqli_query($databaseconnection, "UPDATE `$bbddusuarios` SET `PASSWD` = '$newpwd' WHERE `bp_usuarios`.`USUARIO` = '$cmailusuario'");
+                    if (mysqli_error($databaseconnection)) {
+                        echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
+                    } else {
+                        echo '<div id="snackbar" class="show"> Se ha cambiado la contraseña correctamente</div>';
+                    }
+                } else {
+                    echo '<div id="snackbar" class="show"> Las contraseñas no coinciden</div>';
+                }
+                
+
+            } else {
+                echo '<div id="snackbar" class="show"> La contraseña actual no es correcta</div>';
+            }
+        } else {
+            echo '<div id="snackbar" class="show"> El correo electrónico ofrecido no coincide con el correo electrónico de la sesión</div>';
+        }
+    }
 }
 if ($sessionlogged == null) {
     if (isset($_POST['login'])) {
