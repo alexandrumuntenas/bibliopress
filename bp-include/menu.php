@@ -3,15 +3,19 @@
     <div class="sidebar-fixed-top">
       <div class="sidebar-heading">Biblioteca</div>
       <div class="list-group list-group-flush">
-        <a href="?r=site/catalogo" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> <?php if($sessionclass == 1){echo 'Catálogo';} else{echo 'Inicio';} ?></a>
+        <a href="?r=site/catalogo" class="list-group-item list-group-item-action bg-light"><i class="fas fa-star"></i> <?php if ($sessionclass == 1) {
+                                                                                                                          echo 'Catálogo';
+                                                                                                                        } else {
+                                                                                                                          echo 'Inicio';
+                                                                                                                        } ?></a>
         <a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#searchmodal" data-backdrop="false"><i class="fas fa-search"></i> Búsqueda</a>
 
-        <?php 
+        <?php
         if ($sessionlogged == 1) {
-          if ($sessionclass == 0){
-            echo '<a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#solicitar" data-backdrop="false"><i class="fas fa-paper-plane"></i> Solicitar libro</a>';  
+          if ($sessionclass == 0) {
+            echo '<a class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#solicitar" data-backdrop="false"><i class="fas fa-paper-plane"></i> Solicitar libro</a>';
           }
-      if ($sessionclass == 1) {
+          if ($sessionclass == 1) {
             echo '
       <div class="sidebar-spacer"></div>
       <a href="?r=site/admin/prestamos" class="list-group-item list-group-item-action bg-light"><i class="fas fa-people-carry"></i> Préstamos</a>
@@ -27,6 +31,7 @@
         }; ?>
         <?php if ($sessionlogged == 1) { ?>
           <a class="nav-link list-group-item list-group-item-action bg-light" href="?r=site/user"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>"> Mi área personal</a>
+          <a class="nav-link list-group-item list-group-item-action bg-light" href="?r=site/catalogo&logout"><img style="margin-right:10px;  vertical-align: middle;  width: 25px;  height: 25px;  border-radius: 50%;" src="<?php echo $sesavatarresultado['AVATAR']; ?>"> Cerrar Sesión</a>
         <?php } else { ?>
           <a href="" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginmodal" data-backdrop="false"><i class="fas fa-sign-in-alt"></i> Acceder</a>
         <?php };
