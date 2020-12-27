@@ -16,7 +16,8 @@
                         <h5>Datos del sitio</h5>
                         <p>Versión de bibliopress: 1.0</p>
                         <p>Nombre del centro: <?php echo $sname; ?></p>
-                        <p>Ruta del sitio: <?php echo FS_ROOT; ?></p>
+                        <p>Ruta del sitio: <?php echo $_SERVER['DOCUMENT_ROOT']; ?></p>
+                        <p>Ruta de la instalación de Bibliopress: <?php echo FS_ROOT.'/'; ?>
                     </div>
                     <div class="bp-card card-body" style="filter:blur(10px)">
                         <h5>Configuración del sitio</h5>

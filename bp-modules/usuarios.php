@@ -28,7 +28,8 @@
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $CantidadMostrar) . " , " . $CantidadMostrar;
-                        $consulta = $databaseconnection->query($consultavistas);} else {
+                        $consulta = $databaseconnection->query($consultavistas);
+                    } else {
                         $TotalReg       = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios`");
                         $TotalRegistro  = ceil($TotalReg->num_rows / $CantidadMostrar);
                         $consultavistas = "SELECT * FROM `$bbddusuarios`
@@ -49,6 +50,7 @@
 
         ?>
                 <form class="form-inline" action="" method="GET">
+                    <input name="r" value="<?php echo $requestedpage; ?>" hidden />
                     Búsqueda de usuarios por grupo > &nbsp
                     </br>
                     <select class="form-control form-control-sm" name="grupo" id="">
@@ -99,7 +101,7 @@
                 <?php
                 $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
                 $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
-                echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?grupo=$gr&pag=" . $DecrementNum . "\">&laquo;</a></li>";
+                echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&grupo=$gr&pag=" . $DecrementNum . "\">&laquo;</a></li>";
                 $Desde = $compag - (ceil($CantidadMostrar / 2) - 1);
                 $Hasta = $compag + (ceil($CantidadMostrar / 2) - 1);
                 $Desde = ($Desde < 1) ? 1 : $Desde;
@@ -107,13 +109,13 @@
                 for ($i = $Desde; $i <= $Hasta; $i++) {
                     if ($i <= $TotalRegistro) {
                         if ($i == $compag) {
-                            echo "<li class=\"page-item active\"><a class='page-link' href=\"?grupo=$gr&pag=" . $i . "\">" . $i . "</a></li>";
+                            echo "<li class=\"page-item active\"><a class='page-link' href=\"?r=$requestedpage&grupo=$gr&pag=" . $i . "\">" . $i . "</a></li>";
                         } else {
-                            echo "<li class=\"page-item\"><a class='page-link' href=\"?grupo=$gr&pag=" . $i . "\">" . $i . "</a></li>";
+                            echo "<li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&grupo=$gr&pag=" . $i . "\">" . $i . "</a></li>";
                         }
                     }
                 }
-                echo "<li class=\"page-item\"><a class='page-link' href=\"?grupo=$gr&pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
+                echo "<li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&grupo=$gr&pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
             } else { ?>
                 <p>No tienes permiso para acceder a esta página</p>
             <?php }

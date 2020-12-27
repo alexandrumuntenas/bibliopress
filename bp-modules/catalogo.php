@@ -33,6 +33,7 @@ if (isset($_GET['resultados'])) {
         </header>
         <section class="bp-section">
             <form class="form-inline" action="" method="GET">
+                <input name="r" value="<?php echo $requestedpage; ?>" hidden />
                 Tipo de vista > &nbsp
                 </br>
                 <select class="form-control form-control-sm" name="organizacion" id="">
@@ -270,7 +271,7 @@ if (isset($_GET['resultados'])) {
                     </center> <?php } ?>
                 <?php $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
                 $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
-                echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $DecrementNum . "\">&laquo;</a></li>";
+                echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&organizacion=$org&resultados=$qtyresultado&pag=" . $DecrementNum . "\">&laquo;</a></li>";
                 $Desde = $compag - (ceil($qtyresultado / 2) - 1);
                 $Hasta = $compag + (ceil($qtyresultado / 2) - 1);
                 $Desde = ($Desde < 1) ? 1 : $Desde;
@@ -278,13 +279,13 @@ if (isset($_GET['resultados'])) {
                 for ($i = $Desde; $i <= $Hasta; $i++) {
                     if ($i <= $TotalRegistro) {
                         if ($i == $compag) {
-                            echo "<li class=\"page-item active\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $i . "\">" . $i . "</a></li>";
+                            echo "<li class=\"page-item active\"><a class='page-link' href=\"?r=$requestedpage&organizacion=$org&resultados=$qtyresultado&pag=" . $i . "\">" . $i . "</a></li>";
                         } else {
-                            echo "<li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $i . "\">" . $i . "</a></li>";
+                            echo "<li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&organizacion=$org&resultados=$qtyresultado&pag=" . $i . "\">" . $i . "</a></li>";
                         }
                     }
                 }
-                echo "<li class=\"page-item\"><a class='page-link' href=\"?organizacion=$org&resultados=$qtyresultado&pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
+                echo "<li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&organizacion=$org&resultados=$qtyresultado&pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
                 ?>
         </section>
     </div>

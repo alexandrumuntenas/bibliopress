@@ -1,5 +1,4 @@
 <?php
-require '../bp-include/head.php';
 $practivos = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' AND `DISPONIBILIDAD` = 0 LIMIT 5";
 $prquery = mysqli_query($databaseconnection, $practivos);
 $prpte = "SELECT * FROM `$bbddcatalogo` WHERE `PRESTADOA` = '" . $sessionus . "' AND `DISPONIBILIDAD` = 3 LIMIT 5";

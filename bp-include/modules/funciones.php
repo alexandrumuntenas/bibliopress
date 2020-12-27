@@ -877,7 +877,7 @@ if ($sessionlogged == null) {
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <label class="form-check-label"><input type="checkbox" value="1" name="rmf"> Remember me (Función en Desarrollo)</label>
+                        <label class="form-check-label"><input type="checkbox" value="1" name="rmf">Recuérdame para siempre</label>
                         <input type="submit" class="btn btn-primary" name="login" value="Login">
                     </div>
                 </form>

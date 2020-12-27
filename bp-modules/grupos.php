@@ -59,7 +59,7 @@
                 <?php
                         $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
                         $DecrementNum = (($compag - 1)) < 1 ? 1 : ($compag - 1);
-                        echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?pag=" . $DecrementNum . "\">&laquo;</a></li>";
+                        echo "<ul class='pagination pg-blue'><li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&pag=" . $DecrementNum . "\">&laquo;</a></li>";
                         $Desde = $compag - (ceil($CantidadMostrar / 2) - 1);
                         $Hasta = $compag + (ceil($CantidadMostrar / 2) - 1);
                         $Desde = ($Desde < 1) ? 1 : $Desde;
@@ -67,13 +67,13 @@
                         for ($i = $Desde; $i <= $Hasta; $i++) {
                             if ($i <= $TotalRegistro) {
                                 if ($i == $compag) {
-                                    echo "<li class=\"page-item active\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                                    echo "<li class=\"page-item active\"><a class='page-link' href=\"?r=$requestedpage&pag=" . $i . "\">" . $i . "</a></li>";
                                 } else {
-                                    echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                                    echo "<li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&pag=" . $i . "\">" . $i . "</a></li>";
                                 }
                             }
                         }
-                        echo "<li class=\"page-item\"><a class='page-link' href=\"?pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
+                        echo "<li class=\"page-item\"><a class='page-link' href=\"?r=$requestedpage&pag=" . $IncrimentNum . "\">&raquo;</a></li></ul>";
                 ?>
             <?php } else { ?>
                 <p>No tienes permiso para acceder a esta página</p>

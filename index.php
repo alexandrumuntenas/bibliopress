@@ -7,9 +7,12 @@ $requestedpage = mysqli_real_escape_string($databaseconnection, $_REQUEST['r']);
 
 if (isset($_GET['r'])) {
     switch ($requestedpage) {
-        #Distintas páginas para distintos módulos
+            #Distintas páginas para distintos módulos
         case 'site/catalogo':
             require FS_ROOT . '/bp-modules/catalogo.php';
+            break;
+        case 'site/user':
+            require FS_ROOT . '/bp-modules/miarea.php';
             break;
         case 'site/admin/prestamos':
             require FS_ROOT . '/bp-modules/prestamos.php';
@@ -26,7 +29,7 @@ if (isset($_GET['r'])) {
         case 'site/admin/config':
             require FS_ROOT . '/bp-modules/configuracion.php';
             break;
-    }
+    } 
 } else {
     echo "<meta http-equiv='refresh' content='0;url=./?r=site/catalogo' />";
 }
