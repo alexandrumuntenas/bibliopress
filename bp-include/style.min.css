@@ -33,7 +33,7 @@ p {
   height: 200px;
   background: #790909;
   background: linear-gradient(180deg, #790909 0, rgba(255, 0, 0, 0) 100%);
-  background-image: url(../bp-include/header.jpg);
+  background-image: url(../bp-include/resources/header.jpg);
   background-size: cover;
   position: relative;
   background-repeat: no-repeat;

@@ -30,7 +30,7 @@ if (isset($_GET['r'])) {
             require FS_ROOT . '/bp-modules/configuracion.php';
             break;
         default:
-            require FS_ROOT . '/bp-modules/404.php';
+            require FS_ROOT . '/bp-include/404.php';
     } ?>
     <footer class="page-footer bg-primary">
         <div class="footer-copyright text-center py-3 fwhite"><?php echo "© " . date("Y") . " " . $sname; ?> | Powered by Bibliopress</a>
