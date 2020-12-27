@@ -47,7 +47,7 @@ if ($sessionlogged == 1) {
             $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`, `AVATAR`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$PASSWD', '$permiso', '$avatar')";
             $databaseconnection->query($insert);
             $dominio = $_SERVER['HTTP_HOST'];
-            mail("$celectronico",'Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde cualquier parte del mundo! Podrás hacer un seguimiento de tus préstamos, ponerte una foto de perfil chula, decir tu opinión sobre un libro, solicitar libros... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random", "From: bibliopress@$dominio");
+            mail("$celectronico", 'Accede a tu nueva cuenta de la biblioteca del $sname', "¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde cualquier parte del mundo! Podrás hacer un seguimiento de tus préstamos, ponerte una foto de perfil chula, decir tu opinión sobre un libro, solicitar libros... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random", "From: bibliopress@$dominio");
             echo '<div id="snackbar" class="show"> Se ha añadido el usuario correctamente</div>';
         }
         if (isset($_POST['promocioncurso'])) {
@@ -233,7 +233,7 @@ if ($sessionlogged == 1) {
                 $prestamosql = "SELECT * FROM `$bbddcatalogo` WHERE `ID` LIKE '" . $id . "'";
                 $prestamoquery = mysqli_query($databaseconnection, $prestamosql);
                 $prestamoresultado = mysqli_fetch_assoc($prestamoquery);
-                $fecha_actual = date('m/d/Y'); ?>
+            ?>
                 <div class="modal fade" id="prestar-<?php echo $id; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="prestamo" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-success">
                         <div class="modal-content">
@@ -257,8 +257,8 @@ if ($sessionlogged == 1) {
                                             <p>Fecha de devolución</p>
                                             <input class="form-control mb-4" value="<?php echo date("d-m-Y", strtotime($fecha_actual . "+ 15 days")); ?>" disabled />
                                         </div>
-                                       </div>
-                                    <input type="text" name="identificador" value="<?php echo $id; ?>" hidden/>
+                                    </div>
+                                    <input type="text" name="identificador" value="<?php echo $id; ?>" hidden />
                                     <div class="modal-footer">
                                         <input id="saveForm" class="btn btn-success" type="submit" name="prestar" value="Prestar" />
                                     </div>
@@ -283,8 +283,8 @@ if ($sessionlogged == 1) {
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="/?prorroga=<?php echo $id ?>" class="btn btn-success">Prorroga</a>
-                                    <a href="/?devolver=<?php echo $id ?>" class="btn btn-danger">Devolver</a> </div> <?php } ?>
+                                    <a href="?r=<?php echo $requestedpage; ?>&prorroga=<?php echo $id ?>" class="btn btn-success">Prorroga</a>
+                                    <a href="?r=<?php echo $requestedpage; ?>&devolver=<?php echo $id ?>" class="btn btn-danger">Devolver</a> </div> <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -320,7 +320,7 @@ if ($sessionlogged == 1) {
             $grupo = $_POST["grupo"];
             $newdatasql = "UPDATE `$bbddusuarios` set `USUARIO` = '" . $usuario . "', `NOMBRE`='" . $nombre . "', `APELLIDOS`='" . $apellidos . "', `CLASE`='" . $grupo . "' where `ID`='" . $userrequest . "'";
             mysqli_query($databaseconnection, $newdatasql);
-            echo "<meta http-equiv='refresh' content='0;url=/bp-admin/usuarios.php' />";
+            echo "<meta http-equiv='refresh' content='0;url=?r=site/admin/usuarios' />";
         }
 
         if (isset($_GET['view'])) {
@@ -382,8 +382,8 @@ if ($sessionlogged == 1) {
 
                         <div class="modal-footer"><?php if ($sessionlogged == 1) {
                                                         if ($sessionclass == 1) { ?>
-                                    <a style="margin-left: 10px;color: green;" href="/?edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
-                                    <a style="margin-left: 10px;color: red;" href="?delbk=<?php echo $row[10]; ?>">Eliminar</a>
+                                    <a style="margin-left: 10px;color: green;" href="?r=<?php echo $requestedpage; ?>&edit=gprestamo&id=<?php echo $row[10]; ?>">G.Préstamo</a><a style="margin-left: 10px;color: blue;" href="?edit=book&id=<?php echo $row[10]; ?>">Editar</a>
+                                    <a style="margin-left: 10px;color: red;" href="?r=<?php echo $requestedpage; ?>&delbk=<?php echo $row[10]; ?>">Eliminar</a>
                                 <?php } else { ?>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
@@ -425,7 +425,7 @@ if ($sessionlogged == 1) {
                     $databaseconnection->query($sql);
                 }
                 echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente</div>';
-                echo "<meta http-equiv='refresh' content='0;url=/' />";
+                echo "<meta http-equiv='refresh' content='0;url=?r=site/catalogo' />";
             }
         }
 
@@ -449,7 +449,7 @@ if ($sessionlogged == 1) {
             if (mysqli_error($databaseconnection)) {
                 echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
             } else {
-                echo '<div id="snackbar" class="show"> Se ha realizado la prórroga correctamente</div>';
+                echo '<div id="snackbar" class="show"> Se ha realizado la prórroga correctamente.</div>';
             }
         } ?><div class="modal fade" id="addbook" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addbook" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-notify modal-info">
@@ -752,7 +752,7 @@ if ($sessionlogged == 1) {
                     $phpsessid = mysqli_real_escape_string($databaseconnection, $_COOKIE['PHPSESSID']);
                     $logoutsql = "DELETE FROM `$bbddsesiones` WHERE `$bbddsesiones`.`PHPSESSID` = '$phpsessid'";
                     $logoutquery = $databaseconnection->query($logoutsql);
-                    echo "<meta http-equiv='refresh' content='0;url=/' />";
+                    echo "<meta http-equiv='refresh' content='0;url=?r=site/catalogo' />";
                     session_destroy();
                     session_write_close();
                     setcookie(session_name(), '', 0, '/');
@@ -812,10 +812,10 @@ if ($sessionlogged == 1) {
     }
 
     if (isset($_GET['solicitar'])) {
-        $identificador = mysqli_real_escape_string($databaseconnection,$_REQUEST['id']);
+        $identificador = mysqli_real_escape_string($databaseconnection, $_REQUEST['id']);
         if (mysqli_real_escape_string($databaseconnection, $_REQUEST['accion']) == 'aprobar') {
             $aprobarsql = "UPDATE `$bbddsolicitudes` SET `ESTADO` = '1' WHERE `ID` = $identificador";
-            $aprobarquery = mysqli_query($databaseconnection,$aprobarsql);
+            $aprobarquery = mysqli_query($databaseconnection, $aprobarsql);
             if (mysqli_error($databaseconnection)) {
                 echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
             } else {
@@ -842,11 +842,13 @@ if ($sessionlogged == null) {
             $loginquery = $databaseconnection->query($loginsql);
             $loginresultado = mysqli_fetch_assoc($loginquery);
             if (password_verify($contrasena, $loginresultado['PASSWD'])) {
-                if($rmf == null){
-                $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "');";
-                $loginresult = $databaseconnection->query($iniciarsesionsql); } else {
+                if ($rmf == null) {
+                    $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "');";
+                    $loginresult = $databaseconnection->query($iniciarsesionsql);
+                } else {
                     $iniciarsesionsql = "INSERT INTO `$bbddsesiones` (`PHPSESSID`, `IP`, `user_agent`, `USUARIO`, `LOGGEDIN`, `PERM`, `REMEMBERMEFOREVER`) VALUES ('$phpsessid', '$ip_address', '$uagent', '$usuario', '1', '" . $loginresultado['PERM'] . "', '1');";
-                    $loginresult = $databaseconnection->query($iniciarsesionsql); }
+                    $loginresult = $databaseconnection->query($iniciarsesionsql);
+                }
                 if ($loginresult == true) {
                     echo "<meta http-equiv='refresh' content='0;url=/' />";
                 } else {
