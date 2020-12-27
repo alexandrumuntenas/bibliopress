@@ -47,7 +47,7 @@ if ($sessionlogged == 1) {
             $insert = "INSERT INTO `$bbddusuarios` (`USUARIO`,`FULLNAME`,`NOMBRE`,`APELLIDOS`,`CLASE`, `PASSWD`,`PERM`, `AVATAR`) VALUES ('$celectronico','$FNAME','$nombre','$apellido','$curso', '$PASSWD', '$permiso', '$avatar')";
             $databaseconnection->query($insert);
             $dominio = $_SERVER['HTTP_HOST'];
-            mail("$celectronico",'Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde la comodidad de tu casa. Podrás gestionar tus préstamos activos, hacer listas de lecturas, ponerte una foto de perfil chula... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random", "From: bibliopress@$dominio");
+            mail("$celectronico",'Accede a tu nueva cuenta de la biblioteca del $sname',"¡Hola! El administrador ha creado una cuenta para ti, para que puedas acceder a la biblioteca del $sname desde cualquier parte del mundo! Podrás hacer un seguimiento de tus préstamos, ponerte una foto de perfil chula, decir tu opinión sobre un libro, solicitar libros... \n Para acceder a tu perfil de la biblioteca, solo tienes que entrar en <a href=\"$sitelink\">$sitelink</a> y luego darle a <em>Acceder</em>. \n\nDatos de Acceso\nUsuario: $celectronico\nContraseña: $random", "From: bibliopress@$dominio");
             echo '<div id="snackbar" class="show"> Se ha añadido el usuario correctamente</div>';
         }
         if (isset($_POST['promocioncurso'])) {
