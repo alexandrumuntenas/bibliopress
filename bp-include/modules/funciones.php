@@ -1,4 +1,4 @@
-<?php header('Content-Type: text/html; charset=UTF-8');
+<?php 
 if ($sessionlogged == 1) {
     if ($sessionclass == 1) {
         if (isset($_POST['publishgroup'])) {

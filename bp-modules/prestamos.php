@@ -1,26 +1,6 @@
 <?php
 $prestamosql = "SELECT * FROM $bbddcatalogo WHERE `DISPONIBILIDAD` LIKE 0 OR `DISPONIBILIDAD` LIKE 3";
-$prestamoquery = mysqli_query($databaseconnection, $prestamosql);
-if (isset($_GET['pag'])) {
-    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']) == null) {
-        $pir = 1;
-    } else {
-        $pir = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
-    }
-} else {
-    $pir = 1;
-}
-
-if (isset($_GET['resultados'])) {
-    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']) == null) {
-        $qtyresultado = $CantidadMostrar;
-    } else {
-        $qtyresultado = mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']);
-    }
-} else {
-    $qtyresultado = $CantidadMostrar;
-}
-?>
+$prestamoquery = mysqli_query($databaseconnection, $prestamosql); ?>
 
 <body>
     <div>
@@ -37,22 +17,28 @@ if (isset($_GET['resultados'])) {
             <form class="form-inline" action="" method="GET">
                 <input name="r" value="<?php echo $requestedpage; ?>" hidden />
                 Cantidad de resultados por página > &nbsp
-                <select class="form-control form-control-sm" name="resultados" id="">
+                <select class="form-control form-control-sm" name="resultados" onchange="filtropersonalizado(this)" id="">
                     <option value="9">Predeterminado</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
                     <option value="250">250</option>
                     <option value="500">500</option>
+                    <option value="Personalizado">Personalizado</option>
                 </select>
+
+                <div class="md-form" id="qtypersonalizada" style="display:none;">
+                    &nbsp &nbsp &nbsp<input type="text" id="form1" name="qtypersonalizada" class="form-control">
+                    <label for="form1">&nbsp &nbsp &nbsp Ver</label>
+                </div>
                 <input name="pag" value="<?php echo $pir; ?>" hidden /><button class="btn btn-primary btn-sm" type="submit">Actualizar</button>
             </form>
             <?php if ($sessionlogged == 1) {
                 if ($sessionclass == 1) {
                     $compag         = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
-                    $TotalReg       = $databaseconnection->query("SELECT * FROM $bbddcatalogo WHERE `DISPONIBILIDAD` LIKE 0 OR `DISPONIBILIDAD` LIKE 3");
+                    $TotalReg       = $databaseconnection->query("SELECT * FROM $bbddcatalogo WHERE `DISPONIBILIDAD` LIKE 2 OR `DISPONIBILIDAD` LIKE 3");
                     $TotalRegistro  = ceil($TotalReg->num_rows / $qtyresultado);
-                    $consultavistas = "SELECT * FROM `$bbddcatalogo` WHERE `DISPONIBILIDAD` LIKE 0 OR WHERE `DISPONIBILIDAD` LIKE 3 
+                    $consultavistas = "SELECT * FROM `$bbddcatalogo` WHERE `DISPONIBILIDAD` LIKE 2 OR `DISPONIBILIDAD` LIKE 3 
                                     ORDER BY
                                     id ASC
                                     LIMIT " . (($compag - 1) * $qtyresultado) . " , " . $qtyresultado;
@@ -74,26 +60,18 @@ if (isset($_GET['resultados'])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($prestamoquery->num_rows > 0) {
                                         //datos de cada columna
-                                        while ($prestamorow = $prestamoquery->fetch_assoc()) {
+                                        while ($prestamorow = mysqli_fetch_assoc($consulta)) {
                                             $tomarnombresql = mysqli_query($databaseconnection, "SELECT * FROM `$bbddusuarios` WHERE `USUARIO` LIKE '" . $prestamorow["PRESTADOA"] . "'");
                                             $tomarnombrerow = $tomarnombresql->fetch_assoc();
                                             echo '<tr>
                                 <td data-label="Título del libro">' . $prestamorow["TITULO"] . '</td>
                                 <td data-label="Fecha de devolución">' . $prestamorow["FECHADEV"] . '</td>
                                 <td data-label="Título prestado al usuario ">' . $tomarnombrerow['FULLNAME'] . '</td>
-                                <td data-label="Acciones disponibles"><a style="color:blue;" href="?r=' . $requestedpage . '&pag='.$pag.'&prorroga=' . $prestamorow["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="?r=' . $requestedpage . '&pag=' . $pag . '&devolver=' . $prestamorow["ID"] . '">Devolver</a></td>
+                                <td data-label="Acciones disponibles"><a style="color:blue;" href="?r=' . $requestedpage . '&pag=' . $pag . '&prorroga=' . $prestamorow["ID"] . '">Aplazar devolución</a>    <a style="color:green;" href="?r=' . $requestedpage . '&pag=' . $pag . '&devolver=' . $prestamorow["ID"] . '">Devolver</a></td>
                         </tr>';
                                         }
-                                    } else { ?>
-                                        <tr>
-                                            <td>No hay préstamos activos</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    <?php } ?>
+                                     ?>
                                 </tbody>
                             </table>
                         </div>
