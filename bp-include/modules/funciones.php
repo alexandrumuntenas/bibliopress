@@ -455,7 +455,7 @@ if ($sessionlogged == 1) {
                 echo '<div id="snackbar" class="show"> Error! Parece que este usuario tiene más de 5 préstamos activos</div>';
             } else {
                 if ($fnamecheck['ID'] == $uid) {
-                    $sql = "UPDATE `$bbddcatalogo` SET `DISPONIBILIDAD` = '0', `PRESTADOA` = '" . $fnamecheck['USUARIO'] . "', `FECHADEV` = '" . $timestamp . "' WHERE `$bbddcatalogo`.`ID` = " . $id;
+                    $sql = "UPDATE `$bbddcatalogo` SET `DISPONIBILIDAD` = '2', `PRESTADOA` = '" . $fnamecheck['USUARIO'] . "', `FECHADEV` = '" . $timestamp . "' WHERE `$bbddcatalogo`.`ID` = " . $id;
                     $databaseconnection->query($sql);
                 }
                 echo '<div id="snackbar" class="show"> Se ha realizado el préstamo correctamente</div>';
@@ -466,7 +466,7 @@ if ($sessionlogged == 1) {
         if (isset($_GET['devolver'])) {
             $id = $_REQUEST['devolver'];
             $fechanueva = date("Y-m-d", strtotime($fecha_actual . "+ 15 days"));
-            $update = "UPDATE `$bbddcatalogo` SET DISPONIBILIDAD='2', FECHADEV='$fechanueva', PRESTADOA=NULL WHERE id='" . $id . "'";
+            $update = "UPDATE `$bbddcatalogo` SET DISPONIBILIDAD='4', FECHADEV='$fechanueva', PRESTADOA=NULL WHERE id='" . $id . "'";
             mysqli_query($databaseconnection, $update);
             if (mysqli_error($databaseconnection)) {
                 echo '<div id="snackbar" class="show"> La base de datos ha notificado el siguiente error:</br>' . mysqli_error($databaseconnection) . '</div>';
