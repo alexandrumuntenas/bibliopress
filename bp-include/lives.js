@@ -92,6 +92,15 @@ function uslibro() {
     }
   }
 }
+
+function filtropersonalizado(that) {
+  if (that.value == "Personalizado") {
+    document.getElementById("qtypersonalizada").style.display = "block";
+  } else {
+    document.getElementById("qtypersonalizada").style.display = "none";
+  }
+}
+
 window.onload = function () {
   var x = document.getElementById("snackbar");
   x.className = "show";
