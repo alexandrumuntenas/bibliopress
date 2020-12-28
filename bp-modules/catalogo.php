@@ -1,24 +1,3 @@
-<?php if (isset($_GET['pag'])) {
-    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']) == null) {
-        $pir = 1;
-    } else {
-        $pir = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
-    }
-} else {
-    $pir = 1;
-}
-
-if (isset($_GET['resultados'])) {
-    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']) == null) {
-        $qtyresultado = $CantidadMostrar;
-    } else {
-        $qtyresultado = mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']);
-    }
-} else {
-    $qtyresultado = $CantidadMostrar;
-}
-?>
-
 <body>
     <div>
         <header>
@@ -56,7 +35,7 @@ if (isset($_GET['resultados'])) {
                 </select>
 
                 <div class="md-form" id="qtypersonalizada" style="display:none;">
-                    &nbsp &nbsp &nbsp<input type="text" id="form1" name="resultados" class="form-control">
+                    &nbsp &nbsp &nbsp<input type="text" id="form1" name="qtypersonalizada" class="form-control">
                     <label for="form1">&nbsp &nbsp &nbsp Ver</label>
                 </div>
                 <input name="pag" value="<?php echo $pir; ?>" hidden /><button class="btn btn-primary btn-sm" type="submit">Actualizar</button>
@@ -74,8 +53,6 @@ if (isset($_GET['resultados'])) {
                                                 <th>Título</th>
                                                 <th>Autor</th>
                                                 <th>ISBN</th>
-                                                <th>Editorial</th>
-                                                <th>Año de Publicación</th>
                                                 <th>Ejemplar</th>
                                                 <th>Ubicación</th>
                                                 <th></th>
@@ -115,8 +92,6 @@ if (isset($_GET['resultados'])) {
                                                                 <p><strong>ISBN</strong> <?php echo $row[8]; ?></p>
                                                                 <p><strong>Ubicación</strong> <?php echo $row[7]; ?> </p>
                                                                 <p><strong>Ejemplar</strong> <?php echo $row[2]; ?></p>
-                                                                <p><strong>Año de Publicación</strong> <?php echo $row[0]; ?></p>
-                                                                <p><strong>Editorial</strong> <?php echo $row[3]; ?></p>
                                                                 <h6>Comentarios</h6>
                                                                 <?php if ($sessionlogged == 1) { ?>
                                                                     Has iniciado sesión como <strong><?php echo $sessionus; ?></strong>
@@ -224,8 +199,6 @@ if (isset($_GET['resultados'])) {
                                                             <td><?php echo $row[6]; ?></td>
                                                             <td><?php echo $row[1]; ?></td>
                                                             <td><?php echo $row[8]; ?></td>
-                                                            <td><?php echo $row[3]; ?></td>
-                                                            <td><?php echo $row[0]; ?></td>
                                                             <td><?php echo $row[2]; ?></td>
                                                             <td><?php echo $row[7]; ?></td>
                                                             <td><a type="button" style="color:grey;" data-toggle="modal" data-target="#libro-<?php echo $row[10]; ?>">Ver más</a><?php if ($sessionlogged == 1) {

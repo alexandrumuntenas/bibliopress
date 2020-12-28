@@ -10,6 +10,28 @@ if ($pag == null) {
     $pag = 1;
 }
 
+if (isset($_GET['pag'])) {
+    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']) == null) {
+        $pir = 1;
+    } else {
+        $pir = mysqli_real_escape_string($databaseconnection, $_REQUEST['pag']);
+    }
+} else {
+    $pir = 1;
+}
+
+if (isset($_GET['resultados'])) {
+    if (mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']) == null) {
+        $qtyresultado = $CantidadMostrar;
+    } else if (mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']) == 'Personalizado') {
+        $qtyresultado = mysqli_real_escape_string($databaseconnection, $_REQUEST['qtypersonalizada']);
+    } else {
+        $qtyresultado = mysqli_real_escape_string($databaseconnection, $_REQUEST['resultados']);
+    }
+} else {
+    $qtyresultado = $CantidadMostrar;
+}
+
 if (isset($_GET['r'])) {
     switch ($requestedpage) {
             #Distintas páginas para distintos módulos
